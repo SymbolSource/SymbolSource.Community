@@ -1,0 +1,6 @@
+_ReSharper.*
+*.user
+*.suo
+bin
+obj
+*.nupkg
