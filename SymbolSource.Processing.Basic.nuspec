@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>SymbolSource.Processing.Basic</id>
+	<version>1.0.0.0</version>
+    <authors>SymbolSource</authors>
+    <owners>SymbolSource</owners>
+    <projectUrl>http://github.com/SymbolSource/Processing</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+		This library contains basic binary, symbol and source file processing routines used by SymbolSource.
+		It is shared with plugins for nuget.exe and NuGet Package Explorer.
+	</description>
+	<dependencies>
+		<dependency id="DotNetZip" version="1.9.1.8" />
+		<dependency id="log4net" version="1.2.10" />
+		<dependency id="Mono.Cecil" version="0.9.5.0" />
+		<dependency id="SymbolSource.Microsoft.Cci.Metadata" version="1.0.64355.8" />
+	</dependencies>
+  </metadata>
+  <files>
+    <file src="Sources\SymbolSource.Processing.Basic\bin\Release\SymbolSource.Processing.Basic.dll" target="lib" />
+    <file src="Sources\SymbolSource.Processing.Basic\bin\Release\SymbolSource.Processing.Basic.pdb" target="lib" />
+	<file src="Sources\SymbolSource.Processing.Basic\**\*.cs" target="src" /> 
+  </files>
+</package>
