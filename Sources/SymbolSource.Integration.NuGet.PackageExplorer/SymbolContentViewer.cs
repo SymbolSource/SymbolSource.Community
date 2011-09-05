@@ -7,14 +7,14 @@ using SymbolSource.Processing.Basic;
 namespace SymbolSource.Integration.NuGet.PackageExplorer 
 {
     [PackageContentViewerMetadata(0, ".pdb")]
-    public class PdbContentViewer : IPackageContentViewer 
+    public class SymbolContentViewer : IPackageContentViewer 
     {
         public object GetView(string extension, Stream stream)
         {
             var builder = new StringBuilder();
 
             var store = new SymbolStoreManager();
-            builder.AppendLine("PDB hash:");
+            builder.AppendLine("Symbol hash:");
             builder.AppendLine(store.ReadHash(stream));
 
             builder.AppendLine("");
