@@ -1,6 +1,8 @@
 using System;
 using System.IO;
+using System.Text;
 using NuGetPackageExplorer.Types;
+using SymbolSource.Processing.Basic;
 
 namespace SymbolSource.Integration.NuGet.PackageExplorer 
 {
@@ -9,7 +11,18 @@ namespace SymbolSource.Integration.NuGet.PackageExplorer
     {
         public object GetView(string extension, Stream stream)
         {
-            return "test";
+            var builder = new StringBuilder();
+
+            var store = new BinaryStoreManager();
+            builder.AppendLine("DLL hash:");
+            builder.AppendLine(store.ReadBinaryHash(stream));
+
+            builder.AppendLine("");
+
+            builder.AppendLine("PDB hash:");
+            builder.AppendLine(store.ReadPdbHash(stream));
+
+            return builder;
         }
     }
 }

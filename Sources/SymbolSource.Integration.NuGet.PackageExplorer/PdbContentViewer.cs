@@ -1,6 +1,8 @@
 using System;
 using System.IO;
+using System.Text;
 using NuGetPackageExplorer.Types;
+using SymbolSource.Processing.Basic;
 
 namespace SymbolSource.Integration.NuGet.PackageExplorer 
 {
@@ -9,7 +11,21 @@ namespace SymbolSource.Integration.NuGet.PackageExplorer
     {
         public object GetView(string extension, Stream stream)
         {
-            return "test";
+            var builder = new StringBuilder();
+
+            var store = new SymbolStoreManager();
+            builder.AppendLine("PDB hash:");
+            builder.AppendLine(store.ReadHash(stream));
+
+            builder.AppendLine("");
+
+            var extractor = new ManagedSourceExtractor();
+            builder.AppendLine("Compiled sources:");
+            var sources = extractor.ReadSources(null, stream);
+            foreach (var source in sources)
+                builder.AppendLine(source);
+
+            return builder;
         }
     }
 }
