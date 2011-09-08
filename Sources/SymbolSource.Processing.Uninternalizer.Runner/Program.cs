@@ -10,7 +10,7 @@ namespace SymbolSource.Processing.Uninternalizer.Runner
     {
         static void Main(string[] args)
         {
-            ProcessDirectory("../../../../Microsoft.Cci.Metadata/Sources");
+            ProcessDirectory("../../../../../Microsoft.Cci.Metadata/Sources");
         }
 
         private static void ProcessDirectory(string path)
