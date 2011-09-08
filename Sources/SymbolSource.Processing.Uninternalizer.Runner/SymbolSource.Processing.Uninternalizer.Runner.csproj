@@ -46,7 +46,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Sources\SymbolSource.Processing.Uninternalizer\SymbolSource.Processing.Uninternalizer.csproj">
+    <ProjectReference Include="..\SymbolSource.Processing.Uninternalizer\SymbolSource.Processing.Uninternalizer.csproj">
       <Project>{D399D94C-EF74-48C0-9EF6-EB6441478755}</Project>
       <Name>SymbolSource.Processing.Uninternalizer</Name>
     </ProjectReference>

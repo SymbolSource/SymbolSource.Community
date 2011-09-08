@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymbolSource.Processing.Bas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymbolSource.Processing.Uninternalizer", "Sources\SymbolSource.Processing.Uninternalizer\SymbolSource.Processing.Uninternalizer.csproj", "{D399D94C-EF74-48C0-9EF6-EB6441478755}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymbolSource.Processing.Uninternalizer.Runner", "SymbolSource.Processing.Uninternalizer.Runner\SymbolSource.Processing.Uninternalizer.Runner.csproj", "{110EEA7A-65B1-4CF7-A85F-16741E197CE1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymbolSource.Processing.Uninternalizer.Runner", "Sources\SymbolSource.Processing.Uninternalizer.Runner\SymbolSource.Processing.Uninternalizer.Runner.csproj", "{110EEA7A-65B1-4CF7-A85F-16741E197CE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
