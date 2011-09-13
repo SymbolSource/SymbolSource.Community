@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Text;
+using Mono.Cecil;
 using NuGetPackageExplorer.Types;
 using SymbolSource.Processing.Basic;
 
@@ -12,6 +13,12 @@ namespace SymbolSource.Integration.NuGet.PackageExplorer
         public object GetView(string extension, Stream stream)
         {
             var builder = new StringBuilder();
+
+            var module = ModuleDefinition.ReadModule(stream);
+            builder.AppendLine("Assembly name:");
+            builder.AppendLine(module.Assembly.FullName);
+
+            builder.AppendLine("");
 
             var store = new BinaryStoreManager();
             builder.AppendLine("Binary hash:");
