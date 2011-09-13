@@ -40,7 +40,7 @@ namespace SymbolSource.Integration.NuGet.PackageExplorer
                     yield return MissingSymbolFileIssue(binaryFile.Path, symbolPath);
 
                 if (!isSymbol && symbolFile != null)
-                    yield return ExtraSymbolFileIssue(binaryFile.Path, symbolFile.Path);
+                    yield return UnnecessarySymbolFileIssue(binaryFile.Path, symbolFile.Path);
 
                 if (symbolFile != null)
                 {
@@ -82,11 +82,11 @@ namespace SymbolSource.Integration.NuGet.PackageExplorer
                 string.Format("Add symbol file '{0}' to the package.", symbolPath));
         }
 
-        private static PackageIssue ExtraSymbolFileIssue(string binaryPath, string symbolPath)
+        private static PackageIssue UnnecessarySymbolFileIssue(string binaryPath, string symbolPath)
         {
             return new PackageIssue(
                 PackageIssueLevel.Warning,
-                "Missing symbol file for assembly",
+                "Unnecessary symbol file for assembly",
                 string.Format("The assembly '{0}' has a corresponding symbol file '{1}'. No PDB files should be present in a binary package as they disable symbol server support. ", binaryPath, symbolPath),
                 string.Format("Remove symbol file '{0}' from the package.", symbolPath));
         }

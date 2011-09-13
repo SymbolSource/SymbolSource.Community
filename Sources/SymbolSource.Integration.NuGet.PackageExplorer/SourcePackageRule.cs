@@ -20,13 +20,25 @@ namespace SymbolSource.Integration.NuGet.PackageExplorer
         public override IEnumerable<PackageIssue> Validate(IPackage package)
         {
             var builder = new AddInfoBuilder(new BinaryStoreManager(), new SymbolStoreManager(), new SourceDiscover(new ManagedSourceExtractor(), new SourceStoreManager()));
-            var info = builder.Build(new PackageDirectoryInfo(package));
+            var info = builder.Build(new PackageDirectoryInfo(package.GetFiles().ToArray()));
 
             foreach (var binaryInfo in info.Binaries)
                 if (binaryInfo.SymbolInfo != null && binaryInfo.SymbolInfo.SourceInfos != null)
                     foreach (var sourceInfo in binaryInfo.SymbolInfo.SourceInfos)
                         if (sourceInfo.ActualPath == null)
                             yield return NoSourceFileIssue(binaryInfo.File.FullPath, sourceInfo.OriginalPath);
+
+            var matched = info.Binaries
+                .SelectMany(binary => binary.SymbolInfo.SourceInfos)
+                .Where(source => source.ActualPath != null)
+                .Select(source => source.ActualPath.FullPath)
+                .ToList();
+            
+            foreach (var file in package.GetFilesInFolder("src"))
+            {
+                if (!matched.Contains(file))
+                    yield return UnnecessarySourceFileIssue(file);
+            }
         }
 
         private static PackageIssue NoSourceFileIssue(string binaryPath, string sourcePath)
@@ -37,14 +49,23 @@ namespace SymbolSource.Integration.NuGet.PackageExplorer
                 string.Format("The assembly '{0}' was built form a source file that cannot be located - '{1}'.", binaryPath, sourcePath),
                 "Verify that the 'src' folder maintains proper relative paths of all sources and add the missing file if needed.");
         }
+
+        private static PackageIssue UnnecessarySourceFileIssue(string sourcePath)
+        {
+            return new PackageIssue(
+                PackageIssueLevel.Warning,
+                "Unnecessary source file",
+                string.Format("The source file '{0}' is not referenced by any of the packaged assemblies.", sourcePath),
+                "Verify that the 'src' folder only contains source files used to build assemblies placed in the 'lib' folder.");
+        }
     }
 
     public class PackageDirectoryInfo : DirectoryInfo
     {
-        private readonly IPackageFile[] files;
+        private readonly IEnumerable<IPackageFile> files;
         private readonly string name;
 
-        private PackageDirectoryInfo(IPackageFile[] files, DirectoryInfoFactory directoryInfoFactory, DirectoryInfo parentInfo, string name)
+        private PackageDirectoryInfo(IEnumerable<IPackageFile> files, DirectoryInfoFactory directoryInfoFactory, DirectoryInfo parentInfo, string name)
             : base(directoryInfoFactory, parentInfo)
         {
             this.files = files;
@@ -52,8 +73,8 @@ namespace SymbolSource.Integration.NuGet.PackageExplorer
         }
 
 
-        public PackageDirectoryInfo(IPackage package)
-            : this(package.GetFiles().ToArray(), new DirectoryInfoFactory(), null, "")
+        public PackageDirectoryInfo(IEnumerable<IPackageFile> files)
+            : this(files, new DirectoryInfoFactory(), null, "")
         {
         }
 
