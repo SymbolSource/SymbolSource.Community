@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SourceDiscoverTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
