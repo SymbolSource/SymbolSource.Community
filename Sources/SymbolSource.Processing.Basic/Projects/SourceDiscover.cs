@@ -33,6 +33,11 @@ namespace SymbolSource.Processing.Basic.Projects
                 if (originalPaths.Count == 1)
                     maxCommonOriginalPath = Path.GetDirectoryName(maxCommonOriginalPath);
 
+                //Clean fileInfos
+                var originalPathsExtensions = originalPaths.Select(Path.GetExtension).Distinct().ToArray();
+                fileInfos = fileInfos.Where(f => originalPathsExtensions.Any(o => string.Equals(Path.GetExtension(f.Name), o, StringComparison.OrdinalIgnoreCase))).ToArray();
+
+
                 string maxCommonFileInfosPath = GetMaxCommonPath(fileInfos.Select(o => o.FullPath.Replace('\\', Path.DirectorySeparatorChar).Replace('/', Path.DirectorySeparatorChar)));
                 if (fileInfos.Count == 1)
                     maxCommonFileInfosPath = Path.GetDirectoryName(maxCommonFileInfosPath);

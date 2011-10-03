@@ -3,9 +3,7 @@ using System.IO;
 using System.Linq;
 using Moq;
 using SymbolSource.Processing.Basic.Projects;
-using SymbolSource.Processing.Basic.Projects.FileInfos;
 using Xunit;
-using DirectoryInfo = SymbolSource.Processing.Basic.Projects.FileInfos.DirectoryInfo;
 
 namespace SymbolSource.Processing.Basic.Tests
 {
