@@ -99,7 +99,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="SymbolSource.Processing.Basic, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SymbolSource.Processing.Basic.1.0.2.0\lib\SymbolSource.Processing.Basic.dll</HintPath>
+      <HintPath>..\..\packages\SymbolSource.Processing.Basic.1.0.2.1\lib\SymbolSource.Processing.Basic.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />

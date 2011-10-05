@@ -28,17 +28,17 @@ namespace SymbolSource.Integration.NuGet.PackageExplorer
                         if (sourceInfo.ActualPath == null)
                             yield return NoSourceFileIssue(binaryInfo.File.FullPath, sourceInfo.OriginalPath);
 
-            var matched = info.Binaries
-                .SelectMany(binary => binary.SymbolInfo.SourceInfos)
-                .Where(source => source.ActualPath != null)
-                .Select(source => source.ActualPath.FullPath)
-                .ToList();
+            //var matched = info.Binaries
+            //    .SelectMany(binary => binary.SymbolInfo.SourceInfos)
+            //    .Where(source => source.ActualPath != null)
+            //    .Select(source => source.ActualPath.FullPath)
+            //    .ToList();
             
-            foreach (var file in package.GetFilesInFolder("src"))
-            {
-                if (!matched.Contains(file))
-                    yield return UnnecessarySourceFileIssue(file);
-            }
+            //foreach (var file in package.GetFilesInFolder("src"))
+            //{
+            //    if (!matched.Contains(file))
+            //        yield return UnnecessarySourceFileIssue(file);
+            //}
         }
 
         private static PackageIssue NoSourceFileIssue(string binaryPath, string sourcePath)
