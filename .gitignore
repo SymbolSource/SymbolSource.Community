@@ -1,6 +1,14 @@
 _ReSharper.*
-bin
-obj
 *.user
 *.suo
+bin
+obj
+*.cache
+_cache
+wraps/*.wrap
+packages/*
+!packages/nuget.exe
+!packages/repositories.config
+App_Data
 *.nupkg
+!*/*.nupkg
