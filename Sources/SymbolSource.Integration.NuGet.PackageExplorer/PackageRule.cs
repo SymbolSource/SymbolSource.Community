@@ -19,11 +19,16 @@ namespace SymbolSource.Integration.NuGet.PackageExplorer
             return file.Path.EndsWith(".pdb", StringComparison.CurrentCultureIgnoreCase);
         }
 
+        protected static bool IsSourceFile(IPackageFile file)
+        {
+            return file.Path.StartsWith(@"src\", StringComparison.CurrentCultureIgnoreCase);
+        }
+
         protected IPackageFile GetSingleFile(IEnumerable<IPackageFile> files, string path)
         {
             return files.Where(file => file.Path.Equals(path, StringComparison.CurrentCultureIgnoreCase)).SingleOrDefault();
         }
 
-        public abstract IEnumerable<PackageIssue> Validate(IPackage package);
+        public abstract IEnumerable<PackageIssue> Validate(IPackage package, string packageFileName);
     }
 }

@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using NuGetPackageExplorer.Types;
 using System.ComponentModel.Composition;
 using NuGet;
@@ -13,16 +12,34 @@ namespace SymbolSource.Integration.NuGet.PackageExplorer
     [Export(typeof(IPackageRule))]
     public class SourcePackageRule : PackageRule
     {
-        public override IEnumerable<PackageIssue> Validate(IPackage package)
+        public override IEnumerable<PackageIssue> Validate(IPackage package, string packageFileName)
         {
             var binaryStore = new BinaryStoreManager();
             var symbolStore = new SymbolStoreManager();
 
             var files = package.GetFiles().ToArray();
             
-            //TODO: need a better way to determine if we have a symbols package
-            var isSymbol = package.GetFilesInFolder("src").Any();
+            var hasSymbols = files.Where(IsSymbolFile).Any();
+            var hasSources = files.Where(IsSourceFile).Any();
 
+            var hasName = packageFileName != null && packageFileName.EndsWith(".nupkg", StringComparison.CurrentCultureIgnoreCase);
+            var hasSymbolsName = hasName && packageFileName.EndsWith(".symbols.nupkg", StringComparison.CurrentCultureIgnoreCase);
+            
+            var isSymbolPackage = hasSymbolsName || hasSymbols || hasSources;
+
+            if (!hasName)
+            {
+                yield return UnableToVerifyPackageName(packageFileName);
+            }
+            else
+            {
+                if (!hasSymbolsName && (hasSymbols || hasSources))
+                    yield return IncorrectSymbolPackageName(packageFileName);
+
+                if (hasSymbolsName && !hasSymbols && !hasSources)
+                    yield return IncorrectPackageName(packageFileName);
+            }
+            
             foreach (var binaryFile in files.Where(IsBinaryFile))
             {
                 string binaryHash;
@@ -36,10 +53,10 @@ namespace SymbolSource.Integration.NuGet.PackageExplorer
                 var symbolPath = Path.ChangeExtension(binaryFile.Path, ".pdb");
                 var symbolFile = GetSingleFile(files, symbolPath);
 
-                if (isSymbol && symbolFile == null)
+                if (isSymbolPackage && symbolFile == null)
                     yield return MissingSymbolFileIssue(binaryFile.Path, symbolPath);
 
-                if (!isSymbol && symbolFile != null)
+                if (!isSymbolPackage && symbolFile != null)
                     yield return UnnecessarySymbolFileIssue(binaryFile.Path, symbolFile.Path);
 
                 if (symbolFile != null)
@@ -62,6 +79,33 @@ namespace SymbolSource.Integration.NuGet.PackageExplorer
                 if (GetSingleFile(files, dllPath) == null && GetSingleFile(files, exePath) == null)
                     yield return OrphanSymbolFileIssue(symbolFile.Path, dllPath, exePath);
             }
+        }
+
+        private static PackageIssue UnableToVerifyPackageName(string packageFileName)
+        {
+            return new PackageIssue(
+                PackageIssueLevel.Warning,
+                "Unable to verify package name",
+                string.Format("The name of this package '{0}' cannot be verified. It is new or has been opened from a feed.", packageFileName),
+                "Save the package to disk and try again.");
+        }
+
+        private static PackageIssue IncorrectSymbolPackageName(string packageFileName)
+        {
+            return new PackageIssue(
+                PackageIssueLevel.Warning,
+                "Incorrect symbol package name",
+                string.Format("The name of this package '{0}' does not follow proper conventions. The name of a package containing symbols and/or sources should end with '.symbols.nupkg'.", packageFileName),
+                "Rename this package file to end correctly or remove all symbols and sources it was not intended to be a symbol package.");
+        }
+
+        private static PackageIssue IncorrectPackageName(string packageFileName)
+        {
+            return new PackageIssue(
+                PackageIssueLevel.Warning,
+                "Incorrect package name",
+                string.Format("The name of this package '{0}' does not follow proper conventions. It suggests that this is a symbol package, because it ends with '.symbols.nupkg'.", packageFileName),
+                "Rename this package file to end correctly or add missing symbols and sources to make it a valid symbol package.");
         }
 
         private static PackageIssue NoSymbolSupportIssue(string binaryPath)

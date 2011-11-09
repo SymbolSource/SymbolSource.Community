@@ -93,7 +93,7 @@
       <HintPath>..\..\packages\Mono.Cecil.0.9.5.1\lib\net40\Mono.Cecil.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="NuGetPackageExplorer.Types">
-      <HintPath>..\..\packages\NuGetPackageExplorer.Types.2.0\lib\net40-client\NuGetPackageExplorer.Types.dll</HintPath>
+      <HintPath>..\..\packages\NuGetPackageExplorer.Types.3.0\lib\net40-client\NuGetPackageExplorer.Types.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="PresentationCore" />

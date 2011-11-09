@@ -17,7 +17,7 @@ namespace SymbolSource.Integration.NuGet.PackageExplorer
     [Export(typeof(IPackageRule))]
     public class SymbolPackageRule : PackageRule
     {
-        public override IEnumerable<PackageIssue> Validate(IPackage package)
+        public override IEnumerable<PackageIssue> Validate(IPackage package, string packageFileName)
         {
             var builder = new AddInfoBuilder(new BinaryStoreManager(), new SymbolStoreManager(), new SourceDiscover(new ManagedSourceExtractor(), new SourceStoreManager()));
             var info = builder.Build(new PackageDirectoryInfo(package.GetFiles().ToArray()));
