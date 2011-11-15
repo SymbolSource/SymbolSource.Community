@@ -15,9 +15,9 @@ using FileInfo = SymbolSource.Processing.Basic.Projects.FileInfos.FileInfo;
 namespace SymbolSource.Integration.NuGet.PackageExplorer
 {
     [Export(typeof(IPackageRule))]
-    public class SymbolPackageRule : PackageRule
+    public class SymbolPackageRule : IPackageRule
     {
-        public override IEnumerable<PackageIssue> Validate(IPackage package, string packageFileName)
+        public IEnumerable<PackageIssue> Validate(IPackage package, string packageFileName)
         {
             var builder = new AddInfoBuilder(new BinaryStoreManager(), new SymbolStoreManager(), new SourceDiscover(new ManagedSourceExtractor(), new SourceStoreManager()));
             var info = builder.Build(new PackageDirectoryInfo(package.GetFiles().ToArray()));

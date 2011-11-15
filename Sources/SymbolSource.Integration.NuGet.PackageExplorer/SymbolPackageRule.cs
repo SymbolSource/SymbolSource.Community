@@ -10,17 +10,17 @@ using SymbolSource.Processing.Basic;
 namespace SymbolSource.Integration.NuGet.PackageExplorer 
 {
     [Export(typeof(IPackageRule))]
-    public class SourcePackageRule : PackageRule
+    public class SourcePackageRule : IPackageRule
     {
-        public override IEnumerable<PackageIssue> Validate(IPackage package, string packageFileName)
+        public IEnumerable<PackageIssue> Validate(IPackage package, string packageFileName)
         {
             var binaryStore = new BinaryStoreManager();
             var symbolStore = new SymbolStoreManager();
 
             var files = package.GetFiles().ToArray();
             
-            var hasSymbols = files.Where(IsSymbolFile).Any();
-            var hasSources = files.Where(IsSourceFile).Any();
+            var hasSymbols = files.Where(PackageHelper.IsSymbolFile).Any();
+            var hasSources = files.Where(PackageHelper.IsSourceFile).Any();
 
             var hasName = packageFileName != null && packageFileName.EndsWith(".nupkg", StringComparison.CurrentCultureIgnoreCase);
             var hasSymbolsName = hasName && packageFileName.EndsWith(".symbols.nupkg", StringComparison.CurrentCultureIgnoreCase);
@@ -40,7 +40,7 @@ namespace SymbolSource.Integration.NuGet.PackageExplorer
                     yield return IncorrectPackageName(packageFileName);
             }
             
-            foreach (var binaryFile in files.Where(IsBinaryFile))
+            foreach (var binaryFile in files.Where(PackageHelper.IsBinaryFile))
             {
                 string binaryHash;
                 
@@ -71,7 +71,7 @@ namespace SymbolSource.Integration.NuGet.PackageExplorer
                 }
             }
 
-            foreach (var symbolFile in files.Where(IsSymbolFile))
+            foreach (var symbolFile in files.Where(PackageHelper.IsSymbolFile))
             {
                 var dllPath = Path.ChangeExtension(symbolFile.Path, ".dll");
                 var exePath = Path.ChangeExtension(symbolFile.Path, ".exe");
@@ -79,6 +79,11 @@ namespace SymbolSource.Integration.NuGet.PackageExplorer
                 if (GetSingleFile(files, dllPath) == null && GetSingleFile(files, exePath) == null)
                     yield return OrphanSymbolFileIssue(symbolFile.Path, dllPath, exePath);
             }
+        }
+
+        protected IPackageFile GetSingleFile(IEnumerable<IPackageFile> files, string path)
+        {
+            return files.Where(file => file.Path.Equals(path, StringComparison.CurrentCultureIgnoreCase)).SingleOrDefault();
         }
 
         private static PackageIssue UnableToVerifyPackageName(string packageFileName)
