@@ -8,13 +8,14 @@ namespace SymbolSource.Processing.Basic.Projects.FileInfos
     {
         private readonly string fileSystemFullPath;
 
-        public FileSystemDirectoryInfo(string fileSystemFullPath) : this(new DirectoryInfoFactory(), null, fileSystemFullPath)
+        public FileSystemDirectoryInfo(ISpecialDirectoryHandler specialDirectoryHandler, string path)
+            : this(specialDirectoryHandler, null, path)
         {
             
         }
 
-        public FileSystemDirectoryInfo(DirectoryInfoFactory directoryInfoFactory, DirectoryInfo parentInfo, string fileSystemFullPath)
-            : base(directoryInfoFactory, parentInfo)
+        public FileSystemDirectoryInfo(ISpecialDirectoryHandler specialDirectoryHandler, DirectoryInfo parentInfo, string fileSystemFullPath)
+            : base(specialDirectoryHandler, parentInfo)
         {
             this.fileSystemFullPath = fileSystemFullPath;
         }
@@ -27,12 +28,12 @@ namespace SymbolSource.Processing.Basic.Projects.FileInfos
         protected override IEnumerable<IDirectoryInfo> ExecuteGetDirectories()
         {
             var directories = Directory.GetDirectories(fileSystemFullPath)
-                .Select(d => new FileSystemDirectoryInfo(DirectoryInfoFactory, this, d))
+                .Select(d => new FileSystemDirectoryInfo(SpecialDirectoryHandler, this, d))
                 .Cast<IDirectoryInfo>();
 
             var specialDirectories = Directory.GetFiles(fileSystemFullPath)
-                .Where(f => DirectoryInfoFactory.IsSpecialDirectory(f))
-                .Select(f => DirectoryInfoFactory.GetSpecialDirectory(this, Path.GetFileName(f), File.Open(f, FileMode.Open)));
+                .Where(f => SpecialDirectoryHandler.IsSpecialDirectory(f))
+                .Select(f => SpecialDirectoryHandler.GetSpecialDirectory(this, Path.GetFileName(f), () => File.OpenRead(f)));
 
             return directories.Union(specialDirectories);
         }
@@ -40,7 +41,7 @@ namespace SymbolSource.Processing.Basic.Projects.FileInfos
         protected override IEnumerable<IFileInfo> ExecuteGetFiles()
         {
             return Directory.GetFiles(fileSystemFullPath)
-                .Where(f => !DirectoryInfoFactory.IsSpecialDirectory(f))
+                .Where(f => !SpecialDirectoryHandler.IsSpecialDirectory(f))
                 .Select(f => new FileSystemFileInfo(this, f))
                 .Cast<IFileInfo>();
         }

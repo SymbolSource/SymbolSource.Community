@@ -9,13 +9,13 @@ namespace SymbolSource.Processing.Basic.Projects.FileInfos
         private IList<IFileInfo> files;
         private IList<IDirectoryInfo> directories;
 
-        protected DirectoryInfo(DirectoryInfoFactory directoryInfoFactory, DirectoryInfo parentInfo)
+        protected DirectoryInfo(ISpecialDirectoryHandler specialDirectoryHandler, DirectoryInfo parentInfo)
             : base(parentInfo)
         {
-            DirectoryInfoFactory = directoryInfoFactory;
+            SpecialDirectoryHandler = specialDirectoryHandler;
         }
 
-        protected DirectoryInfoFactory DirectoryInfoFactory { get; private set; }
+        protected ISpecialDirectoryHandler SpecialDirectoryHandler { get; private set; }
         protected abstract IEnumerable<IDirectoryInfo> ExecuteGetDirectories();
         protected abstract IEnumerable<IFileInfo> ExecuteGetFiles();
 
