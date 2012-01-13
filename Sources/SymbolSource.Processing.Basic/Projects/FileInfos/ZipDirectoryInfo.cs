@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Ionic.Zip;
@@ -10,6 +11,13 @@ namespace SymbolSource.Processing.Basic.Projects.FileInfos
         private readonly string name;
         private readonly ZipFile zipFile;
         private readonly string path;
+
+        [Obsolete]
+        public ZipDirectoryInfo(string fileSystemFullPath)
+            : this(new InternalDirectoryInfoFactory(), fileSystemFullPath)
+        {
+            
+        }
 
         public ZipDirectoryInfo(ISpecialDirectoryHandler specialDirectoryHandler, DirectoryInfo parentInfo, string name, ZipFile zipFile, string path)
             : base(specialDirectoryHandler, parentInfo)
