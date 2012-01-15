@@ -34,6 +34,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\..\Sources\packages\Castle.Core.2.5.2\lib\NET35\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\..\Sources\packages\Castle.Windsor.2.5.3\lib\NET40\Castle.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\DotNetZip.1.9.1.8\lib\net20\Ionic.Zip.dll</HintPath>
@@ -104,6 +110,7 @@
     <Compile Include="BinaryStoreManager.cs" />
     <Compile Include="Interfaces.cs" />
     <Compile Include="ManagedSourceExtractor.cs" />
+    <Compile Include="ProcessingBasicInstaller.cs" />
     <Compile Include="SourceStoreManager.cs" />
     <Compile Include="SymbolStoreManager.cs" />
     <Compile Include="Projects\AddInfoBaseVisitor.cs" />
