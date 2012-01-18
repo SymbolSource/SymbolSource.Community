@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>SymbolSource.Integration.NuGet.PackageExplorer</id>
+    <version>1.3.0.0</version>
+    <authors>SymbolSource</authors>
+    <owners>SymbolSource</owners>
+    <projectUrl>http://github.com/SymbolSource/Integration.NuGet</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      This plugin provides symbol package validation rules.
+      It is helpful in diagnosing problems with SymbolSource submissions.
+    </description>
+  </metadata>
+  <files>
+    <file src="Sources\SymbolSource.Integration.NuGet.PackageExplorer\bin\Release\*.dll" target="lib\net40" />
+  </files>
+</package>
