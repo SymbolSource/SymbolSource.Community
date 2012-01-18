@@ -65,8 +65,8 @@ namespace SymbolSource.Integration.NuGet.PackageExplorer
         private readonly IEnumerable<IPackageFile> files;
         private readonly string name;
 
-        private PackageDirectoryInfo(IEnumerable<IPackageFile> files, DirectoryInfoFactory directoryInfoFactory, DirectoryInfo parentInfo, string name)
-            : base(directoryInfoFactory, parentInfo)
+        private PackageDirectoryInfo(IEnumerable<IPackageFile> files, ISpecialDirectoryHandler specialDirectoryHandler, DirectoryInfo parentInfo, string name)
+            : base(specialDirectoryHandler, parentInfo)
         {
             this.files = files;
             this.name = name;
@@ -74,7 +74,7 @@ namespace SymbolSource.Integration.NuGet.PackageExplorer
 
 
         public PackageDirectoryInfo(IEnumerable<IPackageFile> files)
-            : this(files, new DirectoryInfoFactory(), null, "")
+            : this(files, new NullSpecialDirectoryHandler(), null, "")
         {
         }
 
@@ -91,7 +91,7 @@ namespace SymbolSource.Integration.NuGet.PackageExplorer
                  .Where(path => path.Length > 1)
                  .Select(path => path[0])
                  .Distinct()
-                 .Select(name => new PackageDirectoryInfo(files, DirectoryInfoFactory, this, name));
+                 .Select(name => new PackageDirectoryInfo(files, SpecialDirectoryHandler, this, name));
         }
 
         protected override IEnumerable<IFileInfo> ExecuteGetFiles()
