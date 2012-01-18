@@ -1,4 +1,6 @@
 using System;
+using System.Configuration;
+using Castle.Components.DictionaryAdapter;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
@@ -30,8 +32,6 @@ namespace SymbolSource.Processing.Basic
                     .ImplementedBy<SourceStoreManager>()
                 );
 
-
-
             container.Register(
                 Component.For<ISymbolStoreManager>()
                     .ImplementedBy<SymbolStoreManager>()
@@ -42,6 +42,16 @@ namespace SymbolSource.Processing.Basic
                     .ImplementedBy<ManagedSourceExtractor>()
                 );
 
+            container.Register(
+                Component.For<IPdbStoreConfig>()
+                    .Instance(new DictionaryAdapterFactory().GetAdapter<IPdbStoreConfig>(ConfigurationManager.AppSettings))
+                );
+
+            container.Register(
+              Component.For<IPdbStoreManager>()
+                  .Forward<ISymbolStoreManager>()
+                  .ImplementedBy<PdbStoreManager>()
+              );
         }
     }
 }

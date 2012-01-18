@@ -100,16 +100,17 @@
       <HintPath>..\..\packages\Mono.Cecil.0.9.5.1\lib\net35\Mono.Cecil.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinaryStoreManager.cs" />
     <Compile Include="Interfaces.cs" />
     <Compile Include="ManagedSourceExtractor.cs" />
+    <Compile Include="PdbSrcSrvSection.cs" />
+    <Compile Include="PdbStoreManager.cs" />
+    <Compile Include="ProcessFactory.cs" />
     <Compile Include="ProcessingBasicInstaller.cs" />
     <Compile Include="SourceStoreManager.cs" />
     <Compile Include="SymbolStoreManager.cs" />
