@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6E4430AB-211C-4FA5-A3A1-E1C056B1B1E6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SymbolSource.Server.Basic</RootNamespace>
+    <AssemblyName>SymbolSource.Server.Basic</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\Sources\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=2.5.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Castle.Core.2.5.2\lib\NET35\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=2.5.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Castle.Windsor.2.5.3\lib\NET40\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebActivator">
+      <HintPath>..\..\packages\WebActivator.1.5\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AttributeRouting.cs" />
+    <Compile Include="BasicBackend.cs" />
+    <Compile Include="BasicBackend.Download.cs" />
+    <Compile Include="BasicBackend.Logging.cs" />
+    <Compile Include="BasicBackend.Metadata.cs" />
+    <Compile Include="BasicBackend.Upload.cs" />
+    <Compile Include="BasicBackendFactory.cs" />
+    <Compile Include="IBasicBackendConfiguration.cs" />
+    <Compile Include="MCControllerFactory.cs" />
+    <Compile Include="MicroKernel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Community\Sources\SymbolSource.Processing.Basic\SymbolSource.Processing.Basic.csproj">
+      <Project>{2E6CD475-5BDF-43FF-8A69-EFC731179DAB}</Project>
+      <Name>SymbolSource.Processing.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SymbolSource.Gateway.Core\SymbolSource.Gateway.Core.csproj">
+      <Project>{CE6E671C-E955-4D14-8BCD-3EC25DBCBBA0}</Project>
+      <Name>SymbolSource.Gateway.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SymbolSource.Gateway.NuGet.Core\SymbolSource.Gateway.NuGet.Core.csproj">
+      <Project>{45FD6A65-8C04-4F19-95C2-2598ED79C02E}</Project>
+      <Name>SymbolSource.Gateway.NuGet.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SymbolSource.Gateway.OpenWrap.Core\SymbolSource.Gateway.OpenWrap.Core.csproj">
+      <Project>{D8515DF7-5E93-4446-9ABB-CADD435BE00E}</Project>
+      <Name>SymbolSource.Gateway.OpenWrap.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SymbolSource.Gateway.WinDbg.Core\SymbolSource.Gateway.WinDbg.Core.csproj">
+      <Project>{50F24F3A-F9CA-4945-A48E-941ADD255D27}</Project>
+      <Name>SymbolSource.Gateway.WinDbg.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SymbolSource.Server.Management.Client\SymbolSource.Server.Management.Client.csproj">
+      <Project>{2F619C26-9619-409F-A79C-04857C7FD634}</Project>
+      <Name>SymbolSource.Server.Management.Client</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
