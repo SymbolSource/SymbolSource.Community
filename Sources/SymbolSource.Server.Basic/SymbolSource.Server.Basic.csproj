@@ -71,7 +71,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Community\Sources\SymbolSource.Processing.Basic\SymbolSource.Processing.Basic.csproj">
+    <ProjectReference Include="..\SymbolSource.Processing.Basic\SymbolSource.Processing.Basic.csproj">
       <Project>{2E6CD475-5BDF-43FF-8A69-EFC731179DAB}</Project>
       <Name>SymbolSource.Processing.Basic</Name>
     </ProjectReference>

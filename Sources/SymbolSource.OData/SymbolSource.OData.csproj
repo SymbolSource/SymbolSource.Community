@@ -38,10 +38,10 @@
     </Reference>
     <Reference Include="Irony, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ca48ace7223ead47, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Dependencies\Irony\Irony.dll</HintPath>
+      <HintPath>..\..\Dependencies\Irony\Irony.dll</HintPath>
     </Reference>
     <Reference Include="Irony.Interpreter">
-      <HintPath>..\..\..\Dependencies\Irony\Irony.Interpreter.dll</HintPath>
+      <HintPath>..\..\Dependencies\Irony\Irony.Interpreter.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
