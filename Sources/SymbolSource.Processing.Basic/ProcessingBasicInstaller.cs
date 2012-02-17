@@ -52,6 +52,11 @@ namespace SymbolSource.Processing.Basic
                   .Forward<ISymbolStoreManager>()
                   .ImplementedBy<PdbStoreManager>()
               );
+
+            container.Register(
+               Component.For<IFileCompressor>()
+                   .ImplementedBy<FileCompressor>()
+               );
         }
     }
 }
