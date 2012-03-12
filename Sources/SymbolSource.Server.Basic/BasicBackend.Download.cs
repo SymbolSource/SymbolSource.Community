@@ -8,17 +8,17 @@ namespace SymbolSource.Server.Basic
     {
         public string GetSymbolFileLink(ref ImageFile imageFile)
         {
-            throw new NotImplementedException();
+            return string.Format("{0}/Images/{1}/{3}/{1}.pdb", configuration.RemotePath, imageFile.Name, imageFile.BinaryType, imageFile.SymbolHash);
         }
 
         public string GetImageFileLink(ref ImageFile imageFile)
         {
-            throw new NotImplementedException();
+            return string.Format("{0}/Images/{1}/{3}/{1}.{2}", configuration.RemotePath, imageFile.Name, imageFile.BinaryType, imageFile.SymbolHash);
         }
 
         public string GetSourceFileLink(ref SourceFile sourceFile)
         {
-            throw new NotImplementedException();
+            return string.Format("{0}/Images/{1}/{3}/Sources/", configuration.RemotePath, sourceFile.ImageName, sourceFile.Hash, sourceFile.Path);
         }
 
         public string GetPackageLink(ref Version version, string contentType)

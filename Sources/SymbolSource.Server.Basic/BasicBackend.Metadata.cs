@@ -8,7 +8,7 @@ namespace SymbolSource.Server.Basic
     {
         public ImageFile GetImageFile(string name, string symbolHash)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException(this.configuration.DataPath);
         }
 
         public SourceFile[] GetSourceFileList(ref ImageFile imageFile)
@@ -18,20 +18,19 @@ namespace SymbolSource.Server.Basic
 
         public void CreateVersion(Version version)
         {
-            throw new NotImplementedException();
         }
 
-        public Compilation[] GetCompilationList(ref Server.Management.Client.Version version)
+        public Compilation[] GetCompilationList(ref Version version)
         {
             throw new NotImplementedException();
         }
 
-        public void SetVersionHidden(ref Server.Management.Client.Version version, bool hidden)
+        public void SetVersionHidden(ref Version version, bool hidden)
         {
             throw new NotImplementedException();
         }
 
-        public Server.Management.Client.Version[] GetVersions(ref Project project)
+        public Version[] GetVersions(ref Project project)
         {
             throw new NotImplementedException();
         }

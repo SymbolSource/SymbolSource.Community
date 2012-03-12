@@ -64,6 +64,7 @@
     <Compile Include="BasicBackend.Logging.cs" />
     <Compile Include="BasicBackend.Metadata.cs" />
     <Compile Include="BasicBackend.Upload.cs" />
+    <Compile Include="BasicBackendConfiguration.cs" />
     <Compile Include="BasicBackendFactory.cs" />
     <Compile Include="IBasicBackendConfiguration.cs" />
     <Compile Include="MCControllerFactory.cs" />

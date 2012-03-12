@@ -39,9 +39,9 @@ namespace SymbolSource.Processing.Basic.Projects.FileInfos
         private bool CheckRoot(string zipEntryName)
         {
             var zipEntryNames = ("/" + zipEntryName.TrimEnd('/')).Split('/');
-            var names = path.Split('/');
+            var names = path.TrimEnd('/').Split('/');
 
-            bool isOk = zipEntryNames.Length == names.Length;
+            bool isOk = zipEntryNames.Length -1 == names.Length;
 
             if (isOk)
                 for (int i = 0; i < names.Length - 1; i++)
@@ -58,6 +58,10 @@ namespace SymbolSource.Processing.Basic.Projects.FileInfos
 
         protected override IEnumerable<IDirectoryInfo> ExecuteGetDirectories()
         {
+            var directories2 = zipFile
+                .Where(z => z.IsDirectory)
+                .ToArray();
+
             var directories = zipFile
                 .Where(z => z.IsDirectory)
                 .Where(z => CheckRoot(z.FileName))

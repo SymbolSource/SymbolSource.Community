@@ -35,7 +35,6 @@ namespace SymbolSource.Server.Basic
                     .Configure(cr => cr.LifeStyle.Transient)
                 );
 
-
             container.Register(
                 AllTypes.FromAssembly(typeof(Gateway.WinDbg.Core.AttributeRouting).Assembly)
                     .BasedOn<IController>()
@@ -66,7 +65,7 @@ namespace SymbolSource.Server.Basic
 
             kernel.Register(
                 Component.For<IBasicBackendConfiguration>()
-                    .Instance(new DictionaryAdapterFactory().GetAdapter<IBasicBackendConfiguration>(ConfigurationManager.AppSettings))
+                    .ImplementedBy<BasicBackendConfiguration>()
                 );
         }     
     }

@@ -110,6 +110,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Elmah.Errors\" />
+    <Folder Include="Data\" />
+    <Folder Include="Index\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
