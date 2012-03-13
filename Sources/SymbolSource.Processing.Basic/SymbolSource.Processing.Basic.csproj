@@ -102,6 +102,8 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +126,7 @@
     <Compile Include="Projects\SourceDiscover.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StreamExtensions.cs" />
+    <Compile Include="UrlTransformation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

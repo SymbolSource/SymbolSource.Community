@@ -5,7 +5,7 @@
 <script runat="server">
     protected string GetAbsoluteUri(string relativeUri)
     {
-        return HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + HttpContext.Current.Request.ApplicationPath + relativeUri;
+        return HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + HttpContext.Current.Request.ApplicationPath.TrimEnd('/') + relativeUri;
     }
 </script>
 
@@ -19,16 +19,20 @@
     
     <h2>Visual Studio Debugging URL</h2>
     <p>
-        <strong><code><%=GetAbsoluteUri("WinDbg/pdb")%></code></strong> <a href="http://www.symbolsource.org/Public/Home/VisualStudio">More info about configuration</a>
+        <strong><code><%=GetAbsoluteUri("/WinDbg/pdb")%></code></strong> <a href="http://www.symbolsource.org/Public/Home/VisualStudio">More info about configuration</a>
     </p>
     <h2>NuGet - Pushing packages</h2>
     <p>
-        <code>nuget push *.symbols.nupkg 123 -Source </code><strong><code><%=GetAbsoluteUri("NuGet")%></code></strong>
+        <code>nuget push *.symbols.nupkg 123 -Source </code><strong><code><%=GetAbsoluteUri("/NuGet")%></code></strong>
     </p>
     <h2>OpenWrap - Repository URL</h2>
     <p>
-        <strong><code><%=GetAbsoluteUri("OpenWrap")%></code></strong>
+        <strong><code><%=GetAbsoluteUri("/OpenWrap")%></code></strong>
     </p>
+    <h2>Configuration check</h2>
+    <ul>
+        <li>SrcSrvPath - <%=ConfigurationManager.AppSettings["SrcSrvPath"]%> - <%= System.IO.Directory.Exists(ConfigurationManager.AppSettings["SrcSrvPath"]) ? "OK" : "Not found"%></li>
+    </ul>
 <%--    
         <dt>NuGet Feed URL</dt>
         <dd><a href="<%=GetAbsoluteUri("NuGet/FeedService.mvc")%>"><%=GetAbsoluteUri("NuGet/FeedService.mvc")%></a></dd>

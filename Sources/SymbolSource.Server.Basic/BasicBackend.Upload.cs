@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Ionic.Zip;
+using SymbolSource.Processing.Basic;
 using SymbolSource.Processing.Basic.Projects;
 using SymbolSource.Server.Management.Client;
 using Version = SymbolSource.Server.Management.Client.Version;
@@ -21,7 +22,7 @@ namespace SymbolSource.Server.Basic
             using (var zipMemoryStream = new MemoryStream (data))
             using (var zipfile = ZipFile.Read(zipMemoryStream))
             {
-                var zipInfo = new ZipPackageFile(zipfile);
+                var zipInfo = new TransformingWrapperPackageFile(new ZipPackageFile(zipfile), new UrlTransformation());
                 var addInfo = addInfoBuilder.Build(zipInfo);
 
                 string binariesDirectory = Path.Combine(directory, "Binaries");
@@ -67,13 +68,29 @@ namespace SymbolSource.Server.Basic
                     }
                 }
             }
+
+            File.Delete(file);
         }
 
         public void PushPackage(ref Version version, byte[] data, PackageProject metadata)
         {
             string directory = Path.Combine(configuration.DataPath, metadata.Name, metadata.Version.Name);
             Directory.CreateDirectory(directory);
-            string file = Path.Combine(directory, metadata.Name + "." + version.PackageFormat);
+
+            string file;
+            switch(version.PackageFormat)
+            {
+                case "NuGet":
+                    file = Path.Combine(directory, metadata.Name + "." + metadata.Version.Name + ".nupkg");
+                    break;
+                case "OpenWrap":
+                    file = Path.Combine(directory, metadata.Name + "-" + metadata.Version.Name + ".wrap");
+                    break;
+                default:
+                    file = Path.Combine(directory, metadata.Name + "." + version.PackageFormat);
+                    break;
+            }
+             
             File.WriteAllBytes(file, data);
         }
     }

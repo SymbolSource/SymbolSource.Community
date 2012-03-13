@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>SymbolSource.Server.Basic</id>
-    <version>0.5.7</version>
+    <version>1.0.0</version>
     <authors>SymbolSource</authors>
     <owners>SymbolSource</owners>
     <projectUrl>http://www.symbolsource.org/</projectUrl>
@@ -31,20 +31,22 @@
     </frameworkAssemblies>
   </metadata>
   <files>
-    <file src="Sources\SymbolSource.Server.Basic\bin\Debug\SymbolSource.Server.Basic.dll" target="lib\net40" />
-    <file src="Sources\SymbolSource.Gateway.Core\bin\Debug\SymbolSource.Gateway.Core.dll" target="lib\net40" />
-    <file src="Sources\SymbolSource.Gateway.NuGet.Core\bin\Debug\SymbolSource.Gateway.NuGet.Core.dll" target="lib\net40" />
+    <file src="Sources\SymbolSource.Server.Basic\bin\Debug\SymbolSource.Server.Basic.*" target="lib\net40" />
+    <file src="Sources\SymbolSource.Gateway.Core\bin\Debug\SymbolSource.Gateway.Core.*" target="lib\net40" />
+    <file src="Sources\SymbolSource.Gateway.NuGet.Core\bin\Debug\SymbolSource.Gateway.NuGet.Core.*" target="lib\net40" />
     <file src="Sources\SymbolSource.Gateway.NuGet.Core\bin\Debug\Irony.dll" target="lib\net40" />
     <file src="Sources\SymbolSource.Gateway.NuGet.Core\bin\Debug\Irony.Interpreter.dll" target="lib\net40" />
-    <file src="Sources\SymbolSource.Gateway.OpenWrap.Core\bin\Debug\SymbolSource.Gateway.OpenWrap.Core.dll" target="lib\net40" />
+    <file src="Sources\SymbolSource.Gateway.OpenWrap.Core\bin\Debug\SymbolSource.Gateway.OpenWrap.Core.*" target="lib\net40" />
     <file src="Sources\SymbolSource.Gateway.OpenWrap.Core\bin\Debug\OpenWrap.dll" target="lib\net40" />
     <file src="Sources\SymbolSource.Gateway.OpenWrap.Core\bin\Debug\OpenRasta.Client.dll" target="lib\net40" />
     <file src="Sources\SymbolSource.Gateway.OpenWrap.Core\bin\Debug\OpenFileSystem.dll" target="lib\net40" />
-    <file src="Sources\SymbolSource.Gateway.WinDbg.Core\bin\Debug\SymbolSource.Gateway.WinDbg.Core.dll" target="lib\net40" />
-    <file src="Sources\SymbolSource.OData\bin\Debug\SymbolSource.OData.dll" target="lib\net40" />
-    <file src="Sources\SymbolSource.Processing.Basic\bin\Debug\SymbolSource.Processing.Basic.dll" target="lib\net40" />
-    <file src="Sources\SymbolSource.Server.Management.Client\bin\Debug\SymbolSource.Server.Management.Client.dll" target="lib\net40" />
+    <file src="Sources\SymbolSource.Gateway.WinDbg.Core\bin\Debug\SymbolSource.Gateway.WinDbg.Core.*" target="lib\net40" />
+    <file src="Sources\SymbolSource.OData\bin\Debug\SymbolSource.OData.*" target="lib\net40" />
+    <file src="Sources\SymbolSource.Processing.Basic\bin\Debug\SymbolSource.Processing.Basic.*" target="lib\net40" />
+    <file src="Sources\SymbolSource.Server.Management.Client\bin\Debug\SymbolSource.Server.Management.Client.*" target="lib\net40" />
 
+    <file src="Sources\**\*.cs" target="src" />
+    
     <file src="Sources\SymbolSource.Server.Basic.Host\Data\Web.config" target="content\Data\Web.config" />
     <file src="Sources\SymbolSource.Server.Basic.Host\Index\Web.config" target="content\Index\Web.config" />
     <file src="Sources\SymbolSource.Server.Basic.Host\Default.aspx" target="content\Default.aspx" />

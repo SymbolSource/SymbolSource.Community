@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace SymbolSource.Processing.Basic.Projects
 {
-    class TransformingWrapperPackageFile : IPackageFile
+    public class TransformingWrapperPackageFile : IPackageFile
     {
         private readonly IPackageFile packageFile;
         private readonly ITransformation transformation;
