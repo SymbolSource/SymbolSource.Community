@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("SymbolSource")]
 [assembly: AssemblyProduct("SymbolSource.Processing.Uninternalizer")]
-[assembly: AssemblyCopyright("Copyright © SymbolSource 2011")]
+[assembly: AssemblyCopyright("Copyright © SymbolSource 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

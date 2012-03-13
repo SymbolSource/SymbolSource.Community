@@ -1,37 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 
 namespace SymbolSource.Processing.Basic.Projects
 {
-    //Info o plikach
-    public interface IInfo : IDisposable
+    public interface  IPackageFile
     {
-        IDirectoryInfo ParentInfo { get; }
+        IEnumerable<IPackageEntry> Entries { get; }
+    }
+
+    public interface IPackageEntry
+    {
         string FullPath { get; }
-        string Name { get; }
+        Stream Stream { get; }
     }
-
-    public interface IFileInfo : IInfo
-    {
-        Stream GetStream(FileMode fileMode);
-        byte[] ReadAllBytes();
-    }
-
-    public interface IDirectoryInfo : IInfo
-    {
-        IEnumerable<IFileInfo> GetFiles();
-        IEnumerable<IDirectoryInfo> GetDirectories();
-        IFileInfo GetFile(params string[] name);
-        IDirectoryInfo GetDirectory(params string[] name);
-    }
-
-    //Binarki itp
 
     public interface IAddInfoBuilder
     {
-        IAddInfo Build(IDirectoryInfo directoryInfo);
-        IAddInfo Build(IDirectoryInfo directoryInfo, IEnumerable<IFileInfo> includeFiles);
+        IAddInfo Build(IPackageFile directoryInfo);
+        IAddInfo Build(IPackageFile directoryInfo, IEnumerable<IPackageEntry> includeFiles);
     }
 
     public interface IAddInfo
@@ -49,7 +35,7 @@ namespace SymbolSource.Processing.Basic.Projects
 
         IAddInfo AddInfo { get; set; }
 
-        IFileInfo File { get; }
+        IPackageEntry File { get; }
         IDocumentationInfo DocumentationInfo { get; }
         ISymbolInfo SymbolInfo { get; }
     }
@@ -60,7 +46,7 @@ namespace SymbolSource.Processing.Basic.Projects
 
         IBinaryInfo BinaryInfo { get; set; }
 
-        IFileInfo File { get; }
+        IPackageEntry File { get; }
     }
 
     public interface ISymbolInfo
@@ -70,7 +56,7 @@ namespace SymbolSource.Processing.Basic.Projects
 
         IBinaryInfo BinaryInfo { get; set; }
 
-        IFileInfo File { get; }
+        IPackageEntry File { get; }
         IList<ISourceInfo> SourceInfos { get; }
     }
 
@@ -83,7 +69,7 @@ namespace SymbolSource.Processing.Basic.Projects
 
         ISymbolInfo SymbolInfo { get; set; }
 
-        IFileInfo ActualPath { get; }
+        IPackageEntry ActualPath { get; }
     }
 
     public interface IAddInfoVisitor

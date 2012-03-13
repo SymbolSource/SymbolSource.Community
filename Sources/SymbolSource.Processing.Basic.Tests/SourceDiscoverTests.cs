@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
+using Ionic.Zip;
 using Moq;
 using SymbolSource.Processing.Basic.Projects;
 using Xunit;
@@ -58,16 +58,6 @@ namespace SymbolSource.Processing.Basic.Tests
             var binaryStream = new MemoryStream();
             var symbolStream = new MemoryStream();
 
-            var binaryPdbAddInfo = Mock.Of<IFileInfo>(p =>
-                                                      p.Name == "Test.pdb"
-                                                      && p.FullPath == @"dummy\lib\Test.pdb"
-                                                      && p.GetStream(FileMode.Open) == symbolStream);
-            var binaryDllAddInfo = Mock.Of<IFileInfo>(p =>
-                                                      p.Name == "Test.dll"
-                                                      && p.FullPath == @"dummy\lib\Test.dll"
-                                                      && p.GetStream(FileMode.Open) == binaryStream
-                                                      && p.ParentInfo.GetFile(binaryPdbAddInfo.Name) == binaryPdbAddInfo);
-
             var sourceExtractor = Mock.Of<ISourceExtractor>(p => p.ReadSources(binaryStream, symbolStream) == pdbSourcesFiles);
             var sourceStoreManager = Mock.Of<ISourceStoreManager>(s => s.ReadHash(null) == "__HASH__");
             var binaryStoreManager = Mock.Of<IBinaryStoreManager>(s => s.ReadBinaryHash(binaryStream) == "__BINARY_HASH__" && s.ReadPdbHash(binaryStream) == "__SYMBOL_HASH__");
@@ -76,13 +66,14 @@ namespace SymbolSource.Processing.Basic.Tests
             var sourceDiscover = new SourceDiscover(sourceExtractor, sourceStoreManager);
             var addInfoBuilder = new AddInfoBuilder(binaryStoreManager, symbolStoreManager, sourceDiscover);
 
+            var zipFile = new ZipFile();
+            zipFile.AddEntry(@"dummy\lib\Test.pdb", symbolStream);
+            zipFile.AddEntry(@"dummy\lib\Test.dll", binaryStream);
 
-            var directoryInfo = new TestDirectoryInfo(
-                (new IFileInfo[] {binaryDllAddInfo, binaryPdbAddInfo})
-                    .Concat(srcSourcesFileInfos.Select(p => Mock.Of<IFileInfo>(f => f.Name == Path.GetFileName(p) && f.FullPath == p)))
-                );
+            foreach (var srcSourcesFileInfo in srcSourcesFileInfos)
+                zipFile.AddEntry(srcSourcesFileInfo, srcSourcesFileInfo);
 
-            var allAddInfo = addInfoBuilder.Build(directoryInfo);
+            var allAddInfo = addInfoBuilder.Build(new ZipPackageFile(zipFile));
 
             foreach (var binaryInfo in allAddInfo.Binaries)
             {
@@ -111,31 +102,6 @@ namespace SymbolSource.Processing.Basic.Tests
 
             public string PdbSourcePath { get; private set; }
             public string SrcSourcePath { get; private set; }
-        }
-
-        private class TestDirectoryInfo : Projects.FileInfos.DirectoryInfo
-        {
-            private readonly IEnumerable<IFileInfo> fileInfos;
-
-            public TestDirectoryInfo(IEnumerable<IFileInfo> fileInfos) : base(null, null)
-            {
-                this.fileInfos = fileInfos;
-            }
-
-            public override string Name
-            {
-                get { return null; }
-            }
-
-            protected override IEnumerable<IDirectoryInfo> ExecuteGetDirectories()
-            {
-                return new IDirectoryInfo[0];
-            }
-
-            protected override IEnumerable<IFileInfo> ExecuteGetFiles()
-            {
-                return fileInfos;
-            }
         }
 
     }

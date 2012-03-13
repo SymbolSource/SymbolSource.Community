@@ -19,8 +19,8 @@ namespace SymbolSource.Server.Basic
         public static IKernel Install()
         {
             var container = new WindsorContainer();
-            container.Install(new ProcessingBasicInstaller());
-           
+           container.Install(new ProcessingBasicInstaller());           
+
             RegisterManagers(container);
 
             container.Register(

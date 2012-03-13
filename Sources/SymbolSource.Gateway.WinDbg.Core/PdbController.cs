@@ -87,7 +87,7 @@ namespace SymbolSource.Gateway.WinDbg.Core
                                     pdbHash = imageFile.SymbolHash,
                                     sourcePath = "XVAR2X",
                                     computerName = "XCNX",
-                                    computerUser = "XUNX"
+                                    computerUser = "XUNX",
                                 };
 
             var url = Request.Url.GetLeftPart(UriPartial.Authority) + Url.RouteUrl("Source", routeData);

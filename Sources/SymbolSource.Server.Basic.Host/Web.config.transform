@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <!-- 
+            Path to Debugging Tools for Windows "srcsrv" folder
+        -->
+    <add key="SrcSrvPath" value="C:\Programes Files\Debugging Tools for Windows (x86)\srcsrv" />
+  </appSettings>
+  <elmah>
+    <errorLog type="Elmah.XmlFileErrorLog, Elmah" logPath="~/App_Data" />
+  </elmah>
+  <system.web>
+    <compilation debug="true" targetFramework="4.0" />
+    <httpRuntime maxRequestLength="31457280" />
+  </system.web>
+</configuration>

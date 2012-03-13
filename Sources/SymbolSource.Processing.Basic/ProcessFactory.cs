@@ -36,7 +36,7 @@ namespace SymbolSource.Processing.Basic
                 
         }
 
-        private bool IsWindows
+        public static bool IsWindows
         {
             get
             {

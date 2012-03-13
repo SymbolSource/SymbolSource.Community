@@ -39,6 +39,9 @@
     <Reference Include="Castle.Windsor, Version=2.5.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Castle.Windsor.2.5.3\lib\NET40\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DotNetZip.1.9.1.8\lib\net20\Ionic.Zip.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -72,6 +75,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SymbolSource.Gateway.OpenWrap.Core\SymbolSource.Gateway.OpenWrap.Core.csproj">
+      <Project>{D8515DF7-5E93-4446-9ABB-CADD435BE00E}</Project>
+      <Name>SymbolSource.Gateway.OpenWrap.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SymbolSource.Processing.Basic\SymbolSource.Processing.Basic.csproj">
       <Project>{2E6CD475-5BDF-43FF-8A69-EFC731179DAB}</Project>
       <Name>SymbolSource.Processing.Basic</Name>
@@ -83,10 +90,6 @@
     <ProjectReference Include="..\SymbolSource.Gateway.NuGet.Core\SymbolSource.Gateway.NuGet.Core.csproj">
       <Project>{45FD6A65-8C04-4F19-95C2-2598ED79C02E}</Project>
       <Name>SymbolSource.Gateway.NuGet.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SymbolSource.Gateway.OpenWrap.Core\SymbolSource.Gateway.OpenWrap.Core.csproj">
-      <Project>{D8515DF7-5E93-4446-9ABB-CADD435BE00E}</Project>
-      <Name>SymbolSource.Gateway.OpenWrap.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\SymbolSource.Gateway.WinDbg.Core\SymbolSource.Gateway.WinDbg.Core.csproj">
       <Project>{50F24F3A-F9CA-4945-A48E-941ADD255D27}</Project>
