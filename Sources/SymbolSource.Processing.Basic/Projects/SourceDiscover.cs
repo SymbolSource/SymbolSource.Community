@@ -19,12 +19,12 @@ namespace SymbolSource.Processing.Basic.Projects
             this.sourceStoreManager = sourceStoreManager;
         }
 
-        public IEnumerable<ISourceInfo> FindSources(IList<IFileInfo> fileInfos, IBinaryInfo peFile, ISymbolInfo pdbFile)
+        public IEnumerable<ISourceInfo> FindSources(IList<IPackageEntry> fileInfos, IBinaryInfo peFile, ISymbolInfo pdbFile)
         {
-            string pdbName = Path.GetFileNameWithoutExtension(pdbFile.File.Name);
+            string pdbName = Path.GetFileNameWithoutExtension(pdbFile.File.FullPath);
             IList<string> originalPaths;
-            using (var peStream = peFile.File.GetStream(FileMode.Open))
-            using (var pdbStream = pdbFile.File.GetStream(FileMode.Open))
+            using (var peStream = peFile.File.Stream)
+            using (var pdbStream = pdbFile.File.Stream)
                 originalPaths = pdbSourceExtractor.ReadSources(peStream, pdbStream);
 
             if (originalPaths.Any())
@@ -35,7 +35,7 @@ namespace SymbolSource.Processing.Basic.Projects
 
                 //Clean fileInfos
                 var originalPathsExtensions = originalPaths.Select(Path.GetExtension).Distinct().ToArray();
-                fileInfos = fileInfos.Where(f => originalPathsExtensions.Any(o => string.Equals(Path.GetExtension(f.Name), o, StringComparison.OrdinalIgnoreCase))).ToArray();
+                fileInfos = fileInfos.Where(f => originalPathsExtensions.Any(o => string.Equals(Path.GetExtension(f.FullPath), o, StringComparison.OrdinalIgnoreCase))).ToArray();
 
 
                 string maxCommonFileInfosPath = GetMaxCommonPath(fileInfos.Select(o => o.FullPath.Replace('\\', Path.DirectorySeparatorChar).Replace('/', Path.DirectorySeparatorChar)));
@@ -53,7 +53,7 @@ namespace SymbolSource.Processing.Basic.Projects
                         log.DebugFormat("Found '{0}' -> '{1}' ('{2}') ", originalPath, actualPath!=null ? actualPath.FullPath : "NOT FOUND", keyPath);
 
                     if (actualPath != null)
-                        using (var stream = actualPath.GetStream(FileMode.Open))
+                        using (var stream = actualPath.Stream)
                             yield return new SourceInfo(pdbFile)
                                              {
                                                  OriginalPath = originalPath,
@@ -75,7 +75,7 @@ namespace SymbolSource.Processing.Basic.Projects
             yield break;
         }
 
-        private IFileInfo GetActualPaths(IList<IFileInfo> fileInfos, string originalPath, string maxCommonOriginalPath, string maxCommonFileInfosPath)
+        private IPackageEntry GetActualPaths(IList<IPackageEntry> fileInfos, string originalPath, string maxCommonOriginalPath, string maxCommonFileInfosPath)
         {
             var candidates = GetActualPathStep1(fileInfos, originalPath, maxCommonOriginalPath, maxCommonFileInfosPath);
             
@@ -89,16 +89,16 @@ namespace SymbolSource.Processing.Basic.Projects
         }
 
 
-        private IFileInfo[] GetActualPathStep1(IList<IFileInfo> fileInfos, string originalPath, string maxCommonOriginalPath, string maxCommonFileInfosPath)
+        private IPackageEntry[] GetActualPathStep1(IList<IPackageEntry> fileInfos, string originalPath, string maxCommonOriginalPath, string maxCommonFileInfosPath)
         {
             var path = maxCommonFileInfosPath + originalPath.Substring(maxCommonOriginalPath.Length);
             var candidates = GetCandidates(fileInfos, path);
             if (candidates.Length == 1)
                 return candidates;
-            return new IFileInfo[0];
+            return new IPackageEntry[0];
         }
 
-        private IFileInfo[] GetActualPathStep2(IList<IFileInfo> fileInfos, string originalPath)
+        private IPackageEntry[] GetActualPathStep2(IList<IPackageEntry> fileInfos, string originalPath)
         {
             string tempLastPath = Path.GetFileName(originalPath);
             string tempFirstPath = Path.GetDirectoryName(originalPath);
@@ -115,7 +115,7 @@ namespace SymbolSource.Processing.Basic.Projects
             return candidates;
         }
 
-        private IFileInfo[] GetCandidates(IList<IFileInfo> fileInfos, string fileName)
+        private IPackageEntry[] GetCandidates(IList<IPackageEntry> fileInfos, string fileName)
         {
             return fileInfos
                 .Where(f => CheckCandidate(f.FullPath, fileName))
@@ -124,8 +124,8 @@ namespace SymbolSource.Processing.Basic.Projects
 
         private bool CheckCandidate(string fullPath, string fileName)
         {
-            string[] fileNameSplitted = fileName.Split(Path.DirectorySeparatorChar);
-            string[] fullPathSplitted = fullPath.Split(Path.DirectorySeparatorChar);
+            string[] fileNameSplitted = fileName.Replace('\\', Path.DirectorySeparatorChar).Replace('/', Path.DirectorySeparatorChar).Split(Path.DirectorySeparatorChar);
+            string[] fullPathSplitted = fullPath.Replace('\\', Path.DirectorySeparatorChar).Replace('/', Path.DirectorySeparatorChar).Split(Path.DirectorySeparatorChar);
 
             //Przypadek gdy fullPath jest mniejszy od szukanego
             if (fileNameSplitted.Length > fullPathSplitted.Length)

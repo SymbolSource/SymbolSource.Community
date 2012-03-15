@@ -1,16 +1,12 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using NuGetPackageExplorer.Types;
 using System.ComponentModel.Composition;
 using NuGet;
 using SymbolSource.Processing.Basic;
 using SymbolSource.Processing.Basic.Projects;
-using SymbolSource.Processing.Basic.Projects.FileInfos;
-using DirectoryInfo = SymbolSource.Processing.Basic.Projects.FileInfos.DirectoryInfo;
-using FileInfo = SymbolSource.Processing.Basic.Projects.FileInfos.FileInfo;
+using IPackageFile = NuGet.IPackageFile;
 
 namespace SymbolSource.Integration.NuGet.PackageExplorer
 {
@@ -60,67 +56,38 @@ namespace SymbolSource.Integration.NuGet.PackageExplorer
         }
     }
 
-    public class PackageDirectoryInfo : DirectoryInfo
+    public class PackageDirectoryInfo : Processing.Basic.Projects.IPackageFile
     {
         private readonly IEnumerable<IPackageFile> files;
-        private readonly string name;
-
-        private PackageDirectoryInfo(IEnumerable<IPackageFile> files, ISpecialDirectoryHandler specialDirectoryHandler, DirectoryInfo parentInfo, string name)
-            : base(specialDirectoryHandler, parentInfo)
-        {
-            this.files = files;
-            this.name = name;
-        }
-
 
         public PackageDirectoryInfo(IEnumerable<IPackageFile> files)
-            : this(files, new NullSpecialDirectoryHandler(), null, "")
         {
+            this.files = files;
         }
 
-        public override string Name
+        public IEnumerable<IPackageEntry> Entries
         {
-            get { return name; }
-        }
-
-        protected override IEnumerable<IDirectoryInfo> ExecuteGetDirectories()
-        {
-            return files
-                 .Where(file => file.Path.StartsWith(FullPath))
-                 .Select(file => file.Path.Substring(FullPath.Length).Split(new[] { Path.DirectorySeparatorChar }, StringSplitOptions.RemoveEmptyEntries))
-                 .Where(path => path.Length > 1)
-                 .Select(path => path[0])
-                 .Distinct()
-                 .Select(name => new PackageDirectoryInfo(files, SpecialDirectoryHandler, this, name));
-        }
-
-        protected override IEnumerable<IFileInfo> ExecuteGetFiles()
-        {
-            return files
-                .Where(file => file.Path.StartsWith(FullPath))
-                .Where(file => file.Path.Substring(FullPath.Length).Split(new[] { Path.DirectorySeparatorChar }, StringSplitOptions.RemoveEmptyEntries).Length == 1)
-                .Select(file => new PackageFileInfo(this, file));
+            get { return files.Select(f => new PackageFileInfo(f)); }
         }
     }
 
-    public class PackageFileInfo : FileInfo
+    public class PackageFileInfo : IPackageEntry
     {
         private readonly IPackageFile file;
 
-        public PackageFileInfo(DirectoryInfo parentInfo, IPackageFile file)
-            : base(parentInfo)
+        public PackageFileInfo(IPackageFile file)
         {
             this.file = file;
         }
 
-        public override string Name
+        public string FullPath
         {
-            get { return file.Path.Split(Path.DirectorySeparatorChar).Last(); }
+            get { return file.Path; }
         }
 
-        public override Stream GetStream(FileMode fileMode)
+        public Stream Stream
         {
-            return file.GetStream();
+            get { return file.GetStream(); }
         }
     }
 }

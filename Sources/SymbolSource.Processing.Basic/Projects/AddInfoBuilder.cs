@@ -18,25 +18,25 @@ namespace SymbolSource.Processing.Basic.Projects
             this.sourceDiscover = sourceDiscover;
         }
 
-        public IAddInfo Build(IDirectoryInfo directoryInfo)
+        public IAddInfo Build(IPackageFile directoryInfo)
         {
             var addInfo = new AddInfo();
 
-            var items = GetAllFilePath(directoryInfo).ToArray();
+            var items = directoryInfo.Entries.ToArray();
 
             addInfo.Binaries = items
-                .Where(f => f.Name.EndsWith("exe", StringComparison.InvariantCultureIgnoreCase) || f.Name.EndsWith("dll", StringComparison.InvariantCultureIgnoreCase))
+                .Where(f => f.FullPath.EndsWith("exe", StringComparison.InvariantCultureIgnoreCase) || f.FullPath.EndsWith("dll", StringComparison.InvariantCultureIgnoreCase))
                 .Select(b => BuildBinaryInfo(addInfo, items, b))
                 .ToArray();
 
             return addInfo;
-        }                                    
- 
-        public IAddInfo Build(IDirectoryInfo directoryInfo, IEnumerable<IFileInfo> includeFiles)
+        }
+
+        public IAddInfo Build(IPackageFile directoryInfo, IEnumerable<IPackageEntry> includeFiles)
         {
             var addInfo = new AddInfo();
 
-            var items = GetAllFilePath(directoryInfo).ToArray();
+            var items = directoryInfo.Entries.ToArray();
 
             addInfo.Binaries = includeFiles
                 .Select(b => BuildBinaryInfo(addInfo, items, b))
@@ -45,30 +45,30 @@ namespace SymbolSource.Processing.Basic.Projects
             return addInfo;
         }
 
-        private IBinaryInfo BuildBinaryInfo(IAddInfo addInfo, IList<IFileInfo> fileInfos, IFileInfo binaryFileInfo)
+        private IBinaryInfo BuildBinaryInfo(IAddInfo addInfo, IList<IPackageEntry> fileInfos, IPackageEntry binaryFileInfo)
         {
             var binaryInfo = new BinaryInfo(addInfo);
 
-            binaryInfo.Name = Path.GetFileNameWithoutExtension(binaryFileInfo.Name);
-            binaryInfo.Type = Path.GetExtension(binaryFileInfo.Name).Substring(1);
+            binaryInfo.Name = Path.GetFileNameWithoutExtension(binaryFileInfo.FullPath);
+            binaryInfo.Type = Path.GetExtension(binaryFileInfo.FullPath).Substring(1);
             binaryInfo.File = binaryFileInfo;
 
-            using (var stream = binaryFileInfo.GetStream(FileMode.Open))
+            using (var stream = binaryFileInfo.Stream)
             {
                 binaryInfo.Hash = binaryStoreManager.ReadBinaryHash(stream);
                 stream.Seek(0, SeekOrigin.Begin);
                 binaryInfo.SymbolHash = binaryStoreManager.ReadPdbHash(stream);
             }
 
-            string symbolName = Path.ChangeExtension(binaryFileInfo.Name, "pdb");
-            var symbolFileInfo = binaryFileInfo.ParentInfo.GetFile(symbolName);
+            string symbolName = Path.ChangeExtension(binaryFileInfo.FullPath, "pdb");
+            var symbolFileInfo = fileInfos.SingleOrDefault(s => s.FullPath == symbolName);
             if (symbolFileInfo != null)
             {
                 var symbolInfo = new SymbolInfo(binaryInfo);
-                symbolInfo.Type = Path.GetExtension(symbolFileInfo.Name).Substring(1);
+                symbolInfo.Type = Path.GetExtension(symbolFileInfo.FullPath).Substring(1);
                 symbolInfo.File = symbolFileInfo;
 
-                using (var stream = symbolFileInfo.GetStream(FileMode.Open))
+                using (var stream = symbolFileInfo.Stream)
                 {
                     symbolInfo.Hash = symbolStoreManager.ReadHash(stream);
                 }
@@ -77,26 +77,17 @@ namespace SymbolSource.Processing.Basic.Projects
                 binaryInfo.SymbolInfo = symbolInfo;
             }
 
-            string documentationName = Path.ChangeExtension(binaryFileInfo.Name, "xml");
-            var documentationFileInfo = binaryFileInfo.ParentInfo.GetFile(documentationName);
+            string documentationName = Path.ChangeExtension(binaryFileInfo.FullPath, "xml");
+            var documentationFileInfo = fileInfos.SingleOrDefault(s => s.FullPath == documentationName);
             if (documentationFileInfo != null)
             {
                 var documentationInfo = new DocumentationInfo(binaryInfo);
-                documentationInfo.Type = Path.GetExtension(documentationFileInfo.Name).Substring(1);
+                documentationInfo.Type = Path.GetExtension(documentationFileInfo.FullPath).Substring(1);
                 documentationInfo.File = documentationFileInfo;
                 binaryInfo.DocumentationInfo = documentationInfo;
             }
 
             return binaryInfo;
-        }
-
-        private static IEnumerable<IFileInfo> GetAllFilePath(IDirectoryInfo directoryInfo)
-        {
-            foreach (var file in directoryInfo.GetFiles())
-                yield return file;
-
-            foreach (var file in directoryInfo.GetDirectories().SelectMany<IDirectoryInfo, IFileInfo>(GetAllFilePath))
-                yield return file;
         }
     }
 }

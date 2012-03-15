@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace SymbolSource.Processing.Basic
 {
@@ -49,7 +50,10 @@ namespace SymbolSource.Processing.Basic
 
         private string MakeCabPath()
         {
-            return Path.Combine(pdbStoreConfig.SrcSrvPath, "makecab.exe");
+            if (ProcessFactory.IsWindows)
+                return "makecab.exe";
+            else
+                return Path.Combine(pdbStoreConfig.SrcSrvPath, "makecab.exe");
         }
 
     }

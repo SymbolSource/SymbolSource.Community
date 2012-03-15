@@ -19,8 +19,8 @@ namespace SymbolSource.Server.Basic
         public static IKernel Install()
         {
             var container = new WindsorContainer();
-            container.Install(new ProcessingBasicInstaller());
-           
+           container.Install(new ProcessingBasicInstaller());           
+
             RegisterManagers(container);
 
             container.Register(
@@ -34,7 +34,6 @@ namespace SymbolSource.Server.Basic
                     .BasedOn<IController>()
                     .Configure(cr => cr.LifeStyle.Transient)
                 );
-
 
             container.Register(
                 AllTypes.FromAssembly(typeof(Gateway.WinDbg.Core.AttributeRouting).Assembly)
@@ -66,7 +65,7 @@ namespace SymbolSource.Server.Basic
 
             kernel.Register(
                 Component.For<IBasicBackendConfiguration>()
-                    .Instance(new DictionaryAdapterFactory().GetAdapter<IBasicBackendConfiguration>(ConfigurationManager.AppSettings))
+                    .ImplementedBy<BasicBackendConfiguration>()
                 );
         }     
     }

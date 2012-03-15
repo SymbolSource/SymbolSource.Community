@@ -20,7 +20,7 @@ namespace SymbolSource.Processing.Basic.Projects
         public string Hash { get; set; }
         public string SymbolHash { get; set; }
 
-        public IFileInfo File { get; set; }
+        public IPackageEntry File { get; set; }
         public IAddInfo AddInfo { get; set; }
         public IDocumentationInfo DocumentationInfo { get; set; }
         public ISymbolInfo SymbolInfo { get; set; }
@@ -35,7 +35,7 @@ namespace SymbolSource.Processing.Basic.Projects
 
         public string Type { get; set; }
         public IBinaryInfo BinaryInfo { get; set; }
-        public IFileInfo File { get; set; }
+        public IPackageEntry File { get; set; }
     }
 
     public class SymbolInfo : ISymbolInfo
@@ -48,7 +48,7 @@ namespace SymbolSource.Processing.Basic.Projects
         public string Type { get; set; }
         public string Hash { get; set; }
 
-        public IFileInfo File { get; set; }
+        public IPackageEntry File { get; set; }
         public IBinaryInfo BinaryInfo { get; set; }
         public IList<ISourceInfo> SourceInfos { get; set; }
     }
@@ -63,7 +63,7 @@ namespace SymbolSource.Processing.Basic.Projects
         public string OriginalPath { get; set; }
         public string KeyPath { get; set; }
         public ISymbolInfo SymbolInfo { get; set; }
-        public IFileInfo ActualPath { get; set; }
+        public IPackageEntry ActualPath { get; set; }
         public string Md5Hash { get; set; }
     }
 }

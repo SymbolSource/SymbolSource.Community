@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using SymbolSource.Server.Management.Client;
 using Version = SymbolSource.Server.Management.Client.Version;
 
@@ -8,7 +9,8 @@ namespace SymbolSource.Server.Basic
     {
         public string GetSymbolFileLink(ref ImageFile imageFile)
         {
-            throw new NotImplementedException();
+            string path = Path.Combine(GetPathFromImageFile(imageFile), imageFile.Name + ".pdb");
+            return configuration.RemotePath + '/' + path.Replace(Path.DirectorySeparatorChar, '/');
         }
 
         public string GetImageFileLink(ref ImageFile imageFile)
@@ -18,7 +20,8 @@ namespace SymbolSource.Server.Basic
 
         public string GetSourceFileLink(ref SourceFile sourceFile)
         {
-            throw new NotImplementedException();
+            string path = GetPathFromSourceFile(sourceFile);
+            return configuration.RemotePath + '/' + path.Replace(Path.DirectorySeparatorChar, '/');
         }
 
         public string GetPackageLink(ref Version version, string contentType)

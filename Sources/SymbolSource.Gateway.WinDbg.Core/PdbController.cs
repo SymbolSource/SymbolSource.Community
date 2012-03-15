@@ -87,7 +87,7 @@ namespace SymbolSource.Gateway.WinDbg.Core
                                     pdbHash = imageFile.SymbolHash,
                                     sourcePath = "XVAR2X",
                                     computerName = "XCNX",
-                                    computerUser = "XUNX"
+                                    computerUser = "XUNX",
                                 };
 
             var url = Request.Url.GetLeftPart(UriPartial.Authority) + Url.RouteUrl("Source", routeData);
@@ -140,16 +140,24 @@ namespace SymbolSource.Gateway.WinDbg.Core
 
         private static void DownloadFile(string link, string destination)
         {
-            var request = WebRequest.Create(link);
-            using (var response = request.GetResponse())
-            using (var responseStream = response.GetResponseStream())
-            using (var outputStream = System.IO.File.OpenWrite(destination))
+            try
             {
-                responseStream.CopyTo(outputStream);
+                var request = WebRequest.Create(link);
+                using (var response = request.GetResponse())
+                using (var responseStream = response.GetResponseStream())
+                using (var outputStream = System.IO.File.OpenWrite(destination))
+                {
+                    responseStream.CopyTo(outputStream);
 
-                if (outputStream.Length < 1000)
-                    throw new WebException(string.Format("File is too small ({0} length)", outputStream.Length));
+                    if (outputStream.Length < 1000)
+                        throw new WebException(string.Format("File is too small ({0} length)", outputStream.Length));
+                }
             }
+            catch(WebException e)
+            {
+                throw new WebException(link, e);
+            }
+            
         }
     }
 }

@@ -13,17 +13,22 @@ namespace SymbolSource.Server.Basic
         {
             foreach (var route in routes.OfType<Route>())
             {
-                var namespaces = (string[])route.DataTokens["namespaces"];
+                if(route.DataTokens == null)
+                    continue;
+
+                var namespaces = route.DataTokens["namespaces"] as string[];
 
                 if (namespaces != null)
                 {
                     route.Url = Regex.Match(namespaces[0], "^SymbolSource.Gateway.([^.]+).Core$").Groups[1] + "/" + route.Url;
                     ReplaceToken(route, "login", "Basic");
                     ReplaceToken(route, "company", "Basic");
+                    ReplaceToken(route, "password", "Basic");
                     ReplaceToken(route, "repository", "Basic");
                 }
             }
 
+            /*
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
@@ -31,6 +36,7 @@ namespace SymbolSource.Server.Basic
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
+            */
 
         }
 

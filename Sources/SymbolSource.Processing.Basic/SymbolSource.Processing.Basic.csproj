@@ -102,6 +102,8 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -113,26 +115,18 @@
     <Compile Include="PdbStoreManager.cs" />
     <Compile Include="ProcessFactory.cs" />
     <Compile Include="ProcessingBasicInstaller.cs" />
+    <Compile Include="Projects\TransformingWrapperPackageFile.cs" />
+    <Compile Include="Projects\ZipPackageFile.cs" />
     <Compile Include="SourceStoreManager.cs" />
     <Compile Include="SymbolStoreManager.cs" />
     <Compile Include="Projects\AddInfoBaseVisitor.cs" />
     <Compile Include="Projects\AddInfoBuilder.cs" />
-    <Compile Include="Projects\FileInfos\DirectoryInfo.cs" />
-    <Compile Include="Projects\FileInfos\DirectoryInfoFactory.cs" />
-    <Compile Include="Projects\FileInfos\FileInfo.cs" />
-    <Compile Include="Projects\FileInfos\FileSystemDirectoryInfo.cs" />
-    <Compile Include="Projects\FileInfos\FileSystemFileInfo.cs" />
-    <Compile Include="Projects\FileInfos\Info.cs" />
-    <Compile Include="Projects\FileInfos\TransformingDirectoryWrapper.cs" />
-    <Compile Include="Projects\FileInfos\TransformingFileWrapper.cs" />
-    <Compile Include="Projects\FileInfos\TransformingWrapper.cs" />
-    <Compile Include="Projects\FileInfos\ZipDirectoryInfo.cs" />
-    <Compile Include="Projects\FileInfos\ZipFileInfo.cs" />
     <Compile Include="Projects\Implementations.cs" />
     <Compile Include="Projects\Interfaces.cs" />
     <Compile Include="Projects\SourceDiscover.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StreamExtensions.cs" />
+    <Compile Include="UrlTransformation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

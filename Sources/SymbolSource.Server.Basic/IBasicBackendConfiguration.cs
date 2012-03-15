@@ -2,7 +2,8 @@
 {
     public interface IBasicBackendConfiguration
     {
-        string LocalPath { get; }
+        string DataPath { get; }
+        string IndexPath { get; }
         string RemotePath { get; }
     }
 }
