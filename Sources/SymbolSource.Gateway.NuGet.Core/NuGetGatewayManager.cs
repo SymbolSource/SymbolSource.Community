@@ -36,7 +36,7 @@ namespace SymbolSource.Gateway.NuGet.Core
             return Path.Combine(path, "upload-1.0.nupkg");
         }
 
-        protected override void GetMetadata(string path, string repository, out PackageProject project, out Version version, out ILookup<ContentType, string> contents)
+        protected override void GetMetadata(string path, string repository, out PackageProject project, out IList<MetadataEntry> metadata, out ILookup<ContentType, string> contents)
         {
             var packagePath = GetFilePath(path);
             RezipIfSetConfig(packagePath);
@@ -77,43 +77,56 @@ namespace SymbolSource.Gateway.NuGet.Core
 
                           };
 
-            version = new Version {Metadata = BuildPackageProjectMetadataByZipPackage(package).ToArray()};
+            metadata = GetMetadataEntries(package);
 
             using (var zip = new ZipFile(packagePath))
                 contents = zip.EntryFileNames.ToLookup(GetContentType);
-            
         }
 
-        private IList<MetadataEntry> BuildPackageProjectMetadataByZipPackage(ZipPackage package)
+        private static IList<MetadataEntry> GetMetadataEntries(ZipPackage package)
         {
-            var metadataWrapper = new MetadataWrapper(new List<MetadataEntry>());
+            var metadata = new List<MetadataEntry>();
+            var metadataWrapper = new MetadataWrapper(metadata);
+
             if (!package.Authors.IsEmpty())
                 metadataWrapper["Authors"] = String.Join(",", package.Authors);
-            if(!string.IsNullOrEmpty(package.Copyright))
+
+            if (!string.IsNullOrEmpty(package.Copyright))
                 metadataWrapper["Copyrights"] = package.Copyright;
+
             if (!string.IsNullOrEmpty(package.Description))
                 metadataWrapper["Description"] = package.Description;
-            if (package.IconUrl!=null)
+
+            if (package.IconUrl != null)
                 metadataWrapper["IconUrl"] = package.IconUrl.ToString();
+
             if (!string.IsNullOrEmpty(package.Language))
                 metadataWrapper["Language"] = package.Language;
+
             if (package.LicenseUrl != null)
                 metadataWrapper["LicenseUrl"] = package.LicenseUrl.ToString();
+
             if (!package.Owners.IsEmpty())
                 metadataWrapper["Owners"] = String.Join(",", package.Owners);
+
             if (package.ProjectUrl != null)
                 metadataWrapper["ProjectUrl"] = package.ProjectUrl.ToString();
+
             if (!string.IsNullOrEmpty(package.ReleaseNotes))
                 metadataWrapper["ReleaseNotes"] = package.ReleaseNotes;
+
             metadataWrapper["RequireLicenseAcceptance"] = package.RequireLicenseAcceptance.ToString();
+
             if (!string.IsNullOrEmpty(package.Summary))
                 metadataWrapper["Summary"] = package.Summary;
+
             if (!string.IsNullOrEmpty(package.Tags))
                 metadataWrapper["Tags"] = package.Tags;
+
             if (!string.IsNullOrEmpty(package.Title))
                 metadataWrapper["Title"] = package.Title;
 
-            return metadataWrapper.GetMetadataEntries();
+            return metadata;
         }
 
         private ContentType GetContentType(string name)

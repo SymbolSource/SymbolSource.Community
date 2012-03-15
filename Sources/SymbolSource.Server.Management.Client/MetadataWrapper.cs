@@ -42,10 +42,5 @@ namespace SymbolSource.Server.Management.Client
                     list.Remove(entry);
             }
         }
-
-        public IList<MetadataEntry> GetMetadataEntries()
-        {
-            return list;
-        }
     }
 }

@@ -13,10 +13,12 @@ namespace SymbolSource.Gateway.Core
     public abstract class GatewayManager : IGatewayManager
     {
         protected readonly IGatewayBackendFactory<IPackageBackend> factory;
+        private readonly IGatewayConfiguration configuration;
 
-        protected GatewayManager(IGatewayBackendFactory<IPackageBackend> factory)
+        protected GatewayManager(IGatewayBackendFactory<IPackageBackend> factory, IGatewayConfiguration configuration)
         {
             this.factory = factory;
+            this.configuration = configuration;
         }
 
         public bool Authorize(string company, string repository)
@@ -63,40 +65,18 @@ namespace SymbolSource.Gateway.Core
                     throw new ClientException("Reading package failed", exception);
                 }
 
-                PackageProject project;
-                Version versionWithRecentMetadata;
+                PackageProject package;
+                IList<MetadataEntry> metadata;
                 ILookup<ContentType, string> contents;
 
                 try
                 {
-                    GetMetadata(path, repository, out project, out versionWithRecentMetadata, out contents);
+                    GetMetadata(path, repository, out package, out metadata, out contents);
                 }
                 catch (Exception exception)
                 {
                     Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(exception, HttpContext.Current));
                     throw new ClientException("Reading package metadata failed", exception);
-                }
-
-                try
-                {
-                    PrepareProject(caller, company, repository, project.Name);
-                }
-                catch (Exception exception)
-                {
-                    Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(exception, HttpContext.Current));
-                    throw new ClientException("Failed to obtain access to the package repository", exception);
-                }
-
-                Version version;
-                try
-                {
-                    version = VerifyAccess(caller, company, repository, project.Name, project.Version.Name);
-                    version.Metadata = versionWithRecentMetadata.Metadata;
-                }
-                catch (Exception exception)
-                {
-                    Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(exception, HttpContext.Current));
-                    throw new ClientException("Failed to verify permissions for upload", exception);
                 }
 
                 try
@@ -111,7 +91,7 @@ namespace SymbolSource.Gateway.Core
 
                 try
                 {
-                    PerformUpload(caller,project, version, path);
+                    PerformUpload(caller, package, path);
                 }
                 catch (Exception exception)
                 {
@@ -133,77 +113,9 @@ namespace SymbolSource.Gateway.Core
 
         protected abstract string GetFilePath(string path);
 
-        protected abstract void GetMetadata(string path, string repository, out PackageProject project, out Version version,  out ILookup<ContentType, string> contents);
-
-        private void PrepareProject(Caller caller, string companyName, string repositoryName, string projectName)
-        {
-            try
-            {
-                using (var session = factory.Create(caller))
-                {
-                    var repository = new Repository { Company = companyName, Name = repositoryName };
-                    session.CreateOrUpdateRepository(repository);
-                }
-            }
-            catch
-            {
-            }
-
-            var configuration = new ConfigurationWrapper(companyName);
-            //Wejdzie tylko gdy istnieje konfiguracja specjalnego użytkownika
-            if (projectName != null && !string.IsNullOrEmpty(configuration.GatewayLogin) && !string.IsNullOrEmpty(configuration.GatewayPassword))
-            {
-                //Sprawdzenei czy jest specjalne zewnętrzne uprawnienie
-                var syncPermission = GetProjectPermission(caller, companyName, repositoryName, projectName);
-
-                //Jeżeli jest specjalne wewnętrzne uprawnienie
-                if (syncPermission.HasValue)
-                {
-                    using (var session = factory.Create(companyName, configuration.GatewayLogin, "API", configuration.GatewayPassword))
-                    {
-                        var project = new Project { Company = companyName, Repository = repositoryName, Name = projectName };
-                        var user = new User { Company = caller.Company, Name = caller.Name };
-                        session.CreateOrUpdateProject(project);
-                        session.SetProjectPermissions(user, project, new Permission { Read = false, Write = syncPermission.Value, Grant = false });
-                    }
-                }
-            }
-        }
+        protected abstract void GetMetadata(string path, string repository, out PackageProject project, out IList<MetadataEntry> metadata,  out ILookup<ContentType, string> contents);
 
         protected abstract bool? GetProjectPermission(Caller caller, string companyName, string repositoryName, string projectName);
-
-        private Version VerifyAccess(Caller caller, string companyName, string repositoryName, string projectName, string versionName)
-        {
-            using (var session = factory.Create(caller))
-            {
-                try
-                {
-                    var project = new Project { Company = companyName, Repository = repositoryName, Name = projectName };
-                    session.CreateProject(project);
-                }
-                catch (Exception)
-                {
-                    //ignore if exists
-                }
-
-                var version = new Version { Company = companyName, Repository = repositoryName, Project = projectName, Name = versionName };
-
-                try
-                {
-                    //tu slowko ref wiec version bedzie zmodyfikowane - tu bedzie w wersji to co jest w bazie
-                    var compilations = session.GetCompilationList(ref version);
-
-                    if (compilations.Length > 0)
-                        throw new Exception("Version not not available");
-                }
-                catch (Exception)
-                {
-                    session.CreateVersion(version);
-                }
-
-                return version;
-            }
-        }
 
         private string GetSymbolPackagePath(string path)
         {
