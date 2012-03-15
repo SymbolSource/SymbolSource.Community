@@ -44,7 +44,7 @@ namespace SymbolSource.Gateway.NuGet.Core
 
         private Caller GetCaller(string company, string key)
         {
-            var configuration = new ConfigurationWrapper(company);
+            var configuration = new AppSettingsConfiguration(company);
 
             try
             {

@@ -6,15 +6,24 @@
         -->
     <add key="SrcSrvPath" value="C:\Program Files\Debugging Tools for Windows (x86)\srcsrv" />
   </appSettings>
-  
+
   <elmah>
     <errorLog type="Elmah.XmlFileErrorLog, Elmah" logPath="~/App_Data" />
   </elmah>
-  
+
   <system.web>
     <compilation debug="true" targetFramework="4.0" />
     <httpRuntime maxRequestLength="31457280" />
   </system.web>
+
+  <runtime>
+    <assemblyBinding>
+      <dependentAssembly>
+        <assemblyIdentity name="Mono.Cecil" publicKeyToken="0738eb9f132ed756" />
+        <bindingRedirect oldVersion="0.0.0.0-0.9.5.0" newVersion="0.9.5.0" />
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
 
   <location path="WinDbg/pdbsrc">
     <system.webServer>

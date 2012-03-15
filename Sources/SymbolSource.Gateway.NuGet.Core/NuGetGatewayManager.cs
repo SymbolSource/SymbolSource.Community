@@ -26,8 +26,8 @@ namespace SymbolSource.Gateway.NuGet.Core
 
     public class NuGetGatewayManager : GatewayManager, INuGetGatewayManager
     {
-        public NuGetGatewayManager(IGatewayBackendFactory<IPackageBackend> factory)
-            : base(factory)
+        public NuGetGatewayManager(IGatewayBackendFactory<IPackageBackend> backendFactory, IGatewayConfigurationFactory configurationFactory)
+            : base(backendFactory, configurationFactory)
         {
         }
 
@@ -156,15 +156,6 @@ namespace SymbolSource.Gateway.NuGet.Core
                 return null;
 
             return new NuGetService(configuration.Service).CheckPermission(caller.KeyValue, projectName);
-        }
-
-        protected override void PushPackage(Caller caller, Version version, string path, PackageProject metadata)
-        {
-            using (var backend = factory.Create(caller))
-            {
-                version.PackageFormat = "NuGet";
-                backend.PushPackage(ref version, File.ReadAllBytes(GetFilePath(path)), metadata);
-            }
         }
 
         protected override string GetPackageFormat()

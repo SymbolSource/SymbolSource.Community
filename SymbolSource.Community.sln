@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymbolSource.Gateway.Core",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymbolSource.Server.Management.Client", "Sources\SymbolSource.Server.Management.Client\SymbolSource.Server.Management.Client.csproj", "{2F619C26-9619-409F-A79C-04857C7FD634}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymbolSource.Gateway.NuGet.Core", "sources\SymbolSource.Gateway.NuGet.Core\SymbolSource.Gateway.NuGet.Core.csproj", "{45FD6A65-8C04-4F19-95C2-2598ED79C02E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymbolSource.Gateway.NuGet.Core", "Sources\SymbolSource.Gateway.NuGet.Core\SymbolSource.Gateway.NuGet.Core.csproj", "{45FD6A65-8C04-4F19-95C2-2598ED79C02E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymbolSource.Gateway.OpenWrap.Core", "Sources\SymbolSource.Gateway.OpenWrap.Core\SymbolSource.Gateway.OpenWrap.Core.csproj", "{D8515DF7-5E93-4446-9ABB-CADD435BE00E}"
 EndProject
@@ -30,6 +30,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymbolSource.OData", "Sources\SymbolSource.OData\SymbolSource.OData.csproj", "{F71B8C45-40D5-4DFE-A062-05B74875BBE4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymbolSource.OData.Tests", "Sources\SymbolSource.OData.Tests\SymbolSource.OData.Tests.csproj", "{44BC8F67-5A0D-4474-924B-76F893E974A2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{744C48E9-BDEF-47EB-8AF8-19D07C14838C}"
+	ProjectSection(SolutionItems) = preProject
+		SymbolSource.Server.Basic.nuspec = SymbolSource.Server.Basic.nuspec
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

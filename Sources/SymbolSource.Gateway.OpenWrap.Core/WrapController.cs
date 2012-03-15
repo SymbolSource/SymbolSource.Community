@@ -19,7 +19,7 @@ namespace SymbolSource.Gateway.OpenWrap.Core
             this.manager = manager;           
         }
 
-        private Caller Authorize(string company, bool require)
+        private Caller Authenticate(string company, bool require)
         {
             var auth = Request.Headers["Authorization"];
 
@@ -33,7 +33,7 @@ namespace SymbolSource.Gateway.OpenWrap.Core
 
             if (!require)
             {
-                var configuration = new ConfigurationWrapper(company);
+                var configuration = new AppSettingsConfiguration(company);
 
                 return new Caller
                            {
@@ -55,7 +55,7 @@ namespace SymbolSource.Gateway.OpenWrap.Core
             if (Request.HttpMethod == "HEAD")
                 return null;
 
-            var caller = Authorize(company, manager.Authorize(company, repository));
+            var caller = Authenticate(company, manager.AuthenticateDownload(company, repository));
 
             if (caller == null)
                 return null;
@@ -101,7 +101,7 @@ namespace SymbolSource.Gateway.OpenWrap.Core
         [GET("{company}/{repository}/download/{project}/{version}")]
         public ActionResult Download(string company, string repository, string project, string version)
         {
-            var caller = Authorize(company, manager.Authorize(company, repository));
+            var caller = Authenticate(company, manager.AuthenticateDownload(company, repository));
 
             if (caller == null)
                 return null;
@@ -117,7 +117,7 @@ namespace SymbolSource.Gateway.OpenWrap.Core
         [POST("{company}/{repository}/upload")]
         public ActionResult Upload(string company, string repository)
         {
-            var caller = Authorize(company, true);
+            var caller = Authenticate(company, manager.AuthenticateUpload(company, repository));
 
             if (caller == null)
                 return null;

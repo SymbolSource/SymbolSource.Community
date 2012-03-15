@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Ionic.Zip;
 using SymbolSource.Processing.Basic;
 using SymbolSource.Processing.Basic.Projects;
@@ -11,7 +12,22 @@ namespace SymbolSource.Server.Basic
 {
     public partial class BasicBackend
     {
-        public void CreateJob(byte[] data, PackageProject metadata)
+        public Version UploadPackage(PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData)
+        {
+            if (packageData == null && symbolPackageData == null)
+                throw new ArgumentNullException();
+
+            if (packageData != null)
+                PushPackage(package, packageFormat, packageData);
+
+            if (symbolPackageData != null)
+                CreateJob(package, symbolPackageData);
+
+            return new Version();
+        }
+
+        [Obsolete]
+        private void CreateJob(PackageProject metadata, byte[] data)
         {
             string directory = Path.Combine(metadata.Name, metadata.Version.Name);
             Directory.CreateDirectory(Path.Combine(configuration.DataPath, directory));
@@ -53,7 +69,7 @@ namespace SymbolSource.Server.Basic
 
                     var sourceIndex = new List<string>();
 
-                    foreach (var sourceInfo in binaryInfo.SymbolInfo.SourceInfos)
+                    foreach (var sourceInfo in binaryInfo.SymbolInfo.SourceInfos.Where(info => info.ActualPath != null))
                     {
                         string sourcePath = Path.Combine(sourcesDirectory, sourceInfo.KeyPath);
                         Directory.CreateDirectory(Path.Combine(configuration.DataPath, Path.GetDirectoryName(sourcePath)));
@@ -72,26 +88,27 @@ namespace SymbolSource.Server.Basic
             File.Delete(file);
         }
 
-        public void PushPackage(ref Version version, byte[] data, PackageProject metadata)
+        [Obsolete]
+        private void PushPackage(PackageProject metadata, string packageFormat, byte[] data)
         {
-            string directory = Path.Combine(configuration.DataPath, metadata.Name, metadata.Version.Name);
+            var directory = Path.Combine(configuration.DataPath, metadata.Name, metadata.Version.Name);
             Directory.CreateDirectory(directory);
 
-            string file;
-            switch(version.PackageFormat)
+            var file = Path.Combine(directory, GetPackageName(packageFormat, metadata.Name, metadata.Version.Name));            
+            File.WriteAllBytes(file, data);
+        }
+
+        private static string GetPackageName(string packageFormat, string projectName, string versionName)
+        {
+            switch (packageFormat)
             {
                 case "NuGet":
-                    file = Path.Combine(directory, metadata.Name + "." + metadata.Version.Name + ".nupkg");
-                    break;
+                    return projectName + "." + versionName + ".nupkg";
                 case "OpenWrap":
-                    file = Path.Combine(directory, metadata.Name + "-" + metadata.Version.Name + ".wrap");
-                    break;
+                    return projectName + "-" + versionName + ".wrap";
                 default:
-                    file = Path.Combine(directory, metadata.Name + "." + version.PackageFormat);
-                    break;
+                    throw new NotSupportedException(packageFormat);
             }
-             
-            File.WriteAllBytes(file, data);
         }
     }
 }

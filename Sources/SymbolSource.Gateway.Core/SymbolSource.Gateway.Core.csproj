@@ -46,17 +46,19 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppSettingsConfigurationFactory.cs" />
     <Compile Include="ClientException.cs" />
     <Compile Include="GatewayBackendFactoryExtensions.cs" />
     <Compile Include="GatewayManager.cs" />
     <Compile Include="ContentType.cs" />
     <Compile Include="GatewayException.cs" />
     <Compile Include="IGatewayBackend.cs" />
+    <Compile Include="IGatewayConfiguration.cs" />
     <Compile Include="IGatewayManager.cs" />
     <Compile Include="IGatewayBackendFactory.cs" />
     <Compile Include="IPackageBackend.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ConfigurationWrapper.cs" />
+    <Compile Include="AppSettingsConfiguration.cs" />
     <Compile Include="ServerException.cs" />
   </ItemGroup>
   <ItemGroup>

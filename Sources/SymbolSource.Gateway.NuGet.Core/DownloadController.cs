@@ -95,7 +95,7 @@ namespace SymbolSource.Gateway.NuGet.Core
 
         #endregion
 
-        private Caller Authorize(string company, string login, string key, bool require)
+        private Caller Authenticate(string company, string login, string key, bool require)
         {
             if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(key))
             {
@@ -121,7 +121,7 @@ namespace SymbolSource.Gateway.NuGet.Core
 
             if (!require)
             {
-                var configuration = new ConfigurationWrapper(company);
+                var configuration = new AppSettingsConfiguration(company);
 
                 return new Caller
                 {
@@ -140,7 +140,7 @@ namespace SymbolSource.Gateway.NuGet.Core
         [DataService]
         public ActionResult Index(string company, string login, string key, string repository)
         {
-            var caller = Authorize(company, login, key, manager.Authorize(company, repository));
+            var caller = Authenticate(company, login, key, manager.AuthenticateDownload(company, repository));
 
             if (caller == null)
                 return null;
@@ -161,7 +161,7 @@ namespace SymbolSource.Gateway.NuGet.Core
         [DataService]
         public ActionResult Metadata(string company, string login, string key, string repository)
         {
-            var caller = Authorize(company, login, key, manager.Authorize(company, repository));
+            var caller = Authenticate(company, login, key, manager.AuthenticateDownload(company, repository));
 
             if (caller == null)
                 return null;
@@ -180,7 +180,7 @@ namespace SymbolSource.Gateway.NuGet.Core
         [DataService]
         public ActionResult Search(string company, string login, string key, string repository, string searchTerm, ODataUrlQueryOptions options, bool count)
         {
-            var caller = Authorize(company, login, key, manager.Authorize(company, repository));
+            var caller = Authenticate(company, login, key, manager.AuthenticateDownload(company, repository));
 
             if (caller == null)
                 return null;
@@ -210,7 +210,7 @@ namespace SymbolSource.Gateway.NuGet.Core
         [DataService]
         public ActionResult Count(string company, string login, string key, string repository, string filter)
         {
-            var caller = Authorize(company, login, key, manager.Authorize(company, repository));
+            var caller = Authenticate(company, login, key, manager.AuthenticateDownload(company, repository));
 
             if (caller == null)
                 return null;
@@ -289,7 +289,7 @@ namespace SymbolSource.Gateway.NuGet.Core
 
         public ActionResult Download(string company, string login, string key, string repository, string project, string version)
         {
-            var caller = Authorize(company, login, key, manager.Authorize(company, repository));
+            var caller = Authenticate(company, login, key, manager.AuthenticateDownload(company, repository));
 
             if (caller == null)
                 return null;

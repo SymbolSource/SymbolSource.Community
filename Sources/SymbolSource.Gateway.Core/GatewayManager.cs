@@ -12,35 +12,38 @@ namespace SymbolSource.Gateway.Core
 {
     public abstract class GatewayManager : IGatewayManager
     {
-        protected readonly IGatewayBackendFactory<IPackageBackend> factory;
-        private readonly IGatewayConfiguration configuration;
+        protected readonly IGatewayBackendFactory<IPackageBackend> backendFactory;
+        private readonly IGatewayConfigurationFactory configurationFactory;
 
-        protected GatewayManager(IGatewayBackendFactory<IPackageBackend> factory, IGatewayConfiguration configuration)
+        protected GatewayManager(IGatewayBackendFactory<IPackageBackend> backendFactory, IGatewayConfigurationFactory configurationFactory)
         {
-            this.factory = factory;
-            this.configuration = configuration;
+            this.backendFactory = backendFactory;
+            this.configurationFactory = configurationFactory;
         }
 
-        public bool Authorize(string company, string repository)
+        public bool AuthenticateDownload(string company, string repository)
         {
-            return company != "Public" || repository.StartsWith("Private.");
+            return company != "Basic" && (company != "Public" || repository.StartsWith("Private."));
+        }
+
+        public bool AuthenticateUpload(string company, string repository)
+        {
+            return company != "Basic";
         }
 
         public string Download(Caller caller, string company, string repository, string projectName, string versionName, string contentType)
         {
             var container = new Version { Company = company, Repository = repository, Project = projectName, Name = versionName };
 
-            using (var session = factory.Create(caller))
+            using (var session = backendFactory.Create(caller))
                 return session.GetPackageLink(ref container, contentType);
         }
 
         public Version[] Index(Caller caller, string company, string repository)
         {
-            PrepareProject(caller, company, repository, null);
-
             var parent = new Repository { Company = company, Name = repository };
 
-            using (var session = factory.Create(caller))
+            using (var session = backendFactory.Create(caller))
             {
                 return session.GetPackages(ref parent, GetPackageFormat());
             }
@@ -113,7 +116,7 @@ namespace SymbolSource.Gateway.Core
 
         protected abstract string GetFilePath(string path);
 
-        protected abstract void GetMetadata(string path, string repository, out PackageProject project, out IList<MetadataEntry> metadata,  out ILookup<ContentType, string> contents);
+        protected abstract void GetMetadata(string path, string repository, out PackageProject project, out IList<MetadataEntry> metadata, out ILookup<ContentType, string> contents);
 
         protected abstract bool? GetProjectPermission(Caller caller, string companyName, string repositoryName, string projectName);
 
@@ -152,52 +155,51 @@ namespace SymbolSource.Gateway.Core
                 zip.RemoveEntry(path);
         }
 
-        private void PerformUpload(Caller caller, PackageProject packageProject, Version version, string path)
+        private void PerformUpload(Caller caller, PackageProject packageProject, string path)
         {
-            PushPackage(caller, version, path, packageProject);
-
+            var packagePath = GetFilePath(path);
             var symbolPackagePath = GetSymbolPackagePath(path);
 
-            if (File.Exists(symbolPackagePath))
-                using (var session = factory.Create(caller))
-                    session.CreateJob(File.ReadAllBytes(symbolPackagePath), packageProject);
-        }
+            var package = File.Exists(packagePath) ? File.ReadAllBytes(packagePath) : null;
+            var symbolPackage = File.Exists(symbolPackagePath) ? File.ReadAllBytes(symbolPackagePath) : null;
 
-        protected abstract void PushPackage(Caller caller, Version version, string path, PackageProject metadata);
+            using (var session = backendFactory.Create(caller))
+                session.UploadPackage(packageProject, GetPackageFormat(), package, symbolPackage);
+        }
 
         public void Hide(Caller caller, string company, string repository, string projectName, string versionName)
         {
-            using (var session = factory.Create(caller))
+            using (var session = backendFactory.Create(caller))
             {
-                var project = new Project { Company = company, Repository = repository, Name = projectName };
-                var versions = session.GetVersions(ref project);
-                var version = versions.SingleOrDefault(v => v.Name == versionName);
+                //var project = new Project { Company = company, Repository = repository, Name = projectName };
+                //var versions = session.GetVersions(ref project);
+                //var version = versions.SingleOrDefault(v => v.Name == versionName);
 
-                if (version == null)
-                    throw new ClientException("Specified version does not exist.", null);
+                //if (version == null)
+                //    throw new ClientException("Specified version does not exist.", null);
 
-                //if (version.Hidden == true)
-                //    throw new ClientException("Version is already hidden.", null);
+                ////if (version.Hidden == true)
+                ////    throw new ClientException("Version is already hidden.", null);
 
-                session.SetVersionHidden(ref version, true);
+                //session.SetVersionHidden(ref version, true);
             }
         }
 
         public void Restore(Caller caller, string company, string repository, string projectName, string versionName)
         {
-            using (var session = factory.Create(caller))
+            using (var session = backendFactory.Create(caller))
             {
-                var project = new Project { Company = company, Repository = repository, Name = projectName };
-                var versions = session.GetVersions(ref project);
-                var version = versions.SingleOrDefault(v => v.Name == versionName);
+                //var project = new Project { Company = company, Repository = repository, Name = projectName };
+                //var versions = session.GetVersions(ref project);
+                //var version = versions.SingleOrDefault(v => v.Name == versionName);
 
-                if (version == null)
-                    throw new ClientException("Specified version does not exist.", null);
+                //if (version == null)
+                //    throw new ClientException("Specified version does not exist.", null);
 
-                //if (version.Hidden == false)
-                //    throw new ClientException("Version is not hidden.", null);
+                ////if (version.Hidden == false)
+                ////    throw new ClientException("Version is not hidden.", null);
 
-                session.SetVersionHidden(ref version, false);
+                //session.SetVersionHidden(ref version, false);
             }
         }
     }

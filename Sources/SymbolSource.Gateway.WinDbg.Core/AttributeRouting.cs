@@ -45,7 +45,7 @@ namespace SymbolSource.Gateway.WinDbg.Core
                 new[] { typeof(AttributeRouting).Namespace }
                 );
 
-            var configuration = new ConfigurationWrapper("Public");
+            var configuration = new AppSettingsConfiguration("Public");
 
             routes.MapRoute(
                 "Default-Public",
@@ -78,7 +78,7 @@ namespace SymbolSource.Gateway.WinDbg.Core
                 new[] { typeof(AttributeRouting).Namespace }
                 );
 
-            var configuration = new ConfigurationWrapper("Public");
+            var configuration = new AppSettingsConfiguration("Public");
 
             routes.MapRoute(
                 type + "-Public",

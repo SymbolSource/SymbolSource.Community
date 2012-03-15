@@ -51,7 +51,7 @@ namespace SymbolSource.Gateway.WinDbg.Core
 
             if (company != "Public")
             {
-                var configuration = new ConfigurationWrapper("Public");
+                var configuration = new AppSettingsConfiguration("Public");
 
                 using (var backend = factory.Create("Public", configuration.PublicLogin, "VisualStudio", configuration.PublicPassword))
                 {

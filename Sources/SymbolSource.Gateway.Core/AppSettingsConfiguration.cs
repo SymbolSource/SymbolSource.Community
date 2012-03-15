@@ -2,19 +2,11 @@
 
 namespace SymbolSource.Gateway.Core
 {
-    public interface IGatewayConfiguration
-    {
-        string GatewayLogin { get; }
-        string GatewayPassword { get; }
-        string PublicLogin { get; }
-        string PublicPassword { get; }
-    }
-
-    public class ConfigurationWrapper : IGatewayConfiguration
+    public class AppSettingsConfiguration : IGatewayConfiguration
     {
         private readonly string company;
 
-        public ConfigurationWrapper(string company)
+        public AppSettingsConfiguration(string company)
         {
             this.company = company;
         }

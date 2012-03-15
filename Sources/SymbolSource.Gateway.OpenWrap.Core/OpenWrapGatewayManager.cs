@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Ionic.Zip;
 using OpenFileSystem.IO;
@@ -7,13 +8,6 @@ using OpenWrap.PackageManagement;
 using OpenWrap.PackageManagement.Exporters.Assemblies;
 using OpenWrap.Repositories;
 using OpenWrap.Runtime;
-//using OpenFileSystem.IO;
-//using OpenFileSystem.IO.FileSystems.Local;
-//using OpenWrap;
-//using OpenWrap.PackageManagement;
-//using OpenWrap.PackageManagement.Exporters.Assemblies;
-//using OpenWrap.Repositories;
-//using OpenWrap.Runtime;
 using SymbolSource.Gateway.Core;
 using SymbolSource.Server.Management.Client;
 
@@ -26,8 +20,8 @@ namespace SymbolSource.Gateway.OpenWrap.Core
 
     public class OpenWrapGatewayManager : GatewayManager, IOpenWrapGatewayManager
     {
-        public OpenWrapGatewayManager(IGatewayBackendFactory<IPackageBackend> factory)
-            : base(factory)
+        public OpenWrapGatewayManager(IGatewayBackendFactory<IPackageBackend> backendFactory, IGatewayConfigurationFactory configurationFactory)
+            : base(backendFactory, configurationFactory)
         {
         }
 
@@ -36,7 +30,7 @@ namespace SymbolSource.Gateway.OpenWrap.Core
             return new Path(path).Combine("upload-1.0.wrap").FullPath;
         }
 
-        protected override void GetMetadata(string path, string repository, out PackageProject project, out Version version, out ILookup<ContentType, string> contents)
+        protected override void GetMetadata(string path, string repository, out PackageProject project, out IList<MetadataEntry> metadata, out ILookup<ContentType, string> contents)
         {
             var assemblyExporter = new DefaultAssemblyExporter();
             var packageInfo = new FolderRepository(LocalFileSystem.Instance.GetDirectory(path)).PackagesByName.Single().Single();
@@ -73,10 +67,10 @@ namespace SymbolSource.Gateway.OpenWrap.Core
                                 },
                     };
 
-            version = new Version { Metadata = new MetadataEntry[0] };
-
             using (var zip = new ZipFile(GetFilePath(path)))
                 contents = zip.EntryFileNames.ToLookup(GetContentType);
+
+            metadata = new List<MetadataEntry>();
         }
 
         private ContentType GetContentType(string name)
@@ -109,15 +103,6 @@ namespace SymbolSource.Gateway.OpenWrap.Core
         protected override bool? GetProjectPermission(Caller caller, string companyName, string repositoryName, string projectName)
         {
             return null;
-        }
-
-        protected override void PushPackage(Caller caller, Version version, string path, PackageProject metadata)
-        {
-            using (var backend = factory.Create(caller))
-            {
-                version.PackageFormat = "OpenWrap";
-                backend.PushPackage(ref version, System.IO.File.ReadAllBytes(GetFilePath(path)), metadata);
-            }
         }
 
         protected override string GetPackageFormat()

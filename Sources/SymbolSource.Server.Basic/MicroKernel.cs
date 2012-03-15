@@ -67,6 +67,11 @@ namespace SymbolSource.Server.Basic
                 Component.For<IBasicBackendConfiguration>()
                     .ImplementedBy<BasicBackendConfiguration>()
                 );
+
+            kernel.Register(
+                Component.For<IGatewayConfigurationFactory>()
+                    .ImplementedBy<AppSettingsConfigurationFactory>()
+                );
         }     
     }
 

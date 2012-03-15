@@ -8,24 +8,33 @@ namespace SymbolSource.Server.Basic
 {
     public partial class BasicBackend
     {
-
         private string GetPathToImageFile(string name, string symbolHash)
         {
             string binaryIndexPath = Path.Combine(configuration.IndexPath, name);
-            if(!Directory.Exists(binaryIndexPath))
+            if (!Directory.Exists(binaryIndexPath))
                 return null;
 
             string hashIndexPath = Path.Combine(binaryIndexPath, symbolHash + ".txt");
-            if(!File.Exists(hashIndexPath))
+            if (!File.Exists(hashIndexPath))
                 return null;
 
             var hashes = File.ReadAllLines(hashIndexPath)
                 .Where(h => Directory.Exists(Path.Combine(configuration.DataPath, h)))
                 .ToArray();
-            
+
             File.WriteAllLines(hashIndexPath, hashes);
 
             return hashes.FirstOrDefault();
+        }
+
+        private string GetPackagePathFromVersion(Version version)
+        {
+            return new[]
+                       {
+                           Path.Combine(version.Project, version.Name, GetPackageName("NuGet", version.Project, version.Name)),
+                           Path.Combine(version.Project, version.Name, GetPackageName("OpenWrap", version.Project, version.Name))
+                       }
+                .First(candidate => File.Exists(Path.Combine(configuration.DataPath, candidate)));
         }
 
         private string GetPathFromImageFile(ImageFile imageFile)
@@ -57,7 +66,7 @@ namespace SymbolSource.Server.Basic
         public ImageFile GetImageFile(string name, string symbolHash)
         {
             string pathImageFile = GetPathToImageFile(name, symbolHash);
-            if(pathImageFile == null)
+            if (pathImageFile == null)
                 return null;
 
             return BuildImageFile(pathImageFile);
@@ -130,7 +139,24 @@ namespace SymbolSource.Server.Basic
 
         public Version[] GetPackages(ref Repository repository, string packageFormat)
         {
-            throw new NotImplementedException();
+            var repositoryCopy = repository;
+
+            return Directory.EnumerateDirectories(configuration.DataPath)
+                .SelectMany(
+                    projectPath =>
+                    Directory.EnumerateDirectories(projectPath)
+                        .Select(
+                            versionPath =>
+                            new Version
+                                {
+                                    Company = repositoryCopy.Company,
+                                    Repository = repositoryCopy.Name,
+                                    Project = Path.GetFileName(projectPath),
+                                    Name = Path.GetFileName(versionPath),
+                                    PackageFormat = packageFormat
+                                })
+                        .Where(version => File.Exists(GetPackagePathFromVersion(version))))
+                .ToArray();
         }
 
         public Caller CreateUserByKey(string company, string type, string value)
