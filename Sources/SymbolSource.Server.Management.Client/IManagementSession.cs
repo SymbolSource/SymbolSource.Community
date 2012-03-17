@@ -37,6 +37,7 @@ namespace SymbolSource.Server.Management.Client
         void DeleteVersion(Version version);
 
         Version[] GetPackages(ref Repository repository, string packageFormat);
+        Version UploadPackage(PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData);
 
         CompanyPermission[] GetCompanyPermissions(Company company);
         RepositoryPermission[] GetRepositoryPermissions(Repository repository);

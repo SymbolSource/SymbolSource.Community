@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -88,6 +89,11 @@ namespace SymbolSource.Integration.NuGet.PackageExplorer
         public Stream Stream
         {
             get { return file.GetStream(); }
+        }
+
+        public DateTime CreationTimeUtc
+        {
+            get { throw new NotImplementedException(); }
         }
     }
 }

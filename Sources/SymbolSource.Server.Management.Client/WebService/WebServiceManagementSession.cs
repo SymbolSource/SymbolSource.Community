@@ -150,6 +150,11 @@ namespace SymbolSource.Server.Management.Client
             return service.GetPackages(caller, ref repository, packageFormat);
         }
 
+        public Version UploadPackage(PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData)
+        {
+            throw new NotImplementedException();
+        }
+
         public Version SetVersionHidden(ref Version version, bool hidden)
         {
             return service.SetVersionHidden(caller, ref version, hidden);

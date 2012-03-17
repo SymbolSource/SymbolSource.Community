@@ -115,6 +115,7 @@
     <Compile Include="PdbStoreManager.cs" />
     <Compile Include="ProcessFactory.cs" />
     <Compile Include="ProcessingBasicInstaller.cs" />
+    <Compile Include="Projects\FolderPackageFile.cs" />
     <Compile Include="Projects\TransformingWrapperPackageFile.cs" />
     <Compile Include="Projects\ZipPackageFile.cs" />
     <Compile Include="SourceStoreManager.cs" />

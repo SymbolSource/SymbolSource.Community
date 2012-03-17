@@ -51,6 +51,11 @@ namespace SymbolSource.Processing.Basic.Projects
                     }
                 }
             }
+
+            public DateTime CreationTimeUtc
+            {
+                get { return zipEntry.CreationTime.ToUniversalTime(); }
+            }
         }
     }
 }

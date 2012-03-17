@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace SymbolSource.Processing.Basic.Projects
@@ -12,6 +13,7 @@ namespace SymbolSource.Processing.Basic.Projects
     {
         string FullPath { get; }
         Stream Stream { get; }
+        DateTime CreationTimeUtc { get; }
     }
 
     public interface IAddInfoBuilder
