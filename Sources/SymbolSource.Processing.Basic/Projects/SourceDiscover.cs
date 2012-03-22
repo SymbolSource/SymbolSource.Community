@@ -149,7 +149,11 @@ namespace SymbolSource.Processing.Basic.Projects
         /// </summary>
         private string GetMaxCommonPath(IEnumerable<string> originalPaths)
         {
-            string maxCommonPath = originalPaths.First();
+            string maxCommonPath = originalPaths.FirstOrDefault();
+
+            if (maxCommonPath == null)
+                return string.Empty;
+
             foreach (string originalPath in originalPaths)
                 maxCommonPath = GetMaxCommonPath(maxCommonPath, originalPath);
             maxCommonPath = maxCommonPath.Trim(Path.DirectorySeparatorChar);
