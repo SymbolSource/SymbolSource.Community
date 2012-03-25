@@ -37,7 +37,7 @@ namespace SymbolSource.Server.Management.Client
         void DeleteVersion(Version version);
 
         Version[] GetPackages(ref Repository repository, string packageFormat);
-        Version UploadPackage(PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData);
+        UploadReport UploadPackage(PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData);
 
         CompanyPermission[] GetCompanyPermissions(Company company);
         RepositoryPermission[] GetRepositoryPermissions(Repository repository);
@@ -74,9 +74,7 @@ namespace SymbolSource.Server.Management.Client
        
         Version SetVersionHidden(ref Version version, bool hidden);
 
-        void CreateJob(byte[] package, PackageProject project);
         JobStatus GetJobStatus();
-        void PushPackage(ref Version version, byte[] package, PackageProject packageProject);
         string GetPackageLink(ref Version version, string contentType);
 
         Statistic[] GetStatistic(string[] names, StatisticPeriod period, DateTime? from, DateTime? to);

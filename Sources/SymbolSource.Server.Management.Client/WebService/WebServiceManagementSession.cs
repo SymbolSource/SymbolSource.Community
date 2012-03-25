@@ -150,9 +150,9 @@ namespace SymbolSource.Server.Management.Client
             return service.GetPackages(caller, ref repository, packageFormat);
         }
 
-        public Version UploadPackage(PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData)
+        public UploadReport UploadPackage(PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData)
         {
-            throw new NotImplementedException();
+            return service.UploadPackage(caller, package, packageFormat, packageData, symbolPackageData);
         }
 
         public Version SetVersionHidden(ref Version version, bool hidden)
@@ -286,19 +286,9 @@ namespace SymbolSource.Server.Management.Client
             return service.GetUserPermissions(caller, targetUser);
         }
 
-        public virtual void CreateJob(byte[] package, PackageProject project)
-        {
-            service.CreateJob(caller, package, project);
-        }
-
         public JobStatus GetJobStatus()
         {
             return service.GetJobStatus(caller);
-        }
-
-        public void PushPackage(ref Version version, byte[] package, PackageProject packageProject)
-        {
-            service.PushPackage(caller, ref version, package, packageProject);
         }
 
         public string GetPackageLink(ref Version version, string contentType)

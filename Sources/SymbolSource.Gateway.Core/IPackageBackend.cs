@@ -7,7 +7,7 @@ namespace SymbolSource.Gateway.Core
         Caller CreateUserByKey(string company, string type, string value);
         string GetPackageLink(ref Version version, string contentType);
         Version[] GetPackages(ref Repository repository, string packageFormat);
-        Version UploadPackage(PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData);
+        UploadReport UploadPackage(PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData);
         void SetVersionHidden(ref Version version, bool hidden);
     }
 }

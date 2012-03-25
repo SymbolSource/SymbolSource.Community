@@ -218,6 +218,9 @@
     <None Include="Web References\WebService\Statistic1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\WebService\UploadReport.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\WebService\User1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
