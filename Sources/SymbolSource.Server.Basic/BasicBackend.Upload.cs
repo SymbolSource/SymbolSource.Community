@@ -22,7 +22,10 @@ namespace SymbolSource.Server.Basic
             if (symbolPackageData != null)
                 CreateJob(package, symbolPackageData);
 
-            return new UploadReport();
+            return new UploadReport
+                       {
+                           Summary = "OK",
+                       };
         }
 
         [Obsolete]

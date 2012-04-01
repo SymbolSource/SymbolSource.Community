@@ -2,11 +2,10 @@
 <wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://api.symbolsource.org/schemas/webServices" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://api.symbolsource.org/schemas/webServices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://api.symbolsource.org/schemas/webServices">
-      <s:element name="GetProjects">
+      <s:element name="GetCompanies">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="repository" type="tns:Repository" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -18,556 +17,6 @@
           <s:element minOccurs="0" maxOccurs="1" name="KeyType" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="Repository">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Metadata" type="tns:ArrayOfMetadataEntry" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanCreateProject" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanEdit" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanDelete" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanGrantPermission" type="s:boolean" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfMetadataEntry">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="MetadataEntry" nillable="true" type="tns:MetadataEntry" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="MetadataEntry">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetProjectsResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetProjectsResult" type="tns:ArrayOfProject" />
-            <s:element minOccurs="0" maxOccurs="1" name="repository" type="tns:Repository" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfProject">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Project" nillable="true" type="tns:Project" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Project">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Metadata" type="tns:ArrayOfMetadataEntry" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanCreateVersion" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanEdit" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanDelete" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanGrantPermission" type="s:boolean" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="CreateOrUpdateProject">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="CreateOrUpdateProjectResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="CreateProject">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="CreateProjectResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="UpdateProject">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="UpdateProjectResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="DeleteProject">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="DeleteProjectResponse">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetVersions">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetVersionsResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetVersionsResult" type="tns:ArrayOfVersion" />
-            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfVersion">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Version" nillable="true" type="tns:Version" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Version">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="PackageFormat" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="PackageHash" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Hidden" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="Metadata" type="tns:ArrayOfMetadataEntry" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanCreateCompilation" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanEdit" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanDelete" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanHide" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanRestore" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanGrantPermission" type="s:boolean" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="CreateOrUpdateVersion">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="CreateOrUpdateVersionResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="CreateVersion">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="CreateVersionResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="UpdateVersion">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="UpdateVersionResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="DeleteVersion">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="DeleteVersionResponse">
-        <s:complexType />
-      </s:element>
-      <s:element name="SetVersionHidden">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
-            <s:element minOccurs="1" maxOccurs="1" name="hidden" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="SetVersionHiddenResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="SetVersionHiddenResult" type="tns:Version" />
-            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetVersionLastList">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetVersionLastListResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetVersionLastListResult" type="tns:ArrayOfVersion" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetPackages">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="repository" type="tns:Repository" />
-            <s:element minOccurs="0" maxOccurs="1" name="packageFormat" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetPackagesResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetPackagesResult" type="tns:ArrayOfVersion" />
-            <s:element minOccurs="0" maxOccurs="1" name="repository" type="tns:Repository" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetCompilationList">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetCompilationListResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetCompilationListResult" type="tns:ArrayOfCompilation" />
-            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfCompilation">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Compilation" nillable="true" type="tns:Compilation" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Compilation">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Mode" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Profile" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Platform" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Metadata" type="tns:ArrayOfMetadataEntry" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetImageFileList">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="compilation" type="tns:Compilation" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetImageFileListResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetImageFileListResult" type="tns:ArrayOfImageFile" />
-            <s:element minOccurs="0" maxOccurs="1" name="compilation" type="tns:Compilation" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfImageFile">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="ImageFile" nillable="true" type="tns:ImageFile" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ImageFile">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="FileVersion" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="BinaryHash" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="BinaryType" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="SymbolHash" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="SymbolType" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="DocumentationType" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Reference" type="tns:Reference" />
-          <s:element minOccurs="0" maxOccurs="1" name="Mode" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Platform" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Reference">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Culture" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="PublicKeyToken" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetSourceFileList">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetSourceFileListResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetSourceFileListResult" type="tns:ArrayOfSourceFile" />
-            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfSourceFile">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="SourceFile" nillable="true" type="tns:SourceFile" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="SourceFile">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Path" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Hash" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="OriginalPath" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="ImageName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Mode" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Platform" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetDepedencyList">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetDepedencyListResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetDepedencyListResult" type="tns:ArrayOfDepedency" />
-            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfDepedency">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Depedency" nillable="true" type="tns:Depedency" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Depedency">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:Reference">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:element name="GetImageFileListByReference">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="reference" type="tns:Reference" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetImageFileListByReferenceResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetImageFileListByReferenceResult" type="tns:ArrayOfImageFile" />
-            <s:element minOccurs="0" maxOccurs="1" name="reference" type="tns:Reference" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetNodeImageFiles">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="nodeImageFile" type="tns:NodeImageFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="NodeImageFile">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Fullname" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Modifier" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="CodeBlockAddresses" type="tns:ArrayOfCodeBlockAddress" />
-          <s:element minOccurs="0" maxOccurs="1" name="ImageName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Mode" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Platform" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfCodeBlockAddress">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="CodeBlockAddress" nillable="true" type="tns:CodeBlockAddress" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="CodeBlockAddress">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="SourceFile" type="tns:SourceFile" />
-          <s:element minOccurs="0" maxOccurs="1" name="StartPosition" type="tns:Location" />
-          <s:element minOccurs="0" maxOccurs="1" name="EndPosition" type="tns:Location" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Location">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="Line" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="Column" type="s:int" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetNodeImageFilesResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetNodeImageFilesResult" type="tns:ArrayOfNodeImageFile" />
-            <s:element minOccurs="0" maxOccurs="1" name="nodeImageFile" type="tns:NodeImageFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfNodeImageFile">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="NodeImageFile" nillable="true" type="tns:NodeImageFile" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetImageFileLink">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetImageFileLinkResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetImageFileLinkResult" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetSourceFileLink">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="sourceFile" type="tns:SourceFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetSourceFileLinkResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetSourceFileLinkResult" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="sourceFile" type="tns:SourceFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetSymbolFileLink">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetSymbolFileLinkResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetSymbolFileLinkResult" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetDocumentationLink">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetDocumentationLinkResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetDocumentationLinkResult" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetPackageLink">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
-            <s:element minOccurs="0" maxOccurs="1" name="contentType" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetPackageLinkResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetPackageLinkResult" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetCompanies">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="GetCompaniesResponse">
         <s:complexType>
           <s:sequence>
@@ -586,6 +35,17 @@
           <s:element minOccurs="0" maxOccurs="1" name="Metadata" type="tns:ArrayOfMetadataEntry" />
           <s:element minOccurs="1" maxOccurs="1" name="CanCreateRepository" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="CanGrantPermission" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMetadataEntry">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MetadataEntry" nillable="true" type="tns:MetadataEntry" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MetadataEntry">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="CreateCompany">
@@ -718,6 +178,17 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="Repository" nillable="true" type="tns:Repository" />
         </s:sequence>
       </s:complexType>
+      <s:complexType name="Repository">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Metadata" type="tns:ArrayOfMetadataEntry" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanCreateProject" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanEdit" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanDelete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanGrantPermission" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="CreateOrUpdateRepository">
         <s:complexType>
           <s:sequence>
@@ -804,86 +275,34 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetJobStatus">
+      <s:element name="GetUploadReports">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetJobStatusResponse">
+      <s:element name="GetUploadReportsResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetJobStatusResult" type="tns:JobStatus" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetUploadReportsResult" type="tns:ArrayOfUploadReport" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="JobStatus">
+      <s:complexType name="ArrayOfUploadReport">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Pending" type="tns:ArrayOfPackageInfo" />
-          <s:element minOccurs="0" maxOccurs="1" name="Succeded" type="tns:ArrayOfPackageInfo" />
-          <s:element minOccurs="0" maxOccurs="1" name="Failed" type="tns:ArrayOfPackageInfo" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UploadReport" nillable="true" type="tns:UploadReport" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="ArrayOfPackageInfo">
+      <s:complexType name="UploadReport">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="PackageInfo" nillable="true" type="tns:PackageInfo" />
+          <s:element minOccurs="1" maxOccurs="1" name="Started" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Ended" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Summary" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Log" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Exception" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="PackageInfo">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="User" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Submitted" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="Updated" nillable="true" type="s:dateTime" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="CreateJob">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="zipContent" type="s:base64Binary" />
-            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:PackageProject" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="PackageProject">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Version" type="tns:PackageVersion" />
-        </s:sequence>
-        <s:attribute name="Name" type="s:string" />
-        <s:attribute name="Repository" type="s:string" />
-        <s:attribute name="HomePageUrl" type="s:string" />
-      </s:complexType>
-      <s:complexType name="PackageVersion">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Compilations" type="tns:PackageCompilation" />
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Metadata" type="tns:MetadataEntry" />
-        </s:sequence>
-        <s:attribute name="Name" type="s:string" />
-        <s:attribute name="Project" type="s:string" />
-        <s:attribute name="SourceDistributionUrl" type="s:string" />
-      </s:complexType>
-      <s:complexType name="PackageCompilation">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="ImageFiles" type="tns:PackageImageFile" />
-        </s:sequence>
-        <s:attribute name="Mode" type="s:string" />
-        <s:attribute name="Platform" type="s:string" />
-        <s:attribute name="BinaryDistributionUrl" type="s:string" />
-      </s:complexType>
-      <s:complexType name="PackageImageFile">
-        <s:attribute name="Name" type="s:string" />
-      </s:complexType>
-      <s:element name="CreateJobResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="CreateJobResult" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="UploadPackage">
         <s:complexType>
           <s:sequence>
@@ -895,6 +314,46 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="PackageProject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HomePageUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Version" type="tns:PackageVersion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PackageVersion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SourceDistributionUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Compilations" type="tns:ArrayOfPackageCompilation" />
+          <s:element minOccurs="0" maxOccurs="1" name="Metadata" type="tns:ArrayOfMetadataEntry" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPackageCompilation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PackageCompilation" nillable="true" type="tns:PackageCompilation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PackageCompilation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Mode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Platform" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BinaryDistributionUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImageFiles" type="tns:ArrayOfPackageImageFile" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPackageImageFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PackageImageFile" nillable="true" type="tns:PackageImageFile" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PackageImageFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="UploadPackageResponse">
         <s:complexType>
           <s:sequence>
@@ -902,15 +361,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="UploadReport">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="Started" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="Ended" nillable="true" type="s:dateTime" />
-          <s:element minOccurs="0" maxOccurs="1" name="Summary" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Log" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Exception" type="s:string" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="GetUserPermissions">
         <s:complexType>
           <s:sequence>
@@ -982,6 +432,36 @@
             </s:sequence>
           </s:extension>
         </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Project">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Metadata" type="tns:ArrayOfMetadataEntry" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanCreateVersion" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanEdit" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanDelete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanGrantPermission" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Version">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PackageFormat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PackageHash" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Hidden" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Metadata" type="tns:ArrayOfMetadataEntry" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanCreateCompilation" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanEdit" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanDelete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanHide" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanRestore" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanGrantPermission" type="s:boolean" />
+        </s:sequence>
       </s:complexType>
       <s:complexType name="ArrayOfProjectPermission">
         <s:sequence>
@@ -1192,6 +672,32 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ImageFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileVersion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BinaryHash" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BinaryType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SymbolHash" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SymbolType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DocumentationType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reference" type="tns:Reference" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Platform" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Reference">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Culture" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PublicKeyToken" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="LogImageFileFound">
         <s:complexType>
           <s:sequence>
@@ -1223,6 +729,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="SourceFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Path" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Hash" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OriginalPath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImageName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Platform" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="LogSourceFileFoundResponse">
         <s:complexType />
       </s:element>
@@ -1327,8 +847,701 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetProjects">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="repository" type="tns:Repository" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProjectsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProjectsResult" type="tns:ArrayOfProject" />
+            <s:element minOccurs="0" maxOccurs="1" name="repository" type="tns:Repository" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Project" nillable="true" type="tns:Project" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateOrUpdateProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateOrUpdateProjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateProjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateProjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteProjectResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetVersions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVersionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVersionsResult" type="tns:ArrayOfVersion" />
+            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfVersion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Version" nillable="true" type="tns:Version" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateOrUpdateVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateOrUpdateVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteVersionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SetVersionHidden">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
+            <s:element minOccurs="1" maxOccurs="1" name="hidden" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetVersionHiddenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetVersionHiddenResult" type="tns:Version" />
+            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVersionLastList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVersionLastListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVersionLastListResult" type="tns:ArrayOfVersion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPackages">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="repository" type="tns:Repository" />
+            <s:element minOccurs="0" maxOccurs="1" name="packageFormat" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPackagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPackagesResult" type="tns:ArrayOfVersion" />
+            <s:element minOccurs="0" maxOccurs="1" name="repository" type="tns:Repository" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompilationList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompilationListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCompilationListResult" type="tns:ArrayOfCompilation" />
+            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCompilation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Compilation" nillable="true" type="tns:Compilation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Compilation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Mode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Profile" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Platform" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Metadata" type="tns:ArrayOfMetadataEntry" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetImageFileList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="compilation" type="tns:Compilation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetImageFileListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetImageFileListResult" type="tns:ArrayOfImageFile" />
+            <s:element minOccurs="0" maxOccurs="1" name="compilation" type="tns:Compilation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfImageFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ImageFile" nillable="true" type="tns:ImageFile" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSourceFileList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSourceFileListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSourceFileListResult" type="tns:ArrayOfSourceFile" />
+            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSourceFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SourceFile" nillable="true" type="tns:SourceFile" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDepedencyList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDepedencyListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDepedencyListResult" type="tns:ArrayOfDepedency" />
+            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDepedency">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Depedency" nillable="true" type="tns:Depedency" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Depedency">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Reference">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetImageFileListByReference">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="reference" type="tns:Reference" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetImageFileListByReferenceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetImageFileListByReferenceResult" type="tns:ArrayOfImageFile" />
+            <s:element minOccurs="0" maxOccurs="1" name="reference" type="tns:Reference" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNodeImageFiles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="nodeImageFile" type="tns:NodeImageFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="NodeImageFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fullname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Modifier" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeBlockAddresses" type="tns:ArrayOfCodeBlockAddress" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImageName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Platform" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCodeBlockAddress">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CodeBlockAddress" nillable="true" type="tns:CodeBlockAddress" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CodeBlockAddress">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SourceFile" type="tns:SourceFile" />
+          <s:element minOccurs="0" maxOccurs="1" name="StartPosition" type="tns:Location" />
+          <s:element minOccurs="0" maxOccurs="1" name="EndPosition" type="tns:Location" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Location">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Line" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Column" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetNodeImageFilesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNodeImageFilesResult" type="tns:ArrayOfNodeImageFile" />
+            <s:element minOccurs="0" maxOccurs="1" name="nodeImageFile" type="tns:NodeImageFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfNodeImageFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NodeImageFile" nillable="true" type="tns:NodeImageFile" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetImageFileLink">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetImageFileLinkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetImageFileLinkResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSourceFileLink">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="sourceFile" type="tns:SourceFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSourceFileLinkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSourceFileLinkResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sourceFile" type="tns:SourceFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSymbolFileLink">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSymbolFileLinkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSymbolFileLinkResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentationLink">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentationLinkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDocumentationLinkResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPackageLink">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
+            <s:element minOccurs="0" maxOccurs="1" name="contentType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPackageLinkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPackageLinkResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="GetCompaniesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompanies" />
+  </wsdl:message>
+  <wsdl:message name="GetCompaniesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompaniesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateCompanySoapIn">
+    <wsdl:part name="parameters" element="tns:CreateCompany" />
+  </wsdl:message>
+  <wsdl:message name="CreateCompanySoapOut">
+    <wsdl:part name="parameters" element="tns:CreateCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCompanySoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCompany" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCompanySoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCompanySoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteCompany" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCompanySoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUsers" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateUserSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateUser" />
+  </wsdl:message>
+  <wsdl:message name="CreateUserSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateUser" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteUser" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRepositoriesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRepositories" />
+  </wsdl:message>
+  <wsdl:message name="GetRepositoriesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRepositoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateOrUpdateRepositorySoapIn">
+    <wsdl:part name="parameters" element="tns:CreateOrUpdateRepository" />
+  </wsdl:message>
+  <wsdl:message name="CreateOrUpdateRepositorySoapOut">
+    <wsdl:part name="parameters" element="tns:CreateOrUpdateRepositoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateRepositorySoapIn">
+    <wsdl:part name="parameters" element="tns:CreateRepository" />
+  </wsdl:message>
+  <wsdl:message name="CreateRepositorySoapOut">
+    <wsdl:part name="parameters" element="tns:CreateRepositoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRepositorySoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateRepository" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRepositorySoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateRepositoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRepositorySoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteRepository" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRepositorySoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteRepositoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="DigestGenerateRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:DigestGenerateRequest" />
+  </wsdl:message>
+  <wsdl:message name="DigestGenerateRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:DigestGenerateRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="DigestValidateResponseSoapIn">
+    <wsdl:part name="parameters" element="tns:DigestValidateResponse" />
+  </wsdl:message>
+  <wsdl:message name="DigestValidateResponseSoapOut">
+    <wsdl:part name="parameters" element="tns:DigestValidateResponseResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUploadReportsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUploadReports" />
+  </wsdl:message>
+  <wsdl:message name="GetUploadReportsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUploadReportsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadPackageSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadPackage" />
+  </wsdl:message>
+  <wsdl:message name="UploadPackageSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadPackageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserPermissionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserPermissions" />
+  </wsdl:message>
+  <wsdl:message name="GetUserPermissionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyPermissionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompanyPermissions" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyPermissionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompanyPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRepositoryPermissionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRepositoryPermissions" />
+  </wsdl:message>
+  <wsdl:message name="GetRepositoryPermissionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRepositoryPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectPermissionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProjectPermissions" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectPermissionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProjectPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionPermissionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVersionPermissions" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionPermissionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVersionPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetCompanyPermissionsSoapIn">
+    <wsdl:part name="parameters" element="tns:SetCompanyPermissions" />
+  </wsdl:message>
+  <wsdl:message name="SetCompanyPermissionsSoapOut">
+    <wsdl:part name="parameters" element="tns:SetCompanyPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetRepositoryPermissionsSoapIn">
+    <wsdl:part name="parameters" element="tns:SetRepositoryPermissions" />
+  </wsdl:message>
+  <wsdl:message name="SetRepositoryPermissionsSoapOut">
+    <wsdl:part name="parameters" element="tns:SetRepositoryPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetProjectPermissionsSoapIn">
+    <wsdl:part name="parameters" element="tns:SetProjectPermissions" />
+  </wsdl:message>
+  <wsdl:message name="SetProjectPermissionsSoapOut">
+    <wsdl:part name="parameters" element="tns:SetProjectPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetVersionPermissionsSoapIn">
+    <wsdl:part name="parameters" element="tns:SetVersionPermissions" />
+  </wsdl:message>
+  <wsdl:message name="SetVersionPermissionsSoapOut">
+    <wsdl:part name="parameters" element="tns:SetVersionPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAvailableStatisticNamesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAvailableStatisticNames" />
+  </wsdl:message>
+  <wsdl:message name="GetAvailableStatisticNamesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAvailableStatisticNamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStatisticSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStatistic" />
+  </wsdl:message>
+  <wsdl:message name="GetStatisticSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStatisticResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetImageFileSoapIn">
+    <wsdl:part name="parameters" element="tns:GetImageFile" />
+  </wsdl:message>
+  <wsdl:message name="GetImageFileSoapOut">
+    <wsdl:part name="parameters" element="tns:GetImageFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogImageFileFoundSoapIn">
+    <wsdl:part name="parameters" element="tns:LogImageFileFound" />
+  </wsdl:message>
+  <wsdl:message name="LogImageFileFoundSoapOut">
+    <wsdl:part name="parameters" element="tns:LogImageFileFoundResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogImageFileNotFoundSoapIn">
+    <wsdl:part name="parameters" element="tns:LogImageFileNotFound" />
+  </wsdl:message>
+  <wsdl:message name="LogImageFileNotFoundSoapOut">
+    <wsdl:part name="parameters" element="tns:LogImageFileNotFoundResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogSourceFileFoundSoapIn">
+    <wsdl:part name="parameters" element="tns:LogSourceFileFound" />
+  </wsdl:message>
+  <wsdl:message name="LogSourceFileFoundSoapOut">
+    <wsdl:part name="parameters" element="tns:LogSourceFileFoundResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserValidateSoapIn">
+    <wsdl:part name="parameters" element="tns:UserValidate" />
+  </wsdl:message>
+  <wsdl:message name="UserValidateSoapOut">
+    <wsdl:part name="parameters" element="tns:UserValidateResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateUserByKeySoapIn">
+    <wsdl:part name="parameters" element="tns:CreateUserByKey" />
+  </wsdl:message>
+  <wsdl:message name="CreateUserByKeySoapOut">
+    <wsdl:part name="parameters" element="tns:CreateUserByKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByKeySoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserByKey" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByKeySoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserByKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserKeysSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserKeys" />
+  </wsdl:message>
+  <wsdl:message name="GetUserKeysSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserKeysResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUserKeysSoapIn">
+    <wsdl:part name="parameters" element="tns:AddUserKeys" />
+  </wsdl:message>
+  <wsdl:message name="AddUserKeysSoapOut">
+    <wsdl:part name="parameters" element="tns:AddUserKeysResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveUserKeysSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveUserKeys" />
+  </wsdl:message>
+  <wsdl:message name="RemoveUserKeysSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveUserKeysResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserVisualStudioLinkSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserVisualStudioLink" />
+  </wsdl:message>
+  <wsdl:message name="GetUserVisualStudioLinkSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserVisualStudioLinkResponse" />
+  </wsdl:message>
   <wsdl:message name="GetProjectsSoapIn">
     <wsdl:part name="parameters" element="tns:GetProjects" />
   </wsdl:message>
@@ -1473,247 +1686,163 @@
   <wsdl:message name="GetPackageLinkSoapOut">
     <wsdl:part name="parameters" element="tns:GetPackageLinkResponse" />
   </wsdl:message>
-  <wsdl:message name="GetCompaniesSoapIn">
-    <wsdl:part name="parameters" element="tns:GetCompanies" />
-  </wsdl:message>
-  <wsdl:message name="GetCompaniesSoapOut">
-    <wsdl:part name="parameters" element="tns:GetCompaniesResponse" />
-  </wsdl:message>
-  <wsdl:message name="CreateCompanySoapIn">
-    <wsdl:part name="parameters" element="tns:CreateCompany" />
-  </wsdl:message>
-  <wsdl:message name="CreateCompanySoapOut">
-    <wsdl:part name="parameters" element="tns:CreateCompanyResponse" />
-  </wsdl:message>
-  <wsdl:message name="UpdateCompanySoapIn">
-    <wsdl:part name="parameters" element="tns:UpdateCompany" />
-  </wsdl:message>
-  <wsdl:message name="UpdateCompanySoapOut">
-    <wsdl:part name="parameters" element="tns:UpdateCompanyResponse" />
-  </wsdl:message>
-  <wsdl:message name="DeleteCompanySoapIn">
-    <wsdl:part name="parameters" element="tns:DeleteCompany" />
-  </wsdl:message>
-  <wsdl:message name="DeleteCompanySoapOut">
-    <wsdl:part name="parameters" element="tns:DeleteCompanyResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetUsersSoapIn">
-    <wsdl:part name="parameters" element="tns:GetUsers" />
-  </wsdl:message>
-  <wsdl:message name="GetUsersSoapOut">
-    <wsdl:part name="parameters" element="tns:GetUsersResponse" />
-  </wsdl:message>
-  <wsdl:message name="CreateUserSoapIn">
-    <wsdl:part name="parameters" element="tns:CreateUser" />
-  </wsdl:message>
-  <wsdl:message name="CreateUserSoapOut">
-    <wsdl:part name="parameters" element="tns:CreateUserResponse" />
-  </wsdl:message>
-  <wsdl:message name="UpdateUserSoapIn">
-    <wsdl:part name="parameters" element="tns:UpdateUser" />
-  </wsdl:message>
-  <wsdl:message name="UpdateUserSoapOut">
-    <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
-  </wsdl:message>
-  <wsdl:message name="DeleteUserSoapIn">
-    <wsdl:part name="parameters" element="tns:DeleteUser" />
-  </wsdl:message>
-  <wsdl:message name="DeleteUserSoapOut">
-    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetRepositoriesSoapIn">
-    <wsdl:part name="parameters" element="tns:GetRepositories" />
-  </wsdl:message>
-  <wsdl:message name="GetRepositoriesSoapOut">
-    <wsdl:part name="parameters" element="tns:GetRepositoriesResponse" />
-  </wsdl:message>
-  <wsdl:message name="CreateOrUpdateRepositorySoapIn">
-    <wsdl:part name="parameters" element="tns:CreateOrUpdateRepository" />
-  </wsdl:message>
-  <wsdl:message name="CreateOrUpdateRepositorySoapOut">
-    <wsdl:part name="parameters" element="tns:CreateOrUpdateRepositoryResponse" />
-  </wsdl:message>
-  <wsdl:message name="CreateRepositorySoapIn">
-    <wsdl:part name="parameters" element="tns:CreateRepository" />
-  </wsdl:message>
-  <wsdl:message name="CreateRepositorySoapOut">
-    <wsdl:part name="parameters" element="tns:CreateRepositoryResponse" />
-  </wsdl:message>
-  <wsdl:message name="UpdateRepositorySoapIn">
-    <wsdl:part name="parameters" element="tns:UpdateRepository" />
-  </wsdl:message>
-  <wsdl:message name="UpdateRepositorySoapOut">
-    <wsdl:part name="parameters" element="tns:UpdateRepositoryResponse" />
-  </wsdl:message>
-  <wsdl:message name="DeleteRepositorySoapIn">
-    <wsdl:part name="parameters" element="tns:DeleteRepository" />
-  </wsdl:message>
-  <wsdl:message name="DeleteRepositorySoapOut">
-    <wsdl:part name="parameters" element="tns:DeleteRepositoryResponse" />
-  </wsdl:message>
-  <wsdl:message name="DigestGenerateRequestSoapIn">
-    <wsdl:part name="parameters" element="tns:DigestGenerateRequest" />
-  </wsdl:message>
-  <wsdl:message name="DigestGenerateRequestSoapOut">
-    <wsdl:part name="parameters" element="tns:DigestGenerateRequestResponse" />
-  </wsdl:message>
-  <wsdl:message name="DigestValidateResponseSoapIn">
-    <wsdl:part name="parameters" element="tns:DigestValidateResponse" />
-  </wsdl:message>
-  <wsdl:message name="DigestValidateResponseSoapOut">
-    <wsdl:part name="parameters" element="tns:DigestValidateResponseResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetJobStatusSoapIn">
-    <wsdl:part name="parameters" element="tns:GetJobStatus" />
-  </wsdl:message>
-  <wsdl:message name="GetJobStatusSoapOut">
-    <wsdl:part name="parameters" element="tns:GetJobStatusResponse" />
-  </wsdl:message>
-  <wsdl:message name="CreateJobSoapIn">
-    <wsdl:part name="parameters" element="tns:CreateJob" />
-  </wsdl:message>
-  <wsdl:message name="CreateJobSoapOut">
-    <wsdl:part name="parameters" element="tns:CreateJobResponse" />
-  </wsdl:message>
-  <wsdl:message name="UploadPackageSoapIn">
-    <wsdl:part name="parameters" element="tns:UploadPackage" />
-  </wsdl:message>
-  <wsdl:message name="UploadPackageSoapOut">
-    <wsdl:part name="parameters" element="tns:UploadPackageResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetUserPermissionsSoapIn">
-    <wsdl:part name="parameters" element="tns:GetUserPermissions" />
-  </wsdl:message>
-  <wsdl:message name="GetUserPermissionsSoapOut">
-    <wsdl:part name="parameters" element="tns:GetUserPermissionsResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetCompanyPermissionsSoapIn">
-    <wsdl:part name="parameters" element="tns:GetCompanyPermissions" />
-  </wsdl:message>
-  <wsdl:message name="GetCompanyPermissionsSoapOut">
-    <wsdl:part name="parameters" element="tns:GetCompanyPermissionsResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetRepositoryPermissionsSoapIn">
-    <wsdl:part name="parameters" element="tns:GetRepositoryPermissions" />
-  </wsdl:message>
-  <wsdl:message name="GetRepositoryPermissionsSoapOut">
-    <wsdl:part name="parameters" element="tns:GetRepositoryPermissionsResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetProjectPermissionsSoapIn">
-    <wsdl:part name="parameters" element="tns:GetProjectPermissions" />
-  </wsdl:message>
-  <wsdl:message name="GetProjectPermissionsSoapOut">
-    <wsdl:part name="parameters" element="tns:GetProjectPermissionsResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetVersionPermissionsSoapIn">
-    <wsdl:part name="parameters" element="tns:GetVersionPermissions" />
-  </wsdl:message>
-  <wsdl:message name="GetVersionPermissionsSoapOut">
-    <wsdl:part name="parameters" element="tns:GetVersionPermissionsResponse" />
-  </wsdl:message>
-  <wsdl:message name="SetCompanyPermissionsSoapIn">
-    <wsdl:part name="parameters" element="tns:SetCompanyPermissions" />
-  </wsdl:message>
-  <wsdl:message name="SetCompanyPermissionsSoapOut">
-    <wsdl:part name="parameters" element="tns:SetCompanyPermissionsResponse" />
-  </wsdl:message>
-  <wsdl:message name="SetRepositoryPermissionsSoapIn">
-    <wsdl:part name="parameters" element="tns:SetRepositoryPermissions" />
-  </wsdl:message>
-  <wsdl:message name="SetRepositoryPermissionsSoapOut">
-    <wsdl:part name="parameters" element="tns:SetRepositoryPermissionsResponse" />
-  </wsdl:message>
-  <wsdl:message name="SetProjectPermissionsSoapIn">
-    <wsdl:part name="parameters" element="tns:SetProjectPermissions" />
-  </wsdl:message>
-  <wsdl:message name="SetProjectPermissionsSoapOut">
-    <wsdl:part name="parameters" element="tns:SetProjectPermissionsResponse" />
-  </wsdl:message>
-  <wsdl:message name="SetVersionPermissionsSoapIn">
-    <wsdl:part name="parameters" element="tns:SetVersionPermissions" />
-  </wsdl:message>
-  <wsdl:message name="SetVersionPermissionsSoapOut">
-    <wsdl:part name="parameters" element="tns:SetVersionPermissionsResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetAvailableStatisticNamesSoapIn">
-    <wsdl:part name="parameters" element="tns:GetAvailableStatisticNames" />
-  </wsdl:message>
-  <wsdl:message name="GetAvailableStatisticNamesSoapOut">
-    <wsdl:part name="parameters" element="tns:GetAvailableStatisticNamesResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetStatisticSoapIn">
-    <wsdl:part name="parameters" element="tns:GetStatistic" />
-  </wsdl:message>
-  <wsdl:message name="GetStatisticSoapOut">
-    <wsdl:part name="parameters" element="tns:GetStatisticResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetImageFileSoapIn">
-    <wsdl:part name="parameters" element="tns:GetImageFile" />
-  </wsdl:message>
-  <wsdl:message name="GetImageFileSoapOut">
-    <wsdl:part name="parameters" element="tns:GetImageFileResponse" />
-  </wsdl:message>
-  <wsdl:message name="LogImageFileFoundSoapIn">
-    <wsdl:part name="parameters" element="tns:LogImageFileFound" />
-  </wsdl:message>
-  <wsdl:message name="LogImageFileFoundSoapOut">
-    <wsdl:part name="parameters" element="tns:LogImageFileFoundResponse" />
-  </wsdl:message>
-  <wsdl:message name="LogImageFileNotFoundSoapIn">
-    <wsdl:part name="parameters" element="tns:LogImageFileNotFound" />
-  </wsdl:message>
-  <wsdl:message name="LogImageFileNotFoundSoapOut">
-    <wsdl:part name="parameters" element="tns:LogImageFileNotFoundResponse" />
-  </wsdl:message>
-  <wsdl:message name="LogSourceFileFoundSoapIn">
-    <wsdl:part name="parameters" element="tns:LogSourceFileFound" />
-  </wsdl:message>
-  <wsdl:message name="LogSourceFileFoundSoapOut">
-    <wsdl:part name="parameters" element="tns:LogSourceFileFoundResponse" />
-  </wsdl:message>
-  <wsdl:message name="UserValidateSoapIn">
-    <wsdl:part name="parameters" element="tns:UserValidate" />
-  </wsdl:message>
-  <wsdl:message name="UserValidateSoapOut">
-    <wsdl:part name="parameters" element="tns:UserValidateResponse" />
-  </wsdl:message>
-  <wsdl:message name="CreateUserByKeySoapIn">
-    <wsdl:part name="parameters" element="tns:CreateUserByKey" />
-  </wsdl:message>
-  <wsdl:message name="CreateUserByKeySoapOut">
-    <wsdl:part name="parameters" element="tns:CreateUserByKeyResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetUserByKeySoapIn">
-    <wsdl:part name="parameters" element="tns:GetUserByKey" />
-  </wsdl:message>
-  <wsdl:message name="GetUserByKeySoapOut">
-    <wsdl:part name="parameters" element="tns:GetUserByKeyResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetUserKeysSoapIn">
-    <wsdl:part name="parameters" element="tns:GetUserKeys" />
-  </wsdl:message>
-  <wsdl:message name="GetUserKeysSoapOut">
-    <wsdl:part name="parameters" element="tns:GetUserKeysResponse" />
-  </wsdl:message>
-  <wsdl:message name="AddUserKeysSoapIn">
-    <wsdl:part name="parameters" element="tns:AddUserKeys" />
-  </wsdl:message>
-  <wsdl:message name="AddUserKeysSoapOut">
-    <wsdl:part name="parameters" element="tns:AddUserKeysResponse" />
-  </wsdl:message>
-  <wsdl:message name="RemoveUserKeysSoapIn">
-    <wsdl:part name="parameters" element="tns:RemoveUserKeys" />
-  </wsdl:message>
-  <wsdl:message name="RemoveUserKeysSoapOut">
-    <wsdl:part name="parameters" element="tns:RemoveUserKeysResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetUserVisualStudioLinkSoapIn">
-    <wsdl:part name="parameters" element="tns:GetUserVisualStudioLink" />
-  </wsdl:message>
-  <wsdl:message name="GetUserVisualStudioLinkSoapOut">
-    <wsdl:part name="parameters" element="tns:GetUserVisualStudioLinkResponse" />
-  </wsdl:message>
   <wsdl:portType name="WebServiceSoap">
+    <wsdl:operation name="GetCompanies">
+      <wsdl:input message="tns:GetCompaniesSoapIn" />
+      <wsdl:output message="tns:GetCompaniesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCompany">
+      <wsdl:input message="tns:CreateCompanySoapIn" />
+      <wsdl:output message="tns:CreateCompanySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCompany">
+      <wsdl:input message="tns:UpdateCompanySoapIn" />
+      <wsdl:output message="tns:UpdateCompanySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCompany">
+      <wsdl:input message="tns:DeleteCompanySoapIn" />
+      <wsdl:output message="tns:DeleteCompanySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <wsdl:input message="tns:GetUsersSoapIn" />
+      <wsdl:output message="tns:GetUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateUser">
+      <wsdl:input message="tns:CreateUserSoapIn" />
+      <wsdl:output message="tns:CreateUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <wsdl:input message="tns:UpdateUserSoapIn" />
+      <wsdl:output message="tns:UpdateUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input message="tns:DeleteUserSoapIn" />
+      <wsdl:output message="tns:DeleteUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRepositories">
+      <wsdl:input message="tns:GetRepositoriesSoapIn" />
+      <wsdl:output message="tns:GetRepositoriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrUpdateRepository">
+      <wsdl:input message="tns:CreateOrUpdateRepositorySoapIn" />
+      <wsdl:output message="tns:CreateOrUpdateRepositorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateRepository">
+      <wsdl:input message="tns:CreateRepositorySoapIn" />
+      <wsdl:output message="tns:CreateRepositorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRepository">
+      <wsdl:input message="tns:UpdateRepositorySoapIn" />
+      <wsdl:output message="tns:UpdateRepositorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRepository">
+      <wsdl:input message="tns:DeleteRepositorySoapIn" />
+      <wsdl:output message="tns:DeleteRepositorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DigestGenerateRequest">
+      <wsdl:input message="tns:DigestGenerateRequestSoapIn" />
+      <wsdl:output message="tns:DigestGenerateRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DigestValidateResponse">
+      <wsdl:input message="tns:DigestValidateResponseSoapIn" />
+      <wsdl:output message="tns:DigestValidateResponseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUploadReports">
+      <wsdl:input message="tns:GetUploadReportsSoapIn" />
+      <wsdl:output message="tns:GetUploadReportsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadPackage">
+      <wsdl:input message="tns:UploadPackageSoapIn" />
+      <wsdl:output message="tns:UploadPackageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPermissions">
+      <wsdl:input message="tns:GetUserPermissionsSoapIn" />
+      <wsdl:output message="tns:GetUserPermissionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyPermissions">
+      <wsdl:input message="tns:GetCompanyPermissionsSoapIn" />
+      <wsdl:output message="tns:GetCompanyPermissionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRepositoryPermissions">
+      <wsdl:input message="tns:GetRepositoryPermissionsSoapIn" />
+      <wsdl:output message="tns:GetRepositoryPermissionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectPermissions">
+      <wsdl:input message="tns:GetProjectPermissionsSoapIn" />
+      <wsdl:output message="tns:GetProjectPermissionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVersionPermissions">
+      <wsdl:input message="tns:GetVersionPermissionsSoapIn" />
+      <wsdl:output message="tns:GetVersionPermissionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCompanyPermissions">
+      <wsdl:input message="tns:SetCompanyPermissionsSoapIn" />
+      <wsdl:output message="tns:SetCompanyPermissionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetRepositoryPermissions">
+      <wsdl:input message="tns:SetRepositoryPermissionsSoapIn" />
+      <wsdl:output message="tns:SetRepositoryPermissionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetProjectPermissions">
+      <wsdl:input message="tns:SetProjectPermissionsSoapIn" />
+      <wsdl:output message="tns:SetProjectPermissionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetVersionPermissions">
+      <wsdl:input message="tns:SetVersionPermissionsSoapIn" />
+      <wsdl:output message="tns:SetVersionPermissionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableStatisticNames">
+      <wsdl:input message="tns:GetAvailableStatisticNamesSoapIn" />
+      <wsdl:output message="tns:GetAvailableStatisticNamesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatistic">
+      <wsdl:input message="tns:GetStatisticSoapIn" />
+      <wsdl:output message="tns:GetStatisticSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImageFile">
+      <wsdl:input message="tns:GetImageFileSoapIn" />
+      <wsdl:output message="tns:GetImageFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogImageFileFound">
+      <wsdl:input message="tns:LogImageFileFoundSoapIn" />
+      <wsdl:output message="tns:LogImageFileFoundSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogImageFileNotFound">
+      <wsdl:input message="tns:LogImageFileNotFoundSoapIn" />
+      <wsdl:output message="tns:LogImageFileNotFoundSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogSourceFileFound">
+      <wsdl:input message="tns:LogSourceFileFoundSoapIn" />
+      <wsdl:output message="tns:LogSourceFileFoundSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserValidate">
+      <wsdl:input message="tns:UserValidateSoapIn" />
+      <wsdl:output message="tns:UserValidateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateUserByKey">
+      <wsdl:input message="tns:CreateUserByKeySoapIn" />
+      <wsdl:output message="tns:CreateUserByKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByKey">
+      <wsdl:input message="tns:GetUserByKeySoapIn" />
+      <wsdl:output message="tns:GetUserByKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserKeys">
+      <wsdl:input message="tns:GetUserKeysSoapIn" />
+      <wsdl:output message="tns:GetUserKeysSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUserKeys">
+      <wsdl:input message="tns:AddUserKeysSoapIn" />
+      <wsdl:output message="tns:AddUserKeysSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserKeys">
+      <wsdl:input message="tns:RemoveUserKeysSoapIn" />
+      <wsdl:output message="tns:RemoveUserKeysSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserVisualStudioLink">
+      <wsdl:input message="tns:GetUserVisualStudioLinkSoapIn" />
+      <wsdl:output message="tns:GetUserVisualStudioLinkSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetProjects">
       <wsdl:input message="tns:GetProjectsSoapIn" />
       <wsdl:output message="tns:GetProjectsSoapOut" />
@@ -1810,169 +1939,360 @@
       <wsdl:input message="tns:GetPackageLinkSoapIn" />
       <wsdl:output message="tns:GetPackageLinkSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetCompanies">
-      <wsdl:input message="tns:GetCompaniesSoapIn" />
-      <wsdl:output message="tns:GetCompaniesSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="CreateCompany">
-      <wsdl:input message="tns:CreateCompanySoapIn" />
-      <wsdl:output message="tns:CreateCompanySoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="UpdateCompany">
-      <wsdl:input message="tns:UpdateCompanySoapIn" />
-      <wsdl:output message="tns:UpdateCompanySoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="DeleteCompany">
-      <wsdl:input message="tns:DeleteCompanySoapIn" />
-      <wsdl:output message="tns:DeleteCompanySoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetUsers">
-      <wsdl:input message="tns:GetUsersSoapIn" />
-      <wsdl:output message="tns:GetUsersSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="CreateUser">
-      <wsdl:input message="tns:CreateUserSoapIn" />
-      <wsdl:output message="tns:CreateUserSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="UpdateUser">
-      <wsdl:input message="tns:UpdateUserSoapIn" />
-      <wsdl:output message="tns:UpdateUserSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="DeleteUser">
-      <wsdl:input message="tns:DeleteUserSoapIn" />
-      <wsdl:output message="tns:DeleteUserSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetRepositories">
-      <wsdl:input message="tns:GetRepositoriesSoapIn" />
-      <wsdl:output message="tns:GetRepositoriesSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="CreateOrUpdateRepository">
-      <wsdl:input message="tns:CreateOrUpdateRepositorySoapIn" />
-      <wsdl:output message="tns:CreateOrUpdateRepositorySoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="CreateRepository">
-      <wsdl:input message="tns:CreateRepositorySoapIn" />
-      <wsdl:output message="tns:CreateRepositorySoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="UpdateRepository">
-      <wsdl:input message="tns:UpdateRepositorySoapIn" />
-      <wsdl:output message="tns:UpdateRepositorySoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="DeleteRepository">
-      <wsdl:input message="tns:DeleteRepositorySoapIn" />
-      <wsdl:output message="tns:DeleteRepositorySoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="DigestGenerateRequest">
-      <wsdl:input message="tns:DigestGenerateRequestSoapIn" />
-      <wsdl:output message="tns:DigestGenerateRequestSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="DigestValidateResponse">
-      <wsdl:input message="tns:DigestValidateResponseSoapIn" />
-      <wsdl:output message="tns:DigestValidateResponseSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetJobStatus">
-      <wsdl:input message="tns:GetJobStatusSoapIn" />
-      <wsdl:output message="tns:GetJobStatusSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="CreateJob">
-      <wsdl:input message="tns:CreateJobSoapIn" />
-      <wsdl:output message="tns:CreateJobSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="UploadPackage">
-      <wsdl:input message="tns:UploadPackageSoapIn" />
-      <wsdl:output message="tns:UploadPackageSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetUserPermissions">
-      <wsdl:input message="tns:GetUserPermissionsSoapIn" />
-      <wsdl:output message="tns:GetUserPermissionsSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetCompanyPermissions">
-      <wsdl:input message="tns:GetCompanyPermissionsSoapIn" />
-      <wsdl:output message="tns:GetCompanyPermissionsSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetRepositoryPermissions">
-      <wsdl:input message="tns:GetRepositoryPermissionsSoapIn" />
-      <wsdl:output message="tns:GetRepositoryPermissionsSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetProjectPermissions">
-      <wsdl:input message="tns:GetProjectPermissionsSoapIn" />
-      <wsdl:output message="tns:GetProjectPermissionsSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetVersionPermissions">
-      <wsdl:input message="tns:GetVersionPermissionsSoapIn" />
-      <wsdl:output message="tns:GetVersionPermissionsSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="SetCompanyPermissions">
-      <wsdl:input message="tns:SetCompanyPermissionsSoapIn" />
-      <wsdl:output message="tns:SetCompanyPermissionsSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="SetRepositoryPermissions">
-      <wsdl:input message="tns:SetRepositoryPermissionsSoapIn" />
-      <wsdl:output message="tns:SetRepositoryPermissionsSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="SetProjectPermissions">
-      <wsdl:input message="tns:SetProjectPermissionsSoapIn" />
-      <wsdl:output message="tns:SetProjectPermissionsSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="SetVersionPermissions">
-      <wsdl:input message="tns:SetVersionPermissionsSoapIn" />
-      <wsdl:output message="tns:SetVersionPermissionsSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetAvailableStatisticNames">
-      <wsdl:input message="tns:GetAvailableStatisticNamesSoapIn" />
-      <wsdl:output message="tns:GetAvailableStatisticNamesSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetStatistic">
-      <wsdl:input message="tns:GetStatisticSoapIn" />
-      <wsdl:output message="tns:GetStatisticSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetImageFile">
-      <wsdl:input message="tns:GetImageFileSoapIn" />
-      <wsdl:output message="tns:GetImageFileSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="LogImageFileFound">
-      <wsdl:input message="tns:LogImageFileFoundSoapIn" />
-      <wsdl:output message="tns:LogImageFileFoundSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="LogImageFileNotFound">
-      <wsdl:input message="tns:LogImageFileNotFoundSoapIn" />
-      <wsdl:output message="tns:LogImageFileNotFoundSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="LogSourceFileFound">
-      <wsdl:input message="tns:LogSourceFileFoundSoapIn" />
-      <wsdl:output message="tns:LogSourceFileFoundSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="UserValidate">
-      <wsdl:input message="tns:UserValidateSoapIn" />
-      <wsdl:output message="tns:UserValidateSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="CreateUserByKey">
-      <wsdl:input message="tns:CreateUserByKeySoapIn" />
-      <wsdl:output message="tns:CreateUserByKeySoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetUserByKey">
-      <wsdl:input message="tns:GetUserByKeySoapIn" />
-      <wsdl:output message="tns:GetUserByKeySoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetUserKeys">
-      <wsdl:input message="tns:GetUserKeysSoapIn" />
-      <wsdl:output message="tns:GetUserKeysSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="AddUserKeys">
-      <wsdl:input message="tns:AddUserKeysSoapIn" />
-      <wsdl:output message="tns:AddUserKeysSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="RemoveUserKeys">
-      <wsdl:input message="tns:RemoveUserKeysSoapIn" />
-      <wsdl:output message="tns:RemoveUserKeysSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetUserVisualStudioLink">
-      <wsdl:input message="tns:GetUserVisualStudioLinkSoapIn" />
-      <wsdl:output message="tns:GetUserVisualStudioLinkSoapOut" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCompanies">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetCompanies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCompany">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCompany">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/UpdateCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCompany">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/DeleteCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUser">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRepositories">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetRepositories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrUpdateRepository">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateOrUpdateRepository" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateRepository">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateRepository" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRepository">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/UpdateRepository" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRepository">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/DeleteRepository" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DigestGenerateRequest">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/DigestGenerateRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DigestValidateResponse">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/DigestValidateResponse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUploadReports">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUploadReports" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadPackage">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/UploadPackage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPermissions">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyPermissions">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetCompanyPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRepositoryPermissions">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetRepositoryPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectPermissions">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetProjectPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVersionPermissions">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetVersionPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCompanyPermissions">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/SetCompanyPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetRepositoryPermissions">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/SetRepositoryPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetProjectPermissions">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/SetProjectPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetVersionPermissions">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/SetVersionPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableStatisticNames">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetAvailableStatisticNames" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatistic">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetStatistic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImageFile">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetImageFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogImageFileFound">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/LogImageFileFound" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogImageFileNotFound">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/LogImageFileNotFound" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogSourceFileFound">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/LogSourceFileFound" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserValidate">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/UserValidate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUserByKey">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateUserByKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByKey">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserByKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserKeys">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserKeys" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUserKeys">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/AddUserKeys" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserKeys">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/RemoveUserKeys" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserVisualStudioLink">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserVisualStudioLink" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetProjects">
       <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetProjects" style="document" />
       <wsdl:input>
@@ -2189,369 +2509,360 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetCompanies">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetCompanies" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CreateCompany">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateCompany" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateCompany">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/UpdateCompany" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DeleteCompany">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/DeleteCompany" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetUsers">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUsers" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CreateUser">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateUser" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateUser">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/UpdateUser" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DeleteUser">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/DeleteUser" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetRepositories">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetRepositories" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CreateOrUpdateRepository">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateOrUpdateRepository" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CreateRepository">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateRepository" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateRepository">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/UpdateRepository" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DeleteRepository">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/DeleteRepository" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DigestGenerateRequest">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/DigestGenerateRequest" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DigestValidateResponse">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/DigestValidateResponse" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetJobStatus">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetJobStatus" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CreateJob">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateJob" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UploadPackage">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/UploadPackage" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetUserPermissions">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserPermissions" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetCompanyPermissions">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetCompanyPermissions" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetRepositoryPermissions">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetRepositoryPermissions" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetProjectPermissions">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetProjectPermissions" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetVersionPermissions">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetVersionPermissions" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SetCompanyPermissions">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/SetCompanyPermissions" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SetRepositoryPermissions">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/SetRepositoryPermissions" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SetProjectPermissions">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/SetProjectPermissions" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SetVersionPermissions">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/SetVersionPermissions" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAvailableStatisticNames">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetAvailableStatisticNames" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetStatistic">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetStatistic" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetImageFile">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetImageFile" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LogImageFileFound">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/LogImageFileFound" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LogImageFileNotFound">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/LogImageFileNotFound" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LogSourceFileFound">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/LogSourceFileFound" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UserValidate">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/UserValidate" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CreateUserByKey">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateUserByKey" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetUserByKey">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserByKey" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetUserKeys">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserKeys" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddUserKeys">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/AddUserKeys" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="RemoveUserKeys">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/RemoveUserKeys" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetUserVisualStudioLink">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserVisualStudioLink" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCompanies">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetCompanies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCompany">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateCompany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCompany">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/UpdateCompany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCompany">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/DeleteCompany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUser">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRepositories">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetRepositories" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrUpdateRepository">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateOrUpdateRepository" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateRepository">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateRepository" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRepository">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/UpdateRepository" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRepository">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/DeleteRepository" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DigestGenerateRequest">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/DigestGenerateRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DigestValidateResponse">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/DigestValidateResponse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUploadReports">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUploadReports" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadPackage">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/UploadPackage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPermissions">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyPermissions">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetCompanyPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRepositoryPermissions">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetRepositoryPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectPermissions">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetProjectPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVersionPermissions">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetVersionPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCompanyPermissions">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/SetCompanyPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetRepositoryPermissions">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/SetRepositoryPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetProjectPermissions">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/SetProjectPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetVersionPermissions">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/SetVersionPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableStatisticNames">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetAvailableStatisticNames" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatistic">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetStatistic" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImageFile">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetImageFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogImageFileFound">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/LogImageFileFound" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogImageFileNotFound">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/LogImageFileNotFound" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogSourceFileFound">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/LogSourceFileFound" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserValidate">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/UserValidate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUserByKey">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateUserByKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByKey">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserByKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserKeys">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserKeys" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUserKeys">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/AddUserKeys" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserKeys">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/RemoveUserKeys" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserVisualStudioLink">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserVisualStudioLink" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetProjects">
       <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetProjects" style="document" />
       <wsdl:input>
@@ -2761,366 +3072,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetPackageLink">
       <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetPackageLink" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetCompanies">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetCompanies" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CreateCompany">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateCompany" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateCompany">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/UpdateCompany" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DeleteCompany">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/DeleteCompany" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetUsers">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUsers" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CreateUser">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateUser" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateUser">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/UpdateUser" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DeleteUser">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/DeleteUser" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetRepositories">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetRepositories" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CreateOrUpdateRepository">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateOrUpdateRepository" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CreateRepository">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateRepository" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateRepository">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/UpdateRepository" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DeleteRepository">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/DeleteRepository" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DigestGenerateRequest">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/DigestGenerateRequest" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DigestValidateResponse">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/DigestValidateResponse" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetJobStatus">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetJobStatus" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CreateJob">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateJob" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UploadPackage">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/UploadPackage" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetUserPermissions">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserPermissions" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetCompanyPermissions">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetCompanyPermissions" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetRepositoryPermissions">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetRepositoryPermissions" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetProjectPermissions">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetProjectPermissions" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetVersionPermissions">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetVersionPermissions" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SetCompanyPermissions">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/SetCompanyPermissions" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SetRepositoryPermissions">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/SetRepositoryPermissions" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SetProjectPermissions">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/SetProjectPermissions" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SetVersionPermissions">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/SetVersionPermissions" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAvailableStatisticNames">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetAvailableStatisticNames" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetStatistic">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetStatistic" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetImageFile">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetImageFile" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LogImageFileFound">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/LogImageFileFound" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LogImageFileNotFound">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/LogImageFileNotFound" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LogSourceFileFound">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/LogSourceFileFound" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UserValidate">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/UserValidate" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CreateUserByKey">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateUserByKey" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetUserByKey">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserByKey" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetUserKeys">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserKeys" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddUserKeys">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/AddUserKeys" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="RemoveUserKeys">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/RemoveUserKeys" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetUserVisualStudioLink">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserVisualStudioLink" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

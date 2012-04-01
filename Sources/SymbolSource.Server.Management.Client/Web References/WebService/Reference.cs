@@ -29,6 +29,84 @@ namespace SymbolSource.Server.Management.Client {
     [System.Web.Services.WebServiceBindingAttribute(Name="WebServiceSoap", Namespace="http://api.symbolsource.org/schemas/webServices")]
     public partial class WebService : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
+        private System.Threading.SendOrPostCallback GetCompaniesOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CreateCompanyOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdateCompanyOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback DeleteCompanyOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetUsersOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CreateUserOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdateUserOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback DeleteUserOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetRepositoriesOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CreateOrUpdateRepositoryOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CreateRepositoryOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdateRepositoryOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback DeleteRepositoryOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback DigestGenerateRequestOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback DigestValidateResponseOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetUploadReportsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UploadPackageOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetUserPermissionsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetCompanyPermissionsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetRepositoryPermissionsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetProjectPermissionsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetVersionPermissionsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SetCompanyPermissionsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SetRepositoryPermissionsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SetProjectPermissionsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SetVersionPermissionsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetAvailableStatisticNamesOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetStatisticOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetImageFileOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback LogImageFileFoundOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback LogImageFileNotFoundOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback LogSourceFileFoundOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UserValidateOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CreateUserByKeyOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetUserByKeyOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetUserKeysOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AddUserKeysOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RemoveUserKeysOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetUserVisualStudioLinkOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetProjectsOperationCompleted;
         
         private System.Threading.SendOrPostCallback CreateOrUpdateProjectOperationCompleted;
@@ -77,86 +155,6 @@ namespace SymbolSource.Server.Management.Client {
         
         private System.Threading.SendOrPostCallback GetPackageLinkOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetCompaniesOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback CreateCompanyOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback UpdateCompanyOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback DeleteCompanyOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetUsersOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback CreateUserOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback UpdateUserOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback DeleteUserOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetRepositoriesOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback CreateOrUpdateRepositoryOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback CreateRepositoryOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback UpdateRepositoryOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback DeleteRepositoryOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback DigestGenerateRequestOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback DigestValidateResponseOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetJobStatusOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback CreateJobOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback UploadPackageOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetUserPermissionsOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetCompanyPermissionsOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetRepositoryPermissionsOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetProjectPermissionsOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetVersionPermissionsOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback SetCompanyPermissionsOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback SetRepositoryPermissionsOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback SetProjectPermissionsOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback SetVersionPermissionsOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetAvailableStatisticNamesOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetStatisticOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetImageFileOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback LogImageFileFoundOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback LogImageFileNotFoundOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback LogSourceFileFoundOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback UserValidateOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback CreateUserByKeyOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetUserByKeyOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetUserKeysOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback AddUserKeysOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback RemoveUserKeysOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetUserVisualStudioLinkOperationCompleted;
-        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -194,6 +192,123 @@ namespace SymbolSource.Server.Management.Client {
                 this.useDefaultCredentialsSetExplicitly = true;
             }
         }
+        
+        /// <remarks/>
+        public event GetCompaniesCompletedEventHandler GetCompaniesCompleted;
+        
+        /// <remarks/>
+        public event CreateCompanyCompletedEventHandler CreateCompanyCompleted;
+        
+        /// <remarks/>
+        public event UpdateCompanyCompletedEventHandler UpdateCompanyCompleted;
+        
+        /// <remarks/>
+        public event DeleteCompanyCompletedEventHandler DeleteCompanyCompleted;
+        
+        /// <remarks/>
+        public event GetUsersCompletedEventHandler GetUsersCompleted;
+        
+        /// <remarks/>
+        public event CreateUserCompletedEventHandler CreateUserCompleted;
+        
+        /// <remarks/>
+        public event UpdateUserCompletedEventHandler UpdateUserCompleted;
+        
+        /// <remarks/>
+        public event DeleteUserCompletedEventHandler DeleteUserCompleted;
+        
+        /// <remarks/>
+        public event GetRepositoriesCompletedEventHandler GetRepositoriesCompleted;
+        
+        /// <remarks/>
+        public event CreateOrUpdateRepositoryCompletedEventHandler CreateOrUpdateRepositoryCompleted;
+        
+        /// <remarks/>
+        public event CreateRepositoryCompletedEventHandler CreateRepositoryCompleted;
+        
+        /// <remarks/>
+        public event UpdateRepositoryCompletedEventHandler UpdateRepositoryCompleted;
+        
+        /// <remarks/>
+        public event DeleteRepositoryCompletedEventHandler DeleteRepositoryCompleted;
+        
+        /// <remarks/>
+        public event DigestGenerateRequestCompletedEventHandler DigestGenerateRequestCompleted;
+        
+        /// <remarks/>
+        public event DigestValidateResponseCompletedEventHandler DigestValidateResponseCompleted;
+        
+        /// <remarks/>
+        public event GetUploadReportsCompletedEventHandler GetUploadReportsCompleted;
+        
+        /// <remarks/>
+        public event UploadPackageCompletedEventHandler UploadPackageCompleted;
+        
+        /// <remarks/>
+        public event GetUserPermissionsCompletedEventHandler GetUserPermissionsCompleted;
+        
+        /// <remarks/>
+        public event GetCompanyPermissionsCompletedEventHandler GetCompanyPermissionsCompleted;
+        
+        /// <remarks/>
+        public event GetRepositoryPermissionsCompletedEventHandler GetRepositoryPermissionsCompleted;
+        
+        /// <remarks/>
+        public event GetProjectPermissionsCompletedEventHandler GetProjectPermissionsCompleted;
+        
+        /// <remarks/>
+        public event GetVersionPermissionsCompletedEventHandler GetVersionPermissionsCompleted;
+        
+        /// <remarks/>
+        public event SetCompanyPermissionsCompletedEventHandler SetCompanyPermissionsCompleted;
+        
+        /// <remarks/>
+        public event SetRepositoryPermissionsCompletedEventHandler SetRepositoryPermissionsCompleted;
+        
+        /// <remarks/>
+        public event SetProjectPermissionsCompletedEventHandler SetProjectPermissionsCompleted;
+        
+        /// <remarks/>
+        public event SetVersionPermissionsCompletedEventHandler SetVersionPermissionsCompleted;
+        
+        /// <remarks/>
+        public event GetAvailableStatisticNamesCompletedEventHandler GetAvailableStatisticNamesCompleted;
+        
+        /// <remarks/>
+        public event GetStatisticCompletedEventHandler GetStatisticCompleted;
+        
+        /// <remarks/>
+        public event GetImageFileCompletedEventHandler GetImageFileCompleted;
+        
+        /// <remarks/>
+        public event LogImageFileFoundCompletedEventHandler LogImageFileFoundCompleted;
+        
+        /// <remarks/>
+        public event LogImageFileNotFoundCompletedEventHandler LogImageFileNotFoundCompleted;
+        
+        /// <remarks/>
+        public event LogSourceFileFoundCompletedEventHandler LogSourceFileFoundCompleted;
+        
+        /// <remarks/>
+        public event UserValidateCompletedEventHandler UserValidateCompleted;
+        
+        /// <remarks/>
+        public event CreateUserByKeyCompletedEventHandler CreateUserByKeyCompleted;
+        
+        /// <remarks/>
+        public event GetUserByKeyCompletedEventHandler GetUserByKeyCompleted;
+        
+        /// <remarks/>
+        public event GetUserKeysCompletedEventHandler GetUserKeysCompleted;
+        
+        /// <remarks/>
+        public event AddUserKeysCompletedEventHandler AddUserKeysCompleted;
+        
+        /// <remarks/>
+        public event RemoveUserKeysCompletedEventHandler RemoveUserKeysCompleted;
+        
+        /// <remarks/>
+        public event GetUserVisualStudioLinkCompletedEventHandler GetUserVisualStudioLinkCompleted;
         
         /// <remarks/>
         public event GetProjectsCompletedEventHandler GetProjectsCompleted;
@@ -268,124 +383,1226 @@ namespace SymbolSource.Server.Management.Client {
         public event GetPackageLinkCompletedEventHandler GetPackageLinkCompleted;
         
         /// <remarks/>
-        public event GetCompaniesCompletedEventHandler GetCompaniesCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetCompanies", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Company[] GetCompanies(Caller caller) {
+            object[] results = this.Invoke("GetCompanies", new object[] {
+                        caller});
+            return ((Company[])(results[0]));
+        }
         
         /// <remarks/>
-        public event CreateCompanyCompletedEventHandler CreateCompanyCompleted;
+        public void GetCompaniesAsync(Caller caller) {
+            this.GetCompaniesAsync(caller, null);
+        }
         
         /// <remarks/>
-        public event UpdateCompanyCompletedEventHandler UpdateCompanyCompleted;
+        public void GetCompaniesAsync(Caller caller, object userState) {
+            if ((this.GetCompaniesOperationCompleted == null)) {
+                this.GetCompaniesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetCompaniesOperationCompleted);
+            }
+            this.InvokeAsync("GetCompanies", new object[] {
+                        caller}, this.GetCompaniesOperationCompleted, userState);
+        }
+        
+        private void OnGetCompaniesOperationCompleted(object arg) {
+            if ((this.GetCompaniesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetCompaniesCompleted(this, new GetCompaniesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
-        public event DeleteCompanyCompletedEventHandler DeleteCompanyCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/CreateCompany", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void CreateCompany(Caller caller, Company company) {
+            this.Invoke("CreateCompany", new object[] {
+                        caller,
+                        company});
+        }
         
         /// <remarks/>
-        public event GetUsersCompletedEventHandler GetUsersCompleted;
+        public void CreateCompanyAsync(Caller caller, Company company) {
+            this.CreateCompanyAsync(caller, company, null);
+        }
         
         /// <remarks/>
-        public event CreateUserCompletedEventHandler CreateUserCompleted;
+        public void CreateCompanyAsync(Caller caller, Company company, object userState) {
+            if ((this.CreateCompanyOperationCompleted == null)) {
+                this.CreateCompanyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateCompanyOperationCompleted);
+            }
+            this.InvokeAsync("CreateCompany", new object[] {
+                        caller,
+                        company}, this.CreateCompanyOperationCompleted, userState);
+        }
+        
+        private void OnCreateCompanyOperationCompleted(object arg) {
+            if ((this.CreateCompanyCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CreateCompanyCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
-        public event UpdateUserCompletedEventHandler UpdateUserCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/UpdateCompany", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void UpdateCompany(Caller caller, Company company) {
+            this.Invoke("UpdateCompany", new object[] {
+                        caller,
+                        company});
+        }
         
         /// <remarks/>
-        public event DeleteUserCompletedEventHandler DeleteUserCompleted;
+        public void UpdateCompanyAsync(Caller caller, Company company) {
+            this.UpdateCompanyAsync(caller, company, null);
+        }
         
         /// <remarks/>
-        public event GetRepositoriesCompletedEventHandler GetRepositoriesCompleted;
+        public void UpdateCompanyAsync(Caller caller, Company company, object userState) {
+            if ((this.UpdateCompanyOperationCompleted == null)) {
+                this.UpdateCompanyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateCompanyOperationCompleted);
+            }
+            this.InvokeAsync("UpdateCompany", new object[] {
+                        caller,
+                        company}, this.UpdateCompanyOperationCompleted, userState);
+        }
+        
+        private void OnUpdateCompanyOperationCompleted(object arg) {
+            if ((this.UpdateCompanyCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateCompanyCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
-        public event CreateOrUpdateRepositoryCompletedEventHandler CreateOrUpdateRepositoryCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/DeleteCompany", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void DeleteCompany(Caller caller, Company company) {
+            this.Invoke("DeleteCompany", new object[] {
+                        caller,
+                        company});
+        }
         
         /// <remarks/>
-        public event CreateRepositoryCompletedEventHandler CreateRepositoryCompleted;
+        public void DeleteCompanyAsync(Caller caller, Company company) {
+            this.DeleteCompanyAsync(caller, company, null);
+        }
         
         /// <remarks/>
-        public event UpdateRepositoryCompletedEventHandler UpdateRepositoryCompleted;
+        public void DeleteCompanyAsync(Caller caller, Company company, object userState) {
+            if ((this.DeleteCompanyOperationCompleted == null)) {
+                this.DeleteCompanyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteCompanyOperationCompleted);
+            }
+            this.InvokeAsync("DeleteCompany", new object[] {
+                        caller,
+                        company}, this.DeleteCompanyOperationCompleted, userState);
+        }
+        
+        private void OnDeleteCompanyOperationCompleted(object arg) {
+            if ((this.DeleteCompanyCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DeleteCompanyCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
-        public event DeleteRepositoryCompletedEventHandler DeleteRepositoryCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetUsers", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public User[] GetUsers(Caller caller, ref Company company) {
+            object[] results = this.Invoke("GetUsers", new object[] {
+                        caller,
+                        company});
+            company = ((Company)(results[1]));
+            return ((User[])(results[0]));
+        }
         
         /// <remarks/>
-        public event DigestGenerateRequestCompletedEventHandler DigestGenerateRequestCompleted;
+        public void GetUsersAsync(Caller caller, Company company) {
+            this.GetUsersAsync(caller, company, null);
+        }
         
         /// <remarks/>
-        public event DigestValidateResponseCompletedEventHandler DigestValidateResponseCompleted;
+        public void GetUsersAsync(Caller caller, Company company, object userState) {
+            if ((this.GetUsersOperationCompleted == null)) {
+                this.GetUsersOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetUsersOperationCompleted);
+            }
+            this.InvokeAsync("GetUsers", new object[] {
+                        caller,
+                        company}, this.GetUsersOperationCompleted, userState);
+        }
+        
+        private void OnGetUsersOperationCompleted(object arg) {
+            if ((this.GetUsersCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetUsersCompleted(this, new GetUsersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
-        public event GetJobStatusCompletedEventHandler GetJobStatusCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/CreateUser", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void CreateUser(Caller caller, User user, UserKey key) {
+            this.Invoke("CreateUser", new object[] {
+                        caller,
+                        user,
+                        key});
+        }
         
         /// <remarks/>
-        public event CreateJobCompletedEventHandler CreateJobCompleted;
+        public void CreateUserAsync(Caller caller, User user, UserKey key) {
+            this.CreateUserAsync(caller, user, key, null);
+        }
         
         /// <remarks/>
-        public event UploadPackageCompletedEventHandler UploadPackageCompleted;
+        public void CreateUserAsync(Caller caller, User user, UserKey key, object userState) {
+            if ((this.CreateUserOperationCompleted == null)) {
+                this.CreateUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateUserOperationCompleted);
+            }
+            this.InvokeAsync("CreateUser", new object[] {
+                        caller,
+                        user,
+                        key}, this.CreateUserOperationCompleted, userState);
+        }
+        
+        private void OnCreateUserOperationCompleted(object arg) {
+            if ((this.CreateUserCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CreateUserCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
-        public event GetUserPermissionsCompletedEventHandler GetUserPermissionsCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/UpdateUser", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void UpdateUser(Caller caller, ref User user) {
+            object[] results = this.Invoke("UpdateUser", new object[] {
+                        caller,
+                        user});
+            user = ((User)(results[0]));
+        }
         
         /// <remarks/>
-        public event GetCompanyPermissionsCompletedEventHandler GetCompanyPermissionsCompleted;
+        public void UpdateUserAsync(Caller caller, User user) {
+            this.UpdateUserAsync(caller, user, null);
+        }
         
         /// <remarks/>
-        public event GetRepositoryPermissionsCompletedEventHandler GetRepositoryPermissionsCompleted;
+        public void UpdateUserAsync(Caller caller, User user, object userState) {
+            if ((this.UpdateUserOperationCompleted == null)) {
+                this.UpdateUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateUserOperationCompleted);
+            }
+            this.InvokeAsync("UpdateUser", new object[] {
+                        caller,
+                        user}, this.UpdateUserOperationCompleted, userState);
+        }
+        
+        private void OnUpdateUserOperationCompleted(object arg) {
+            if ((this.UpdateUserCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateUserCompleted(this, new UpdateUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
-        public event GetProjectPermissionsCompletedEventHandler GetProjectPermissionsCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/DeleteUser", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void DeleteUser(Caller caller, User user) {
+            this.Invoke("DeleteUser", new object[] {
+                        caller,
+                        user});
+        }
         
         /// <remarks/>
-        public event GetVersionPermissionsCompletedEventHandler GetVersionPermissionsCompleted;
+        public void DeleteUserAsync(Caller caller, User user) {
+            this.DeleteUserAsync(caller, user, null);
+        }
         
         /// <remarks/>
-        public event SetCompanyPermissionsCompletedEventHandler SetCompanyPermissionsCompleted;
+        public void DeleteUserAsync(Caller caller, User user, object userState) {
+            if ((this.DeleteUserOperationCompleted == null)) {
+                this.DeleteUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteUserOperationCompleted);
+            }
+            this.InvokeAsync("DeleteUser", new object[] {
+                        caller,
+                        user}, this.DeleteUserOperationCompleted, userState);
+        }
+        
+        private void OnDeleteUserOperationCompleted(object arg) {
+            if ((this.DeleteUserCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DeleteUserCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
-        public event SetRepositoryPermissionsCompletedEventHandler SetRepositoryPermissionsCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetRepositories", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Repository[] GetRepositories(Caller caller, ref Company company) {
+            object[] results = this.Invoke("GetRepositories", new object[] {
+                        caller,
+                        company});
+            company = ((Company)(results[1]));
+            return ((Repository[])(results[0]));
+        }
         
         /// <remarks/>
-        public event SetProjectPermissionsCompletedEventHandler SetProjectPermissionsCompleted;
+        public void GetRepositoriesAsync(Caller caller, Company company) {
+            this.GetRepositoriesAsync(caller, company, null);
+        }
         
         /// <remarks/>
-        public event SetVersionPermissionsCompletedEventHandler SetVersionPermissionsCompleted;
+        public void GetRepositoriesAsync(Caller caller, Company company, object userState) {
+            if ((this.GetRepositoriesOperationCompleted == null)) {
+                this.GetRepositoriesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetRepositoriesOperationCompleted);
+            }
+            this.InvokeAsync("GetRepositories", new object[] {
+                        caller,
+                        company}, this.GetRepositoriesOperationCompleted, userState);
+        }
+        
+        private void OnGetRepositoriesOperationCompleted(object arg) {
+            if ((this.GetRepositoriesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetRepositoriesCompleted(this, new GetRepositoriesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
-        public event GetAvailableStatisticNamesCompletedEventHandler GetAvailableStatisticNamesCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/CreateOrUpdateRepository", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void CreateOrUpdateRepository(Caller caller, ref Repository repository) {
+            object[] results = this.Invoke("CreateOrUpdateRepository", new object[] {
+                        caller,
+                        repository});
+            repository = ((Repository)(results[0]));
+        }
         
         /// <remarks/>
-        public event GetStatisticCompletedEventHandler GetStatisticCompleted;
+        public void CreateOrUpdateRepositoryAsync(Caller caller, Repository repository) {
+            this.CreateOrUpdateRepositoryAsync(caller, repository, null);
+        }
         
         /// <remarks/>
-        public event GetImageFileCompletedEventHandler GetImageFileCompleted;
+        public void CreateOrUpdateRepositoryAsync(Caller caller, Repository repository, object userState) {
+            if ((this.CreateOrUpdateRepositoryOperationCompleted == null)) {
+                this.CreateOrUpdateRepositoryOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateOrUpdateRepositoryOperationCompleted);
+            }
+            this.InvokeAsync("CreateOrUpdateRepository", new object[] {
+                        caller,
+                        repository}, this.CreateOrUpdateRepositoryOperationCompleted, userState);
+        }
+        
+        private void OnCreateOrUpdateRepositoryOperationCompleted(object arg) {
+            if ((this.CreateOrUpdateRepositoryCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CreateOrUpdateRepositoryCompleted(this, new CreateOrUpdateRepositoryCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
-        public event LogImageFileFoundCompletedEventHandler LogImageFileFoundCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/CreateRepository", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void CreateRepository(Caller caller, ref Repository repository) {
+            object[] results = this.Invoke("CreateRepository", new object[] {
+                        caller,
+                        repository});
+            repository = ((Repository)(results[0]));
+        }
         
         /// <remarks/>
-        public event LogImageFileNotFoundCompletedEventHandler LogImageFileNotFoundCompleted;
+        public void CreateRepositoryAsync(Caller caller, Repository repository) {
+            this.CreateRepositoryAsync(caller, repository, null);
+        }
         
         /// <remarks/>
-        public event LogSourceFileFoundCompletedEventHandler LogSourceFileFoundCompleted;
+        public void CreateRepositoryAsync(Caller caller, Repository repository, object userState) {
+            if ((this.CreateRepositoryOperationCompleted == null)) {
+                this.CreateRepositoryOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateRepositoryOperationCompleted);
+            }
+            this.InvokeAsync("CreateRepository", new object[] {
+                        caller,
+                        repository}, this.CreateRepositoryOperationCompleted, userState);
+        }
+        
+        private void OnCreateRepositoryOperationCompleted(object arg) {
+            if ((this.CreateRepositoryCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CreateRepositoryCompleted(this, new CreateRepositoryCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
-        public event UserValidateCompletedEventHandler UserValidateCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/UpdateRepository", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void UpdateRepository(Caller caller, ref Repository repository) {
+            object[] results = this.Invoke("UpdateRepository", new object[] {
+                        caller,
+                        repository});
+            repository = ((Repository)(results[0]));
+        }
         
         /// <remarks/>
-        public event CreateUserByKeyCompletedEventHandler CreateUserByKeyCompleted;
+        public void UpdateRepositoryAsync(Caller caller, Repository repository) {
+            this.UpdateRepositoryAsync(caller, repository, null);
+        }
         
         /// <remarks/>
-        public event GetUserByKeyCompletedEventHandler GetUserByKeyCompleted;
+        public void UpdateRepositoryAsync(Caller caller, Repository repository, object userState) {
+            if ((this.UpdateRepositoryOperationCompleted == null)) {
+                this.UpdateRepositoryOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateRepositoryOperationCompleted);
+            }
+            this.InvokeAsync("UpdateRepository", new object[] {
+                        caller,
+                        repository}, this.UpdateRepositoryOperationCompleted, userState);
+        }
+        
+        private void OnUpdateRepositoryOperationCompleted(object arg) {
+            if ((this.UpdateRepositoryCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateRepositoryCompleted(this, new UpdateRepositoryCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
-        public event GetUserKeysCompletedEventHandler GetUserKeysCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/DeleteRepository", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void DeleteRepository(Caller caller, Repository repository) {
+            this.Invoke("DeleteRepository", new object[] {
+                        caller,
+                        repository});
+        }
         
         /// <remarks/>
-        public event AddUserKeysCompletedEventHandler AddUserKeysCompleted;
+        public void DeleteRepositoryAsync(Caller caller, Repository repository) {
+            this.DeleteRepositoryAsync(caller, repository, null);
+        }
         
         /// <remarks/>
-        public event RemoveUserKeysCompletedEventHandler RemoveUserKeysCompleted;
+        public void DeleteRepositoryAsync(Caller caller, Repository repository, object userState) {
+            if ((this.DeleteRepositoryOperationCompleted == null)) {
+                this.DeleteRepositoryOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteRepositoryOperationCompleted);
+            }
+            this.InvokeAsync("DeleteRepository", new object[] {
+                        caller,
+                        repository}, this.DeleteRepositoryOperationCompleted, userState);
+        }
+        
+        private void OnDeleteRepositoryOperationCompleted(object arg) {
+            if ((this.DeleteRepositoryCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DeleteRepositoryCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
-        public event GetUserVisualStudioLinkCompletedEventHandler GetUserVisualStudioLinkCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/DigestGenerateRequest", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string DigestGenerateRequest(string realm) {
+            object[] results = this.Invoke("DigestGenerateRequest", new object[] {
+                        realm});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void DigestGenerateRequestAsync(string realm) {
+            this.DigestGenerateRequestAsync(realm, null);
+        }
+        
+        /// <remarks/>
+        public void DigestGenerateRequestAsync(string realm, object userState) {
+            if ((this.DigestGenerateRequestOperationCompleted == null)) {
+                this.DigestGenerateRequestOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDigestGenerateRequestOperationCompleted);
+            }
+            this.InvokeAsync("DigestGenerateRequest", new object[] {
+                        realm}, this.DigestGenerateRequestOperationCompleted, userState);
+        }
+        
+        private void OnDigestGenerateRequestOperationCompleted(object arg) {
+            if ((this.DigestGenerateRequestCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DigestGenerateRequestCompleted(this, new DigestGenerateRequestCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/DigestValidateResponse", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Caller DigestValidateResponse(string company, string method, string response) {
+            object[] results = this.Invoke("DigestValidateResponse", new object[] {
+                        company,
+                        method,
+                        response});
+            return ((Caller)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void DigestValidateResponseAsync(string company, string method, string response) {
+            this.DigestValidateResponseAsync(company, method, response, null);
+        }
+        
+        /// <remarks/>
+        public void DigestValidateResponseAsync(string company, string method, string response, object userState) {
+            if ((this.DigestValidateResponseOperationCompleted == null)) {
+                this.DigestValidateResponseOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDigestValidateResponseOperationCompleted);
+            }
+            this.InvokeAsync("DigestValidateResponse", new object[] {
+                        company,
+                        method,
+                        response}, this.DigestValidateResponseOperationCompleted, userState);
+        }
+        
+        private void OnDigestValidateResponseOperationCompleted(object arg) {
+            if ((this.DigestValidateResponseCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DigestValidateResponseCompleted(this, new DigestValidateResponseCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetUploadReports", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public UploadReport[] GetUploadReports(Caller caller) {
+            object[] results = this.Invoke("GetUploadReports", new object[] {
+                        caller});
+            return ((UploadReport[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetUploadReportsAsync(Caller caller) {
+            this.GetUploadReportsAsync(caller, null);
+        }
+        
+        /// <remarks/>
+        public void GetUploadReportsAsync(Caller caller, object userState) {
+            if ((this.GetUploadReportsOperationCompleted == null)) {
+                this.GetUploadReportsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetUploadReportsOperationCompleted);
+            }
+            this.InvokeAsync("GetUploadReports", new object[] {
+                        caller}, this.GetUploadReportsOperationCompleted, userState);
+        }
+        
+        private void OnGetUploadReportsOperationCompleted(object arg) {
+            if ((this.GetUploadReportsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetUploadReportsCompleted(this, new GetUploadReportsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/UploadPackage", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public UploadReport UploadPackage(Caller caller, PackageProject package, string packageFormat, [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")] byte[] packageData, [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")] byte[] symbolPackageData) {
+            object[] results = this.Invoke("UploadPackage", new object[] {
+                        caller,
+                        package,
+                        packageFormat,
+                        packageData,
+                        symbolPackageData});
+            return ((UploadReport)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UploadPackageAsync(Caller caller, PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData) {
+            this.UploadPackageAsync(caller, package, packageFormat, packageData, symbolPackageData, null);
+        }
+        
+        /// <remarks/>
+        public void UploadPackageAsync(Caller caller, PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData, object userState) {
+            if ((this.UploadPackageOperationCompleted == null)) {
+                this.UploadPackageOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUploadPackageOperationCompleted);
+            }
+            this.InvokeAsync("UploadPackage", new object[] {
+                        caller,
+                        package,
+                        packageFormat,
+                        packageData,
+                        symbolPackageData}, this.UploadPackageOperationCompleted, userState);
+        }
+        
+        private void OnUploadPackageOperationCompleted(object arg) {
+            if ((this.UploadPackageCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UploadPackageCompleted(this, new UploadPackageCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetUserPermissions", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Permissions GetUserPermissions(Caller caller, User user) {
+            object[] results = this.Invoke("GetUserPermissions", new object[] {
+                        caller,
+                        user});
+            return ((Permissions)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetUserPermissionsAsync(Caller caller, User user) {
+            this.GetUserPermissionsAsync(caller, user, null);
+        }
+        
+        /// <remarks/>
+        public void GetUserPermissionsAsync(Caller caller, User user, object userState) {
+            if ((this.GetUserPermissionsOperationCompleted == null)) {
+                this.GetUserPermissionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetUserPermissionsOperationCompleted);
+            }
+            this.InvokeAsync("GetUserPermissions", new object[] {
+                        caller,
+                        user}, this.GetUserPermissionsOperationCompleted, userState);
+        }
+        
+        private void OnGetUserPermissionsOperationCompleted(object arg) {
+            if ((this.GetUserPermissionsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetUserPermissionsCompleted(this, new GetUserPermissionsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetCompanyPermissions", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public CompanyPermission[] GetCompanyPermissions(Caller caller, Company company) {
+            object[] results = this.Invoke("GetCompanyPermissions", new object[] {
+                        caller,
+                        company});
+            return ((CompanyPermission[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetCompanyPermissionsAsync(Caller caller, Company company) {
+            this.GetCompanyPermissionsAsync(caller, company, null);
+        }
+        
+        /// <remarks/>
+        public void GetCompanyPermissionsAsync(Caller caller, Company company, object userState) {
+            if ((this.GetCompanyPermissionsOperationCompleted == null)) {
+                this.GetCompanyPermissionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetCompanyPermissionsOperationCompleted);
+            }
+            this.InvokeAsync("GetCompanyPermissions", new object[] {
+                        caller,
+                        company}, this.GetCompanyPermissionsOperationCompleted, userState);
+        }
+        
+        private void OnGetCompanyPermissionsOperationCompleted(object arg) {
+            if ((this.GetCompanyPermissionsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetCompanyPermissionsCompleted(this, new GetCompanyPermissionsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetRepositoryPermissions", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public RepositoryPermission[] GetRepositoryPermissions(Caller caller, Repository repository) {
+            object[] results = this.Invoke("GetRepositoryPermissions", new object[] {
+                        caller,
+                        repository});
+            return ((RepositoryPermission[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetRepositoryPermissionsAsync(Caller caller, Repository repository) {
+            this.GetRepositoryPermissionsAsync(caller, repository, null);
+        }
+        
+        /// <remarks/>
+        public void GetRepositoryPermissionsAsync(Caller caller, Repository repository, object userState) {
+            if ((this.GetRepositoryPermissionsOperationCompleted == null)) {
+                this.GetRepositoryPermissionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetRepositoryPermissionsOperationCompleted);
+            }
+            this.InvokeAsync("GetRepositoryPermissions", new object[] {
+                        caller,
+                        repository}, this.GetRepositoryPermissionsOperationCompleted, userState);
+        }
+        
+        private void OnGetRepositoryPermissionsOperationCompleted(object arg) {
+            if ((this.GetRepositoryPermissionsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetRepositoryPermissionsCompleted(this, new GetRepositoryPermissionsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetProjectPermissions", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ProjectPermission[] GetProjectPermissions(Caller caller, Project project) {
+            object[] results = this.Invoke("GetProjectPermissions", new object[] {
+                        caller,
+                        project});
+            return ((ProjectPermission[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetProjectPermissionsAsync(Caller caller, Project project) {
+            this.GetProjectPermissionsAsync(caller, project, null);
+        }
+        
+        /// <remarks/>
+        public void GetProjectPermissionsAsync(Caller caller, Project project, object userState) {
+            if ((this.GetProjectPermissionsOperationCompleted == null)) {
+                this.GetProjectPermissionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetProjectPermissionsOperationCompleted);
+            }
+            this.InvokeAsync("GetProjectPermissions", new object[] {
+                        caller,
+                        project}, this.GetProjectPermissionsOperationCompleted, userState);
+        }
+        
+        private void OnGetProjectPermissionsOperationCompleted(object arg) {
+            if ((this.GetProjectPermissionsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetProjectPermissionsCompleted(this, new GetProjectPermissionsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetVersionPermissions", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public VersionPermission[] GetVersionPermissions(Caller caller, Version version) {
+            object[] results = this.Invoke("GetVersionPermissions", new object[] {
+                        caller,
+                        version});
+            return ((VersionPermission[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetVersionPermissionsAsync(Caller caller, Version version) {
+            this.GetVersionPermissionsAsync(caller, version, null);
+        }
+        
+        /// <remarks/>
+        public void GetVersionPermissionsAsync(Caller caller, Version version, object userState) {
+            if ((this.GetVersionPermissionsOperationCompleted == null)) {
+                this.GetVersionPermissionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetVersionPermissionsOperationCompleted);
+            }
+            this.InvokeAsync("GetVersionPermissions", new object[] {
+                        caller,
+                        version}, this.GetVersionPermissionsOperationCompleted, userState);
+        }
+        
+        private void OnGetVersionPermissionsOperationCompleted(object arg) {
+            if ((this.GetVersionPermissionsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetVersionPermissionsCompleted(this, new GetVersionPermissionsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/SetCompanyPermissions", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void SetCompanyPermissions(Caller caller, User user, Company company, Permission permission) {
+            this.Invoke("SetCompanyPermissions", new object[] {
+                        caller,
+                        user,
+                        company,
+                        permission});
+        }
+        
+        /// <remarks/>
+        public void SetCompanyPermissionsAsync(Caller caller, User user, Company company, Permission permission) {
+            this.SetCompanyPermissionsAsync(caller, user, company, permission, null);
+        }
+        
+        /// <remarks/>
+        public void SetCompanyPermissionsAsync(Caller caller, User user, Company company, Permission permission, object userState) {
+            if ((this.SetCompanyPermissionsOperationCompleted == null)) {
+                this.SetCompanyPermissionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSetCompanyPermissionsOperationCompleted);
+            }
+            this.InvokeAsync("SetCompanyPermissions", new object[] {
+                        caller,
+                        user,
+                        company,
+                        permission}, this.SetCompanyPermissionsOperationCompleted, userState);
+        }
+        
+        private void OnSetCompanyPermissionsOperationCompleted(object arg) {
+            if ((this.SetCompanyPermissionsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SetCompanyPermissionsCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/SetRepositoryPermissions", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void SetRepositoryPermissions(Caller caller, User user, Repository repository, Permission permission) {
+            this.Invoke("SetRepositoryPermissions", new object[] {
+                        caller,
+                        user,
+                        repository,
+                        permission});
+        }
+        
+        /// <remarks/>
+        public void SetRepositoryPermissionsAsync(Caller caller, User user, Repository repository, Permission permission) {
+            this.SetRepositoryPermissionsAsync(caller, user, repository, permission, null);
+        }
+        
+        /// <remarks/>
+        public void SetRepositoryPermissionsAsync(Caller caller, User user, Repository repository, Permission permission, object userState) {
+            if ((this.SetRepositoryPermissionsOperationCompleted == null)) {
+                this.SetRepositoryPermissionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSetRepositoryPermissionsOperationCompleted);
+            }
+            this.InvokeAsync("SetRepositoryPermissions", new object[] {
+                        caller,
+                        user,
+                        repository,
+                        permission}, this.SetRepositoryPermissionsOperationCompleted, userState);
+        }
+        
+        private void OnSetRepositoryPermissionsOperationCompleted(object arg) {
+            if ((this.SetRepositoryPermissionsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SetRepositoryPermissionsCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/SetProjectPermissions", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void SetProjectPermissions(Caller caller, User user, Project project, Permission permission) {
+            this.Invoke("SetProjectPermissions", new object[] {
+                        caller,
+                        user,
+                        project,
+                        permission});
+        }
+        
+        /// <remarks/>
+        public void SetProjectPermissionsAsync(Caller caller, User user, Project project, Permission permission) {
+            this.SetProjectPermissionsAsync(caller, user, project, permission, null);
+        }
+        
+        /// <remarks/>
+        public void SetProjectPermissionsAsync(Caller caller, User user, Project project, Permission permission, object userState) {
+            if ((this.SetProjectPermissionsOperationCompleted == null)) {
+                this.SetProjectPermissionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSetProjectPermissionsOperationCompleted);
+            }
+            this.InvokeAsync("SetProjectPermissions", new object[] {
+                        caller,
+                        user,
+                        project,
+                        permission}, this.SetProjectPermissionsOperationCompleted, userState);
+        }
+        
+        private void OnSetProjectPermissionsOperationCompleted(object arg) {
+            if ((this.SetProjectPermissionsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SetProjectPermissionsCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/SetVersionPermissions", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void SetVersionPermissions(Caller caller, User user, Version version, Permission permission) {
+            this.Invoke("SetVersionPermissions", new object[] {
+                        caller,
+                        user,
+                        version,
+                        permission});
+        }
+        
+        /// <remarks/>
+        public void SetVersionPermissionsAsync(Caller caller, User user, Version version, Permission permission) {
+            this.SetVersionPermissionsAsync(caller, user, version, permission, null);
+        }
+        
+        /// <remarks/>
+        public void SetVersionPermissionsAsync(Caller caller, User user, Version version, Permission permission, object userState) {
+            if ((this.SetVersionPermissionsOperationCompleted == null)) {
+                this.SetVersionPermissionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSetVersionPermissionsOperationCompleted);
+            }
+            this.InvokeAsync("SetVersionPermissions", new object[] {
+                        caller,
+                        user,
+                        version,
+                        permission}, this.SetVersionPermissionsOperationCompleted, userState);
+        }
+        
+        private void OnSetVersionPermissionsOperationCompleted(object arg) {
+            if ((this.SetVersionPermissionsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SetVersionPermissionsCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetAvailableStatisticNames", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] GetAvailableStatisticNames(Caller caller) {
+            object[] results = this.Invoke("GetAvailableStatisticNames", new object[] {
+                        caller});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAvailableStatisticNamesAsync(Caller caller) {
+            this.GetAvailableStatisticNamesAsync(caller, null);
+        }
+        
+        /// <remarks/>
+        public void GetAvailableStatisticNamesAsync(Caller caller, object userState) {
+            if ((this.GetAvailableStatisticNamesOperationCompleted == null)) {
+                this.GetAvailableStatisticNamesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAvailableStatisticNamesOperationCompleted);
+            }
+            this.InvokeAsync("GetAvailableStatisticNames", new object[] {
+                        caller}, this.GetAvailableStatisticNamesOperationCompleted, userState);
+        }
+        
+        private void OnGetAvailableStatisticNamesOperationCompleted(object arg) {
+            if ((this.GetAvailableStatisticNamesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAvailableStatisticNamesCompleted(this, new GetAvailableStatisticNamesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetStatistic", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Statistic[] GetStatistic(Caller caller, string[] names, StatisticPeriod period, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] System.Nullable<System.DateTime> from, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] System.Nullable<System.DateTime> to) {
+            object[] results = this.Invoke("GetStatistic", new object[] {
+                        caller,
+                        names,
+                        period,
+                        from,
+                        to});
+            return ((Statistic[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetStatisticAsync(Caller caller, string[] names, StatisticPeriod period, System.Nullable<System.DateTime> from, System.Nullable<System.DateTime> to) {
+            this.GetStatisticAsync(caller, names, period, from, to, null);
+        }
+        
+        /// <remarks/>
+        public void GetStatisticAsync(Caller caller, string[] names, StatisticPeriod period, System.Nullable<System.DateTime> from, System.Nullable<System.DateTime> to, object userState) {
+            if ((this.GetStatisticOperationCompleted == null)) {
+                this.GetStatisticOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetStatisticOperationCompleted);
+            }
+            this.InvokeAsync("GetStatistic", new object[] {
+                        caller,
+                        names,
+                        period,
+                        from,
+                        to}, this.GetStatisticOperationCompleted, userState);
+        }
+        
+        private void OnGetStatisticOperationCompleted(object arg) {
+            if ((this.GetStatisticCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetStatisticCompleted(this, new GetStatisticCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetImageFile", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ImageFile GetImageFile(Caller caller, string name, string symbolHash) {
+            object[] results = this.Invoke("GetImageFile", new object[] {
+                        caller,
+                        name,
+                        symbolHash});
+            return ((ImageFile)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetImageFileAsync(Caller caller, string name, string symbolHash) {
+            this.GetImageFileAsync(caller, name, symbolHash, null);
+        }
+        
+        /// <remarks/>
+        public void GetImageFileAsync(Caller caller, string name, string symbolHash, object userState) {
+            if ((this.GetImageFileOperationCompleted == null)) {
+                this.GetImageFileOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetImageFileOperationCompleted);
+            }
+            this.InvokeAsync("GetImageFile", new object[] {
+                        caller,
+                        name,
+                        symbolHash}, this.GetImageFileOperationCompleted, userState);
+        }
+        
+        private void OnGetImageFileOperationCompleted(object arg) {
+            if ((this.GetImageFileCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetImageFileCompleted(this, new GetImageFileCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/LogImageFileFound", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void LogImageFileFound(Caller caller, ImageFile imageFile) {
+            this.Invoke("LogImageFileFound", new object[] {
+                        caller,
+                        imageFile});
+        }
+        
+        /// <remarks/>
+        public void LogImageFileFoundAsync(Caller caller, ImageFile imageFile) {
+            this.LogImageFileFoundAsync(caller, imageFile, null);
+        }
+        
+        /// <remarks/>
+        public void LogImageFileFoundAsync(Caller caller, ImageFile imageFile, object userState) {
+            if ((this.LogImageFileFoundOperationCompleted == null)) {
+                this.LogImageFileFoundOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLogImageFileFoundOperationCompleted);
+            }
+            this.InvokeAsync("LogImageFileFound", new object[] {
+                        caller,
+                        imageFile}, this.LogImageFileFoundOperationCompleted, userState);
+        }
+        
+        private void OnLogImageFileFoundOperationCompleted(object arg) {
+            if ((this.LogImageFileFoundCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.LogImageFileFoundCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/LogImageFileNotFound", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void LogImageFileNotFound(Caller caller, string imageFileName, string symbolHash) {
+            this.Invoke("LogImageFileNotFound", new object[] {
+                        caller,
+                        imageFileName,
+                        symbolHash});
+        }
+        
+        /// <remarks/>
+        public void LogImageFileNotFoundAsync(Caller caller, string imageFileName, string symbolHash) {
+            this.LogImageFileNotFoundAsync(caller, imageFileName, symbolHash, null);
+        }
+        
+        /// <remarks/>
+        public void LogImageFileNotFoundAsync(Caller caller, string imageFileName, string symbolHash, object userState) {
+            if ((this.LogImageFileNotFoundOperationCompleted == null)) {
+                this.LogImageFileNotFoundOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLogImageFileNotFoundOperationCompleted);
+            }
+            this.InvokeAsync("LogImageFileNotFound", new object[] {
+                        caller,
+                        imageFileName,
+                        symbolHash}, this.LogImageFileNotFoundOperationCompleted, userState);
+        }
+        
+        private void OnLogImageFileNotFoundOperationCompleted(object arg) {
+            if ((this.LogImageFileNotFoundCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.LogImageFileNotFoundCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/LogSourceFileFound", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void LogSourceFileFound(Caller caller, SourceFile sourceFile) {
+            this.Invoke("LogSourceFileFound", new object[] {
+                        caller,
+                        sourceFile});
+        }
+        
+        /// <remarks/>
+        public void LogSourceFileFoundAsync(Caller caller, SourceFile sourceFile) {
+            this.LogSourceFileFoundAsync(caller, sourceFile, null);
+        }
+        
+        /// <remarks/>
+        public void LogSourceFileFoundAsync(Caller caller, SourceFile sourceFile, object userState) {
+            if ((this.LogSourceFileFoundOperationCompleted == null)) {
+                this.LogSourceFileFoundOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLogSourceFileFoundOperationCompleted);
+            }
+            this.InvokeAsync("LogSourceFileFound", new object[] {
+                        caller,
+                        sourceFile}, this.LogSourceFileFoundOperationCompleted, userState);
+        }
+        
+        private void OnLogSourceFileFoundOperationCompleted(object arg) {
+            if ((this.LogSourceFileFoundCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.LogSourceFileFoundCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/UserValidate", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public User UserValidate(Caller caller) {
+            object[] results = this.Invoke("UserValidate", new object[] {
+                        caller});
+            return ((User)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UserValidateAsync(Caller caller) {
+            this.UserValidateAsync(caller, null);
+        }
+        
+        /// <remarks/>
+        public void UserValidateAsync(Caller caller, object userState) {
+            if ((this.UserValidateOperationCompleted == null)) {
+                this.UserValidateOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUserValidateOperationCompleted);
+            }
+            this.InvokeAsync("UserValidate", new object[] {
+                        caller}, this.UserValidateOperationCompleted, userState);
+        }
+        
+        private void OnUserValidateOperationCompleted(object arg) {
+            if ((this.UserValidateCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UserValidateCompleted(this, new UserValidateCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/CreateUserByKey", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Caller CreateUserByKey(string company, string type, string value) {
+            object[] results = this.Invoke("CreateUserByKey", new object[] {
+                        company,
+                        type,
+                        value});
+            return ((Caller)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CreateUserByKeyAsync(string company, string type, string value) {
+            this.CreateUserByKeyAsync(company, type, value, null);
+        }
+        
+        /// <remarks/>
+        public void CreateUserByKeyAsync(string company, string type, string value, object userState) {
+            if ((this.CreateUserByKeyOperationCompleted == null)) {
+                this.CreateUserByKeyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateUserByKeyOperationCompleted);
+            }
+            this.InvokeAsync("CreateUserByKey", new object[] {
+                        company,
+                        type,
+                        value}, this.CreateUserByKeyOperationCompleted, userState);
+        }
+        
+        private void OnCreateUserByKeyOperationCompleted(object arg) {
+            if ((this.CreateUserByKeyCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CreateUserByKeyCompleted(this, new CreateUserByKeyCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetUserByKey", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Caller GetUserByKey(string company, string type, string value) {
+            object[] results = this.Invoke("GetUserByKey", new object[] {
+                        company,
+                        type,
+                        value});
+            return ((Caller)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetUserByKeyAsync(string company, string type, string value) {
+            this.GetUserByKeyAsync(company, type, value, null);
+        }
+        
+        /// <remarks/>
+        public void GetUserByKeyAsync(string company, string type, string value, object userState) {
+            if ((this.GetUserByKeyOperationCompleted == null)) {
+                this.GetUserByKeyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetUserByKeyOperationCompleted);
+            }
+            this.InvokeAsync("GetUserByKey", new object[] {
+                        company,
+                        type,
+                        value}, this.GetUserByKeyOperationCompleted, userState);
+        }
+        
+        private void OnGetUserByKeyOperationCompleted(object arg) {
+            if ((this.GetUserByKeyCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetUserByKeyCompleted(this, new GetUserByKeyCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetUserKeys", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public UserKey[] GetUserKeys(Caller caller) {
+            object[] results = this.Invoke("GetUserKeys", new object[] {
+                        caller});
+            return ((UserKey[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetUserKeysAsync(Caller caller) {
+            this.GetUserKeysAsync(caller, null);
+        }
+        
+        /// <remarks/>
+        public void GetUserKeysAsync(Caller caller, object userState) {
+            if ((this.GetUserKeysOperationCompleted == null)) {
+                this.GetUserKeysOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetUserKeysOperationCompleted);
+            }
+            this.InvokeAsync("GetUserKeys", new object[] {
+                        caller}, this.GetUserKeysOperationCompleted, userState);
+        }
+        
+        private void OnGetUserKeysOperationCompleted(object arg) {
+            if ((this.GetUserKeysCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetUserKeysCompleted(this, new GetUserKeysCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/AddUserKeys", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void AddUserKeys(Caller caller, UserKey[] userKeys) {
+            this.Invoke("AddUserKeys", new object[] {
+                        caller,
+                        userKeys});
+        }
+        
+        /// <remarks/>
+        public void AddUserKeysAsync(Caller caller, UserKey[] userKeys) {
+            this.AddUserKeysAsync(caller, userKeys, null);
+        }
+        
+        /// <remarks/>
+        public void AddUserKeysAsync(Caller caller, UserKey[] userKeys, object userState) {
+            if ((this.AddUserKeysOperationCompleted == null)) {
+                this.AddUserKeysOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddUserKeysOperationCompleted);
+            }
+            this.InvokeAsync("AddUserKeys", new object[] {
+                        caller,
+                        userKeys}, this.AddUserKeysOperationCompleted, userState);
+        }
+        
+        private void OnAddUserKeysOperationCompleted(object arg) {
+            if ((this.AddUserKeysCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddUserKeysCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/RemoveUserKeys", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void RemoveUserKeys(Caller user, UserKey[] userKeys) {
+            this.Invoke("RemoveUserKeys", new object[] {
+                        user,
+                        userKeys});
+        }
+        
+        /// <remarks/>
+        public void RemoveUserKeysAsync(Caller user, UserKey[] userKeys) {
+            this.RemoveUserKeysAsync(user, userKeys, null);
+        }
+        
+        /// <remarks/>
+        public void RemoveUserKeysAsync(Caller user, UserKey[] userKeys, object userState) {
+            if ((this.RemoveUserKeysOperationCompleted == null)) {
+                this.RemoveUserKeysOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoveUserKeysOperationCompleted);
+            }
+            this.InvokeAsync("RemoveUserKeys", new object[] {
+                        user,
+                        userKeys}, this.RemoveUserKeysOperationCompleted, userState);
+        }
+        
+        private void OnRemoveUserKeysOperationCompleted(object arg) {
+            if ((this.RemoveUserKeysCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RemoveUserKeysCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetUserVisualStudioLink", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetUserVisualStudioLink(Caller user) {
+            object[] results = this.Invoke("GetUserVisualStudioLink", new object[] {
+                        user});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetUserVisualStudioLinkAsync(Caller user) {
+            this.GetUserVisualStudioLinkAsync(user, null);
+        }
+        
+        /// <remarks/>
+        public void GetUserVisualStudioLinkAsync(Caller user, object userState) {
+            if ((this.GetUserVisualStudioLinkOperationCompleted == null)) {
+                this.GetUserVisualStudioLinkOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetUserVisualStudioLinkOperationCompleted);
+            }
+            this.InvokeAsync("GetUserVisualStudioLink", new object[] {
+                        user}, this.GetUserVisualStudioLinkOperationCompleted, userState);
+        }
+        
+        private void OnGetUserVisualStudioLinkOperationCompleted(object arg) {
+            if ((this.GetUserVisualStudioLinkCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetUserVisualStudioLinkCompleted(this, new GetUserVisualStudioLinkCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetProjects", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -1149,1261 +2366,6 @@ namespace SymbolSource.Server.Management.Client {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetCompanies", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Company[] GetCompanies(Caller caller) {
-            object[] results = this.Invoke("GetCompanies", new object[] {
-                        caller});
-            return ((Company[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetCompaniesAsync(Caller caller) {
-            this.GetCompaniesAsync(caller, null);
-        }
-        
-        /// <remarks/>
-        public void GetCompaniesAsync(Caller caller, object userState) {
-            if ((this.GetCompaniesOperationCompleted == null)) {
-                this.GetCompaniesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetCompaniesOperationCompleted);
-            }
-            this.InvokeAsync("GetCompanies", new object[] {
-                        caller}, this.GetCompaniesOperationCompleted, userState);
-        }
-        
-        private void OnGetCompaniesOperationCompleted(object arg) {
-            if ((this.GetCompaniesCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetCompaniesCompleted(this, new GetCompaniesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/CreateCompany", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void CreateCompany(Caller caller, Company company) {
-            this.Invoke("CreateCompany", new object[] {
-                        caller,
-                        company});
-        }
-        
-        /// <remarks/>
-        public void CreateCompanyAsync(Caller caller, Company company) {
-            this.CreateCompanyAsync(caller, company, null);
-        }
-        
-        /// <remarks/>
-        public void CreateCompanyAsync(Caller caller, Company company, object userState) {
-            if ((this.CreateCompanyOperationCompleted == null)) {
-                this.CreateCompanyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateCompanyOperationCompleted);
-            }
-            this.InvokeAsync("CreateCompany", new object[] {
-                        caller,
-                        company}, this.CreateCompanyOperationCompleted, userState);
-        }
-        
-        private void OnCreateCompanyOperationCompleted(object arg) {
-            if ((this.CreateCompanyCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.CreateCompanyCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/UpdateCompany", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void UpdateCompany(Caller caller, Company company) {
-            this.Invoke("UpdateCompany", new object[] {
-                        caller,
-                        company});
-        }
-        
-        /// <remarks/>
-        public void UpdateCompanyAsync(Caller caller, Company company) {
-            this.UpdateCompanyAsync(caller, company, null);
-        }
-        
-        /// <remarks/>
-        public void UpdateCompanyAsync(Caller caller, Company company, object userState) {
-            if ((this.UpdateCompanyOperationCompleted == null)) {
-                this.UpdateCompanyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateCompanyOperationCompleted);
-            }
-            this.InvokeAsync("UpdateCompany", new object[] {
-                        caller,
-                        company}, this.UpdateCompanyOperationCompleted, userState);
-        }
-        
-        private void OnUpdateCompanyOperationCompleted(object arg) {
-            if ((this.UpdateCompanyCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.UpdateCompanyCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/DeleteCompany", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void DeleteCompany(Caller caller, Company company) {
-            this.Invoke("DeleteCompany", new object[] {
-                        caller,
-                        company});
-        }
-        
-        /// <remarks/>
-        public void DeleteCompanyAsync(Caller caller, Company company) {
-            this.DeleteCompanyAsync(caller, company, null);
-        }
-        
-        /// <remarks/>
-        public void DeleteCompanyAsync(Caller caller, Company company, object userState) {
-            if ((this.DeleteCompanyOperationCompleted == null)) {
-                this.DeleteCompanyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteCompanyOperationCompleted);
-            }
-            this.InvokeAsync("DeleteCompany", new object[] {
-                        caller,
-                        company}, this.DeleteCompanyOperationCompleted, userState);
-        }
-        
-        private void OnDeleteCompanyOperationCompleted(object arg) {
-            if ((this.DeleteCompanyCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.DeleteCompanyCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetUsers", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public User[] GetUsers(Caller caller, ref Company company) {
-            object[] results = this.Invoke("GetUsers", new object[] {
-                        caller,
-                        company});
-            company = ((Company)(results[1]));
-            return ((User[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetUsersAsync(Caller caller, Company company) {
-            this.GetUsersAsync(caller, company, null);
-        }
-        
-        /// <remarks/>
-        public void GetUsersAsync(Caller caller, Company company, object userState) {
-            if ((this.GetUsersOperationCompleted == null)) {
-                this.GetUsersOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetUsersOperationCompleted);
-            }
-            this.InvokeAsync("GetUsers", new object[] {
-                        caller,
-                        company}, this.GetUsersOperationCompleted, userState);
-        }
-        
-        private void OnGetUsersOperationCompleted(object arg) {
-            if ((this.GetUsersCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetUsersCompleted(this, new GetUsersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/CreateUser", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void CreateUser(Caller caller, User user, UserKey key) {
-            this.Invoke("CreateUser", new object[] {
-                        caller,
-                        user,
-                        key});
-        }
-        
-        /// <remarks/>
-        public void CreateUserAsync(Caller caller, User user, UserKey key) {
-            this.CreateUserAsync(caller, user, key, null);
-        }
-        
-        /// <remarks/>
-        public void CreateUserAsync(Caller caller, User user, UserKey key, object userState) {
-            if ((this.CreateUserOperationCompleted == null)) {
-                this.CreateUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateUserOperationCompleted);
-            }
-            this.InvokeAsync("CreateUser", new object[] {
-                        caller,
-                        user,
-                        key}, this.CreateUserOperationCompleted, userState);
-        }
-        
-        private void OnCreateUserOperationCompleted(object arg) {
-            if ((this.CreateUserCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.CreateUserCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/UpdateUser", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void UpdateUser(Caller caller, ref User user) {
-            object[] results = this.Invoke("UpdateUser", new object[] {
-                        caller,
-                        user});
-            user = ((User)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void UpdateUserAsync(Caller caller, User user) {
-            this.UpdateUserAsync(caller, user, null);
-        }
-        
-        /// <remarks/>
-        public void UpdateUserAsync(Caller caller, User user, object userState) {
-            if ((this.UpdateUserOperationCompleted == null)) {
-                this.UpdateUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateUserOperationCompleted);
-            }
-            this.InvokeAsync("UpdateUser", new object[] {
-                        caller,
-                        user}, this.UpdateUserOperationCompleted, userState);
-        }
-        
-        private void OnUpdateUserOperationCompleted(object arg) {
-            if ((this.UpdateUserCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.UpdateUserCompleted(this, new UpdateUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/DeleteUser", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void DeleteUser(Caller caller, User user) {
-            this.Invoke("DeleteUser", new object[] {
-                        caller,
-                        user});
-        }
-        
-        /// <remarks/>
-        public void DeleteUserAsync(Caller caller, User user) {
-            this.DeleteUserAsync(caller, user, null);
-        }
-        
-        /// <remarks/>
-        public void DeleteUserAsync(Caller caller, User user, object userState) {
-            if ((this.DeleteUserOperationCompleted == null)) {
-                this.DeleteUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteUserOperationCompleted);
-            }
-            this.InvokeAsync("DeleteUser", new object[] {
-                        caller,
-                        user}, this.DeleteUserOperationCompleted, userState);
-        }
-        
-        private void OnDeleteUserOperationCompleted(object arg) {
-            if ((this.DeleteUserCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.DeleteUserCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetRepositories", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Repository[] GetRepositories(Caller caller, ref Company company) {
-            object[] results = this.Invoke("GetRepositories", new object[] {
-                        caller,
-                        company});
-            company = ((Company)(results[1]));
-            return ((Repository[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetRepositoriesAsync(Caller caller, Company company) {
-            this.GetRepositoriesAsync(caller, company, null);
-        }
-        
-        /// <remarks/>
-        public void GetRepositoriesAsync(Caller caller, Company company, object userState) {
-            if ((this.GetRepositoriesOperationCompleted == null)) {
-                this.GetRepositoriesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetRepositoriesOperationCompleted);
-            }
-            this.InvokeAsync("GetRepositories", new object[] {
-                        caller,
-                        company}, this.GetRepositoriesOperationCompleted, userState);
-        }
-        
-        private void OnGetRepositoriesOperationCompleted(object arg) {
-            if ((this.GetRepositoriesCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetRepositoriesCompleted(this, new GetRepositoriesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/CreateOrUpdateRepository", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void CreateOrUpdateRepository(Caller caller, ref Repository repository) {
-            object[] results = this.Invoke("CreateOrUpdateRepository", new object[] {
-                        caller,
-                        repository});
-            repository = ((Repository)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void CreateOrUpdateRepositoryAsync(Caller caller, Repository repository) {
-            this.CreateOrUpdateRepositoryAsync(caller, repository, null);
-        }
-        
-        /// <remarks/>
-        public void CreateOrUpdateRepositoryAsync(Caller caller, Repository repository, object userState) {
-            if ((this.CreateOrUpdateRepositoryOperationCompleted == null)) {
-                this.CreateOrUpdateRepositoryOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateOrUpdateRepositoryOperationCompleted);
-            }
-            this.InvokeAsync("CreateOrUpdateRepository", new object[] {
-                        caller,
-                        repository}, this.CreateOrUpdateRepositoryOperationCompleted, userState);
-        }
-        
-        private void OnCreateOrUpdateRepositoryOperationCompleted(object arg) {
-            if ((this.CreateOrUpdateRepositoryCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.CreateOrUpdateRepositoryCompleted(this, new CreateOrUpdateRepositoryCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/CreateRepository", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void CreateRepository(Caller caller, ref Repository repository) {
-            object[] results = this.Invoke("CreateRepository", new object[] {
-                        caller,
-                        repository});
-            repository = ((Repository)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void CreateRepositoryAsync(Caller caller, Repository repository) {
-            this.CreateRepositoryAsync(caller, repository, null);
-        }
-        
-        /// <remarks/>
-        public void CreateRepositoryAsync(Caller caller, Repository repository, object userState) {
-            if ((this.CreateRepositoryOperationCompleted == null)) {
-                this.CreateRepositoryOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateRepositoryOperationCompleted);
-            }
-            this.InvokeAsync("CreateRepository", new object[] {
-                        caller,
-                        repository}, this.CreateRepositoryOperationCompleted, userState);
-        }
-        
-        private void OnCreateRepositoryOperationCompleted(object arg) {
-            if ((this.CreateRepositoryCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.CreateRepositoryCompleted(this, new CreateRepositoryCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/UpdateRepository", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void UpdateRepository(Caller caller, ref Repository repository) {
-            object[] results = this.Invoke("UpdateRepository", new object[] {
-                        caller,
-                        repository});
-            repository = ((Repository)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void UpdateRepositoryAsync(Caller caller, Repository repository) {
-            this.UpdateRepositoryAsync(caller, repository, null);
-        }
-        
-        /// <remarks/>
-        public void UpdateRepositoryAsync(Caller caller, Repository repository, object userState) {
-            if ((this.UpdateRepositoryOperationCompleted == null)) {
-                this.UpdateRepositoryOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateRepositoryOperationCompleted);
-            }
-            this.InvokeAsync("UpdateRepository", new object[] {
-                        caller,
-                        repository}, this.UpdateRepositoryOperationCompleted, userState);
-        }
-        
-        private void OnUpdateRepositoryOperationCompleted(object arg) {
-            if ((this.UpdateRepositoryCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.UpdateRepositoryCompleted(this, new UpdateRepositoryCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/DeleteRepository", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void DeleteRepository(Caller caller, Repository repository) {
-            this.Invoke("DeleteRepository", new object[] {
-                        caller,
-                        repository});
-        }
-        
-        /// <remarks/>
-        public void DeleteRepositoryAsync(Caller caller, Repository repository) {
-            this.DeleteRepositoryAsync(caller, repository, null);
-        }
-        
-        /// <remarks/>
-        public void DeleteRepositoryAsync(Caller caller, Repository repository, object userState) {
-            if ((this.DeleteRepositoryOperationCompleted == null)) {
-                this.DeleteRepositoryOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteRepositoryOperationCompleted);
-            }
-            this.InvokeAsync("DeleteRepository", new object[] {
-                        caller,
-                        repository}, this.DeleteRepositoryOperationCompleted, userState);
-        }
-        
-        private void OnDeleteRepositoryOperationCompleted(object arg) {
-            if ((this.DeleteRepositoryCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.DeleteRepositoryCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/DigestGenerateRequest", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string DigestGenerateRequest(string realm) {
-            object[] results = this.Invoke("DigestGenerateRequest", new object[] {
-                        realm});
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void DigestGenerateRequestAsync(string realm) {
-            this.DigestGenerateRequestAsync(realm, null);
-        }
-        
-        /// <remarks/>
-        public void DigestGenerateRequestAsync(string realm, object userState) {
-            if ((this.DigestGenerateRequestOperationCompleted == null)) {
-                this.DigestGenerateRequestOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDigestGenerateRequestOperationCompleted);
-            }
-            this.InvokeAsync("DigestGenerateRequest", new object[] {
-                        realm}, this.DigestGenerateRequestOperationCompleted, userState);
-        }
-        
-        private void OnDigestGenerateRequestOperationCompleted(object arg) {
-            if ((this.DigestGenerateRequestCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.DigestGenerateRequestCompleted(this, new DigestGenerateRequestCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/DigestValidateResponse", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Caller DigestValidateResponse(string company, string method, string response) {
-            object[] results = this.Invoke("DigestValidateResponse", new object[] {
-                        company,
-                        method,
-                        response});
-            return ((Caller)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void DigestValidateResponseAsync(string company, string method, string response) {
-            this.DigestValidateResponseAsync(company, method, response, null);
-        }
-        
-        /// <remarks/>
-        public void DigestValidateResponseAsync(string company, string method, string response, object userState) {
-            if ((this.DigestValidateResponseOperationCompleted == null)) {
-                this.DigestValidateResponseOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDigestValidateResponseOperationCompleted);
-            }
-            this.InvokeAsync("DigestValidateResponse", new object[] {
-                        company,
-                        method,
-                        response}, this.DigestValidateResponseOperationCompleted, userState);
-        }
-        
-        private void OnDigestValidateResponseOperationCompleted(object arg) {
-            if ((this.DigestValidateResponseCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.DigestValidateResponseCompleted(this, new DigestValidateResponseCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetJobStatus", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public JobStatus GetJobStatus(Caller caller) {
-            object[] results = this.Invoke("GetJobStatus", new object[] {
-                        caller});
-            return ((JobStatus)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetJobStatusAsync(Caller caller) {
-            this.GetJobStatusAsync(caller, null);
-        }
-        
-        /// <remarks/>
-        public void GetJobStatusAsync(Caller caller, object userState) {
-            if ((this.GetJobStatusOperationCompleted == null)) {
-                this.GetJobStatusOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetJobStatusOperationCompleted);
-            }
-            this.InvokeAsync("GetJobStatus", new object[] {
-                        caller}, this.GetJobStatusOperationCompleted, userState);
-        }
-        
-        private void OnGetJobStatusOperationCompleted(object arg) {
-            if ((this.GetJobStatusCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetJobStatusCompleted(this, new GetJobStatusCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/CreateJob", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool CreateJob(Caller caller, [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")] byte[] zipContent, PackageProject project) {
-            object[] results = this.Invoke("CreateJob", new object[] {
-                        caller,
-                        zipContent,
-                        project});
-            return ((bool)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void CreateJobAsync(Caller caller, byte[] zipContent, PackageProject project) {
-            this.CreateJobAsync(caller, zipContent, project, null);
-        }
-        
-        /// <remarks/>
-        public void CreateJobAsync(Caller caller, byte[] zipContent, PackageProject project, object userState) {
-            if ((this.CreateJobOperationCompleted == null)) {
-                this.CreateJobOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateJobOperationCompleted);
-            }
-            this.InvokeAsync("CreateJob", new object[] {
-                        caller,
-                        zipContent,
-                        project}, this.CreateJobOperationCompleted, userState);
-        }
-        
-        private void OnCreateJobOperationCompleted(object arg) {
-            if ((this.CreateJobCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.CreateJobCompleted(this, new CreateJobCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/UploadPackage", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public UploadReport UploadPackage(Caller caller, PackageProject package, string packageFormat, [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")] byte[] packageData, [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")] byte[] symbolPackageData) {
-            object[] results = this.Invoke("UploadPackage", new object[] {
-                        caller,
-                        package,
-                        packageFormat,
-                        packageData,
-                        symbolPackageData});
-            return ((UploadReport)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void UploadPackageAsync(Caller caller, PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData) {
-            this.UploadPackageAsync(caller, package, packageFormat, packageData, symbolPackageData, null);
-        }
-        
-        /// <remarks/>
-        public void UploadPackageAsync(Caller caller, PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData, object userState) {
-            if ((this.UploadPackageOperationCompleted == null)) {
-                this.UploadPackageOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUploadPackageOperationCompleted);
-            }
-            this.InvokeAsync("UploadPackage", new object[] {
-                        caller,
-                        package,
-                        packageFormat,
-                        packageData,
-                        symbolPackageData}, this.UploadPackageOperationCompleted, userState);
-        }
-        
-        private void OnUploadPackageOperationCompleted(object arg) {
-            if ((this.UploadPackageCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.UploadPackageCompleted(this, new UploadPackageCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetUserPermissions", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Permissions GetUserPermissions(Caller caller, User user) {
-            object[] results = this.Invoke("GetUserPermissions", new object[] {
-                        caller,
-                        user});
-            return ((Permissions)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetUserPermissionsAsync(Caller caller, User user) {
-            this.GetUserPermissionsAsync(caller, user, null);
-        }
-        
-        /// <remarks/>
-        public void GetUserPermissionsAsync(Caller caller, User user, object userState) {
-            if ((this.GetUserPermissionsOperationCompleted == null)) {
-                this.GetUserPermissionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetUserPermissionsOperationCompleted);
-            }
-            this.InvokeAsync("GetUserPermissions", new object[] {
-                        caller,
-                        user}, this.GetUserPermissionsOperationCompleted, userState);
-        }
-        
-        private void OnGetUserPermissionsOperationCompleted(object arg) {
-            if ((this.GetUserPermissionsCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetUserPermissionsCompleted(this, new GetUserPermissionsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetCompanyPermissions", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public CompanyPermission[] GetCompanyPermissions(Caller caller, Company company) {
-            object[] results = this.Invoke("GetCompanyPermissions", new object[] {
-                        caller,
-                        company});
-            return ((CompanyPermission[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetCompanyPermissionsAsync(Caller caller, Company company) {
-            this.GetCompanyPermissionsAsync(caller, company, null);
-        }
-        
-        /// <remarks/>
-        public void GetCompanyPermissionsAsync(Caller caller, Company company, object userState) {
-            if ((this.GetCompanyPermissionsOperationCompleted == null)) {
-                this.GetCompanyPermissionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetCompanyPermissionsOperationCompleted);
-            }
-            this.InvokeAsync("GetCompanyPermissions", new object[] {
-                        caller,
-                        company}, this.GetCompanyPermissionsOperationCompleted, userState);
-        }
-        
-        private void OnGetCompanyPermissionsOperationCompleted(object arg) {
-            if ((this.GetCompanyPermissionsCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetCompanyPermissionsCompleted(this, new GetCompanyPermissionsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetRepositoryPermissions", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public RepositoryPermission[] GetRepositoryPermissions(Caller caller, Repository repository) {
-            object[] results = this.Invoke("GetRepositoryPermissions", new object[] {
-                        caller,
-                        repository});
-            return ((RepositoryPermission[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetRepositoryPermissionsAsync(Caller caller, Repository repository) {
-            this.GetRepositoryPermissionsAsync(caller, repository, null);
-        }
-        
-        /// <remarks/>
-        public void GetRepositoryPermissionsAsync(Caller caller, Repository repository, object userState) {
-            if ((this.GetRepositoryPermissionsOperationCompleted == null)) {
-                this.GetRepositoryPermissionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetRepositoryPermissionsOperationCompleted);
-            }
-            this.InvokeAsync("GetRepositoryPermissions", new object[] {
-                        caller,
-                        repository}, this.GetRepositoryPermissionsOperationCompleted, userState);
-        }
-        
-        private void OnGetRepositoryPermissionsOperationCompleted(object arg) {
-            if ((this.GetRepositoryPermissionsCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetRepositoryPermissionsCompleted(this, new GetRepositoryPermissionsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetProjectPermissions", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public ProjectPermission[] GetProjectPermissions(Caller caller, Project project) {
-            object[] results = this.Invoke("GetProjectPermissions", new object[] {
-                        caller,
-                        project});
-            return ((ProjectPermission[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetProjectPermissionsAsync(Caller caller, Project project) {
-            this.GetProjectPermissionsAsync(caller, project, null);
-        }
-        
-        /// <remarks/>
-        public void GetProjectPermissionsAsync(Caller caller, Project project, object userState) {
-            if ((this.GetProjectPermissionsOperationCompleted == null)) {
-                this.GetProjectPermissionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetProjectPermissionsOperationCompleted);
-            }
-            this.InvokeAsync("GetProjectPermissions", new object[] {
-                        caller,
-                        project}, this.GetProjectPermissionsOperationCompleted, userState);
-        }
-        
-        private void OnGetProjectPermissionsOperationCompleted(object arg) {
-            if ((this.GetProjectPermissionsCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetProjectPermissionsCompleted(this, new GetProjectPermissionsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetVersionPermissions", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public VersionPermission[] GetVersionPermissions(Caller caller, Version version) {
-            object[] results = this.Invoke("GetVersionPermissions", new object[] {
-                        caller,
-                        version});
-            return ((VersionPermission[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetVersionPermissionsAsync(Caller caller, Version version) {
-            this.GetVersionPermissionsAsync(caller, version, null);
-        }
-        
-        /// <remarks/>
-        public void GetVersionPermissionsAsync(Caller caller, Version version, object userState) {
-            if ((this.GetVersionPermissionsOperationCompleted == null)) {
-                this.GetVersionPermissionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetVersionPermissionsOperationCompleted);
-            }
-            this.InvokeAsync("GetVersionPermissions", new object[] {
-                        caller,
-                        version}, this.GetVersionPermissionsOperationCompleted, userState);
-        }
-        
-        private void OnGetVersionPermissionsOperationCompleted(object arg) {
-            if ((this.GetVersionPermissionsCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetVersionPermissionsCompleted(this, new GetVersionPermissionsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/SetCompanyPermissions", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void SetCompanyPermissions(Caller caller, User user, Company company, Permission permission) {
-            this.Invoke("SetCompanyPermissions", new object[] {
-                        caller,
-                        user,
-                        company,
-                        permission});
-        }
-        
-        /// <remarks/>
-        public void SetCompanyPermissionsAsync(Caller caller, User user, Company company, Permission permission) {
-            this.SetCompanyPermissionsAsync(caller, user, company, permission, null);
-        }
-        
-        /// <remarks/>
-        public void SetCompanyPermissionsAsync(Caller caller, User user, Company company, Permission permission, object userState) {
-            if ((this.SetCompanyPermissionsOperationCompleted == null)) {
-                this.SetCompanyPermissionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSetCompanyPermissionsOperationCompleted);
-            }
-            this.InvokeAsync("SetCompanyPermissions", new object[] {
-                        caller,
-                        user,
-                        company,
-                        permission}, this.SetCompanyPermissionsOperationCompleted, userState);
-        }
-        
-        private void OnSetCompanyPermissionsOperationCompleted(object arg) {
-            if ((this.SetCompanyPermissionsCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.SetCompanyPermissionsCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/SetRepositoryPermissions", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void SetRepositoryPermissions(Caller caller, User user, Repository repository, Permission permission) {
-            this.Invoke("SetRepositoryPermissions", new object[] {
-                        caller,
-                        user,
-                        repository,
-                        permission});
-        }
-        
-        /// <remarks/>
-        public void SetRepositoryPermissionsAsync(Caller caller, User user, Repository repository, Permission permission) {
-            this.SetRepositoryPermissionsAsync(caller, user, repository, permission, null);
-        }
-        
-        /// <remarks/>
-        public void SetRepositoryPermissionsAsync(Caller caller, User user, Repository repository, Permission permission, object userState) {
-            if ((this.SetRepositoryPermissionsOperationCompleted == null)) {
-                this.SetRepositoryPermissionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSetRepositoryPermissionsOperationCompleted);
-            }
-            this.InvokeAsync("SetRepositoryPermissions", new object[] {
-                        caller,
-                        user,
-                        repository,
-                        permission}, this.SetRepositoryPermissionsOperationCompleted, userState);
-        }
-        
-        private void OnSetRepositoryPermissionsOperationCompleted(object arg) {
-            if ((this.SetRepositoryPermissionsCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.SetRepositoryPermissionsCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/SetProjectPermissions", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void SetProjectPermissions(Caller caller, User user, Project project, Permission permission) {
-            this.Invoke("SetProjectPermissions", new object[] {
-                        caller,
-                        user,
-                        project,
-                        permission});
-        }
-        
-        /// <remarks/>
-        public void SetProjectPermissionsAsync(Caller caller, User user, Project project, Permission permission) {
-            this.SetProjectPermissionsAsync(caller, user, project, permission, null);
-        }
-        
-        /// <remarks/>
-        public void SetProjectPermissionsAsync(Caller caller, User user, Project project, Permission permission, object userState) {
-            if ((this.SetProjectPermissionsOperationCompleted == null)) {
-                this.SetProjectPermissionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSetProjectPermissionsOperationCompleted);
-            }
-            this.InvokeAsync("SetProjectPermissions", new object[] {
-                        caller,
-                        user,
-                        project,
-                        permission}, this.SetProjectPermissionsOperationCompleted, userState);
-        }
-        
-        private void OnSetProjectPermissionsOperationCompleted(object arg) {
-            if ((this.SetProjectPermissionsCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.SetProjectPermissionsCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/SetVersionPermissions", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void SetVersionPermissions(Caller caller, User user, Version version, Permission permission) {
-            this.Invoke("SetVersionPermissions", new object[] {
-                        caller,
-                        user,
-                        version,
-                        permission});
-        }
-        
-        /// <remarks/>
-        public void SetVersionPermissionsAsync(Caller caller, User user, Version version, Permission permission) {
-            this.SetVersionPermissionsAsync(caller, user, version, permission, null);
-        }
-        
-        /// <remarks/>
-        public void SetVersionPermissionsAsync(Caller caller, User user, Version version, Permission permission, object userState) {
-            if ((this.SetVersionPermissionsOperationCompleted == null)) {
-                this.SetVersionPermissionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSetVersionPermissionsOperationCompleted);
-            }
-            this.InvokeAsync("SetVersionPermissions", new object[] {
-                        caller,
-                        user,
-                        version,
-                        permission}, this.SetVersionPermissionsOperationCompleted, userState);
-        }
-        
-        private void OnSetVersionPermissionsOperationCompleted(object arg) {
-            if ((this.SetVersionPermissionsCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.SetVersionPermissionsCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetAvailableStatisticNames", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string[] GetAvailableStatisticNames(Caller caller) {
-            object[] results = this.Invoke("GetAvailableStatisticNames", new object[] {
-                        caller});
-            return ((string[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetAvailableStatisticNamesAsync(Caller caller) {
-            this.GetAvailableStatisticNamesAsync(caller, null);
-        }
-        
-        /// <remarks/>
-        public void GetAvailableStatisticNamesAsync(Caller caller, object userState) {
-            if ((this.GetAvailableStatisticNamesOperationCompleted == null)) {
-                this.GetAvailableStatisticNamesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAvailableStatisticNamesOperationCompleted);
-            }
-            this.InvokeAsync("GetAvailableStatisticNames", new object[] {
-                        caller}, this.GetAvailableStatisticNamesOperationCompleted, userState);
-        }
-        
-        private void OnGetAvailableStatisticNamesOperationCompleted(object arg) {
-            if ((this.GetAvailableStatisticNamesCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetAvailableStatisticNamesCompleted(this, new GetAvailableStatisticNamesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetStatistic", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Statistic[] GetStatistic(Caller caller, string[] names, StatisticPeriod period, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] System.Nullable<System.DateTime> from, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] System.Nullable<System.DateTime> to) {
-            object[] results = this.Invoke("GetStatistic", new object[] {
-                        caller,
-                        names,
-                        period,
-                        from,
-                        to});
-            return ((Statistic[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetStatisticAsync(Caller caller, string[] names, StatisticPeriod period, System.Nullable<System.DateTime> from, System.Nullable<System.DateTime> to) {
-            this.GetStatisticAsync(caller, names, period, from, to, null);
-        }
-        
-        /// <remarks/>
-        public void GetStatisticAsync(Caller caller, string[] names, StatisticPeriod period, System.Nullable<System.DateTime> from, System.Nullable<System.DateTime> to, object userState) {
-            if ((this.GetStatisticOperationCompleted == null)) {
-                this.GetStatisticOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetStatisticOperationCompleted);
-            }
-            this.InvokeAsync("GetStatistic", new object[] {
-                        caller,
-                        names,
-                        period,
-                        from,
-                        to}, this.GetStatisticOperationCompleted, userState);
-        }
-        
-        private void OnGetStatisticOperationCompleted(object arg) {
-            if ((this.GetStatisticCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetStatisticCompleted(this, new GetStatisticCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetImageFile", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public ImageFile GetImageFile(Caller caller, string name, string symbolHash) {
-            object[] results = this.Invoke("GetImageFile", new object[] {
-                        caller,
-                        name,
-                        symbolHash});
-            return ((ImageFile)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetImageFileAsync(Caller caller, string name, string symbolHash) {
-            this.GetImageFileAsync(caller, name, symbolHash, null);
-        }
-        
-        /// <remarks/>
-        public void GetImageFileAsync(Caller caller, string name, string symbolHash, object userState) {
-            if ((this.GetImageFileOperationCompleted == null)) {
-                this.GetImageFileOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetImageFileOperationCompleted);
-            }
-            this.InvokeAsync("GetImageFile", new object[] {
-                        caller,
-                        name,
-                        symbolHash}, this.GetImageFileOperationCompleted, userState);
-        }
-        
-        private void OnGetImageFileOperationCompleted(object arg) {
-            if ((this.GetImageFileCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetImageFileCompleted(this, new GetImageFileCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/LogImageFileFound", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void LogImageFileFound(Caller caller, ImageFile imageFile) {
-            this.Invoke("LogImageFileFound", new object[] {
-                        caller,
-                        imageFile});
-        }
-        
-        /// <remarks/>
-        public void LogImageFileFoundAsync(Caller caller, ImageFile imageFile) {
-            this.LogImageFileFoundAsync(caller, imageFile, null);
-        }
-        
-        /// <remarks/>
-        public void LogImageFileFoundAsync(Caller caller, ImageFile imageFile, object userState) {
-            if ((this.LogImageFileFoundOperationCompleted == null)) {
-                this.LogImageFileFoundOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLogImageFileFoundOperationCompleted);
-            }
-            this.InvokeAsync("LogImageFileFound", new object[] {
-                        caller,
-                        imageFile}, this.LogImageFileFoundOperationCompleted, userState);
-        }
-        
-        private void OnLogImageFileFoundOperationCompleted(object arg) {
-            if ((this.LogImageFileFoundCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.LogImageFileFoundCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/LogImageFileNotFound", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void LogImageFileNotFound(Caller caller, string imageFileName, string symbolHash) {
-            this.Invoke("LogImageFileNotFound", new object[] {
-                        caller,
-                        imageFileName,
-                        symbolHash});
-        }
-        
-        /// <remarks/>
-        public void LogImageFileNotFoundAsync(Caller caller, string imageFileName, string symbolHash) {
-            this.LogImageFileNotFoundAsync(caller, imageFileName, symbolHash, null);
-        }
-        
-        /// <remarks/>
-        public void LogImageFileNotFoundAsync(Caller caller, string imageFileName, string symbolHash, object userState) {
-            if ((this.LogImageFileNotFoundOperationCompleted == null)) {
-                this.LogImageFileNotFoundOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLogImageFileNotFoundOperationCompleted);
-            }
-            this.InvokeAsync("LogImageFileNotFound", new object[] {
-                        caller,
-                        imageFileName,
-                        symbolHash}, this.LogImageFileNotFoundOperationCompleted, userState);
-        }
-        
-        private void OnLogImageFileNotFoundOperationCompleted(object arg) {
-            if ((this.LogImageFileNotFoundCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.LogImageFileNotFoundCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/LogSourceFileFound", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void LogSourceFileFound(Caller caller, SourceFile sourceFile) {
-            this.Invoke("LogSourceFileFound", new object[] {
-                        caller,
-                        sourceFile});
-        }
-        
-        /// <remarks/>
-        public void LogSourceFileFoundAsync(Caller caller, SourceFile sourceFile) {
-            this.LogSourceFileFoundAsync(caller, sourceFile, null);
-        }
-        
-        /// <remarks/>
-        public void LogSourceFileFoundAsync(Caller caller, SourceFile sourceFile, object userState) {
-            if ((this.LogSourceFileFoundOperationCompleted == null)) {
-                this.LogSourceFileFoundOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLogSourceFileFoundOperationCompleted);
-            }
-            this.InvokeAsync("LogSourceFileFound", new object[] {
-                        caller,
-                        sourceFile}, this.LogSourceFileFoundOperationCompleted, userState);
-        }
-        
-        private void OnLogSourceFileFoundOperationCompleted(object arg) {
-            if ((this.LogSourceFileFoundCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.LogSourceFileFoundCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/UserValidate", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public User UserValidate(Caller caller) {
-            object[] results = this.Invoke("UserValidate", new object[] {
-                        caller});
-            return ((User)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void UserValidateAsync(Caller caller) {
-            this.UserValidateAsync(caller, null);
-        }
-        
-        /// <remarks/>
-        public void UserValidateAsync(Caller caller, object userState) {
-            if ((this.UserValidateOperationCompleted == null)) {
-                this.UserValidateOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUserValidateOperationCompleted);
-            }
-            this.InvokeAsync("UserValidate", new object[] {
-                        caller}, this.UserValidateOperationCompleted, userState);
-        }
-        
-        private void OnUserValidateOperationCompleted(object arg) {
-            if ((this.UserValidateCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.UserValidateCompleted(this, new UserValidateCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/CreateUserByKey", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Caller CreateUserByKey(string company, string type, string value) {
-            object[] results = this.Invoke("CreateUserByKey", new object[] {
-                        company,
-                        type,
-                        value});
-            return ((Caller)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void CreateUserByKeyAsync(string company, string type, string value) {
-            this.CreateUserByKeyAsync(company, type, value, null);
-        }
-        
-        /// <remarks/>
-        public void CreateUserByKeyAsync(string company, string type, string value, object userState) {
-            if ((this.CreateUserByKeyOperationCompleted == null)) {
-                this.CreateUserByKeyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateUserByKeyOperationCompleted);
-            }
-            this.InvokeAsync("CreateUserByKey", new object[] {
-                        company,
-                        type,
-                        value}, this.CreateUserByKeyOperationCompleted, userState);
-        }
-        
-        private void OnCreateUserByKeyOperationCompleted(object arg) {
-            if ((this.CreateUserByKeyCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.CreateUserByKeyCompleted(this, new CreateUserByKeyCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetUserByKey", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Caller GetUserByKey(string company, string type, string value) {
-            object[] results = this.Invoke("GetUserByKey", new object[] {
-                        company,
-                        type,
-                        value});
-            return ((Caller)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetUserByKeyAsync(string company, string type, string value) {
-            this.GetUserByKeyAsync(company, type, value, null);
-        }
-        
-        /// <remarks/>
-        public void GetUserByKeyAsync(string company, string type, string value, object userState) {
-            if ((this.GetUserByKeyOperationCompleted == null)) {
-                this.GetUserByKeyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetUserByKeyOperationCompleted);
-            }
-            this.InvokeAsync("GetUserByKey", new object[] {
-                        company,
-                        type,
-                        value}, this.GetUserByKeyOperationCompleted, userState);
-        }
-        
-        private void OnGetUserByKeyOperationCompleted(object arg) {
-            if ((this.GetUserByKeyCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetUserByKeyCompleted(this, new GetUserByKeyCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetUserKeys", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public UserKey[] GetUserKeys(Caller caller) {
-            object[] results = this.Invoke("GetUserKeys", new object[] {
-                        caller});
-            return ((UserKey[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetUserKeysAsync(Caller caller) {
-            this.GetUserKeysAsync(caller, null);
-        }
-        
-        /// <remarks/>
-        public void GetUserKeysAsync(Caller caller, object userState) {
-            if ((this.GetUserKeysOperationCompleted == null)) {
-                this.GetUserKeysOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetUserKeysOperationCompleted);
-            }
-            this.InvokeAsync("GetUserKeys", new object[] {
-                        caller}, this.GetUserKeysOperationCompleted, userState);
-        }
-        
-        private void OnGetUserKeysOperationCompleted(object arg) {
-            if ((this.GetUserKeysCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetUserKeysCompleted(this, new GetUserKeysCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/AddUserKeys", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void AddUserKeys(Caller caller, UserKey[] userKeys) {
-            this.Invoke("AddUserKeys", new object[] {
-                        caller,
-                        userKeys});
-        }
-        
-        /// <remarks/>
-        public void AddUserKeysAsync(Caller caller, UserKey[] userKeys) {
-            this.AddUserKeysAsync(caller, userKeys, null);
-        }
-        
-        /// <remarks/>
-        public void AddUserKeysAsync(Caller caller, UserKey[] userKeys, object userState) {
-            if ((this.AddUserKeysOperationCompleted == null)) {
-                this.AddUserKeysOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddUserKeysOperationCompleted);
-            }
-            this.InvokeAsync("AddUserKeys", new object[] {
-                        caller,
-                        userKeys}, this.AddUserKeysOperationCompleted, userState);
-        }
-        
-        private void OnAddUserKeysOperationCompleted(object arg) {
-            if ((this.AddUserKeysCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.AddUserKeysCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/RemoveUserKeys", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void RemoveUserKeys(Caller user, UserKey[] userKeys) {
-            this.Invoke("RemoveUserKeys", new object[] {
-                        user,
-                        userKeys});
-        }
-        
-        /// <remarks/>
-        public void RemoveUserKeysAsync(Caller user, UserKey[] userKeys) {
-            this.RemoveUserKeysAsync(user, userKeys, null);
-        }
-        
-        /// <remarks/>
-        public void RemoveUserKeysAsync(Caller user, UserKey[] userKeys, object userState) {
-            if ((this.RemoveUserKeysOperationCompleted == null)) {
-                this.RemoveUserKeysOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoveUserKeysOperationCompleted);
-            }
-            this.InvokeAsync("RemoveUserKeys", new object[] {
-                        user,
-                        userKeys}, this.RemoveUserKeysOperationCompleted, userState);
-        }
-        
-        private void OnRemoveUserKeysOperationCompleted(object arg) {
-            if ((this.RemoveUserKeysCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.RemoveUserKeysCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetUserVisualStudioLink", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string GetUserVisualStudioLink(Caller user) {
-            object[] results = this.Invoke("GetUserVisualStudioLink", new object[] {
-                        user});
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetUserVisualStudioLinkAsync(Caller user) {
-            this.GetUserVisualStudioLinkAsync(user, null);
-        }
-        
-        /// <remarks/>
-        public void GetUserVisualStudioLinkAsync(Caller user, object userState) {
-            if ((this.GetUserVisualStudioLinkOperationCompleted == null)) {
-                this.GetUserVisualStudioLinkOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetUserVisualStudioLinkOperationCompleted);
-            }
-            this.InvokeAsync("GetUserVisualStudioLink", new object[] {
-                        user}, this.GetUserVisualStudioLinkOperationCompleted, userState);
-        }
-        
-        private void OnGetUserVisualStudioLinkOperationCompleted(object arg) {
-            if ((this.GetUserVisualStudioLinkCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetUserVisualStudioLinkCompleted(this, new GetUserVisualStudioLinkCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -2475,1279 +2437,6 @@ namespace SymbolSource.Server.Management.Client {
             }
             set {
                 this.keyTypeField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
-    public partial class StatisticItem {
-        
-        private System.DateTime dateField;
-        
-        private long countField;
-        
-        /// <remarks/>
-        public System.DateTime Date {
-            get {
-                return this.dateField;
-            }
-            set {
-                this.dateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public long Count {
-            get {
-                return this.countField;
-            }
-            set {
-                this.countField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
-    public partial class Statistic {
-        
-        private string nameField;
-        
-        private StatisticItem[] itemsField;
-        
-        /// <remarks/>
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public StatisticItem[] Items {
-            get {
-                return this.itemsField;
-            }
-            set {
-                this.itemsField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ProjectPermission))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(RepositoryPermission))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CompanyPermission))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(VersionPermission))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
-    public partial class Permission {
-        
-        private User userField;
-        
-        private bool readField;
-        
-        private bool writeField;
-        
-        private bool grantField;
-        
-        /// <remarks/>
-        public User User {
-            get {
-                return this.userField;
-            }
-            set {
-                this.userField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool Read {
-            get {
-                return this.readField;
-            }
-            set {
-                this.readField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool Write {
-            get {
-                return this.writeField;
-            }
-            set {
-                this.writeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool Grant {
-            get {
-                return this.grantField;
-            }
-            set {
-                this.grantField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
-    public partial class User {
-        
-        private string companyField;
-        
-        private string nameField;
-        
-        private string emailField;
-        
-        private bool canManageCompaniesField;
-        
-        private bool canManageUsersField;
-        
-        private bool canViewStatisticsField;
-        
-        /// <remarks/>
-        public string Company {
-            get {
-                return this.companyField;
-            }
-            set {
-                this.companyField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Email {
-            get {
-                return this.emailField;
-            }
-            set {
-                this.emailField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool CanManageCompanies {
-            get {
-                return this.canManageCompaniesField;
-            }
-            set {
-                this.canManageCompaniesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool CanManageUsers {
-            get {
-                return this.canManageUsersField;
-            }
-            set {
-                this.canManageUsersField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool CanViewStatistics {
-            get {
-                return this.canViewStatisticsField;
-            }
-            set {
-                this.canViewStatisticsField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
-    public partial class ProjectPermission : Permission {
-        
-        private Project projectField;
-        
-        /// <remarks/>
-        public Project Project {
-            get {
-                return this.projectField;
-            }
-            set {
-                this.projectField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
-    public partial class Project {
-        
-        private string nameField;
-        
-        private string repositoryField;
-        
-        private string companyField;
-        
-        private MetadataEntry[] metadataField;
-        
-        private bool canCreateVersionField;
-        
-        private bool canEditField;
-        
-        private bool canDeleteField;
-        
-        private bool canGrantPermissionField;
-        
-        /// <remarks/>
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Repository {
-            get {
-                return this.repositoryField;
-            }
-            set {
-                this.repositoryField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Company {
-            get {
-                return this.companyField;
-            }
-            set {
-                this.companyField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public MetadataEntry[] Metadata {
-            get {
-                return this.metadataField;
-            }
-            set {
-                this.metadataField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool CanCreateVersion {
-            get {
-                return this.canCreateVersionField;
-            }
-            set {
-                this.canCreateVersionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool CanEdit {
-            get {
-                return this.canEditField;
-            }
-            set {
-                this.canEditField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool CanDelete {
-            get {
-                return this.canDeleteField;
-            }
-            set {
-                this.canDeleteField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool CanGrantPermission {
-            get {
-                return this.canGrantPermissionField;
-            }
-            set {
-                this.canGrantPermissionField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
-    public partial class MetadataEntry {
-        
-        private string keyField;
-        
-        private string valueField;
-        
-        /// <remarks/>
-        public string Key {
-            get {
-                return this.keyField;
-            }
-            set {
-                this.keyField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
-    public partial class RepositoryPermission : Permission {
-        
-        private Repository repositoryField;
-        
-        /// <remarks/>
-        public Repository Repository {
-            get {
-                return this.repositoryField;
-            }
-            set {
-                this.repositoryField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
-    public partial class Repository {
-        
-        private string nameField;
-        
-        private string companyField;
-        
-        private MetadataEntry[] metadataField;
-        
-        private bool canCreateProjectField;
-        
-        private bool canEditField;
-        
-        private bool canDeleteField;
-        
-        private bool canGrantPermissionField;
-        
-        /// <remarks/>
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Company {
-            get {
-                return this.companyField;
-            }
-            set {
-                this.companyField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public MetadataEntry[] Metadata {
-            get {
-                return this.metadataField;
-            }
-            set {
-                this.metadataField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool CanCreateProject {
-            get {
-                return this.canCreateProjectField;
-            }
-            set {
-                this.canCreateProjectField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool CanEdit {
-            get {
-                return this.canEditField;
-            }
-            set {
-                this.canEditField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool CanDelete {
-            get {
-                return this.canDeleteField;
-            }
-            set {
-                this.canDeleteField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool CanGrantPermission {
-            get {
-                return this.canGrantPermissionField;
-            }
-            set {
-                this.canGrantPermissionField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
-    public partial class CompanyPermission : Permission {
-        
-        private Company companyField;
-        
-        /// <remarks/>
-        public Company Company {
-            get {
-                return this.companyField;
-            }
-            set {
-                this.companyField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
-    public partial class Company {
-        
-        private string nameField;
-        
-        private MetadataEntry[] metadataField;
-        
-        private bool canCreateRepositoryField;
-        
-        private bool canGrantPermissionField;
-        
-        /// <remarks/>
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public MetadataEntry[] Metadata {
-            get {
-                return this.metadataField;
-            }
-            set {
-                this.metadataField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool CanCreateRepository {
-            get {
-                return this.canCreateRepositoryField;
-            }
-            set {
-                this.canCreateRepositoryField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool CanGrantPermission {
-            get {
-                return this.canGrantPermissionField;
-            }
-            set {
-                this.canGrantPermissionField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
-    public partial class VersionPermission : Permission {
-        
-        private Version versionField;
-        
-        /// <remarks/>
-        public Version Version {
-            get {
-                return this.versionField;
-            }
-            set {
-                this.versionField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
-    public partial class Version {
-        
-        private string nameField;
-        
-        private string projectField;
-        
-        private string repositoryField;
-        
-        private string companyField;
-        
-        private string packageFormatField;
-        
-        private string packageHashField;
-        
-        private bool hiddenField;
-        
-        private MetadataEntry[] metadataField;
-        
-        private bool canCreateCompilationField;
-        
-        private bool canEditField;
-        
-        private bool canDeleteField;
-        
-        private bool canHideField;
-        
-        private bool canRestoreField;
-        
-        private bool canGrantPermissionField;
-        
-        /// <remarks/>
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Project {
-            get {
-                return this.projectField;
-            }
-            set {
-                this.projectField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Repository {
-            get {
-                return this.repositoryField;
-            }
-            set {
-                this.repositoryField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Company {
-            get {
-                return this.companyField;
-            }
-            set {
-                this.companyField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string PackageFormat {
-            get {
-                return this.packageFormatField;
-            }
-            set {
-                this.packageFormatField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string PackageHash {
-            get {
-                return this.packageHashField;
-            }
-            set {
-                this.packageHashField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool Hidden {
-            get {
-                return this.hiddenField;
-            }
-            set {
-                this.hiddenField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public MetadataEntry[] Metadata {
-            get {
-                return this.metadataField;
-            }
-            set {
-                this.metadataField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool CanCreateCompilation {
-            get {
-                return this.canCreateCompilationField;
-            }
-            set {
-                this.canCreateCompilationField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool CanEdit {
-            get {
-                return this.canEditField;
-            }
-            set {
-                this.canEditField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool CanDelete {
-            get {
-                return this.canDeleteField;
-            }
-            set {
-                this.canDeleteField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool CanHide {
-            get {
-                return this.canHideField;
-            }
-            set {
-                this.canHideField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool CanRestore {
-            get {
-                return this.canRestoreField;
-            }
-            set {
-                this.canRestoreField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool CanGrantPermission {
-            get {
-                return this.canGrantPermissionField;
-            }
-            set {
-                this.canGrantPermissionField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
-    public partial class Permissions {
-        
-        private VersionPermission[] versionsField;
-        
-        private ProjectPermission[] projectsField;
-        
-        private RepositoryPermission[] repositoriesField;
-        
-        private CompanyPermission[] companiesField;
-        
-        /// <remarks/>
-        public VersionPermission[] Versions {
-            get {
-                return this.versionsField;
-            }
-            set {
-                this.versionsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public ProjectPermission[] Projects {
-            get {
-                return this.projectsField;
-            }
-            set {
-                this.projectsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public RepositoryPermission[] Repositories {
-            get {
-                return this.repositoriesField;
-            }
-            set {
-                this.repositoriesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public CompanyPermission[] Companies {
-            get {
-                return this.companiesField;
-            }
-            set {
-                this.companiesField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
-    public partial class UploadReport {
-        
-        private System.DateTime startedField;
-        
-        private System.Nullable<System.DateTime> endedField;
-        
-        private string summaryField;
-        
-        private string logField;
-        
-        private string exceptionField;
-        
-        /// <remarks/>
-        public System.DateTime Started {
-            get {
-                return this.startedField;
-            }
-            set {
-                this.startedField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<System.DateTime> Ended {
-            get {
-                return this.endedField;
-            }
-            set {
-                this.endedField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Summary {
-            get {
-                return this.summaryField;
-            }
-            set {
-                this.summaryField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Log {
-            get {
-                return this.logField;
-            }
-            set {
-                this.logField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Exception {
-            get {
-                return this.exceptionField;
-            }
-            set {
-                this.exceptionField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
-    public partial class PackageImageFile {
-        
-        private string nameField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
-    public partial class PackageCompilation {
-        
-        private PackageImageFile[] imageFilesField;
-        
-        private string modeField;
-        
-        private string platformField;
-        
-        private string binaryDistributionUrlField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ImageFiles")]
-        public PackageImageFile[] ImageFiles {
-            get {
-                return this.imageFilesField;
-            }
-            set {
-                this.imageFilesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Mode {
-            get {
-                return this.modeField;
-            }
-            set {
-                this.modeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Platform {
-            get {
-                return this.platformField;
-            }
-            set {
-                this.platformField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string BinaryDistributionUrl {
-            get {
-                return this.binaryDistributionUrlField;
-            }
-            set {
-                this.binaryDistributionUrlField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
-    public partial class PackageVersion {
-        
-        private PackageCompilation[] compilationsField;
-        
-        private MetadataEntry[] metadataField;
-        
-        private string nameField;
-        
-        private string projectField;
-        
-        private string sourceDistributionUrlField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Compilations")]
-        public PackageCompilation[] Compilations {
-            get {
-                return this.compilationsField;
-            }
-            set {
-                this.compilationsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Metadata")]
-        public MetadataEntry[] Metadata {
-            get {
-                return this.metadataField;
-            }
-            set {
-                this.metadataField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Project {
-            get {
-                return this.projectField;
-            }
-            set {
-                this.projectField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string SourceDistributionUrl {
-            get {
-                return this.sourceDistributionUrlField;
-            }
-            set {
-                this.sourceDistributionUrlField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
-    public partial class PackageProject {
-        
-        private PackageVersion versionField;
-        
-        private string nameField;
-        
-        private string repositoryField;
-        
-        private string homePageUrlField;
-        
-        /// <remarks/>
-        public PackageVersion Version {
-            get {
-                return this.versionField;
-            }
-            set {
-                this.versionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Repository {
-            get {
-                return this.repositoryField;
-            }
-            set {
-                this.repositoryField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string HomePageUrl {
-            get {
-                return this.homePageUrlField;
-            }
-            set {
-                this.homePageUrlField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
-    public partial class PackageInfo {
-        
-        private string userField;
-        
-        private string repositoryField;
-        
-        private string projectField;
-        
-        private string versionField;
-        
-        private System.DateTime submittedField;
-        
-        private System.Nullable<System.DateTime> updatedField;
-        
-        /// <remarks/>
-        public string User {
-            get {
-                return this.userField;
-            }
-            set {
-                this.userField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Repository {
-            get {
-                return this.repositoryField;
-            }
-            set {
-                this.repositoryField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Project {
-            get {
-                return this.projectField;
-            }
-            set {
-                this.projectField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Version {
-            get {
-                return this.versionField;
-            }
-            set {
-                this.versionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime Submitted {
-            get {
-                return this.submittedField;
-            }
-            set {
-                this.submittedField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<System.DateTime> Updated {
-            get {
-                return this.updatedField;
-            }
-            set {
-                this.updatedField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
-    public partial class JobStatus {
-        
-        private PackageInfo[] pendingField;
-        
-        private PackageInfo[] succededField;
-        
-        private PackageInfo[] failedField;
-        
-        /// <remarks/>
-        public PackageInfo[] Pending {
-            get {
-                return this.pendingField;
-            }
-            set {
-                this.pendingField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public PackageInfo[] Succeded {
-            get {
-                return this.succededField;
-            }
-            set {
-                this.succededField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public PackageInfo[] Failed {
-            get {
-                return this.failedField;
-            }
-            set {
-                this.failedField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
-    public partial class UserKey {
-        
-        private int idField;
-        
-        private string typeField;
-        
-        private string valueField;
-        
-        /// <remarks/>
-        public int Id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Type {
-            get {
-                return this.typeField;
-            }
-            set {
-                this.typeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
             }
         }
     }
@@ -4113,6 +2802,144 @@ namespace SymbolSource.Server.Management.Client {
     }
     
     /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
+    public partial class Compilation {
+        
+        private string modeField;
+        
+        private string profileField;
+        
+        private string platformField;
+        
+        private string versionField;
+        
+        private string projectField;
+        
+        private string repositoryField;
+        
+        private string companyField;
+        
+        private MetadataEntry[] metadataField;
+        
+        /// <remarks/>
+        public string Mode {
+            get {
+                return this.modeField;
+            }
+            set {
+                this.modeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Profile {
+            get {
+                return this.profileField;
+            }
+            set {
+                this.profileField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Platform {
+            get {
+                return this.platformField;
+            }
+            set {
+                this.platformField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Version {
+            get {
+                return this.versionField;
+            }
+            set {
+                this.versionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Project {
+            get {
+                return this.projectField;
+            }
+            set {
+                this.projectField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Repository {
+            get {
+                return this.repositoryField;
+            }
+            set {
+                this.repositoryField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Company {
+            get {
+                return this.companyField;
+            }
+            set {
+                this.companyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public MetadataEntry[] Metadata {
+            get {
+                return this.metadataField;
+            }
+            set {
+                this.metadataField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
+    public partial class MetadataEntry {
+        
+        private string keyField;
+        
+        private string valueField;
+        
+        /// <remarks/>
+        public string Key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Depedency))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
     [System.SerializableAttribute()]
@@ -4374,17 +3201,75 @@ namespace SymbolSource.Server.Management.Client {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
-    public partial class Compilation {
+    public partial class StatisticItem {
         
-        private string modeField;
+        private System.DateTime dateField;
         
-        private string profileField;
+        private long countField;
         
-        private string platformField;
+        /// <remarks/>
+        public System.DateTime Date {
+            get {
+                return this.dateField;
+            }
+            set {
+                this.dateField = value;
+            }
+        }
         
-        private string versionField;
+        /// <remarks/>
+        public long Count {
+            get {
+                return this.countField;
+            }
+            set {
+                this.countField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
+    public partial class Statistic {
         
-        private string projectField;
+        private string nameField;
+        
+        private StatisticItem[] itemsField;
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public StatisticItem[] Items {
+            get {
+                return this.itemsField;
+            }
+            set {
+                this.itemsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
+    public partial class Project {
+        
+        private string nameField;
         
         private string repositoryField;
         
@@ -4392,43 +3277,138 @@ namespace SymbolSource.Server.Management.Client {
         
         private MetadataEntry[] metadataField;
         
+        private bool canCreateVersionField;
+        
+        private bool canEditField;
+        
+        private bool canDeleteField;
+        
+        private bool canGrantPermissionField;
+        
         /// <remarks/>
-        public string Mode {
+        public string Name {
             get {
-                return this.modeField;
+                return this.nameField;
             }
             set {
-                this.modeField = value;
+                this.nameField = value;
             }
         }
         
         /// <remarks/>
-        public string Profile {
+        public string Repository {
             get {
-                return this.profileField;
+                return this.repositoryField;
             }
             set {
-                this.profileField = value;
+                this.repositoryField = value;
             }
         }
         
         /// <remarks/>
-        public string Platform {
+        public string Company {
             get {
-                return this.platformField;
+                return this.companyField;
             }
             set {
-                this.platformField = value;
+                this.companyField = value;
             }
         }
         
         /// <remarks/>
-        public string Version {
+        public MetadataEntry[] Metadata {
             get {
-                return this.versionField;
+                return this.metadataField;
             }
             set {
-                this.versionField = value;
+                this.metadataField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool CanCreateVersion {
+            get {
+                return this.canCreateVersionField;
+            }
+            set {
+                this.canCreateVersionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool CanEdit {
+            get {
+                return this.canEditField;
+            }
+            set {
+                this.canEditField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool CanDelete {
+            get {
+                return this.canDeleteField;
+            }
+            set {
+                this.canDeleteField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool CanGrantPermission {
+            get {
+                return this.canGrantPermissionField;
+            }
+            set {
+                this.canGrantPermissionField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
+    public partial class Version {
+        
+        private string nameField;
+        
+        private string projectField;
+        
+        private string repositoryField;
+        
+        private string companyField;
+        
+        private string packageFormatField;
+        
+        private string packageHashField;
+        
+        private bool hiddenField;
+        
+        private MetadataEntry[] metadataField;
+        
+        private bool canCreateCompilationField;
+        
+        private bool canEditField;
+        
+        private bool canDeleteField;
+        
+        private bool canHideField;
+        
+        private bool canRestoreField;
+        
+        private bool canGrantPermissionField;
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
             }
         }
         
@@ -4463,12 +3443,854 @@ namespace SymbolSource.Server.Management.Client {
         }
         
         /// <remarks/>
+        public string PackageFormat {
+            get {
+                return this.packageFormatField;
+            }
+            set {
+                this.packageFormatField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PackageHash {
+            get {
+                return this.packageHashField;
+            }
+            set {
+                this.packageHashField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool Hidden {
+            get {
+                return this.hiddenField;
+            }
+            set {
+                this.hiddenField = value;
+            }
+        }
+        
+        /// <remarks/>
         public MetadataEntry[] Metadata {
             get {
                 return this.metadataField;
             }
             set {
                 this.metadataField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool CanCreateCompilation {
+            get {
+                return this.canCreateCompilationField;
+            }
+            set {
+                this.canCreateCompilationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool CanEdit {
+            get {
+                return this.canEditField;
+            }
+            set {
+                this.canEditField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool CanDelete {
+            get {
+                return this.canDeleteField;
+            }
+            set {
+                this.canDeleteField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool CanHide {
+            get {
+                return this.canHideField;
+            }
+            set {
+                this.canHideField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool CanRestore {
+            get {
+                return this.canRestoreField;
+            }
+            set {
+                this.canRestoreField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool CanGrantPermission {
+            get {
+                return this.canGrantPermissionField;
+            }
+            set {
+                this.canGrantPermissionField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ProjectPermission))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(RepositoryPermission))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CompanyPermission))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(VersionPermission))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
+    public partial class Permission {
+        
+        private User userField;
+        
+        private bool readField;
+        
+        private bool writeField;
+        
+        private bool grantField;
+        
+        /// <remarks/>
+        public User User {
+            get {
+                return this.userField;
+            }
+            set {
+                this.userField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool Read {
+            get {
+                return this.readField;
+            }
+            set {
+                this.readField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool Write {
+            get {
+                return this.writeField;
+            }
+            set {
+                this.writeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool Grant {
+            get {
+                return this.grantField;
+            }
+            set {
+                this.grantField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
+    public partial class User {
+        
+        private string companyField;
+        
+        private string nameField;
+        
+        private string emailField;
+        
+        private bool canManageCompaniesField;
+        
+        private bool canManageUsersField;
+        
+        private bool canViewStatisticsField;
+        
+        /// <remarks/>
+        public string Company {
+            get {
+                return this.companyField;
+            }
+            set {
+                this.companyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Email {
+            get {
+                return this.emailField;
+            }
+            set {
+                this.emailField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool CanManageCompanies {
+            get {
+                return this.canManageCompaniesField;
+            }
+            set {
+                this.canManageCompaniesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool CanManageUsers {
+            get {
+                return this.canManageUsersField;
+            }
+            set {
+                this.canManageUsersField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool CanViewStatistics {
+            get {
+                return this.canViewStatisticsField;
+            }
+            set {
+                this.canViewStatisticsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
+    public partial class ProjectPermission : Permission {
+        
+        private Project projectField;
+        
+        /// <remarks/>
+        public Project Project {
+            get {
+                return this.projectField;
+            }
+            set {
+                this.projectField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
+    public partial class RepositoryPermission : Permission {
+        
+        private Repository repositoryField;
+        
+        /// <remarks/>
+        public Repository Repository {
+            get {
+                return this.repositoryField;
+            }
+            set {
+                this.repositoryField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
+    public partial class Repository {
+        
+        private string nameField;
+        
+        private string companyField;
+        
+        private MetadataEntry[] metadataField;
+        
+        private bool canCreateProjectField;
+        
+        private bool canEditField;
+        
+        private bool canDeleteField;
+        
+        private bool canGrantPermissionField;
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Company {
+            get {
+                return this.companyField;
+            }
+            set {
+                this.companyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public MetadataEntry[] Metadata {
+            get {
+                return this.metadataField;
+            }
+            set {
+                this.metadataField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool CanCreateProject {
+            get {
+                return this.canCreateProjectField;
+            }
+            set {
+                this.canCreateProjectField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool CanEdit {
+            get {
+                return this.canEditField;
+            }
+            set {
+                this.canEditField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool CanDelete {
+            get {
+                return this.canDeleteField;
+            }
+            set {
+                this.canDeleteField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool CanGrantPermission {
+            get {
+                return this.canGrantPermissionField;
+            }
+            set {
+                this.canGrantPermissionField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
+    public partial class CompanyPermission : Permission {
+        
+        private Company companyField;
+        
+        /// <remarks/>
+        public Company Company {
+            get {
+                return this.companyField;
+            }
+            set {
+                this.companyField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
+    public partial class Company {
+        
+        private string nameField;
+        
+        private MetadataEntry[] metadataField;
+        
+        private bool canCreateRepositoryField;
+        
+        private bool canGrantPermissionField;
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public MetadataEntry[] Metadata {
+            get {
+                return this.metadataField;
+            }
+            set {
+                this.metadataField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool CanCreateRepository {
+            get {
+                return this.canCreateRepositoryField;
+            }
+            set {
+                this.canCreateRepositoryField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool CanGrantPermission {
+            get {
+                return this.canGrantPermissionField;
+            }
+            set {
+                this.canGrantPermissionField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
+    public partial class VersionPermission : Permission {
+        
+        private Version versionField;
+        
+        /// <remarks/>
+        public Version Version {
+            get {
+                return this.versionField;
+            }
+            set {
+                this.versionField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
+    public partial class Permissions {
+        
+        private VersionPermission[] versionsField;
+        
+        private ProjectPermission[] projectsField;
+        
+        private RepositoryPermission[] repositoriesField;
+        
+        private CompanyPermission[] companiesField;
+        
+        /// <remarks/>
+        public VersionPermission[] Versions {
+            get {
+                return this.versionsField;
+            }
+            set {
+                this.versionsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public ProjectPermission[] Projects {
+            get {
+                return this.projectsField;
+            }
+            set {
+                this.projectsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public RepositoryPermission[] Repositories {
+            get {
+                return this.repositoriesField;
+            }
+            set {
+                this.repositoriesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public CompanyPermission[] Companies {
+            get {
+                return this.companiesField;
+            }
+            set {
+                this.companiesField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
+    public partial class PackageImageFile {
+        
+        private string nameField;
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
+    public partial class PackageCompilation {
+        
+        private string modeField;
+        
+        private string platformField;
+        
+        private string binaryDistributionUrlField;
+        
+        private PackageImageFile[] imageFilesField;
+        
+        /// <remarks/>
+        public string Mode {
+            get {
+                return this.modeField;
+            }
+            set {
+                this.modeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Platform {
+            get {
+                return this.platformField;
+            }
+            set {
+                this.platformField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string BinaryDistributionUrl {
+            get {
+                return this.binaryDistributionUrlField;
+            }
+            set {
+                this.binaryDistributionUrlField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public PackageImageFile[] ImageFiles {
+            get {
+                return this.imageFilesField;
+            }
+            set {
+                this.imageFilesField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
+    public partial class PackageVersion {
+        
+        private string nameField;
+        
+        private string projectField;
+        
+        private string sourceDistributionUrlField;
+        
+        private PackageCompilation[] compilationsField;
+        
+        private MetadataEntry[] metadataField;
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Project {
+            get {
+                return this.projectField;
+            }
+            set {
+                this.projectField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string SourceDistributionUrl {
+            get {
+                return this.sourceDistributionUrlField;
+            }
+            set {
+                this.sourceDistributionUrlField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public PackageCompilation[] Compilations {
+            get {
+                return this.compilationsField;
+            }
+            set {
+                this.compilationsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public MetadataEntry[] Metadata {
+            get {
+                return this.metadataField;
+            }
+            set {
+                this.metadataField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
+    public partial class PackageProject {
+        
+        private string nameField;
+        
+        private string repositoryField;
+        
+        private string homePageUrlField;
+        
+        private PackageVersion versionField;
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Repository {
+            get {
+                return this.repositoryField;
+            }
+            set {
+                this.repositoryField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string HomePageUrl {
+            get {
+                return this.homePageUrlField;
+            }
+            set {
+                this.homePageUrlField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public PackageVersion Version {
+            get {
+                return this.versionField;
+            }
+            set {
+                this.versionField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
+    public partial class UploadReport {
+        
+        private System.DateTime startedField;
+        
+        private System.Nullable<System.DateTime> endedField;
+        
+        private string summaryField;
+        
+        private string logField;
+        
+        private string exceptionField;
+        
+        /// <remarks/>
+        public System.DateTime Started {
+            get {
+                return this.startedField;
+            }
+            set {
+                this.startedField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<System.DateTime> Ended {
+            get {
+                return this.endedField;
+            }
+            set {
+                this.endedField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Summary {
+            get {
+                return this.summaryField;
+            }
+            set {
+                this.summaryField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Log {
+            get {
+                return this.logField;
+            }
+            set {
+                this.logField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Exception {
+            get {
+                return this.exceptionField;
+            }
+            set {
+                this.exceptionField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.symbolsource.org/schemas/webServices")]
+    public partial class UserKey {
+        
+        private int idField;
+        
+        private string typeField;
+        
+        private string valueField;
+        
+        /// <remarks/>
+        public int Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
             }
         }
     }
@@ -4487,6 +4309,706 @@ namespace SymbolSource.Server.Management.Client {
         
         /// <remarks/>
         Year,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetCompaniesCompletedEventHandler(object sender, GetCompaniesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetCompaniesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetCompaniesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Company[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Company[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void CreateCompanyCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void UpdateCompanyCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void DeleteCompanyCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetUsersCompletedEventHandler(object sender, GetUsersCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetUsersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetUsersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public User[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((User[])(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public Company company {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Company)(this.results[1]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void CreateUserCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void UpdateUserCompletedEventHandler(object sender, UpdateUserCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UpdateUserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UpdateUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public User user {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((User)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void DeleteUserCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetRepositoriesCompletedEventHandler(object sender, GetRepositoriesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetRepositoriesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetRepositoriesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Repository[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Repository[])(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public Company company {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Company)(this.results[1]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void CreateOrUpdateRepositoryCompletedEventHandler(object sender, CreateOrUpdateRepositoryCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CreateOrUpdateRepositoryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CreateOrUpdateRepositoryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Repository repository {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Repository)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void CreateRepositoryCompletedEventHandler(object sender, CreateRepositoryCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CreateRepositoryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CreateRepositoryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Repository repository {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Repository)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void UpdateRepositoryCompletedEventHandler(object sender, UpdateRepositoryCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UpdateRepositoryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UpdateRepositoryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Repository repository {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Repository)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void DeleteRepositoryCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void DigestGenerateRequestCompletedEventHandler(object sender, DigestGenerateRequestCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class DigestGenerateRequestCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal DigestGenerateRequestCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void DigestValidateResponseCompletedEventHandler(object sender, DigestValidateResponseCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class DigestValidateResponseCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal DigestValidateResponseCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Caller Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Caller)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetUploadReportsCompletedEventHandler(object sender, GetUploadReportsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetUploadReportsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetUploadReportsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public UploadReport[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((UploadReport[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void UploadPackageCompletedEventHandler(object sender, UploadPackageCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UploadPackageCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UploadPackageCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public UploadReport Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((UploadReport)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetUserPermissionsCompletedEventHandler(object sender, GetUserPermissionsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetUserPermissionsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetUserPermissionsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Permissions Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Permissions)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetCompanyPermissionsCompletedEventHandler(object sender, GetCompanyPermissionsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetCompanyPermissionsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetCompanyPermissionsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public CompanyPermission[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((CompanyPermission[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetRepositoryPermissionsCompletedEventHandler(object sender, GetRepositoryPermissionsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetRepositoryPermissionsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetRepositoryPermissionsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public RepositoryPermission[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((RepositoryPermission[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetProjectPermissionsCompletedEventHandler(object sender, GetProjectPermissionsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetProjectPermissionsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetProjectPermissionsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ProjectPermission[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ProjectPermission[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetVersionPermissionsCompletedEventHandler(object sender, GetVersionPermissionsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetVersionPermissionsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetVersionPermissionsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public VersionPermission[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((VersionPermission[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void SetCompanyPermissionsCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void SetRepositoryPermissionsCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void SetProjectPermissionsCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void SetVersionPermissionsCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetAvailableStatisticNamesCompletedEventHandler(object sender, GetAvailableStatisticNamesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAvailableStatisticNamesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAvailableStatisticNamesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetStatisticCompletedEventHandler(object sender, GetStatisticCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetStatisticCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetStatisticCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Statistic[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Statistic[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetImageFileCompletedEventHandler(object sender, GetImageFileCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetImageFileCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetImageFileCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ImageFile Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ImageFile)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void LogImageFileFoundCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void LogImageFileNotFoundCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void LogSourceFileFoundCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void UserValidateCompletedEventHandler(object sender, UserValidateCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UserValidateCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UserValidateCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public User Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((User)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void CreateUserByKeyCompletedEventHandler(object sender, CreateUserByKeyCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CreateUserByKeyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CreateUserByKeyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Caller Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Caller)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetUserByKeyCompletedEventHandler(object sender, GetUserByKeyCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetUserByKeyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetUserByKeyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Caller Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Caller)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetUserKeysCompletedEventHandler(object sender, GetUserKeysCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetUserKeysCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetUserKeysCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public UserKey[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((UserKey[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void AddUserKeysCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void RemoveUserKeysCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetUserVisualStudioLinkCompletedEventHandler(object sender, GetUserVisualStudioLinkCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetUserVisualStudioLinkCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetUserVisualStudioLinkCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
     }
     
     /// <remarks/>
@@ -5185,732 +5707,6 @@ namespace SymbolSource.Server.Management.Client {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Version)(this.results[1]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void GetCompaniesCompletedEventHandler(object sender, GetCompaniesCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetCompaniesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetCompaniesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public Company[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Company[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void CreateCompanyCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void UpdateCompanyCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void DeleteCompanyCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void GetUsersCompletedEventHandler(object sender, GetUsersCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetUsersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetUsersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public User[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((User[])(this.results[0]));
-            }
-        }
-        
-        /// <remarks/>
-        public Company company {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Company)(this.results[1]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void CreateUserCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void UpdateUserCompletedEventHandler(object sender, UpdateUserCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class UpdateUserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal UpdateUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public User user {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((User)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void DeleteUserCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void GetRepositoriesCompletedEventHandler(object sender, GetRepositoriesCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetRepositoriesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetRepositoriesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public Repository[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Repository[])(this.results[0]));
-            }
-        }
-        
-        /// <remarks/>
-        public Company company {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Company)(this.results[1]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void CreateOrUpdateRepositoryCompletedEventHandler(object sender, CreateOrUpdateRepositoryCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class CreateOrUpdateRepositoryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal CreateOrUpdateRepositoryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public Repository repository {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Repository)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void CreateRepositoryCompletedEventHandler(object sender, CreateRepositoryCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class CreateRepositoryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal CreateRepositoryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public Repository repository {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Repository)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void UpdateRepositoryCompletedEventHandler(object sender, UpdateRepositoryCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class UpdateRepositoryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal UpdateRepositoryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public Repository repository {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Repository)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void DeleteRepositoryCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void DigestGenerateRequestCompletedEventHandler(object sender, DigestGenerateRequestCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class DigestGenerateRequestCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal DigestGenerateRequestCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void DigestValidateResponseCompletedEventHandler(object sender, DigestValidateResponseCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class DigestValidateResponseCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal DigestValidateResponseCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public Caller Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Caller)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void GetJobStatusCompletedEventHandler(object sender, GetJobStatusCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetJobStatusCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetJobStatusCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public JobStatus Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((JobStatus)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void CreateJobCompletedEventHandler(object sender, CreateJobCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class CreateJobCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal CreateJobCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public bool Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void UploadPackageCompletedEventHandler(object sender, UploadPackageCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class UploadPackageCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal UploadPackageCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public UploadReport Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((UploadReport)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void GetUserPermissionsCompletedEventHandler(object sender, GetUserPermissionsCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetUserPermissionsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetUserPermissionsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public Permissions Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Permissions)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void GetCompanyPermissionsCompletedEventHandler(object sender, GetCompanyPermissionsCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetCompanyPermissionsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetCompanyPermissionsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public CompanyPermission[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((CompanyPermission[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void GetRepositoryPermissionsCompletedEventHandler(object sender, GetRepositoryPermissionsCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetRepositoryPermissionsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetRepositoryPermissionsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public RepositoryPermission[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((RepositoryPermission[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void GetProjectPermissionsCompletedEventHandler(object sender, GetProjectPermissionsCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetProjectPermissionsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetProjectPermissionsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public ProjectPermission[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((ProjectPermission[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void GetVersionPermissionsCompletedEventHandler(object sender, GetVersionPermissionsCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetVersionPermissionsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetVersionPermissionsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public VersionPermission[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((VersionPermission[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void SetCompanyPermissionsCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void SetRepositoryPermissionsCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void SetProjectPermissionsCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void SetVersionPermissionsCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void GetAvailableStatisticNamesCompletedEventHandler(object sender, GetAvailableStatisticNamesCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetAvailableStatisticNamesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetAvailableStatisticNamesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void GetStatisticCompletedEventHandler(object sender, GetStatisticCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetStatisticCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetStatisticCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public Statistic[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Statistic[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void GetImageFileCompletedEventHandler(object sender, GetImageFileCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetImageFileCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetImageFileCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public ImageFile Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((ImageFile)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void LogImageFileFoundCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void LogImageFileNotFoundCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void LogSourceFileFoundCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void UserValidateCompletedEventHandler(object sender, UserValidateCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class UserValidateCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal UserValidateCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public User Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((User)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void CreateUserByKeyCompletedEventHandler(object sender, CreateUserByKeyCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class CreateUserByKeyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal CreateUserByKeyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public Caller Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Caller)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void GetUserByKeyCompletedEventHandler(object sender, GetUserByKeyCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetUserByKeyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetUserByKeyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public Caller Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Caller)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void GetUserKeysCompletedEventHandler(object sender, GetUserKeysCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetUserKeysCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetUserKeysCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public UserKey[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((UserKey[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void AddUserKeysCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void RemoveUserKeysCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void GetUserVisualStudioLinkCompletedEventHandler(object sender, GetUserVisualStudioLinkCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetUserVisualStudioLinkCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetUserVisualStudioLinkCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
             }
         }
     }

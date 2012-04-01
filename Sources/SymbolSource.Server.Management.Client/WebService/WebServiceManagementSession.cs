@@ -286,9 +286,9 @@ namespace SymbolSource.Server.Management.Client
             return service.GetUserPermissions(caller, targetUser);
         }
 
-        public JobStatus GetJobStatus()
+        public UploadReport[] GetUploadReports()
         {
-            return service.GetJobStatus(caller);
+            return service.GetUploadReports(caller);
         }
 
         public string GetPackageLink(ref Version version, string contentType)

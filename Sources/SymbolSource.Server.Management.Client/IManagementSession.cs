@@ -74,7 +74,7 @@ namespace SymbolSource.Server.Management.Client
        
         Version SetVersionHidden(ref Version version, bool hidden);
 
-        JobStatus GetJobStatus();
+        UploadReport[] GetUploadReports();
         string GetPackageLink(ref Version version, string contentType);
 
         Statistic[] GetStatistic(string[] names, StatisticPeriod period, DateTime? from, DateTime? to);
