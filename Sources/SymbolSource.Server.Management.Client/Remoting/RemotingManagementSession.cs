@@ -13,6 +13,7 @@ namespace SymbolSource.Server.Management.Client.Remoting
             if (caller == null)
                 throw new ArgumentNullException("caller");
 
+            this.caller = caller;
             user = new User { Company = caller.Company, Name = caller.Name };
         }
 
@@ -156,10 +157,20 @@ namespace SymbolSource.Server.Management.Client.Remoting
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
 
-        public Version UploadPackage(PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData)
+        public virtual Version UploadPackage(PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData)
         {
-            throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
+            //TODO: quick and dirty
+            var version = new Version { Company = caller.Company, Repository = package.Repository, Project = package.Name, Name = package.Version.Name };
+            CreateVersion(version);
+            PushPackage(ref version, packageData, package);
+            CreateJob(symbolPackageData, package);
+            return version;
         }
+
+        //public virtual Version UploadPackage(PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData)
+        //{
+        //    throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
+        //}
 
         public virtual CompanyPermission[] GetCompanyPermissions(Company company)
         {
