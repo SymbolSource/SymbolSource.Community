@@ -160,11 +160,22 @@ namespace SymbolSource.Server.Management.Client.Remoting
         public UploadReport UploadPackage(PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData)
         {
             //TODO: quick and dirty
-            var version = new Version { Company = caller.Company, Repository = package.Repository, Project = package.Name, Name = package.Version.Name };
-            CreateVersion(version);
-            PushPackage(ref version, packageData, package);
-            CreateJob(symbolPackageData, package);
-            return version;
+            try
+            {
+                var version = new Version {Company = caller.Company, Repository = package.Repository, Project = package.Name, Name = package.Version.Name};
+                CreateVersion(version);
+                PushPackage(ref version, packageData, package);
+                CreateJob(symbolPackageData, package);
+                return new UploadReport { Summary = "OK" };
+            }
+            catch(Exception e)
+            {
+                return new UploadReport
+                           {
+                               Summary = "Error",
+                               Exception = e.ToString(),
+                           };                
+            }
         }
 
         //public virtual Version UploadPackage(PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData)
