@@ -164,7 +164,11 @@ namespace SymbolSource.Gateway.Core
             var symbolPackage = File.Exists(symbolPackagePath) ? File.ReadAllBytes(symbolPackagePath) : null;
 
             using (var session = backendFactory.Create(caller))
-                session.UploadPackage(packageProject, GetPackageFormat(), package, symbolPackage);
+            {
+                var report = session.UploadPackage(packageProject, GetPackageFormat(), package, symbolPackage);
+                if(report.Summary != "OK")
+                    throw new Exception(report.Exception);
+            }
         }
 
         public void Hide(Caller caller, string company, string repository, string projectName, string versionName)

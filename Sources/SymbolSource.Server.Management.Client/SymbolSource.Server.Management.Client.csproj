@@ -184,9 +184,6 @@
     <None Include="Web References\WebService\ImageFile1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\WebService\JobStatus1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
     <None Include="Web References\WebService\NodeImageFile1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -216,6 +213,9 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\WebService\Statistic1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WebService\UploadReport.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\WebService\User1.datasource">

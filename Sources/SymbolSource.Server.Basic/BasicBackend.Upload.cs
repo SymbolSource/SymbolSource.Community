@@ -6,13 +6,12 @@ using Ionic.Zip;
 using SymbolSource.Processing.Basic;
 using SymbolSource.Processing.Basic.Projects;
 using SymbolSource.Server.Management.Client;
-using Version = SymbolSource.Server.Management.Client.Version;
 
 namespace SymbolSource.Server.Basic
 {
     public partial class BasicBackend
     {
-        public Version UploadPackage(PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData)
+        public UploadReport UploadPackage(PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData)
         {
             if (packageData == null && symbolPackageData == null)
                 throw new ArgumentNullException();
@@ -23,7 +22,10 @@ namespace SymbolSource.Server.Basic
             if (symbolPackageData != null)
                 CreateJob(package, symbolPackageData);
 
-            return new Version();
+            return new UploadReport
+                       {
+                           Summary = "OK",
+                       };
         }
 
         [Obsolete]

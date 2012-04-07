@@ -1,10 +1,12 @@
 using System;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace SymbolSource.Gateway.Core
 {
     public class GatewayException : Exception
     {
-        protected GatewayException(string message, Exception innerException)
+        public GatewayException(string message, Exception innerException)
             : base(message, innerException)
         {
         }
@@ -34,6 +36,8 @@ namespace SymbolSource.Gateway.Core
                 var remaining = 512 - suffix.Length;
 
                 var message = Message;
+                message = Encoding.ASCII.GetString(Encoding.ASCII.GetBytes(message));
+                message = new Regex(@"[\s]+").Replace(message, " ");
 
                 if (message.Length > remaining)
                     message = message.Substring(1, remaining - shortener.Length) + shortener;

@@ -15,7 +15,6 @@ using PackageCompilation = SymbolSource.Server.Management.Client.PackageCompilat
 using PackageImageFile = SymbolSource.Server.Management.Client.PackageImageFile;
 using PackageProject = SymbolSource.Server.Management.Client.PackageProject;
 using PackageVersion = SymbolSource.Server.Management.Client.PackageVersion;
-using Version = SymbolSource.Server.Management.Client.Version;
 
 namespace SymbolSource.Gateway.NuGet.Core
 {
@@ -49,6 +48,7 @@ namespace SymbolSource.Gateway.NuGet.Core
                               Version =
                                   new PackageVersion
                                       {
+                                          Project = package.Id,
                                           Name = package.Version.ToString(),
                                           Compilations =
                                               package.AssemblyReferences
