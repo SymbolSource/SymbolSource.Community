@@ -13,6 +13,7 @@ namespace SymbolSource.Server.Management.Client.Remoting
             if (caller == null)
                 throw new ArgumentNullException("caller");
 
+            this.caller = caller;
             user = new User { Company = caller.Company, Name = caller.Name };
         }
 
@@ -158,8 +159,29 @@ namespace SymbolSource.Server.Management.Client.Remoting
 
         public UploadReport UploadPackage(PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData)
         {
-            throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
+            //TODO: quick and dirty
+            try
+            {
+                var version = new Version {Company = caller.Company, Repository = package.Repository, Project = package.Name, Name = package.Version.Name};
+                CreateVersion(version);
+                PushPackage(ref version, packageData, package);
+                CreateJob(symbolPackageData, package);
+                return new UploadReport { Summary = "OK" };
+            }
+            catch(Exception e)
+            {
+                return new UploadReport
+                           {
+                               Summary = "Error",
+                               Exception = e.ToString(),
+                           };                
+            }
         }
+
+        //public virtual Version UploadPackage(PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData)
+        //{
+        //    throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
+        //}
 
         public virtual CompanyPermission[] GetCompanyPermissions(Company company)
         {

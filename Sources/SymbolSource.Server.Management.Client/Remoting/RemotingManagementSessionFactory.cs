@@ -16,6 +16,7 @@ namespace SymbolSource.Server.Management.Client.Remoting
                 new Func<Caller, Caller>[]
                     {
                         caller => caller,
+                        caller => new Caller {Company = caller.Company, KeyType = caller.KeyType, KeyValue = caller.KeyValue },
                         caller => new Caller {Company = caller.Company, Name = caller.Name, KeyType = caller.KeyType},
                         caller => new Caller {Company = caller.Company, Name = caller.Name},
                         caller => new Caller {Company = caller.Company},
@@ -63,8 +64,8 @@ namespace SymbolSource.Server.Management.Client.Remoting
 
         public Caller GetUserByKey(string company, string type, string value)
         {
-            //TODO
-            throw new NotImplementedException();
+            //TODO: maybe GetUserByKey should be removed in favor if authenticating with Name == null
+            return Find(new Caller { Company = company, KeyType = type, KeyValue = value });
         }
 
         public User Validate(Caller caller)
