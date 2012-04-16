@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Ionic.Zip;
+using log4net;
 using NuGet;
 using SymbolSource.Gateway.Core;
 using SymbolSource.Server.Management.Client;
@@ -25,6 +26,8 @@ namespace SymbolSource.Gateway.NuGet.Core
 
     public class NuGetGatewayManager : GatewayManager, INuGetGatewayManager
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(NuGetGatewayManager));
+        
         public NuGetGatewayManager(IGatewayBackendFactory<IPackageBackend> backendFactory, IGatewayConfigurationFactory configurationFactory)
             : base(backendFactory, configurationFactory)
         {
@@ -163,8 +166,10 @@ namespace SymbolSource.Gateway.NuGet.Core
             return "NuGet";
         }
 
-        private void RezipIfSetConfig(string zipTempName)
+        private static void RezipIfSetConfig(string zipTempName)
         {
+            if(log.IsDebugEnabled)
+                log.Debug("Rezipping packages");
             string rezipPath = ConfigurationManager.AppSettings["rezip"];
             if (!string.IsNullOrEmpty(rezipPath))
             {
@@ -174,6 +179,8 @@ namespace SymbolSource.Gateway.NuGet.Core
                 var process = Process.Start(rezipPath, zipTempName);
                 process.WaitForExit();
             }
+            if (log.IsDebugEnabled)
+                log.Debug("Rezipped packages");
         }
     }
 }

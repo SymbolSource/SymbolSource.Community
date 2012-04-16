@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using Ionic.Zip;
+using log4net;
 using SymbolSource.Server.Management.Client;
 using PackageModel = SymbolSource;
 using Version = SymbolSource.Server.Management.Client.Version;
@@ -12,6 +13,7 @@ namespace SymbolSource.Gateway.Core
 {
     public abstract class GatewayManager : IGatewayManager
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(GatewayManager));
         protected readonly IGatewayBackendFactory<IPackageBackend> backendFactory;
         private readonly IGatewayConfigurationFactory configurationFactory;
 
@@ -53,6 +55,8 @@ namespace SymbolSource.Gateway.Core
 
         public void Upload(Caller caller, Stream stream, string company, string repository)
         {
+            if (log.IsDebugEnabled)
+                log.DebugFormat("Uploading");
             var path = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
             Directory.CreateDirectory(path);
 
@@ -64,6 +68,7 @@ namespace SymbolSource.Gateway.Core
                 }
                 catch (Exception exception)
                 {
+                    log.Error("Problem with saving package", exception);
                     Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(exception, HttpContext.Current));
                     throw new ClientException("Reading package failed", exception);
                 }
@@ -78,6 +83,7 @@ namespace SymbolSource.Gateway.Core
                 }
                 catch (Exception exception)
                 {
+                    log.Error("Problem with getting metadata", exception);
                     Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(exception, HttpContext.Current));
                     throw new ClientException("Reading package metadata failed", exception);
                 }
@@ -88,6 +94,7 @@ namespace SymbolSource.Gateway.Core
                 }
                 catch (Exception exception)
                 {
+                    log.Error("Problem with preparing package", exception);
                     Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(exception, HttpContext.Current));
                     throw new ClientException("Failed to modify package", exception);
                 }
@@ -98,6 +105,7 @@ namespace SymbolSource.Gateway.Core
                 }
                 catch (Exception exception)
                 {
+                    log.Error("Problem with uploading package", exception);
                     Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(exception, HttpContext.Current));
                     throw new ServerException("Package submission failed", exception);
                 }
@@ -106,6 +114,8 @@ namespace SymbolSource.Gateway.Core
             {
                 Directory.Delete(path, true);
             }
+            if (log.IsDebugEnabled)
+                log.DebugFormat("Uploaded");
         }
 
         protected void SavePackage(Stream inputStream, string path)
@@ -127,6 +137,9 @@ namespace SymbolSource.Gateway.Core
 
         private void PrepareUpload(string path, ILookup<ContentType, string> contents)
         {
+            if(log.IsDebugEnabled)
+                log.DebugFormat("Preparing package");
+
             var packagePath = GetFilePath(path);
             var symbolPackagePath = GetSymbolPackagePath(path);
 
@@ -147,6 +160,9 @@ namespace SymbolSource.Gateway.Core
                 RemoveFiles(zip, contents[ContentType.Source]);
                 zip.Save();
             }
+
+            if (log.IsDebugEnabled)
+                log.DebugFormat("Prepared package");
         }
 
         private void RemoveFiles(ZipFile zip, IEnumerable<string> paths)
@@ -157,6 +173,9 @@ namespace SymbolSource.Gateway.Core
 
         private void PerformUpload(Caller caller, PackageProject packageProject, string path)
         {
+            if (log.IsDebugEnabled)
+                log.DebugFormat("Uploading package");
+
             var packagePath = GetFilePath(path);
             var symbolPackagePath = GetSymbolPackagePath(path);
 
@@ -169,6 +188,9 @@ namespace SymbolSource.Gateway.Core
                 if(report.Summary != "OK")
                     throw new Exception(report.Exception);
             }
+
+            if (log.IsDebugEnabled)
+                log.DebugFormat("Uploaded upload package");
         }
 
         public void Hide(Caller caller, string company, string repository, string projectName, string versionName)
