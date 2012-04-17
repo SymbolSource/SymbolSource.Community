@@ -86,7 +86,7 @@ namespace SymbolSource.Gateway.NuGet.Core
                 contents = zip.EntryFileNames.ToLookup(GetContentType);
         }
 
-        private static IList<MetadataEntry> GetMetadataEntries(ZipPackage package)
+        private static IList<MetadataEntry> GetMetadataEntries(IPackageMetadata package)
         {
             var metadata = new List<MetadataEntry>();
             var metadataWrapper = new MetadataWrapper(metadata);
@@ -151,14 +151,14 @@ namespace SymbolSource.Gateway.NuGet.Core
             return ContentType.Other;
         }
 
-        protected override bool? GetProjectPermission(Caller caller, string companyName, string repositoryName, string projectName)
+        protected override bool? GetProjectPermission(Caller caller, string companyName, PackageProject project)
         {
-            var configuration = new RepositoryConfigurationWrapper(companyName, repositoryName);
+            var configuration = new RepositoryConfigurationWrapper(companyName, project.Repository);
 
             if (string.IsNullOrEmpty(configuration.Service))
                 return null;
 
-            return new NuGetService(configuration.Service).CheckPermission(caller.KeyValue, projectName);
+            return new NuGetService(configuration.Service).CheckPermission(caller.KeyValue, project.Name);
         }
 
         protected override string GetPackageFormat()
@@ -170,7 +170,9 @@ namespace SymbolSource.Gateway.NuGet.Core
         {
             if(log.IsDebugEnabled)
                 log.Debug("Rezipping packages");
+
             string rezipPath = ConfigurationManager.AppSettings["rezip"];
+
             if (!string.IsNullOrEmpty(rezipPath))
             {
                 if (!File.Exists(rezipPath))

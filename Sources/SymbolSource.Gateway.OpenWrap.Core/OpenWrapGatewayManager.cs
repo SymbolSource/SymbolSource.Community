@@ -100,7 +100,7 @@ namespace SymbolSource.Gateway.OpenWrap.Core
             return assemblyPath.Replace(rootPath, "");
         }
 
-        protected override bool? GetProjectPermission(Caller caller, string companyName, string repositoryName, string projectName)
+        protected override bool? GetProjectPermission(Caller caller, string companyName, PackageProject project)
         {
             return null;
         }

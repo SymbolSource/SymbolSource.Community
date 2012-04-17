@@ -57,6 +57,7 @@ namespace SymbolSource.Gateway.Core
         {
             if (log.IsDebugEnabled)
                 log.DebugFormat("Uploading");
+
             var path = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
             Directory.CreateDirectory(path);
 
@@ -90,6 +91,17 @@ namespace SymbolSource.Gateway.Core
 
                 try
                 {
+                    SynchronizePermissions(caller, company, package);
+                }
+                catch (Exception exception)
+                {
+                    log.Error("Problem with synchronizing permissions", exception);
+                    Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(exception, HttpContext.Current));
+                    throw new ClientException("Failed to synchronize permissions", exception);
+                }
+
+                try
+                {
                     PrepareUpload(path, contents);
                 }
                 catch (Exception exception)
@@ -114,8 +126,51 @@ namespace SymbolSource.Gateway.Core
             {
                 Directory.Delete(path, true);
             }
+
             if (log.IsDebugEnabled)
                 log.DebugFormat("Uploaded");
+        }
+
+        private void SynchronizePermissions(Caller caller, string company, PackageProject packageProject)
+        {
+            var permission = GetProjectPermission(caller, company, packageProject);
+
+            if (permission.HasValue)
+            {
+                var configuration = configurationFactory.Create(company);
+
+                if (string.IsNullOrEmpty(configuration.GatewayLogin) || string.IsNullOrEmpty(configuration.GatewayPassword))
+                    throw new Exception("Missing gateway configuration");
+
+                using (var session = backendFactory.Create(new Caller { Company = company, Name = configuration.GatewayLogin, KeyType = "API", KeyValue = configuration.GatewayPassword }))
+                {
+                    var project = new Project { Company = company, Repository = packageProject.Repository, Name = packageProject.Name };
+
+                    if (permission.Value)
+                    {
+                        try
+                        {
+                            session.CreateProject(project);
+                        }
+                        catch (Exception)
+                        {
+                            //ignore if exists
+                        }
+                    }
+
+                    try
+                    {
+                        session.SetProjectPermissions(new User { Company = caller.Company, Name = caller.Name }, project, new Permission { Grant = false, Read = false, Write = permission.Value });
+                    }
+                    catch (Exception)
+                    {
+                        //ignore if not exists
+                    }
+
+                    if (!permission.Value)
+                        throw new Exception("External permission source denied publish access");
+                }
+            }
         }
 
         protected void SavePackage(Stream inputStream, string path)
@@ -128,7 +183,7 @@ namespace SymbolSource.Gateway.Core
 
         protected abstract void GetMetadata(string path, string repository, out PackageProject project, out IList<MetadataEntry> metadata, out ILookup<ContentType, string> contents);
 
-        protected abstract bool? GetProjectPermission(Caller caller, string companyName, string repositoryName, string projectName);
+        protected abstract bool? GetProjectPermission(Caller caller, string companyName, PackageProject project);
 
         private string GetSymbolPackagePath(string path)
         {
@@ -137,7 +192,7 @@ namespace SymbolSource.Gateway.Core
 
         private void PrepareUpload(string path, ILookup<ContentType, string> contents)
         {
-            if(log.IsDebugEnabled)
+            if (log.IsDebugEnabled)
                 log.DebugFormat("Preparing package");
 
             var packagePath = GetFilePath(path);
@@ -185,7 +240,8 @@ namespace SymbolSource.Gateway.Core
             using (var session = backendFactory.Create(caller))
             {
                 var report = session.UploadPackage(packageProject, GetPackageFormat(), package, symbolPackage);
-                if(report.Summary != "OK")
+
+                if (report.Summary != "OK")
                     throw new Exception(report.Exception);
             }
 
