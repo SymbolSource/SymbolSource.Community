@@ -102,6 +102,7 @@
       <HintPath>..\..\packages\Mono.Cecil.0.9.5.2\lib\net40\Mono.Cecil.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Runtime.Remoting" />
@@ -114,6 +115,7 @@
     <Compile Include="IManagementPreauthentication.cs" />
     <Compile Include="MetadataWrapper.cs" />
     <Compile Include="Remoting\DigestHeader.cs" />
+    <Compile Include="WebService\AppSettingWebServiceManagementConfiguration.cs" />
     <Compile Include="WebService\WebServiceManagementSessionFactory.cs" />
     <Compile Include="Data\Compilation.cs" />
     <Compile Include="IManagementSession.cs" />
