@@ -26,19 +26,19 @@ namespace SymbolSource.Server.Basic
             container.Register(
                 AllTypes.FromAssembly(typeof(Gateway.NuGet.Core.AttributeRouting).Assembly)
                     .BasedOn<IController>()
-                    .Configure(cr => cr.LifeStyle.Transient)
+                    .LifestyleTransient()
                 );
 
             container.Register(
                 AllTypes.FromAssembly(typeof(Gateway.OpenWrap.Core.AttributeRouting).Assembly)
                     .BasedOn<IController>()
-                    .Configure(cr => cr.LifeStyle.Transient)
+                    .LifestyleTransient()
                 );
 
             container.Register(
                 AllTypes.FromAssembly(typeof(Gateway.WinDbg.Core.AttributeRouting).Assembly)
                     .BasedOn<IController>()
-                    .Configure(cr => cr.LifeStyle.Transient)
+                    .LifestyleTransient()
                 );
             
             ControllerBuilder.Current.SetControllerFactory(new MCControllerFactory(container.Kernel));
