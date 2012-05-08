@@ -19,29 +19,36 @@ namespace SymbolSource.Gateway.NuGet.Core
             var request = WebRequest.Create(string.Format("{0}/api/v2/verifykey/{1}", path, project));
             request.Headers["X-NuGet-ApiKey"] = key;
 
+            var response = GetResponse(request);
+            
+            switch (response)
+            {
+                case HttpStatusCode.OK:
+                case HttpStatusCode.NotFound:
+                    return true;
+
+                case HttpStatusCode.BadRequest:
+                case HttpStatusCode.Forbidden:
+                    return false;
+
+                default:
+                    throw new Exception(response.ToString());
+            }
+           
+        }
+
+        private HttpStatusCode GetResponse(WebRequest request)
+        {
             try
             {
                 using (var response = (HttpWebResponse)request.GetResponse())
                 {
-                    switch (response.StatusCode)
-                    {
-                        case HttpStatusCode.OK:
-                        case HttpStatusCode.NotFound:
-                            return true;
-
-                        case HttpStatusCode.Forbidden:
-                            return false;
-
-                        default:
-                            throw new Exception(response.StatusDescription);
-                    }
+                    return response.StatusCode;
                 }
             }
-            catch (Exception exception)
+            catch (WebException exception)
             {
-                //TODO tutaj chyba nie powinno być odwołań do System.Web
-                ErrorLog.GetDefault(HttpContext.Current).Log(new Error(exception, HttpContext.Current));
-                return false;
+                return ((HttpWebResponse)exception.Response).StatusCode;
             }
         }
     }
