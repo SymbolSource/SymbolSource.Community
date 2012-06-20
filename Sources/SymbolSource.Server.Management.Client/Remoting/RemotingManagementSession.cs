@@ -223,17 +223,17 @@ namespace SymbolSource.Server.Management.Client.Remoting
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
 
-        public virtual UserKey[] GetUserKeys()
+        public virtual UserKey[] GetUserKeys(User targetUser)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
 
-        public virtual void AddUserKeys(UserKey[] keys)
+        public virtual void AddUserKey(User targetUser, UserKey key)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
 
-        public virtual void RemoveUserKeys(UserKey[] keys)
+        public virtual void RemoveUserKey(User targetUser, UserKey key)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
