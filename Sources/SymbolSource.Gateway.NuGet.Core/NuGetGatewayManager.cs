@@ -148,6 +148,9 @@ namespace SymbolSource.Gateway.NuGet.Core
             if (parts.First() == "src")
                 return ContentType.Source;
 
+            if (parts.Last().EndsWith(".cshtml"))
+                return ContentType.Source;
+
             return ContentType.Other;
         }
 
