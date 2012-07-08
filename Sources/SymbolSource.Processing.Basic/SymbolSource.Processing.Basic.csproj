@@ -120,6 +120,7 @@
     <Compile Include="Projects\FolderPackageFile.cs" />
     <Compile Include="Projects\TransformingWrapperPackageFile.cs" />
     <Compile Include="Projects\ZipPackageFile.cs" />
+    <Compile Include="SourceConverter.cs" />
     <Compile Include="SourceStoreManager.cs" />
     <Compile Include="SymbolStoreManager.cs" />
     <Compile Include="Projects\AddInfoBaseVisitor.cs" />

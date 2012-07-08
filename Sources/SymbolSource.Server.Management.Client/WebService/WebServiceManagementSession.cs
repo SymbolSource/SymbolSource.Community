@@ -206,19 +206,19 @@ namespace SymbolSource.Server.Management.Client
             return service.CreateUserByKey(company, type, value);
         }
 
-        public UserKey[] GetUserKeys()
+        public UserKey[] GetUserKeys(User targetUser)
         {
-            return service.GetUserKeys(caller);
+            return service.GetUserKeys(caller, targetUser);
         }
 
-        public void AddUserKeys(UserKey[] keys)
+        public void AddUserKey(User targetUser, UserKey key)
         {
-            service.AddUserKeys(caller, keys);
+            service.AddUserKey(caller, targetUser, key);
         }
 
-        public void RemoveUserKeys(UserKey[] keys)
+        public void RemoveUserKey(User targetUser, UserKey key)
         {
-            service.RemoveUserKeys(caller, keys);
+            service.RemoveUserKey(caller, targetUser, key);
         }
 
         public virtual Version[] GetVersionLastList()

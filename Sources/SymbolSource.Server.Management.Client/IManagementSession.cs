@@ -51,9 +51,9 @@ namespace SymbolSource.Server.Management.Client
         //TODO: tak naprawdę to ignoruje autoryzację (gubiony caller) i umożliwia DoS
         Caller CreateUserByKey(string company, string type, string value);
 
-        UserKey[] GetUserKeys();
-        void AddUserKeys(UserKey[] keys);
-        void RemoveUserKeys(UserKey[] keys);
+        UserKey[] GetUserKeys(User targetUser);
+        void AddUserKey(User targetUser, UserKey key);
+        void RemoveUserKey(User targetUser, UserKey key);
                                                                                           
         Version[] GetVersionLastList();
         Compilation[] GetCompilationList(ref Version version);

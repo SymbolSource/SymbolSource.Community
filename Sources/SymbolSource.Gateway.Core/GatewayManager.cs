@@ -242,7 +242,7 @@ namespace SymbolSource.Gateway.Core
                 var report = session.UploadPackage(packageProject, GetPackageFormat(), package, symbolPackage);
 
                 if (report.Summary != "OK")
-                    throw new Exception(report.Exception);
+                    throw new Exception(report.Summary);
             }
 
             if (log.IsDebugEnabled)

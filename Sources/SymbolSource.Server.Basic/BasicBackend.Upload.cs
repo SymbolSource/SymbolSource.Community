@@ -79,8 +79,9 @@ namespace SymbolSource.Server.Basic
                         sourceIndex.Add(sourceInfo.OriginalPath + "|" + sourceInfo.KeyPath);
 
                         using (var sourceInfoStream = sourceInfo.ActualPath.Stream)
+                        using (var convertedStream = SourceConverter.Convert(sourceInfoStream)) 
                         using (var sourceStream = File.OpenWrite(Path.Combine(configuration.DataPath, sourcePath)))
-                            sourceInfoStream.CopyTo(sourceStream);
+                            convertedStream.CopyTo(sourceStream);
 
                         File.WriteAllLines(Path.Combine(configuration.DataPath, binaryDirectory, binaryInfo.Name + ".txt"), sourceIndex);
                     }
