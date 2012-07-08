@@ -7,8 +7,12 @@ namespace SymbolSource.Server.Management.Client
     {
         public string ManagementProxyPath
         {
-            get { return ConfigurationManager.AppSettings["ManagementProxyPath"]; }
-            set { throw new NotImplementedException(); }
+            get { return IsRedirected ? ConfigurationManager.AppSettings["ManagementRedirect"] : ConfigurationManager.AppSettings["ManagementProxyPath"]; }
+        }
+
+        public bool IsRedirected
+        {
+            get { return !string.IsNullOrEmpty(ConfigurationManager.AppSettings["ManagementRedirect"]); }
         }
     }
 }
