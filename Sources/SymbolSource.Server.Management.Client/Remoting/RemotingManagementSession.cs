@@ -47,6 +47,11 @@ namespace SymbolSource.Server.Management.Client.Remoting
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
 
+        public virtual void CreateCompany(User user, UserKey userKey)
+        {
+            throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
+        }
+
         public virtual void UpdateCompany(Company company)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);

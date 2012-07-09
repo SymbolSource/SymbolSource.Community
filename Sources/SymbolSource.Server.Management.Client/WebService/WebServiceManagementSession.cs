@@ -40,6 +40,11 @@ namespace SymbolSource.Server.Management.Client
             service.CreateCompany(caller, company);
         }
 
+        public void CreateCompany(User user, UserKey userKey)
+        {
+            service.CreateCompany2(caller, user, userKey);
+        }
+
         public void UpdateCompany(Company company)
         {
             service.UpdateCompany(caller, company);

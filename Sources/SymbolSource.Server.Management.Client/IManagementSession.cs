@@ -10,6 +10,7 @@ namespace SymbolSource.Server.Management.Client
 
         Company[] GetCompanies();
         void CreateCompany(Company company);
+        void CreateCompany(User user, UserKey userKey);
         void UpdateCompany(Company company);
         void DeleteCompany(Company company);
 
