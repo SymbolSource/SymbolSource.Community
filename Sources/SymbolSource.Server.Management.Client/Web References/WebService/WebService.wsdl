@@ -1148,7 +1148,8 @@
       <s:element name="GetUserVisualStudioLink">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
           </s:sequence>
         </s:complexType>
       </s:element>

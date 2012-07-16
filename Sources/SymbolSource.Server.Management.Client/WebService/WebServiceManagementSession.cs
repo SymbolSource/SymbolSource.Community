@@ -281,9 +281,9 @@ namespace SymbolSource.Server.Management.Client
             return service.GetSymbolFileLink(caller, ref imageFile);
         }
 
-        public virtual string GetUserVisualStudioLink()
+        public virtual string GetUserVisualStudioLink(User targetUser)
         {
-            return service.GetUserVisualStudioLink(caller);
+            return service.GetUserVisualStudioLink(caller, targetUser);
         }
         
         public Permissions GetUserPermissions(User targetUser)

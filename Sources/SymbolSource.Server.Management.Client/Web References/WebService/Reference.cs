@@ -2037,23 +2037,25 @@ namespace SymbolSource.Server.Management.Client {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetUserVisualStudioLink", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string GetUserVisualStudioLink(Caller user) {
+        public string GetUserVisualStudioLink(Caller caller, User user) {
             object[] results = this.Invoke("GetUserVisualStudioLink", new object[] {
+                        caller,
                         user});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void GetUserVisualStudioLinkAsync(Caller user) {
-            this.GetUserVisualStudioLinkAsync(user, null);
+        public void GetUserVisualStudioLinkAsync(Caller caller, User user) {
+            this.GetUserVisualStudioLinkAsync(caller, user, null);
         }
         
         /// <remarks/>
-        public void GetUserVisualStudioLinkAsync(Caller user, object userState) {
+        public void GetUserVisualStudioLinkAsync(Caller caller, User user, object userState) {
             if ((this.GetUserVisualStudioLinkOperationCompleted == null)) {
                 this.GetUserVisualStudioLinkOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetUserVisualStudioLinkOperationCompleted);
             }
             this.InvokeAsync("GetUserVisualStudioLink", new object[] {
+                        caller,
                         user}, this.GetUserVisualStudioLinkOperationCompleted, userState);
         }
         

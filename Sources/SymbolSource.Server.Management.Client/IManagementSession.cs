@@ -70,7 +70,7 @@ namespace SymbolSource.Server.Management.Client
         string GetImageFileLink(ref ImageFile imageFile);
         string GetSymbolFileLink(ref ImageFile imageFile);
 
-        string GetUserVisualStudioLink();
+        string GetUserVisualStudioLink(User targetUser);
         Permissions GetUserPermissions(User targetUser);
        
         Version SetVersionHidden(ref Version version, bool hidden);
