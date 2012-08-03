@@ -34,7 +34,8 @@ namespace SymbolSource.Server.Basic
                            Path.Combine(version.Project, version.Name, GetPackageName("NuGet", version.Project, version.Name)),
                            Path.Combine(version.Project, version.Name, GetPackageName("OpenWrap", version.Project, version.Name))
                        }
-                .First(candidate => File.Exists(Path.Combine(configuration.DataPath, candidate)));
+                .Where(candidate => File.Exists(Path.Combine(configuration.DataPath, candidate)))
+                .FirstOrDefault();
         }
 
         private string GetPathFromImageFile(ImageFile imageFile)
@@ -155,7 +156,7 @@ namespace SymbolSource.Server.Basic
                                     Name = Path.GetFileName(versionPath),
                                     PackageFormat = packageFormat
                                 })
-                        .Where(version => File.Exists(GetPackagePathFromVersion(version))))
+                        .Where(version => GetPackagePathFromVersion(version) != null && File.Exists(GetPackagePathFromVersion(version))))
                 .ToArray();
         }
 

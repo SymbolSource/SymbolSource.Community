@@ -7,6 +7,19 @@
     {
         return HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + HttpContext.Current.Request.ApplicationPath.TrimEnd('/') + relativeUri;
     }
+    protected bool Check(string uri)
+    {
+        try
+        {
+            using (var client = new System.Net.WebClient())
+                client.DownloadData(uri);
+            return true;
+        } 
+        catch
+        {
+            return false;
+        }
+    }
 </script>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -32,6 +45,11 @@
     <h2>Configuration check</h2>
     <ul>
         <li>SrcSrvPath - <%=ConfigurationManager.AppSettings["SrcSrvPath"]%> - <%= System.IO.Directory.Exists(ConfigurationManager.AppSettings["SrcSrvPath"]) ? "OK" : "Not found"%></li>
+    </ul>
+    <h2>Self check</h2>
+    <ul>
+        <li>NuGet - <%=Check(GetAbsoluteUri("/NuGet/FeedService.mvc")) ? "OK" : "???"%></li>
+        <li>OpenWrap - <%=Check(GetAbsoluteUri("/OpenWrap/index.wraplist")) ? "OK" : "???"%></li>
     </ul>
 <%--    
         <dt>NuGet Feed URL</dt>
