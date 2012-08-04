@@ -40,6 +40,12 @@ namespace SymbolSource.Server.Basic
                     .BasedOn<IController>()
                     .LifestyleTransient()
                 );
+
+            container.Register(
+               AllTypes.FromThisAssembly()
+                   .BasedOn<IController>()
+                   .LifestyleTransient()
+               );
             
             ControllerBuilder.Current.SetControllerFactory(new MCControllerFactory(container.Kernel));
 

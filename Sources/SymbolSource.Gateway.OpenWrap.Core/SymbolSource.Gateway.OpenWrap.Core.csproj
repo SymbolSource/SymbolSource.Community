@@ -55,6 +55,7 @@
     <Compile Include="AttributeRouting.cs" />
     <Compile Include="OpenWrapGatewayManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestHelper.cs" />
     <Compile Include="WrapController.cs" />
   </ItemGroup>
   <ItemGroup>

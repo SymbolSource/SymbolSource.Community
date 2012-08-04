@@ -77,7 +77,7 @@
     <Content Include="App_Readme\glimpse.log4net.readme.txt" />
     <Content Include="App_Readme\glimpse.mvc3.readme.txt" />
     <Content Include="App_Readme\glimpse.readme.txt" />
-    <Content Include="Default.aspx" />
+    <None Include="Views\Home\Index.cshtml" />
     <Content Include="favicon.png" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
@@ -117,6 +117,7 @@
     <Content Include="Index\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Views\Web.config" />
     <None Include="Web.config.transform" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
@@ -127,7 +128,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>60764</DevelopmentServerPort>
+          <DevelopmentServerPort>25412</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AttributeRouting, Version=1.3.1.30109, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AttributeRouting.1.3.1\lib\net40\AttributeRouting.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Castle.Core.3.0.0.4001\lib\net40-client\Castle.Core.dll</HintPath>
@@ -74,6 +77,7 @@
     <Compile Include="BasicBackend.Upload.cs" />
     <Compile Include="BasicBackendConfiguration.cs" />
     <Compile Include="BasicBackendFactory.cs" />
+    <Compile Include="HomeController.cs" />
     <Compile Include="IBasicBackendConfiguration.cs" />
     <Compile Include="MCControllerFactory.cs" />
     <Compile Include="MicroKernel.cs" />
@@ -107,6 +111,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <EmbeddedResource Include="Packages\DemoLibrary.nupkg" />
+    <EmbeddedResource Include="Packages\demolibrary.wrap" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

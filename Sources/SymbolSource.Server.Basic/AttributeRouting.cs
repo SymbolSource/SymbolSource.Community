@@ -2,6 +2,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using System.Web.Routing;
+using AttributeRouting;
 
 [assembly: WebActivator.PostApplicationStartMethod(typeof(SymbolSource.Server.Basic.AttributeRouting), "Start")]
 
@@ -11,6 +12,8 @@ namespace SymbolSource.Server.Basic
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            //routes.MapAttributeRoutes();
+
             foreach (var route in routes.OfType<Route>())
             {
                 if(route.DataTokens == null)
@@ -28,7 +31,6 @@ namespace SymbolSource.Server.Basic
                 }
             }
 
-            /*
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
@@ -36,8 +38,6 @@ namespace SymbolSource.Server.Basic
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
-            */
-
         }
 
         private static void ReplaceToken(Route route, string key, string value)
