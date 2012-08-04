@@ -21,6 +21,7 @@ namespace SymbolSource.Server.Basic
         public KeyValuePair<string, string> NuGetPushTest;
         public KeyValuePair<string, string> OpenWrapPushTest;
         public KeyValuePair<string, string> NuGetFeedTest;
+        public KeyValuePair<string, string> OpenWrapFeedTest;
     }
 
     public class HomeController : Controller
@@ -43,6 +44,7 @@ namespace SymbolSource.Server.Basic
                     NuGetPushTest = InlineTest("NuGetPushTest", null),
                     NuGetFeedTest = InlineTest("NuGetFeedTest", null),
                     OpenWrapPushTest = InlineTest("OpenWrapPushTest", null),
+                    OpenWrapFeedTest = InlineTest("OpenWrapFeedTest", null),
                 });
         }
 
@@ -102,6 +104,13 @@ namespace SymbolSource.Server.Basic
                 helper.Push(GetAbsoluteUrl("/OpenWrap"), new NetworkCredential("Test", "Test"), "Test", stream);
 
             return Content("OK");
+        }
+
+        public ActionResult OpenWrapFeedTest()
+        {
+            var helper = new Gateway.OpenWrap.Core.TestHelper();
+            var count = helper.Count(GetAbsoluteUrl("/OpenWrap"), new NetworkCredential("Test", "Test"));
+            return Content(string.Format("{0} packages", count));
         }
     }
 }

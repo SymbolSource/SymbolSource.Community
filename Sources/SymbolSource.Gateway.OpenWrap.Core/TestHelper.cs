@@ -15,5 +15,11 @@ namespace SymbolSource.Gateway.OpenWrap.Core
             using (var authenticated = repository.Feature<ISupportAuthentication>().WithCredentials(credential))
                 repository.Feature<ISupportPublishing>().Publisher().Publish(name, stream);
         }
+
+        public object Count(string url, NetworkCredential credential)
+        {
+            var repository = new IndexedHttpRepositoryFactory(new WebRequestHttpClient()).FromUserInput(url);
+            return repository.PackagesByName.Count;
+        }
     }
 }
