@@ -1,0 +1,36 @@
+﻿@model SymbolSource.Server.Basic.InfoViewModel
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>SymbolSource Server Basic</title>
+    <link rel="shortcut icon" href="/favicon.png" />
+</head>
+<body>
+    <h1>SymbolSource Server Basic</h1>
+    
+    <h2>Visual Studio Debugging URL</h2>
+    <p>
+        <strong><code>@Model.VisualStudioUrl</code></strong>
+        <a href="http://www.symbolsource.org/Public/Home/VisualStudio">More info about configuration</a>
+    </p>
+    <h2>NuGet - Pushing packages</h2>
+    <p>
+        <code>nuget push *.symbols.nupkg 123 -Source </code><strong><code>@Model.NuGetPushUrl</code></strong>
+    </p>
+    <h2>OpenWrap - Repository URL</h2>
+    <p>
+        <strong><code>@Model.OpenWrapUrl</code></strong>
+    </p>
+    <h2>Self-diagnostics</h2>
+    <ul>
+        <li>SrcSrvPath Configuration Test - @Model.SrcSrvPathTest</li>
+        <li>NuGet Smoke Test -  <a href="@Model.NuGetSmokeTest.Key">@Model.NuGetSmokeTest.Value</a></li>
+        <li>NuGet Push Test - <a href="@Model.NuGetPushTest.Key">@Model.NuGetPushTest.Value</a></li>
+        <li>NuGet Feed Test - <a href="@Model.NuGetFeedTest.Key">@Model.NuGetFeedTest.Value</a></li>
+        <li>OpenWrap Smoke Test - <a href="@Model.OpenWrapSmokeTest.Key">@Model.OpenWrapSmokeTest.Value</a></li>
+        <li>OpenWrap Push Test - <a href="@Model.OpenWrapPushTest.Key">@Model.OpenWrapPushTest.Value</a></li>
+    </ul>
+</body>
+</html>

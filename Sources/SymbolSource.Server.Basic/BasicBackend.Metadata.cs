@@ -156,7 +156,7 @@ namespace SymbolSource.Server.Basic
                                     Name = Path.GetFileName(versionPath),
                                     PackageFormat = packageFormat
                                 })
-                        .Where(version => GetPackagePathFromVersion(version) != null && File.Exists(GetPackagePathFromVersion(version))))
+                        .Where(version => GetPackagePathFromVersion(version) != null))
                 .ToArray();
         }
 
