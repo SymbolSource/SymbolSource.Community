@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using SymbolSource.Server.Management.Client;
@@ -27,15 +28,26 @@ namespace SymbolSource.Server.Basic
             return hashes.FirstOrDefault();
         }
 
-        private string GetPackagePathFromVersion(Version version)
+        private string GetPackagePathFromVersion(Version version, string packageFormat)
         {
-            return new[]
-                       {
-                           Path.Combine(version.Project, version.Name, GetPackageName("NuGet", version.Project, version.Name)),
-                           Path.Combine(version.Project, version.Name, GetPackageName("OpenWrap", version.Project, version.Name))
-                       }
+            // ReSharper disable ReplaceWithSingleCallToFirstOrDefault
+            return GetPackageNameCandidates(version, packageFormat)
+                .Select(name => Path.Combine(version.Project, version.Name, name))
                 .Where(candidate => File.Exists(Path.Combine(configuration.DataPath, candidate)))
                 .FirstOrDefault();
+            // ReSharper restore ReplaceWithSingleCallToFirstOrDefault
+        }
+
+        private IEnumerable<string> GetPackageNameCandidates(Version version, string packageFormat)
+        {
+            if (packageFormat != null)
+                return new[] { GetPackageName(packageFormat, version.Project, version.Name) };
+
+            return new[]
+                       {
+                           GetPackageName("NuGet", version.Project, version.Name),
+                           GetPackageName("OpenWrap", version.Project, version.Name)
+                       };
         }
 
         private string GetPathFromImageFile(ImageFile imageFile)
@@ -156,7 +168,7 @@ namespace SymbolSource.Server.Basic
                                     Name = Path.GetFileName(versionPath),
                                     PackageFormat = packageFormat
                                 })
-                        .Where(version => GetPackagePathFromVersion(version) != null))
+                        .Where(version => GetPackagePathFromVersion(version, packageFormat) != null))
                 .ToArray();
         }
 

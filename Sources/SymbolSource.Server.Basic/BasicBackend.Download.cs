@@ -26,7 +26,7 @@ namespace SymbolSource.Server.Basic
 
         public string GetPackageLink(ref Version version, string contentType)
         {
-            return configuration.RemotePath + '/' + GetPackagePathFromVersion(version).Replace(Path.DirectorySeparatorChar, '/');
+            return configuration.RemotePath + '/' + GetPackagePathFromVersion(version, null).Replace(Path.DirectorySeparatorChar, '/');
         }
     }
 }
