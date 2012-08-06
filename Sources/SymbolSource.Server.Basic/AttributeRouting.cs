@@ -30,14 +30,6 @@ namespace SymbolSource.Server.Basic
                     ReplaceToken(route, "repository", "Basic");
                 }
             }
-
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-            routes.MapRoute(
-                "Default", // Route name
-                "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
-            );
         }
 
         private static void ReplaceToken(Route route, string key, string value)

@@ -7,8 +7,5 @@ obj
 _cache
 wraps/*.wrap
 packages/*
-!packages/nuget.exe
 !packages/repositories.config
 App_Data
-*.nupkg
-!*/*.nupkg
