@@ -39,18 +39,18 @@ namespace SymbolSource.Server.Basic
                     NuGetPushUrl = GetAbsoluteUrl("/NuGet"),
                     OpenWrapUrl = GetAbsoluteUrl("/OpenWrap"),
                     SrcSrvPathTest = Directory.Exists(ConfigurationManager.AppSettings["SrcSrvPath"]) ? "OK" : "Directory not found",
-                    NuGetSmokeTest = InlineTest("SmokeTest", new { url = GetAbsoluteUrl("/NuGet/FeedService.mvc") }),
-                    OpenWrapSmokeTest = InlineTest("SmokeTest", new { url = GetAbsoluteUrl("/OpenWrap/index.wraplist") }),
-                    NuGetPushTest = InlineTest("NuGetPushTest", null),
-                    NuGetFeedTest = InlineTest("NuGetFeedTest", null),
-                    OpenWrapPushTest = InlineTest("OpenWrapPushTest", null),
-                    OpenWrapFeedTest = InlineTest("OpenWrapFeedTest", null),
+                    NuGetSmokeTest = InlineTest("/NuGet/FeedService.mvc"),
+                    OpenWrapSmokeTest = InlineTest("/OpenWrap/index.wraplist"),
+                    NuGetPushTest = InlineTest(Url.Action("NuGetPushTest")),
+                    NuGetFeedTest = InlineTest(Url.Action("NuGetFeedTest")),
+                    OpenWrapPushTest = InlineTest(Url.Action("OpenWrapPushTest")),
+                    OpenWrapFeedTest = InlineTest(Url.Action("OpenWrapFeedTest")),
                 });
         }
 
-        private KeyValuePair<string, string> InlineTest(string action, object routeValues)
+        private KeyValuePair<string, string> InlineTest(string url)
         {
-            var url = GetAbsoluteUrl(Url.Action(action, routeValues));
+            url = GetAbsoluteUrl(Url.Action("SmokeTest", new { url } ));
             using (var client = new WebClient())
             {
                 var stopwatch = new Stopwatch();
@@ -65,6 +65,8 @@ namespace SymbolSource.Server.Basic
 
         public ActionResult SmokeTest(string url)
         {
+            url = GetAbsoluteUrl(url);
+
             try
             {
                 using (var client = new WebClient())
@@ -76,7 +78,7 @@ namespace SymbolSource.Server.Basic
             {
                 var result = (HttpWebResponse)e.Response;
                 using (var stream = result.GetResponseStream())
-                using (var reader = new StreamReader(stream, Encoding.GetEncoding(result.ContentEncoding)))
+                using (var reader = new StreamReader(stream, string.IsNullOrEmpty(result.ContentEncoding) ? Encoding.UTF8 : Encoding.GetEncoding(result.ContentEncoding)))
                     return Content(string.Format("{0} - {1}\n\n{2}", result.StatusCode, result.StatusDescription, reader.ReadToEnd()));
             }
         }

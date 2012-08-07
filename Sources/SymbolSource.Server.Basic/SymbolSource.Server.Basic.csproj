@@ -110,7 +110,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <EmbeddedResource Include="Packages\DemoLibrary.nupkg" />
     <EmbeddedResource Include="Packages\demolibrary.wrap" />
   </ItemGroup>

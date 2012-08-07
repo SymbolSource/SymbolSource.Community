@@ -12,9 +12,12 @@
   </elmah>
 
   <system.web>
-    <compilation debug="true" targetFramework="4.0" />
     <httpRuntime maxRequestLength="31457280" />
   </system.web>
+
+  <systemn.webServer>
+    <modules runAllManagedModulesForAllRequests="true" />
+  </systemn.webServer>
 
   <runtime>
     <assemblyBinding>
