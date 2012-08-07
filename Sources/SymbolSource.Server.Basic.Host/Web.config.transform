@@ -15,9 +15,9 @@
     <httpRuntime maxRequestLength="31457280" />
   </system.web>
 
-  <systemn.webServer>
+  <system.webServer>
     <modules runAllManagedModulesForAllRequests="true" />
-  </systemn.webServer>
+  </system.webServer>
 
   <runtime>
     <assemblyBinding>
