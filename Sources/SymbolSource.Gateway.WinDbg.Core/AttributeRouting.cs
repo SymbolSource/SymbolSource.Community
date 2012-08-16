@@ -1,8 +1,6 @@
-using System.Configuration;
 using System.Web.Mvc;
 using System.Web.Routing;
 using AttributeRouting;
-using SymbolSource.Gateway.Core;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(SymbolSource.Gateway.WinDbg.Core.AttributeRouting), "Start")]
 
@@ -45,12 +43,10 @@ namespace SymbolSource.Gateway.WinDbg.Core
                 new[] { typeof(AttributeRouting).Namespace }
                 );
 
-            var configuration = new AppSettingsConfiguration("Public");
-
             routes.MapRoute(
                 "Default-Public",
                 "{company}/{name}/{hash}/{name1}",
-                new { controller = "Default", action = "Index", login = configuration.PublicLogin, password = configuration.PublicPassword },
+                new { controller = "Default", action = "Index" },
                 new[] { typeof(AttributeRouting).Namespace }
                 );
         }
@@ -78,12 +74,10 @@ namespace SymbolSource.Gateway.WinDbg.Core
                 new[] { typeof(AttributeRouting).Namespace }
                 );
 
-            var configuration = new AppSettingsConfiguration("Public");
-
             routes.MapRoute(
                 type + "-Public",
                 type.ToLower() + "/{company}/{name}/{hash}/{name1}",
-                new { controller = type, action = "Index", login = configuration.PublicLogin, password = configuration.PublicPassword },
+                new { controller = type, action = "Index" },
                 new[] { typeof(AttributeRouting).Namespace }
                 );
         }

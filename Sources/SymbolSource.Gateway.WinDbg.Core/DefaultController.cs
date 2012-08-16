@@ -3,13 +3,31 @@ using System.IO;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using SymbolSource.Gateway.Core;
 
 namespace SymbolSource.Gateway.WinDbg.Core
 {
     public class DefaultController : Controller
     {
+        private readonly IGatewayConfigurationFactory configurationFactory;
+
+        public DefaultController(IGatewayConfigurationFactory configurationFactory)
+        {
+            this.configurationFactory = configurationFactory;
+        }
+
         public ActionResult Index(string company, string login, string password, string name, string hash, string name1)
         {
+            if ("Public".Equals(company, StringComparison.OrdinalIgnoreCase))
+                company = "Public";
+
+            if (string.IsNullOrEmpty(login) && string.IsNullOrEmpty(password))
+            {
+                var configuration = configurationFactory.Create(company);
+                login = configuration.PublicLogin;
+                password = configuration.PublicPassword;
+            }
+
             string extension = Path.GetExtension(name);
 
             var routeValue = new RouteValueDictionary(new {company, login, password, name, hash, name1});

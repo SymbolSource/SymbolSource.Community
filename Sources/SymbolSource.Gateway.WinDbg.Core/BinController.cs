@@ -9,16 +9,25 @@ namespace SymbolSource.Gateway.WinDbg.Core
     public class BinController : Controller
     {
         private readonly IGatewayBackendFactory<IWinDbgBackend> factory;
+        private readonly IGatewayConfigurationFactory configurationFactory;
 
-        public BinController(IGatewayBackendFactory<IWinDbgBackend> factory)
+        public BinController(IGatewayBackendFactory<IWinDbgBackend> factory, IGatewayConfigurationFactory configurationFactory)
         {
             this.factory = factory;
+            this.configurationFactory = configurationFactory;
         }
 
         public ActionResult Index(string company, string login, string password, string name, string hash, string name1)
         {
             if ("Public".Equals(company, StringComparison.OrdinalIgnoreCase))
                 company = "Public";
+
+            if (string.IsNullOrEmpty(login) && string.IsNullOrEmpty(password))
+            {
+                var configuration = configurationFactory.Create(company);
+                login = configuration.PublicLogin;
+                password = configuration.PublicPassword;
+            }
 
             if (!name1.EndsWith(".dll", StringComparison.InvariantCultureIgnoreCase) && !name1.EndsWith(".exe", StringComparison.InvariantCultureIgnoreCase))
             {

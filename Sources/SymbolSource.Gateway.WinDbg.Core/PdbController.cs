@@ -12,16 +12,19 @@ namespace SymbolSource.Gateway.WinDbg.Core
     {
         private readonly IGatewayBackendFactory<IWinDbgBackend> factory;
         private readonly IPdbStoreManager pdbStoreManager;
+        private readonly IGatewayConfigurationFactory configurationFactory;
         private readonly IFileCompressor fileCompressor;
 
         public PdbController(
             IGatewayBackendFactory<IWinDbgBackend> factory,
             IFileCompressor fileCompressor,
-            IPdbStoreManager pdbStoreManager
+            IPdbStoreManager pdbStoreManager,
+            IGatewayConfigurationFactory configurationFactory
             )
         {
             this.factory = factory;
             this.pdbStoreManager = pdbStoreManager;
+            this.configurationFactory = configurationFactory;
             this.fileCompressor = fileCompressor;
         }
 
@@ -29,6 +32,13 @@ namespace SymbolSource.Gateway.WinDbg.Core
         {
             if ("Public".Equals(company, StringComparison.OrdinalIgnoreCase))
                 company = "Public";
+
+            if (string.IsNullOrEmpty(login) && string.IsNullOrEmpty(password))
+            {
+                var configuration = configurationFactory.Create(company);
+                login = configuration.PublicLogin;
+                password = configuration.PublicPassword;
+            }
 
             if (!name1.EndsWith(".pd_", StringComparison.InvariantCultureIgnoreCase))
             {

@@ -8,16 +8,25 @@ namespace SymbolSource.Gateway.WinDbg.Core
     public class SourceController : Controller
     {
         private readonly IGatewayBackendFactory<IWinDbgBackend> factory;
+        private readonly IGatewayConfigurationFactory configurationFactory;
 
-        public SourceController(IGatewayBackendFactory<IWinDbgBackend> factory)
+        public SourceController(IGatewayBackendFactory<IWinDbgBackend> factory, IGatewayConfigurationFactory configurationFactory)
         {
             this.factory = factory;
+            this.configurationFactory = configurationFactory;
         }
 
         public ActionResult Index(string company, string login, string password, string computerName, string computerUser, string imageName, string pdbHash, string sourcePath)
         {
             if ("Public".Equals(company, StringComparison.OrdinalIgnoreCase))
                 company = "Public";
+
+            if (string.IsNullOrEmpty(login) && string.IsNullOrEmpty(password))
+            {
+                var configuration = configurationFactory.Create(company);
+                login = configuration.PublicLogin;
+                password = configuration.PublicPassword;
+            }
 
             //TODO: mamy na to test?
             //Ktoœ ma ma³¹ literk¹ numer kompilacji
