@@ -10,14 +10,17 @@ namespace SymbolSource.Server.Management.Client
 
         Company[] GetCompanies();
         void CreateCompany(Company company);
-        void CreateCompany(User user, UserKey userKey);
+        void CreateCompany(User user, UserKey userKey, Plan plan);
         void UpdateCompany(Company company);
         void DeleteCompany(Company company);
 
         User[] GetUsers(ref Company company);
-        void CreateUser(User user, UserKey userKey);
+        User GetUserByCompanyAndNameOrEmail(string company, string name, string email);
+        void CreateUser(User user, UserKey userKey, Plan plan);
         void UpdateUser(User user);
         void DeleteUser(User user);
+        void SetOneDayPasswordToken(User user, UserKey userKey);
+        bool ResetPassword(string company, string userName, string value, string newPassword);
 
         Repository[] GetRepositories(ref Company company);
         void CreateOrUpdateRepository(Repository repository);
@@ -84,5 +87,10 @@ namespace SymbolSource.Server.Management.Client
         void LogImageFileFound(ImageFile imageFile);
         void LogImageFileNotFound(string imageFileName, string symbolHash);
         void LogSourceFileFound(SourceFile sourceFile);
+
+        Plan[] GetPlansByType(PlanType type);
+        Plan GetPlanByNameAndType(string name, PlanType type);
+        void RemovePlan(string name, PlanType type);
+        bool CreatePlan(string name, PlanType type, decimal monthPrice, decimal yearPrice, int userLimit, int privateRepoLimit);
     }
 }

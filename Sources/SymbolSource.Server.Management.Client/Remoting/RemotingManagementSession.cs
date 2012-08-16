@@ -47,7 +47,7 @@ namespace SymbolSource.Server.Management.Client.Remoting
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
 
-        public virtual void CreateCompany(User user, UserKey userKey)
+        public virtual void CreateCompany(User user, UserKey userKey, Plan plan)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
@@ -67,7 +67,12 @@ namespace SymbolSource.Server.Management.Client.Remoting
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
 
-        public virtual void CreateUser(User user, UserKey userKey)
+        public User GetUserByCompanyAndNameOrEmail(string company, string name, string email)
+        {
+            throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
+        }
+
+        public virtual void CreateUser(User user, UserKey userKey, Plan plan)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
@@ -78,6 +83,16 @@ namespace SymbolSource.Server.Management.Client.Remoting
         }
 
         public virtual void DeleteUser(User user)
+        {
+            throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
+        }
+
+        public void SetOneDayPasswordToken(User user, UserKey userKey)
+        {
+            throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
+        }
+
+        public bool ResetPassword(string company, string userName, string value, string newPassword)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
@@ -354,6 +369,26 @@ namespace SymbolSource.Server.Management.Client.Remoting
         }
 
         public virtual void LogSourceFileFound(SourceFile sourceFile)
+        {
+            throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
+        }
+
+        public Plan[] GetPlansByType(PlanType type)
+        {
+            throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
+        }
+
+        public Plan GetPlanByNameAndType(string name, PlanType type)
+        {
+            throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
+        }
+
+        public void RemovePlan(string name, PlanType type)
+        {
+            throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
+        }
+
+        public bool CreatePlan(string name, PlanType type, decimal monthPrice, decimal yearPrice, int userLimit, int privateRepoLimit)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }

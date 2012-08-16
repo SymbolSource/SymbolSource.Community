@@ -2,10 +2,13 @@
 <wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://api.symbolsource.org/schemas/webServices" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://api.symbolsource.org/schemas/webServices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://api.symbolsource.org/schemas/webServices">
-      <s:element name="GetVersionLastList">
+      <s:element name="CreateCompany2">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="tns:UserKey" />
+            <s:element minOccurs="0" maxOccurs="1" name="plan" type="tns:Plan" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -17,33 +20,56 @@
           <s:element minOccurs="0" maxOccurs="1" name="KeyType" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:element name="GetVersionLastListResponse">
+      <s:complexType name="User">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanManageCompanies" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanManageUsers" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanViewStatistics" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanManagePlans" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserKey">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Plan">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="tns:PlanType" />
+          <s:element minOccurs="1" maxOccurs="1" name="MonthPrice" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="YearPrice" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserLimit" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PrivateRepoLimit" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="PlanType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Public" />
+          <s:enumeration value="Company" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="CreateCompany2Response">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateCompany">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetVersionLastListResult" type="tns:ArrayOfVersion" />
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="company" type="tns:Company" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfVersion">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Version" nillable="true" type="tns:Version" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Version">
+      <s:complexType name="Company">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="PackageFormat" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="PackageHash" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Hidden" type="s:boolean" />
           <s:element minOccurs="0" maxOccurs="1" name="Metadata" type="tns:ArrayOfMetadataEntry" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanCreateCompilation" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanEdit" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanDelete" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanHide" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanRestore" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanCreateRepository" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="CanGrantPermission" type="s:boolean" />
         </s:sequence>
       </s:complexType>
@@ -58,406 +84,6 @@
           <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:element name="GetPackages">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="repository" type="tns:Repository" />
-            <s:element minOccurs="0" maxOccurs="1" name="packageFormat" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="Repository">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Metadata" type="tns:ArrayOfMetadataEntry" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanCreateProject" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanEdit" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanDelete" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanGrantPermission" type="s:boolean" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetPackagesResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetPackagesResult" type="tns:ArrayOfVersion" />
-            <s:element minOccurs="0" maxOccurs="1" name="repository" type="tns:Repository" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetCompilationList">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetCompilationListResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetCompilationListResult" type="tns:ArrayOfCompilation" />
-            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfCompilation">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Compilation" nillable="true" type="tns:Compilation" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Compilation">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Mode" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Profile" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Platform" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Metadata" type="tns:ArrayOfMetadataEntry" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetImageFileList">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="compilation" type="tns:Compilation" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetImageFileListResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetImageFileListResult" type="tns:ArrayOfImageFile" />
-            <s:element minOccurs="0" maxOccurs="1" name="compilation" type="tns:Compilation" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfImageFile">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="ImageFile" nillable="true" type="tns:ImageFile" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ImageFile">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="FileVersion" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="BinaryHash" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="BinaryType" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="SymbolHash" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="SymbolType" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="DocumentationType" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Reference" type="tns:Reference" />
-          <s:element minOccurs="0" maxOccurs="1" name="Mode" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Platform" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Reference">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Culture" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="PublicKeyToken" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetSourceFileList">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetSourceFileListResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetSourceFileListResult" type="tns:ArrayOfSourceFile" />
-            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfSourceFile">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="SourceFile" nillable="true" type="tns:SourceFile" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="SourceFile">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Path" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Hash" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="OriginalPath" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="ImageName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Mode" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Platform" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetDepedencyList">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetDepedencyListResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetDepedencyListResult" type="tns:ArrayOfDepedency" />
-            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfDepedency">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Depedency" nillable="true" type="tns:Depedency" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Depedency">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:Reference">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:element name="GetImageFileListByReference">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="reference" type="tns:Reference" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetImageFileListByReferenceResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetImageFileListByReferenceResult" type="tns:ArrayOfImageFile" />
-            <s:element minOccurs="0" maxOccurs="1" name="reference" type="tns:Reference" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetNodeImageFiles">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="nodeImageFile" type="tns:NodeImageFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="NodeImageFile">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Fullname" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Modifier" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="CodeBlockAddresses" type="tns:ArrayOfCodeBlockAddress" />
-          <s:element minOccurs="0" maxOccurs="1" name="ImageName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Mode" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Platform" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfCodeBlockAddress">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="CodeBlockAddress" nillable="true" type="tns:CodeBlockAddress" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="CodeBlockAddress">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="SourceFile" type="tns:SourceFile" />
-          <s:element minOccurs="0" maxOccurs="1" name="StartPosition" type="tns:Location" />
-          <s:element minOccurs="0" maxOccurs="1" name="EndPosition" type="tns:Location" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Location">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="Line" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="Column" type="s:int" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetNodeImageFilesResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetNodeImageFilesResult" type="tns:ArrayOfNodeImageFile" />
-            <s:element minOccurs="0" maxOccurs="1" name="nodeImageFile" type="tns:NodeImageFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfNodeImageFile">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="NodeImageFile" nillable="true" type="tns:NodeImageFile" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetImageFileLink">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetImageFileLinkResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetImageFileLinkResult" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetSourceFileLink">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="sourceFile" type="tns:SourceFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetSourceFileLinkResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetSourceFileLinkResult" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="sourceFile" type="tns:SourceFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetSymbolFileLink">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetSymbolFileLinkResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetSymbolFileLinkResult" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetDocumentationLink">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetDocumentationLinkResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetDocumentationLinkResult" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetPackageLink">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
-            <s:element minOccurs="0" maxOccurs="1" name="contentType" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetPackageLinkResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetPackageLinkResult" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetCompanies">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetCompaniesResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetCompaniesResult" type="tns:ArrayOfCompany" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfCompany">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Company" nillable="true" type="tns:Company" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Company">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Metadata" type="tns:ArrayOfMetadataEntry" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanCreateRepository" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanGrantPermission" type="s:boolean" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="CreateCompany">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="company" type="tns:Company" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="CreateCompanyResponse">
-        <s:complexType />
-      </s:element>
-      <s:element name="CreateCompany2">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
-            <s:element minOccurs="0" maxOccurs="1" name="key" type="tns:UserKey" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="User">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanManageCompanies" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanManageUsers" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanViewStatistics" type="s:boolean" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="UserKey">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="CreateCompany2Response">
-        <s:complexType />
-      </s:element>
-      <s:element name="UpdateCompany">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="company" type="tns:Company" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="UpdateCompanyResponse">
         <s:complexType />
       </s:element>
@@ -499,6 +125,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
             <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
             <s:element minOccurs="0" maxOccurs="1" name="key" type="tns:UserKey" />
+            <s:element minOccurs="0" maxOccurs="1" name="plan" type="tns:Plan" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -550,6 +177,17 @@
       <s:complexType name="ArrayOfRepository">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="unbounded" name="Repository" nillable="true" type="tns:Repository" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Repository">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Metadata" type="tns:ArrayOfMetadataEntry" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanCreateProject" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanEdit" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanDelete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanGrantPermission" type="s:boolean" />
         </s:sequence>
       </s:complexType>
       <s:element name="CreateOrUpdateRepository">
@@ -608,33 +246,154 @@
       <s:element name="DeleteRepositoryResponse">
         <s:complexType />
       </s:element>
-      <s:element name="DigestGenerateRequest">
+      <s:element name="UserValidate">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="realm" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="DigestGenerateRequestResponse">
+      <s:element name="UserValidateResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="DigestGenerateRequestResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserValidateResult" type="tns:User" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="DigestValidateResponse">
+      <s:element name="CreateUserByKey">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="company" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="method" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="response" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="DigestValidateResponseResponse">
+      <s:element name="CreateUserByKeyResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="DigestValidateResponseResult" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="CreateUserByKeyResult" type="tns:Caller" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserByKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="company" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserByKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserByKeyResult" type="tns:Caller" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResetPassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="company" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResetPasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ResetPasswordResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserByCompanyAndNameOrEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="company" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserByCompanyAndNameOrEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserByCompanyAndNameOrEmailResult" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserKeys">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserKeysResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserKeysResult" type="tns:ArrayOfUserKey" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUserKey">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UserKey" nillable="true" type="tns:UserKey" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddUserKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="0" maxOccurs="1" name="userKey" type="tns:UserKey" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUserKeyResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="RemoveUserKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="0" maxOccurs="1" name="userKey" type="tns:UserKey" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveUserKeyResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SetOneDayPasswordToken">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="0" maxOccurs="1" name="userKey" type="tns:UserKey" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetOneDayPasswordTokenResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUserVisualStudioLink">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserVisualStudioLinkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserVisualStudioLinkResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -809,6 +568,24 @@
           <s:element minOccurs="1" maxOccurs="1" name="CanCreateVersion" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="CanEdit" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="CanDelete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanGrantPermission" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Version">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PackageFormat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PackageHash" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Hidden" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Metadata" type="tns:ArrayOfMetadataEntry" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanCreateCompilation" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanEdit" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanDelete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanHide" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanRestore" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="CanGrantPermission" type="s:boolean" />
         </s:sequence>
       </s:complexType>
@@ -1021,6 +798,32 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ImageFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileVersion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BinaryHash" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BinaryType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SymbolHash" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SymbolType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DocumentationType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reference" type="tns:Reference" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Platform" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Reference">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Culture" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PublicKeyToken" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="LogImageFileFound">
         <s:complexType>
           <s:sequence>
@@ -1052,111 +855,165 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="SourceFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Path" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Hash" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OriginalPath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImageName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Platform" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="LogSourceFileFoundResponse">
         <s:complexType />
       </s:element>
-      <s:element name="UserValidate">
+      <s:element name="GetPlansByType">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="tns:PlanType" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="UserValidateResponse">
+      <s:element name="GetPlansByTypeResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="UserValidateResult" type="tns:User" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetPlansByTypeResult" type="tns:ArrayOfPlan" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="CreateUserByKey">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="company" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="CreateUserByKeyResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="CreateUserByKeyResult" type="tns:Caller" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetUserByKey">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="company" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetUserByKeyResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetUserByKeyResult" type="tns:Caller" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetUserKeys">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetUserKeysResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetUserKeysResult" type="tns:ArrayOfUserKey" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfUserKey">
+      <s:complexType name="ArrayOfPlan">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="UserKey" nillable="true" type="tns:UserKey" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Plan" nillable="true" type="tns:Plan" />
         </s:sequence>
       </s:complexType>
-      <s:element name="AddUserKey">
+      <s:element name="RemovePlan">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
-            <s:element minOccurs="0" maxOccurs="1" name="userKey" type="tns:UserKey" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="tns:PlanType" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="AddUserKeyResponse">
+      <s:element name="RemovePlanResponse">
         <s:complexType />
       </s:element>
-      <s:element name="RemoveUserKey">
+      <s:element name="CreatePlan">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
-            <s:element minOccurs="0" maxOccurs="1" name="userKey" type="tns:UserKey" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="tns:PlanType" />
+            <s:element minOccurs="1" maxOccurs="1" name="monthPrice" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="yearPrice" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="userLimit" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="privateRepoLimit" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="RemoveUserKeyResponse">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetUserVisualStudioLink">
+      <s:element name="CreatePlanResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="1" maxOccurs="1" name="CreatePlanResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetUserVisualStudioLinkResponse">
+      <s:element name="GetPlanByNameAndType">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetUserVisualStudioLinkResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="tns:PlanType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPlanByNameAndTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPlanByNameAndTypeResult" type="tns:Plan" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetImageFileLink">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetImageFileLinkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetImageFileLinkResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSourceFileLink">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="sourceFile" type="tns:SourceFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSourceFileLinkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSourceFileLinkResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sourceFile" type="tns:SourceFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSymbolFileLink">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSymbolFileLinkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSymbolFileLinkResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentationLink">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentationLinkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDocumentationLinkResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPackageLink">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
+            <s:element minOccurs="0" maxOccurs="1" name="contentType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPackageLinkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPackageLinkResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1253,6 +1110,11 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ArrayOfVersion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Version" nillable="true" type="tns:Version" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="CreateOrUpdateVersion">
         <s:complexType>
           <s:sequence>
@@ -1326,98 +1188,275 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetVersionLastList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVersionLastListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVersionLastListResult" type="tns:ArrayOfVersion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPackages">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="repository" type="tns:Repository" />
+            <s:element minOccurs="0" maxOccurs="1" name="packageFormat" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPackagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPackagesResult" type="tns:ArrayOfVersion" />
+            <s:element minOccurs="0" maxOccurs="1" name="repository" type="tns:Repository" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompilationList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompilationListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCompilationListResult" type="tns:ArrayOfCompilation" />
+            <s:element minOccurs="0" maxOccurs="1" name="version" type="tns:Version" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCompilation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Compilation" nillable="true" type="tns:Compilation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Compilation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Mode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Profile" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Platform" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Metadata" type="tns:ArrayOfMetadataEntry" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetImageFileList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="compilation" type="tns:Compilation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetImageFileListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetImageFileListResult" type="tns:ArrayOfImageFile" />
+            <s:element minOccurs="0" maxOccurs="1" name="compilation" type="tns:Compilation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfImageFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ImageFile" nillable="true" type="tns:ImageFile" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSourceFileList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSourceFileListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSourceFileListResult" type="tns:ArrayOfSourceFile" />
+            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSourceFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SourceFile" nillable="true" type="tns:SourceFile" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDepedencyList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDepedencyListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDepedencyListResult" type="tns:ArrayOfDepedency" />
+            <s:element minOccurs="0" maxOccurs="1" name="imageFile" type="tns:ImageFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDepedency">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Depedency" nillable="true" type="tns:Depedency" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Depedency">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Reference">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetImageFileListByReference">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="reference" type="tns:Reference" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetImageFileListByReferenceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetImageFileListByReferenceResult" type="tns:ArrayOfImageFile" />
+            <s:element minOccurs="0" maxOccurs="1" name="reference" type="tns:Reference" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNodeImageFiles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="nodeImageFile" type="tns:NodeImageFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="NodeImageFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fullname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Modifier" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeBlockAddresses" type="tns:ArrayOfCodeBlockAddress" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImageName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Platform" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCodeBlockAddress">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CodeBlockAddress" nillable="true" type="tns:CodeBlockAddress" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CodeBlockAddress">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SourceFile" type="tns:SourceFile" />
+          <s:element minOccurs="0" maxOccurs="1" name="StartPosition" type="tns:Location" />
+          <s:element minOccurs="0" maxOccurs="1" name="EndPosition" type="tns:Location" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Location">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Line" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Column" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetNodeImageFilesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNodeImageFilesResult" type="tns:ArrayOfNodeImageFile" />
+            <s:element minOccurs="0" maxOccurs="1" name="nodeImageFile" type="tns:NodeImageFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfNodeImageFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NodeImageFile" nillable="true" type="tns:NodeImageFile" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DigestGenerateRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="realm" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DigestGenerateRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DigestGenerateRequestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DigestValidateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="company" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="method" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="response" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DigestValidateResponseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DigestValidateResponseResult" type="tns:Caller" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompanies">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompaniesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCompaniesResult" type="tns:ArrayOfCompany" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCompany">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Company" nillable="true" type="tns:Company" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateCompany">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="company" type="tns:Company" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateCompanyResponse">
+        <s:complexType />
+      </s:element>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="GetVersionLastListSoapIn">
-    <wsdl:part name="parameters" element="tns:GetVersionLastList" />
-  </wsdl:message>
-  <wsdl:message name="GetVersionLastListSoapOut">
-    <wsdl:part name="parameters" element="tns:GetVersionLastListResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetPackagesSoapIn">
-    <wsdl:part name="parameters" element="tns:GetPackages" />
-  </wsdl:message>
-  <wsdl:message name="GetPackagesSoapOut">
-    <wsdl:part name="parameters" element="tns:GetPackagesResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetCompilationListSoapIn">
-    <wsdl:part name="parameters" element="tns:GetCompilationList" />
-  </wsdl:message>
-  <wsdl:message name="GetCompilationListSoapOut">
-    <wsdl:part name="parameters" element="tns:GetCompilationListResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetImageFileListSoapIn">
-    <wsdl:part name="parameters" element="tns:GetImageFileList" />
-  </wsdl:message>
-  <wsdl:message name="GetImageFileListSoapOut">
-    <wsdl:part name="parameters" element="tns:GetImageFileListResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetSourceFileListSoapIn">
-    <wsdl:part name="parameters" element="tns:GetSourceFileList" />
-  </wsdl:message>
-  <wsdl:message name="GetSourceFileListSoapOut">
-    <wsdl:part name="parameters" element="tns:GetSourceFileListResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetDepedencyListSoapIn">
-    <wsdl:part name="parameters" element="tns:GetDepedencyList" />
-  </wsdl:message>
-  <wsdl:message name="GetDepedencyListSoapOut">
-    <wsdl:part name="parameters" element="tns:GetDepedencyListResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetImageFileListByReferenceSoapIn">
-    <wsdl:part name="parameters" element="tns:GetImageFileListByReference" />
-  </wsdl:message>
-  <wsdl:message name="GetImageFileListByReferenceSoapOut">
-    <wsdl:part name="parameters" element="tns:GetImageFileListByReferenceResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetNodeImageFilesSoapIn">
-    <wsdl:part name="parameters" element="tns:GetNodeImageFiles" />
-  </wsdl:message>
-  <wsdl:message name="GetNodeImageFilesSoapOut">
-    <wsdl:part name="parameters" element="tns:GetNodeImageFilesResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetImageFileLinkSoapIn">
-    <wsdl:part name="parameters" element="tns:GetImageFileLink" />
-  </wsdl:message>
-  <wsdl:message name="GetImageFileLinkSoapOut">
-    <wsdl:part name="parameters" element="tns:GetImageFileLinkResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetSourceFileLinkSoapIn">
-    <wsdl:part name="parameters" element="tns:GetSourceFileLink" />
-  </wsdl:message>
-  <wsdl:message name="GetSourceFileLinkSoapOut">
-    <wsdl:part name="parameters" element="tns:GetSourceFileLinkResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetSymbolFileLinkSoapIn">
-    <wsdl:part name="parameters" element="tns:GetSymbolFileLink" />
-  </wsdl:message>
-  <wsdl:message name="GetSymbolFileLinkSoapOut">
-    <wsdl:part name="parameters" element="tns:GetSymbolFileLinkResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetDocumentationLinkSoapIn">
-    <wsdl:part name="parameters" element="tns:GetDocumentationLink" />
-  </wsdl:message>
-  <wsdl:message name="GetDocumentationLinkSoapOut">
-    <wsdl:part name="parameters" element="tns:GetDocumentationLinkResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetPackageLinkSoapIn">
-    <wsdl:part name="parameters" element="tns:GetPackageLink" />
-  </wsdl:message>
-  <wsdl:message name="GetPackageLinkSoapOut">
-    <wsdl:part name="parameters" element="tns:GetPackageLinkResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetCompaniesSoapIn">
-    <wsdl:part name="parameters" element="tns:GetCompanies" />
-  </wsdl:message>
-  <wsdl:message name="GetCompaniesSoapOut">
-    <wsdl:part name="parameters" element="tns:GetCompaniesResponse" />
-  </wsdl:message>
-  <wsdl:message name="CreateCompanySoapIn">
-    <wsdl:part name="parameters" element="tns:CreateCompany" />
-  </wsdl:message>
-  <wsdl:message name="CreateCompanySoapOut">
-    <wsdl:part name="parameters" element="tns:CreateCompanyResponse" />
-  </wsdl:message>
   <wsdl:message name="CreateCompany2SoapIn">
     <wsdl:part name="parameters" element="tns:CreateCompany2" />
   </wsdl:message>
@@ -1490,17 +1529,65 @@
   <wsdl:message name="DeleteRepositorySoapOut">
     <wsdl:part name="parameters" element="tns:DeleteRepositoryResponse" />
   </wsdl:message>
-  <wsdl:message name="DigestGenerateRequestSoapIn">
-    <wsdl:part name="parameters" element="tns:DigestGenerateRequest" />
+  <wsdl:message name="UserValidateSoapIn">
+    <wsdl:part name="parameters" element="tns:UserValidate" />
   </wsdl:message>
-  <wsdl:message name="DigestGenerateRequestSoapOut">
-    <wsdl:part name="parameters" element="tns:DigestGenerateRequestResponse" />
+  <wsdl:message name="UserValidateSoapOut">
+    <wsdl:part name="parameters" element="tns:UserValidateResponse" />
   </wsdl:message>
-  <wsdl:message name="DigestValidateResponseSoapIn">
-    <wsdl:part name="parameters" element="tns:DigestValidateResponse" />
+  <wsdl:message name="CreateUserByKeySoapIn">
+    <wsdl:part name="parameters" element="tns:CreateUserByKey" />
   </wsdl:message>
-  <wsdl:message name="DigestValidateResponseSoapOut">
-    <wsdl:part name="parameters" element="tns:DigestValidateResponseResponse" />
+  <wsdl:message name="CreateUserByKeySoapOut">
+    <wsdl:part name="parameters" element="tns:CreateUserByKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByKeySoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserByKey" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByKeySoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserByKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ResetPasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:ResetPassword" />
+  </wsdl:message>
+  <wsdl:message name="ResetPasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:ResetPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByCompanyAndNameOrEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserByCompanyAndNameOrEmail" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByCompanyAndNameOrEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserByCompanyAndNameOrEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserKeysSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserKeys" />
+  </wsdl:message>
+  <wsdl:message name="GetUserKeysSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserKeysResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUserKeySoapIn">
+    <wsdl:part name="parameters" element="tns:AddUserKey" />
+  </wsdl:message>
+  <wsdl:message name="AddUserKeySoapOut">
+    <wsdl:part name="parameters" element="tns:AddUserKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveUserKeySoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveUserKey" />
+  </wsdl:message>
+  <wsdl:message name="RemoveUserKeySoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveUserKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetOneDayPasswordTokenSoapIn">
+    <wsdl:part name="parameters" element="tns:SetOneDayPasswordToken" />
+  </wsdl:message>
+  <wsdl:message name="SetOneDayPasswordTokenSoapOut">
+    <wsdl:part name="parameters" element="tns:SetOneDayPasswordTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserVisualStudioLinkSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserVisualStudioLink" />
+  </wsdl:message>
+  <wsdl:message name="GetUserVisualStudioLinkSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserVisualStudioLinkResponse" />
   </wsdl:message>
   <wsdl:message name="GetUploadReportsSoapIn">
     <wsdl:part name="parameters" element="tns:GetUploadReports" />
@@ -1604,47 +1691,59 @@
   <wsdl:message name="LogSourceFileFoundSoapOut">
     <wsdl:part name="parameters" element="tns:LogSourceFileFoundResponse" />
   </wsdl:message>
-  <wsdl:message name="UserValidateSoapIn">
-    <wsdl:part name="parameters" element="tns:UserValidate" />
+  <wsdl:message name="GetPlansByTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPlansByType" />
   </wsdl:message>
-  <wsdl:message name="UserValidateSoapOut">
-    <wsdl:part name="parameters" element="tns:UserValidateResponse" />
+  <wsdl:message name="GetPlansByTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPlansByTypeResponse" />
   </wsdl:message>
-  <wsdl:message name="CreateUserByKeySoapIn">
-    <wsdl:part name="parameters" element="tns:CreateUserByKey" />
+  <wsdl:message name="RemovePlanSoapIn">
+    <wsdl:part name="parameters" element="tns:RemovePlan" />
   </wsdl:message>
-  <wsdl:message name="CreateUserByKeySoapOut">
-    <wsdl:part name="parameters" element="tns:CreateUserByKeyResponse" />
+  <wsdl:message name="RemovePlanSoapOut">
+    <wsdl:part name="parameters" element="tns:RemovePlanResponse" />
   </wsdl:message>
-  <wsdl:message name="GetUserByKeySoapIn">
-    <wsdl:part name="parameters" element="tns:GetUserByKey" />
+  <wsdl:message name="CreatePlanSoapIn">
+    <wsdl:part name="parameters" element="tns:CreatePlan" />
   </wsdl:message>
-  <wsdl:message name="GetUserByKeySoapOut">
-    <wsdl:part name="parameters" element="tns:GetUserByKeyResponse" />
+  <wsdl:message name="CreatePlanSoapOut">
+    <wsdl:part name="parameters" element="tns:CreatePlanResponse" />
   </wsdl:message>
-  <wsdl:message name="GetUserKeysSoapIn">
-    <wsdl:part name="parameters" element="tns:GetUserKeys" />
+  <wsdl:message name="GetPlanByNameAndTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPlanByNameAndType" />
   </wsdl:message>
-  <wsdl:message name="GetUserKeysSoapOut">
-    <wsdl:part name="parameters" element="tns:GetUserKeysResponse" />
+  <wsdl:message name="GetPlanByNameAndTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPlanByNameAndTypeResponse" />
   </wsdl:message>
-  <wsdl:message name="AddUserKeySoapIn">
-    <wsdl:part name="parameters" element="tns:AddUserKey" />
+  <wsdl:message name="GetImageFileLinkSoapIn">
+    <wsdl:part name="parameters" element="tns:GetImageFileLink" />
   </wsdl:message>
-  <wsdl:message name="AddUserKeySoapOut">
-    <wsdl:part name="parameters" element="tns:AddUserKeyResponse" />
+  <wsdl:message name="GetImageFileLinkSoapOut">
+    <wsdl:part name="parameters" element="tns:GetImageFileLinkResponse" />
   </wsdl:message>
-  <wsdl:message name="RemoveUserKeySoapIn">
-    <wsdl:part name="parameters" element="tns:RemoveUserKey" />
+  <wsdl:message name="GetSourceFileLinkSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSourceFileLink" />
   </wsdl:message>
-  <wsdl:message name="RemoveUserKeySoapOut">
-    <wsdl:part name="parameters" element="tns:RemoveUserKeyResponse" />
+  <wsdl:message name="GetSourceFileLinkSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSourceFileLinkResponse" />
   </wsdl:message>
-  <wsdl:message name="GetUserVisualStudioLinkSoapIn">
-    <wsdl:part name="parameters" element="tns:GetUserVisualStudioLink" />
+  <wsdl:message name="GetSymbolFileLinkSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSymbolFileLink" />
   </wsdl:message>
-  <wsdl:message name="GetUserVisualStudioLinkSoapOut">
-    <wsdl:part name="parameters" element="tns:GetUserVisualStudioLinkResponse" />
+  <wsdl:message name="GetSymbolFileLinkSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSymbolFileLinkResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentationLinkSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDocumentationLink" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentationLinkSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDocumentationLinkResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPackageLinkSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPackageLink" />
+  </wsdl:message>
+  <wsdl:message name="GetPackageLinkSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPackageLinkResponse" />
   </wsdl:message>
   <wsdl:message name="GetProjectsSoapIn">
     <wsdl:part name="parameters" element="tns:GetProjects" />
@@ -1712,67 +1811,79 @@
   <wsdl:message name="SetVersionHiddenSoapOut">
     <wsdl:part name="parameters" element="tns:SetVersionHiddenResponse" />
   </wsdl:message>
+  <wsdl:message name="GetVersionLastListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVersionLastList" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionLastListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVersionLastListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPackagesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPackages" />
+  </wsdl:message>
+  <wsdl:message name="GetPackagesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPackagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCompilationListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompilationList" />
+  </wsdl:message>
+  <wsdl:message name="GetCompilationListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompilationListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetImageFileListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetImageFileList" />
+  </wsdl:message>
+  <wsdl:message name="GetImageFileListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetImageFileListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSourceFileListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSourceFileList" />
+  </wsdl:message>
+  <wsdl:message name="GetSourceFileListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSourceFileListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDepedencyListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDepedencyList" />
+  </wsdl:message>
+  <wsdl:message name="GetDepedencyListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDepedencyListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetImageFileListByReferenceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetImageFileListByReference" />
+  </wsdl:message>
+  <wsdl:message name="GetImageFileListByReferenceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetImageFileListByReferenceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNodeImageFilesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNodeImageFiles" />
+  </wsdl:message>
+  <wsdl:message name="GetNodeImageFilesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNodeImageFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="DigestGenerateRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:DigestGenerateRequest" />
+  </wsdl:message>
+  <wsdl:message name="DigestGenerateRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:DigestGenerateRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="DigestValidateResponseSoapIn">
+    <wsdl:part name="parameters" element="tns:DigestValidateResponse" />
+  </wsdl:message>
+  <wsdl:message name="DigestValidateResponseSoapOut">
+    <wsdl:part name="parameters" element="tns:DigestValidateResponseResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCompaniesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompanies" />
+  </wsdl:message>
+  <wsdl:message name="GetCompaniesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompaniesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateCompanySoapIn">
+    <wsdl:part name="parameters" element="tns:CreateCompany" />
+  </wsdl:message>
+  <wsdl:message name="CreateCompanySoapOut">
+    <wsdl:part name="parameters" element="tns:CreateCompanyResponse" />
+  </wsdl:message>
   <wsdl:portType name="WebServiceSoap">
-    <wsdl:operation name="GetVersionLastList">
-      <wsdl:input message="tns:GetVersionLastListSoapIn" />
-      <wsdl:output message="tns:GetVersionLastListSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetPackages">
-      <wsdl:input message="tns:GetPackagesSoapIn" />
-      <wsdl:output message="tns:GetPackagesSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetCompilationList">
-      <wsdl:input message="tns:GetCompilationListSoapIn" />
-      <wsdl:output message="tns:GetCompilationListSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetImageFileList">
-      <wsdl:input message="tns:GetImageFileListSoapIn" />
-      <wsdl:output message="tns:GetImageFileListSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetSourceFileList">
-      <wsdl:input message="tns:GetSourceFileListSoapIn" />
-      <wsdl:output message="tns:GetSourceFileListSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetDepedencyList">
-      <wsdl:input message="tns:GetDepedencyListSoapIn" />
-      <wsdl:output message="tns:GetDepedencyListSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetImageFileListByReference">
-      <wsdl:input message="tns:GetImageFileListByReferenceSoapIn" />
-      <wsdl:output message="tns:GetImageFileListByReferenceSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetNodeImageFiles">
-      <wsdl:input message="tns:GetNodeImageFilesSoapIn" />
-      <wsdl:output message="tns:GetNodeImageFilesSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetImageFileLink">
-      <wsdl:input message="tns:GetImageFileLinkSoapIn" />
-      <wsdl:output message="tns:GetImageFileLinkSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetSourceFileLink">
-      <wsdl:input message="tns:GetSourceFileLinkSoapIn" />
-      <wsdl:output message="tns:GetSourceFileLinkSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetSymbolFileLink">
-      <wsdl:input message="tns:GetSymbolFileLinkSoapIn" />
-      <wsdl:output message="tns:GetSymbolFileLinkSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetDocumentationLink">
-      <wsdl:input message="tns:GetDocumentationLinkSoapIn" />
-      <wsdl:output message="tns:GetDocumentationLinkSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetPackageLink">
-      <wsdl:input message="tns:GetPackageLinkSoapIn" />
-      <wsdl:output message="tns:GetPackageLinkSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetCompanies">
-      <wsdl:input message="tns:GetCompaniesSoapIn" />
-      <wsdl:output message="tns:GetCompaniesSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="CreateCompany">
-      <wsdl:input message="tns:CreateCompanySoapIn" />
-      <wsdl:output message="tns:CreateCompanySoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="CreateCompany2">
       <wsdl:input message="tns:CreateCompany2SoapIn" />
       <wsdl:output message="tns:CreateCompany2SoapOut" />
@@ -1821,13 +1932,45 @@
       <wsdl:input message="tns:DeleteRepositorySoapIn" />
       <wsdl:output message="tns:DeleteRepositorySoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="DigestGenerateRequest">
-      <wsdl:input message="tns:DigestGenerateRequestSoapIn" />
-      <wsdl:output message="tns:DigestGenerateRequestSoapOut" />
+    <wsdl:operation name="UserValidate">
+      <wsdl:input message="tns:UserValidateSoapIn" />
+      <wsdl:output message="tns:UserValidateSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="DigestValidateResponse">
-      <wsdl:input message="tns:DigestValidateResponseSoapIn" />
-      <wsdl:output message="tns:DigestValidateResponseSoapOut" />
+    <wsdl:operation name="CreateUserByKey">
+      <wsdl:input message="tns:CreateUserByKeySoapIn" />
+      <wsdl:output message="tns:CreateUserByKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByKey">
+      <wsdl:input message="tns:GetUserByKeySoapIn" />
+      <wsdl:output message="tns:GetUserByKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <wsdl:input message="tns:ResetPasswordSoapIn" />
+      <wsdl:output message="tns:ResetPasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByCompanyAndNameOrEmail">
+      <wsdl:input message="tns:GetUserByCompanyAndNameOrEmailSoapIn" />
+      <wsdl:output message="tns:GetUserByCompanyAndNameOrEmailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserKeys">
+      <wsdl:input message="tns:GetUserKeysSoapIn" />
+      <wsdl:output message="tns:GetUserKeysSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUserKey">
+      <wsdl:input message="tns:AddUserKeySoapIn" />
+      <wsdl:output message="tns:AddUserKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserKey">
+      <wsdl:input message="tns:RemoveUserKeySoapIn" />
+      <wsdl:output message="tns:RemoveUserKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetOneDayPasswordToken">
+      <wsdl:input message="tns:SetOneDayPasswordTokenSoapIn" />
+      <wsdl:output message="tns:SetOneDayPasswordTokenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserVisualStudioLink">
+      <wsdl:input message="tns:GetUserVisualStudioLinkSoapIn" />
+      <wsdl:output message="tns:GetUserVisualStudioLinkSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetUploadReports">
       <wsdl:input message="tns:GetUploadReportsSoapIn" />
@@ -1897,33 +2040,41 @@
       <wsdl:input message="tns:LogSourceFileFoundSoapIn" />
       <wsdl:output message="tns:LogSourceFileFoundSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="UserValidate">
-      <wsdl:input message="tns:UserValidateSoapIn" />
-      <wsdl:output message="tns:UserValidateSoapOut" />
+    <wsdl:operation name="GetPlansByType">
+      <wsdl:input message="tns:GetPlansByTypeSoapIn" />
+      <wsdl:output message="tns:GetPlansByTypeSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="CreateUserByKey">
-      <wsdl:input message="tns:CreateUserByKeySoapIn" />
-      <wsdl:output message="tns:CreateUserByKeySoapOut" />
+    <wsdl:operation name="RemovePlan">
+      <wsdl:input message="tns:RemovePlanSoapIn" />
+      <wsdl:output message="tns:RemovePlanSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetUserByKey">
-      <wsdl:input message="tns:GetUserByKeySoapIn" />
-      <wsdl:output message="tns:GetUserByKeySoapOut" />
+    <wsdl:operation name="CreatePlan">
+      <wsdl:input message="tns:CreatePlanSoapIn" />
+      <wsdl:output message="tns:CreatePlanSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetUserKeys">
-      <wsdl:input message="tns:GetUserKeysSoapIn" />
-      <wsdl:output message="tns:GetUserKeysSoapOut" />
+    <wsdl:operation name="GetPlanByNameAndType">
+      <wsdl:input message="tns:GetPlanByNameAndTypeSoapIn" />
+      <wsdl:output message="tns:GetPlanByNameAndTypeSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="AddUserKey">
-      <wsdl:input message="tns:AddUserKeySoapIn" />
-      <wsdl:output message="tns:AddUserKeySoapOut" />
+    <wsdl:operation name="GetImageFileLink">
+      <wsdl:input message="tns:GetImageFileLinkSoapIn" />
+      <wsdl:output message="tns:GetImageFileLinkSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="RemoveUserKey">
-      <wsdl:input message="tns:RemoveUserKeySoapIn" />
-      <wsdl:output message="tns:RemoveUserKeySoapOut" />
+    <wsdl:operation name="GetSourceFileLink">
+      <wsdl:input message="tns:GetSourceFileLinkSoapIn" />
+      <wsdl:output message="tns:GetSourceFileLinkSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetUserVisualStudioLink">
-      <wsdl:input message="tns:GetUserVisualStudioLinkSoapIn" />
-      <wsdl:output message="tns:GetUserVisualStudioLinkSoapOut" />
+    <wsdl:operation name="GetSymbolFileLink">
+      <wsdl:input message="tns:GetSymbolFileLinkSoapIn" />
+      <wsdl:output message="tns:GetSymbolFileLinkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentationLink">
+      <wsdl:input message="tns:GetDocumentationLinkSoapIn" />
+      <wsdl:output message="tns:GetDocumentationLinkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPackageLink">
+      <wsdl:input message="tns:GetPackageLinkSoapIn" />
+      <wsdl:output message="tns:GetPackageLinkSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetProjects">
       <wsdl:input message="tns:GetProjectsSoapIn" />
@@ -1969,144 +2120,57 @@
       <wsdl:input message="tns:SetVersionHiddenSoapIn" />
       <wsdl:output message="tns:SetVersionHiddenSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetVersionLastList">
+      <wsdl:input message="tns:GetVersionLastListSoapIn" />
+      <wsdl:output message="tns:GetVersionLastListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPackages">
+      <wsdl:input message="tns:GetPackagesSoapIn" />
+      <wsdl:output message="tns:GetPackagesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompilationList">
+      <wsdl:input message="tns:GetCompilationListSoapIn" />
+      <wsdl:output message="tns:GetCompilationListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImageFileList">
+      <wsdl:input message="tns:GetImageFileListSoapIn" />
+      <wsdl:output message="tns:GetImageFileListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSourceFileList">
+      <wsdl:input message="tns:GetSourceFileListSoapIn" />
+      <wsdl:output message="tns:GetSourceFileListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDepedencyList">
+      <wsdl:input message="tns:GetDepedencyListSoapIn" />
+      <wsdl:output message="tns:GetDepedencyListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImageFileListByReference">
+      <wsdl:input message="tns:GetImageFileListByReferenceSoapIn" />
+      <wsdl:output message="tns:GetImageFileListByReferenceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNodeImageFiles">
+      <wsdl:input message="tns:GetNodeImageFilesSoapIn" />
+      <wsdl:output message="tns:GetNodeImageFilesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DigestGenerateRequest">
+      <wsdl:input message="tns:DigestGenerateRequestSoapIn" />
+      <wsdl:output message="tns:DigestGenerateRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DigestValidateResponse">
+      <wsdl:input message="tns:DigestValidateResponseSoapIn" />
+      <wsdl:output message="tns:DigestValidateResponseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanies">
+      <wsdl:input message="tns:GetCompaniesSoapIn" />
+      <wsdl:output message="tns:GetCompaniesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCompany">
+      <wsdl:input message="tns:CreateCompanySoapIn" />
+      <wsdl:output message="tns:CreateCompanySoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetVersionLastList">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetVersionLastList" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetPackages">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetPackages" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetCompilationList">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetCompilationList" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetImageFileList">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetImageFileList" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSourceFileList">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetSourceFileList" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetDepedencyList">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetDepedencyList" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetImageFileListByReference">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetImageFileListByReference" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetNodeImageFiles">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetNodeImageFiles" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetImageFileLink">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetImageFileLink" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSourceFileLink">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetSourceFileLink" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSymbolFileLink">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetSymbolFileLink" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetDocumentationLink">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetDocumentationLink" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetPackageLink">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetPackageLink" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetCompanies">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetCompanies" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CreateCompany">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateCompany" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="CreateCompany2">
       <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateCompany2" style="document" />
       <wsdl:input>
@@ -2215,8 +2279,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DigestGenerateRequest">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/DigestGenerateRequest" style="document" />
+    <wsdl:operation name="UserValidate">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/UserValidate" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2224,8 +2288,80 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DigestValidateResponse">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/DigestValidateResponse" style="document" />
+    <wsdl:operation name="CreateUserByKey">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateUserByKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByKey">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserByKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/ResetPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByCompanyAndNameOrEmail">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserByCompanyAndNameOrEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserKeys">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserKeys" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUserKey">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/AddUserKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserKey">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/RemoveUserKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetOneDayPasswordToken">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/SetOneDayPasswordToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserVisualStudioLink">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserVisualStudioLink" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2386,8 +2522,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="UserValidate">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/UserValidate" style="document" />
+    <wsdl:operation name="GetPlansByType">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetPlansByType" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2395,8 +2531,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CreateUserByKey">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateUserByKey" style="document" />
+    <wsdl:operation name="RemovePlan">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/RemovePlan" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2404,8 +2540,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetUserByKey">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserByKey" style="document" />
+    <wsdl:operation name="CreatePlan">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreatePlan" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2413,8 +2549,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetUserKeys">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserKeys" style="document" />
+    <wsdl:operation name="GetPlanByNameAndType">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetPlanByNameAndType" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2422,8 +2558,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddUserKey">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/AddUserKey" style="document" />
+    <wsdl:operation name="GetImageFileLink">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetImageFileLink" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2431,8 +2567,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="RemoveUserKey">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/RemoveUserKey" style="document" />
+    <wsdl:operation name="GetSourceFileLink">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetSourceFileLink" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2440,8 +2576,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetUserVisualStudioLink">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserVisualStudioLink" style="document" />
+    <wsdl:operation name="GetSymbolFileLink">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetSymbolFileLink" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentationLink">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetDocumentationLink" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPackageLink">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetPackageLink" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2548,144 +2702,117 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
-    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetVersionLastList">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetVersionLastList" style="document" />
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetVersionLastList" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetPackages">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetPackages" style="document" />
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetPackages" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetCompilationList">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetCompilationList" style="document" />
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetCompilationList" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetImageFileList">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetImageFileList" style="document" />
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetImageFileList" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetSourceFileList">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetSourceFileList" style="document" />
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetSourceFileList" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetDepedencyList">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetDepedencyList" style="document" />
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetDepedencyList" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetImageFileListByReference">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetImageFileListByReference" style="document" />
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetImageFileListByReference" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetNodeImageFiles">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetNodeImageFiles" style="document" />
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetNodeImageFiles" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetImageFileLink">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetImageFileLink" style="document" />
+    <wsdl:operation name="DigestGenerateRequest">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/DigestGenerateRequest" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetSourceFileLink">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetSourceFileLink" style="document" />
+    <wsdl:operation name="DigestValidateResponse">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/DigestValidateResponse" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSymbolFileLink">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetSymbolFileLink" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetDocumentationLink">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetDocumentationLink" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetPackageLink">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetPackageLink" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetCompanies">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetCompanies" style="document" />
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetCompanies" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="CreateCompany">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateCompany" style="document" />
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateCompany" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="CreateCompany2">
       <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateCompany2" style="document" />
       <wsdl:input>
@@ -2794,8 +2921,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DigestGenerateRequest">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/DigestGenerateRequest" style="document" />
+    <wsdl:operation name="UserValidate">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/UserValidate" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -2803,8 +2930,80 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DigestValidateResponse">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/DigestValidateResponse" style="document" />
+    <wsdl:operation name="CreateUserByKey">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateUserByKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByKey">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserByKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/ResetPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByCompanyAndNameOrEmail">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserByCompanyAndNameOrEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserKeys">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserKeys" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUserKey">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/AddUserKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserKey">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/RemoveUserKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetOneDayPasswordToken">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/SetOneDayPasswordToken" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserVisualStudioLink">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserVisualStudioLink" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -2965,8 +3164,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="UserValidate">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/UserValidate" style="document" />
+    <wsdl:operation name="GetPlansByType">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetPlansByType" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -2974,8 +3173,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CreateUserByKey">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateUserByKey" style="document" />
+    <wsdl:operation name="RemovePlan">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/RemovePlan" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -2983,8 +3182,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetUserByKey">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserByKey" style="document" />
+    <wsdl:operation name="CreatePlan">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreatePlan" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -2992,8 +3191,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetUserKeys">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserKeys" style="document" />
+    <wsdl:operation name="GetPlanByNameAndType">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetPlanByNameAndType" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -3001,8 +3200,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddUserKey">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/AddUserKey" style="document" />
+    <wsdl:operation name="GetImageFileLink">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetImageFileLink" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -3010,8 +3209,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="RemoveUserKey">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/RemoveUserKey" style="document" />
+    <wsdl:operation name="GetSourceFileLink">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetSourceFileLink" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -3019,8 +3218,26 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetUserVisualStudioLink">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetUserVisualStudioLink" style="document" />
+    <wsdl:operation name="GetSymbolFileLink">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetSymbolFileLink" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentationLink">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetDocumentationLink" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPackageLink">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetPackageLink" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -3120,6 +3337,114 @@
     </wsdl:operation>
     <wsdl:operation name="SetVersionHidden">
       <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/SetVersionHidden" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVersionLastList">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetVersionLastList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPackages">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetPackages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompilationList">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetCompilationList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImageFileList">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetImageFileList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSourceFileList">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetSourceFileList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDepedencyList">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetDepedencyList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImageFileListByReference">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetImageFileListByReference" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNodeImageFiles">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetNodeImageFiles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DigestGenerateRequest">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/DigestGenerateRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DigestValidateResponse">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/DigestValidateResponse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanies">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetCompanies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCompany">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateCompany" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

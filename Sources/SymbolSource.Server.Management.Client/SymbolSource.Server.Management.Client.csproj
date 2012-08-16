@@ -192,6 +192,9 @@
     <None Include="Web References\WebService\Permissions1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\WebService\Plan.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\WebService\Project1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>

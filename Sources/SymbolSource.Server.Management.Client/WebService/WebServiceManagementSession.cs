@@ -40,9 +40,9 @@ namespace SymbolSource.Server.Management.Client
             service.CreateCompany(caller, company);
         }
 
-        public void CreateCompany(User user, UserKey userKey)
+        public void CreateCompany(User user, UserKey userKey, Plan plan)
         {
-            service.CreateCompany2(caller, user, userKey);
+            service.CreateCompany2(caller, user, userKey, plan);
         }
 
         public void UpdateCompany(Company company)
@@ -60,9 +60,14 @@ namespace SymbolSource.Server.Management.Client
             return service.GetUsers(caller, ref company);
         }
 
-        public void CreateUser(User user, UserKey userKey)
+        public User GetUserByCompanyAndNameOrEmail(string company, string name, string email)
         {
-            service.CreateUser(caller, user, userKey);
+            return service.GetUserByCompanyAndNameOrEmail(caller, company, name, email);
+        }
+
+        public void CreateUser(User user, UserKey userKey, Plan plan)
+        {
+            service.CreateUser(caller, user, userKey, plan);
         }
 
         public void UpdateUser(User user)
@@ -73,6 +78,16 @@ namespace SymbolSource.Server.Management.Client
         public void DeleteUser(User user)
         {
             service.DeleteUser(caller, user);
+        }
+
+        public void SetOneDayPasswordToken(User user, UserKey userKey)
+        {
+            service.SetOneDayPasswordToken(caller, user, userKey);
+        }
+
+        public bool ResetPassword(string company, string userName, string value, string newPassword)
+        {
+            return service.ResetPassword(company, userName, value, newPassword);
         }
 
         public virtual Repository[] GetRepositories(ref Company company)
@@ -324,6 +339,26 @@ namespace SymbolSource.Server.Management.Client
         public void LogSourceFileFound(SourceFile sourceFile)
         {
             service.LogSourceFileFound(caller, sourceFile);
+        }
+
+        public Plan[] GetPlansByType(PlanType type)
+        {
+            return service.GetPlansByType(type);
+        }
+
+        public Plan GetPlanByNameAndType(string name, PlanType type)
+        {
+            return service.GetPlanByNameAndType(name, type);
+        }
+
+        public void RemovePlan(string name, PlanType type)
+        {
+            service.RemovePlan(name, type);
+        }
+
+        public bool CreatePlan(string name, PlanType type, decimal monthPrice, decimal yearPrice, int userLimit, int privateRepoLimit)
+        {
+            return service.CreatePlan(name, type, monthPrice, yearPrice, userLimit, privateRepoLimit);
         }
     }
 }
