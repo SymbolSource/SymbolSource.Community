@@ -341,24 +341,19 @@ namespace SymbolSource.Server.Management.Client
             service.LogSourceFileFound(caller, sourceFile);
         }
 
-        public Plan[] GetPlansByType(PlanType type)
+        public Plan[] GetPlansByType(string type)
         {
             return service.GetPlansByType(type);
         }
 
-        public Plan GetPlanByNameAndType(string name, PlanType type)
-        {
-            return service.GetPlanByNameAndType(name, type);
-        }
-
-        public void RemovePlan(string name, PlanType type)
+        public void RemovePlan(string name, string type)
         {
             service.RemovePlan(name, type);
         }
 
-        public bool CreatePlan(string name, PlanType type, decimal monthPrice, decimal yearPrice, int userLimit, int privateRepoLimit)
+        public void CreatePlan(string name, string type, decimal monthPrice, decimal yearPrice, int userLimit, int privateRepoLimit)
         {
-            return service.CreatePlan(name, type, monthPrice, yearPrice, userLimit, privateRepoLimit);
+            service.CreatePlan(name, type, monthPrice, yearPrice, userLimit, privateRepoLimit);
         }
     }
 }

@@ -373,22 +373,17 @@ namespace SymbolSource.Server.Management.Client.Remoting
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
 
-        public Plan[] GetPlansByType(PlanType type)
+        public Plan[] GetPlansByType(string type)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
 
-        public Plan GetPlanByNameAndType(string name, PlanType type)
+        public void RemovePlan(string name, string type)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
 
-        public void RemovePlan(string name, PlanType type)
-        {
-            throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
-        }
-
-        public bool CreatePlan(string name, PlanType type, decimal monthPrice, decimal yearPrice, int userLimit, int privateRepoLimit)
+        public void CreatePlan(string name, string type, decimal monthPrice, decimal yearPrice, int userLimit, int privateRepoLimit)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }

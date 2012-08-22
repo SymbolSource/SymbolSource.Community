@@ -88,9 +88,8 @@ namespace SymbolSource.Server.Management.Client
         void LogImageFileNotFound(string imageFileName, string symbolHash);
         void LogSourceFileFound(SourceFile sourceFile);
 
-        Plan[] GetPlansByType(PlanType type);
-        Plan GetPlanByNameAndType(string name, PlanType type);
-        void RemovePlan(string name, PlanType type);
-        bool CreatePlan(string name, PlanType type, decimal monthPrice, decimal yearPrice, int userLimit, int privateRepoLimit);
+        Plan[] GetPlansByType(string type);
+        void RemovePlan(string name, string type);
+        void CreatePlan(string name, string type, decimal monthPrice, decimal yearPrice, int userLimit, int privateRepoLimit);
     }
 }
