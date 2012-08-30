@@ -15,7 +15,7 @@ namespace SymbolSource.Server.Management.Client
             user = service.UserValidate(caller);
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             service.Dispose();
         }
@@ -30,62 +30,62 @@ namespace SymbolSource.Server.Management.Client
             get { return user; }
         }
 
-        public Company[] GetCompanies()
+        public virtual Company[] GetCompanies()
         {
             return service.GetCompanies(caller);
         }
 
-        public void CreateCompany(Company company)
+        public virtual void CreateCompany(Company company)
         {
             service.CreateCompany(caller, company);
         }
 
-        public void CreateCompany(User user, UserKey userKey, Plan plan)
+        public virtual void CreateCompany(User user, UserKey userKey, Plan plan)
         {
             service.CreateCompany2(caller, user, userKey, plan);
         }
 
-        public void UpdateCompany(Company company)
+        public virtual void UpdateCompany(Company company)
         {
             service.UpdateCompany(caller, company);
         }
 
-        public void DeleteCompany(Company company)
+        public virtual void DeleteCompany(Company company)
         {
             service.DeleteCompany(caller, company);
         }
 
-        public User[] GetUsers(ref Company company)
+        public virtual User[] GetUsers(ref Company company)
         {
             return service.GetUsers(caller, ref company);
         }
 
-        public User GetUserByCompanyAndNameOrEmail(string company, string name, string email)
+        public virtual User GetUserByCompanyAndNameOrEmail(string company, string name, string email)
         {
             return service.GetUserByCompanyAndNameOrEmail(caller, company, name, email);
         }
 
-        public void CreateUser(User user, UserKey userKey, Plan plan)
+        public virtual void CreateUser(User user, UserKey userKey, Plan plan)
         {
             service.CreateUser(caller, user, userKey, plan);
         }
 
-        public void UpdateUser(User user)
+        public virtual void UpdateUser(User user)
         {
             service.UpdateUser(caller, ref user);
         }
 
-        public void DeleteUser(User user)
+        public virtual void DeleteUser(User user)
         {
             service.DeleteUser(caller, user);
         }
 
-        public void SetOneDayPasswordToken(User user, UserKey userKey)
+        public virtual void SetOneDayPasswordToken(User user, UserKey userKey)
         {
             service.SetOneDayPasswordToken(caller, user, userKey);
         }
 
-        public bool ResetPassword(string company, string userName, string value, string newPassword)
+        public virtual bool ResetPassword(string company, string userName, string value, string newPassword)
         {
             return service.ResetPassword(company, userName, value, newPassword);
         }
@@ -95,22 +95,22 @@ namespace SymbolSource.Server.Management.Client
             return service.GetRepositories(caller, ref company);
         }
 
-        public void CreateOrUpdateRepository(Repository repository)
+        public virtual void CreateOrUpdateRepository(Repository repository)
         {
             service.CreateOrUpdateRepository(caller, ref repository);
         }
 
-        public void CreateRepository(Repository repository)
+        public virtual void CreateRepository(Repository repository)
         {
             service.CreateRepository(caller, ref repository);
         }
 
-        public void UpdateRepository(Repository repository)
+        public virtual void UpdateRepository(Repository repository)
         {
             service.UpdateRepository(caller, ref repository);
         }
 
-        public void DeleteRepository(Repository repository)
+        public virtual void DeleteRepository(Repository repository)
         {
             service.DeleteRepository(caller, repository);
         }
@@ -120,22 +120,22 @@ namespace SymbolSource.Server.Management.Client
             return service.GetProjects(caller, ref repository);
         }
 
-        public void CreateOrUpdateProject(Project project)
+        public virtual void CreateOrUpdateProject(Project project)
         {
             service.CreateOrUpdateProject(caller, ref project);
         }
 
-        public void CreateProject(Project project)
+        public virtual void CreateProject(Project project)
         {
             service.CreateProject(caller, ref project);
         }
 
-        public void UpdateProject(Project project)
+        public virtual void UpdateProject(Project project)
         {
             service.UpdateProject(caller, ref project);
         }
 
-        public void DeleteProject(Project project)
+        public virtual void DeleteProject(Project project)
         {
             service.DeleteProject(caller, project);
         }
@@ -145,98 +145,98 @@ namespace SymbolSource.Server.Management.Client
             return service.GetVersions(caller, ref project);
         }
 
-        public void CreateOrUpdateVersion(Version version)
+        public virtual void CreateOrUpdateVersion(Version version)
         {
             service.CreateOrUpdateVersion(caller, ref version);
         }
 
-        public void CreateVersion(Version version)
+        public virtual void CreateVersion(Version version)
         {
             service.CreateVersion(caller, ref version);
         }
 
-        public void UpdateVersion(Version version)
+        public virtual void UpdateVersion(Version version)
         {
             service.UpdateVersion(caller, ref version);
         }
 
-        public void DeleteVersion(Version version)
+        public virtual void DeleteVersion(Version version)
         {
             service.DeleteVersion(caller, version);
         }
 
-        public Version[] GetPackages(ref Repository repository, string packageFormat)
+        public virtual Version[] GetPackages(ref Repository repository, string packageFormat)
         {
             return service.GetPackages(caller, ref repository, packageFormat);
         }
 
-        public UploadReport UploadPackage(PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData)
+        public virtual UploadReport UploadPackage(PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData)
         {
             return service.UploadPackage(caller, package, packageFormat, packageData, symbolPackageData);
         }
 
-        public Version SetVersionHidden(ref Version version, bool hidden)
+        public virtual Version SetVersionHidden(ref Version version, bool hidden)
         {
             return service.SetVersionHidden(caller, ref version, hidden);
         }
 
-        public CompanyPermission[] GetCompanyPermissions(Company company)
+        public virtual CompanyPermission[] GetCompanyPermissions(Company company)
         {
             return service.GetCompanyPermissions(caller, company);
         }
 
-        public RepositoryPermission[] GetRepositoryPermissions(Repository repository)
+        public virtual RepositoryPermission[] GetRepositoryPermissions(Repository repository)
         {
             return service.GetRepositoryPermissions(caller, repository);
         }
 
-        public ProjectPermission[] GetProjectPermissions(Project project)
+        public virtual ProjectPermission[] GetProjectPermissions(Project project)
         {
             return service.GetProjectPermissions(caller, project);
         }
 
-        public VersionPermission[] GetVersionPermissions(Version version)
+        public virtual VersionPermission[] GetVersionPermissions(Version version)
         {
             return service.GetVersionPermissions(caller, version);
         }
 
-        public void SetCompanyPermissions(User targetUser, Company company, Permission permission)
+        public virtual void SetCompanyPermissions(User targetUser, Company company, Permission permission)
         {
             service.SetCompanyPermissions(caller, targetUser, company, permission);
         }
 
-        public void SetRepositoryPermissions(User targetUser, Repository repository, Permission permission)
+        public virtual void SetRepositoryPermissions(User targetUser, Repository repository, Permission permission)
         {
             service.SetRepositoryPermissions(caller, targetUser, repository, permission);
         }
 
-        public void SetProjectPermissions(User targetUser, Project project, Permission permission)
+        public virtual  void SetProjectPermissions(User targetUser, Project project, Permission permission)
         {
             service.SetProjectPermissions(caller, targetUser, project, permission);
         }
 
-        public void SetVersionPermissions(User targetUser, Version version, Permission permission)
+        public virtual void SetVersionPermissions(User targetUser, Version version, Permission permission)
         {
             service.SetVersionPermissions(caller, targetUser, version, permission);
         }
 
-        public Caller CreateUserByKey(string company, string type, string value)
+        public virtual Caller CreateUserByKey(string company, string type, string value)
         {
             //tu ma byc Create -> musze zmienic w webServisie
             return service.CreateUserByKey(company, type, value);
         }
 
-        public UserKey[] GetUserKeys(User targetUser)
+        public virtual UserKey[] GetUserKeys(User targetUser)
         {
             return service.GetUserKeys(caller, targetUser);
         }
 
-        public void AddUserKey(User targetUser, UserKey key)
+        public virtual void AddUserKey(User targetUser, UserKey key)
         {
             service.AddUserKey(caller, targetUser, key);
         }
 
-        public void RemoveUserKey(User targetUser, UserKey key)
+        public virtual void RemoveUserKey(User targetUser, UserKey key)
         {
             service.RemoveUserKey(caller, targetUser, key);
         }
@@ -261,7 +261,7 @@ namespace SymbolSource.Server.Management.Client
             return service.GetImageFileListByReference(caller, ref reference);
         }
 
-        public ImageFile GetImageFile(string name, string symbolHash)
+        public virtual ImageFile GetImageFile(string name, string symbolHash)
         {
             return service.GetImageFile(caller, name, symbolHash);
         }
@@ -276,7 +276,7 @@ namespace SymbolSource.Server.Management.Client
             return service.GetDepedencyList(caller, ref imageFile);
         }
 
-        public NodeImageFile[] GetNodeImageFiles(ref NodeImageFile nodeImageFile)
+        public virtual NodeImageFile[] GetNodeImageFiles(ref NodeImageFile nodeImageFile)
         {
             return service.GetNodeImageFiles(caller, ref nodeImageFile);
         }
@@ -291,7 +291,7 @@ namespace SymbolSource.Server.Management.Client
             return service.GetImageFileLink(caller, ref imageFile);
         }
 
-        public string GetSymbolFileLink(ref ImageFile imageFile)
+        public virtual string GetSymbolFileLink(ref ImageFile imageFile)
         {
             return service.GetSymbolFileLink(caller, ref imageFile);
         }
@@ -300,18 +300,18 @@ namespace SymbolSource.Server.Management.Client
         {
             return service.GetUserVisualStudioLink(caller, targetUser);
         }
-        
-        public Permissions GetUserPermissions(User targetUser)
+
+        public virtual Permissions GetUserPermissions(User targetUser)
         {
             return service.GetUserPermissions(caller, targetUser);
         }
 
-        public UploadReport[] GetUploadReports()
+        public virtual UploadReport[] GetUploadReports()
         {
             return service.GetUploadReports(caller);
         }
 
-        public string GetPackageLink(ref Version version, string contentType)
+        public virtual string GetPackageLink(ref Version version, string contentType)
         {
             return service.GetPackageLink(caller, ref version, contentType);
         }
@@ -326,32 +326,32 @@ namespace SymbolSource.Server.Management.Client
             return service.GetAvailableStatisticNames(caller);
         }
 
-        public void LogImageFileFound(ImageFile imageFile)
+        public virtual void LogImageFileFound(ImageFile imageFile)
         {
             service.LogImageFileFound(caller, imageFile);
         }
 
-        public void LogImageFileNotFound(string imageFileName, string symbolHash)
+        public virtual void LogImageFileNotFound(string imageFileName, string symbolHash)
         {
             service.LogImageFileNotFound(caller, imageFileName, symbolHash);
         }
 
-        public void LogSourceFileFound(SourceFile sourceFile)
+        public virtual void LogSourceFileFound(SourceFile sourceFile)
         {
             service.LogSourceFileFound(caller, sourceFile);
         }
 
-        public Plan[] GetPlansByType(string type)
+        public virtual Plan[] GetPlansByType(string type)
         {
             return service.GetPlansByType(type);
         }
 
-        public void RemovePlan(string name, string type)
+        public virtual void RemovePlan(string name, string type)
         {
             service.RemovePlan(name, type);
         }
 
-        public void CreatePlan(string name, string type, decimal monthPrice, decimal yearPrice, int userLimit, int privateRepoLimit)
+        public virtual void CreatePlan(string name, string type, decimal monthPrice, decimal yearPrice, int userLimit, int privateRepoLimit)
         {
             service.CreatePlan(name, type, monthPrice, yearPrice, userLimit, privateRepoLimit);
         }
