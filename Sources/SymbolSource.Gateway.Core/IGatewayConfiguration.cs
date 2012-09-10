@@ -8,8 +8,14 @@ namespace SymbolSource.Gateway.Core
         string PublicPassword { get; }
     }
 
+    public interface IGatewayRepositoryConfiguration
+    {
+        string NuGetService { get; }
+    }
+
     public interface IGatewayConfigurationFactory
     {
         IGatewayConfiguration Create(string company);
+        IGatewayRepositoryConfiguration Create(string company, string repository);
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using Ionic.Zip;
 using log4net;
@@ -15,7 +16,7 @@ namespace SymbolSource.Gateway.Core
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(GatewayManager));
         protected readonly IGatewayBackendFactory<IPackageBackend> backendFactory;
-        private readonly IGatewayConfigurationFactory configurationFactory;
+        protected readonly IGatewayConfigurationFactory configurationFactory;
 
         protected GatewayManager(IGatewayBackendFactory<IPackageBackend> backendFactory, IGatewayConfigurationFactory configurationFactory)
         {
@@ -242,7 +243,27 @@ namespace SymbolSource.Gateway.Core
                 var report = session.UploadPackage(packageProject, GetPackageFormat(), package, symbolPackage);
 
                 if (report.Summary != "OK")
-                    throw new Exception(report.Summary);
+                {
+                    var builder = new StringBuilder();
+                    builder.AppendLine(report.Summary);
+                    builder.AppendLine();
+
+                    if (!string.IsNullOrEmpty(report.Exception))
+                    {
+                        builder.AppendLine("Exception:");
+                        builder.AppendLine(report.Exception);
+                        builder.AppendLine();
+                    }
+
+                    if (!string.IsNullOrEmpty(report.Exception))
+                    {
+                        builder.AppendLine("Log:");
+                        builder.AppendLine(report.Log);
+                        builder.AppendLine();
+                    }
+
+                    throw new Exception(builder.ToString());
+                }
             }
 
             if (log.IsDebugEnabled)

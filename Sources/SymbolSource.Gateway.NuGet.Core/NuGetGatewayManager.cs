@@ -136,7 +136,7 @@ namespace SymbolSource.Gateway.NuGet.Core
         {
             var parts = name.ToLower().Split('/');
 
-            if (parts.First() == "lib" && (parts.Last().EndsWith(".dll") || parts.Last().EndsWith(".exe")))
+            if (parts.First() == "lib" && (parts.Last().EndsWith(".dll") || parts.Last().EndsWith(".exe") || parts.Last().EndsWith(".winmd")))
                 return ContentType.Binary;
 
             if (parts.First() == "lib" && parts.Last().EndsWith(".xml"))
@@ -156,12 +156,12 @@ namespace SymbolSource.Gateway.NuGet.Core
 
         protected override bool? GetProjectPermission(Caller caller, string companyName, PackageProject project)
         {
-            var configuration = new RepositoryConfigurationWrapper(companyName, project.Repository);
+            var configuration = configurationFactory.Create(companyName, project.Repository);
 
-            if (string.IsNullOrEmpty(configuration.Service))
+            if (string.IsNullOrEmpty(configuration.NuGetService))
                 return null;
 
-            return new NuGetService(configuration.Service).CheckPermission(caller.KeyValue, project.Name);
+            return new NuGetService(configuration.NuGetService).CheckPermission(caller.KeyValue, project.Name);
         }
 
         protected override string GetPackageFormat()

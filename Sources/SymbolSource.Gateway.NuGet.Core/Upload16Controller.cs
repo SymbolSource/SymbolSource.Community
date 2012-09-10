@@ -9,12 +9,14 @@ namespace SymbolSource.Gateway.NuGet.Core
 {
     public class Upload16Controller : Controller
     {
-        private readonly IGatewayBackendFactory<IPackageBackend> factory;
+        private readonly IGatewayBackendFactory<IPackageBackend> backendFactory;
+        private readonly IGatewayConfigurationFactory configurationFactory;
         private readonly IGatewayManager manager;
 
-        public Upload16Controller(IGatewayBackendFactory<IPackageBackend> factory, INuGetGatewayManager manager)
+        public Upload16Controller(IGatewayBackendFactory<IPackageBackend> backendFactory, IGatewayConfigurationFactory configurationFactory, INuGetGatewayManager manager)
         {
-            this.factory = factory;
+            this.backendFactory = backendFactory;
+            this.configurationFactory = configurationFactory;
             this.manager = manager;
         }
 
@@ -25,7 +27,7 @@ namespace SymbolSource.Gateway.NuGet.Core
                 action();
                 Response.StatusCode = successCode;
                 Response.StatusDescription = successMessage;
-                return null;
+                return Content("");
             }
             catch (ClientException exception)
             {
@@ -49,11 +51,11 @@ namespace SymbolSource.Gateway.NuGet.Core
 
         private Caller GetCaller(string company, string key)
         {
-            var configuration = new AppSettingsConfiguration(company);
+            var configuration = configurationFactory.Create(company);
 
             try
             {
-                var caller = factory.GetUserByKey(company, "NuGet", key);
+                var caller = backendFactory.GetUserByKey(company, "NuGet", key);
 
                 if (caller != null)
                     return caller;
@@ -61,7 +63,7 @@ namespace SymbolSource.Gateway.NuGet.Core
                 if (string.IsNullOrEmpty(configuration.GatewayLogin) || string.IsNullOrEmpty(configuration.GatewayPassword))
                     throw new Exception("Missing gateway configuration");
 
-                using (var backend = factory.Create(company, configuration.GatewayLogin, "API", configuration.GatewayPassword))
+                using (var backend = backendFactory.Create(company, configuration.GatewayLogin, "API", configuration.GatewayPassword))
                     return backend.CreateUserByKey(company, "NuGet", key);
             }
             catch (Exception exception)

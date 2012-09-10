@@ -23,9 +23,10 @@ namespace SymbolSource.Processing.Basic.Projects
             var addInfo = new AddInfo();
 
             var items = directoryInfo.Entries.ToArray();
+            var binaryExtensions = new[] { ".dll", ".exe", ".winmd" };
 
             addInfo.Binaries = items
-                .Where(f => f.FullPath.EndsWith("exe", StringComparison.InvariantCultureIgnoreCase) || f.FullPath.EndsWith("dll", StringComparison.InvariantCultureIgnoreCase))
+                .Where(f => binaryExtensions.Any(e => f.FullPath.EndsWith(e, StringComparison.InvariantCultureIgnoreCase)))
                 .Select(b => BuildBinaryInfo(addInfo, items, b))
                 .ToArray();
 

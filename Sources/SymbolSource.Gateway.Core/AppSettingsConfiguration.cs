@@ -31,4 +31,21 @@ namespace SymbolSource.Gateway.Core
             get { return ConfigurationManager.AppSettings[company + "PublicPassword"]; }
         }
     }
+
+    public class AppSettingsRepositoryConfiguration : IGatewayRepositoryConfiguration
+    {
+        private readonly string company;
+        private readonly string repository;
+
+        public AppSettingsRepositoryConfiguration(string company, string repository)
+        {
+            this.company = company;
+            this.repository = repository;
+        }
+
+        public string NuGetService
+        {
+            get { return ConfigurationManager.AppSettings[company + repository + "Service"]; }
+        }
+    }
 }

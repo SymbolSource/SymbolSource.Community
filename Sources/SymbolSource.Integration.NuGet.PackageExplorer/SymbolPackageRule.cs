@@ -73,11 +73,12 @@ namespace SymbolSource.Integration.NuGet.PackageExplorer
 
             foreach (var symbolFile in files.Where(PackageHelper.IsSymbolFile))
             {
-                var dllPath = Path.ChangeExtension(symbolFile.Path, ".dll");
-                var exePath = Path.ChangeExtension(symbolFile.Path, ".exe");
+                var paths = new[] {".dll", ".exe", ".winmd"}
+                    .Select(extension => Path.ChangeExtension(symbolFile.Path, extension))
+                    .ToArray();
 
-                if (GetSingleFile(files, dllPath) == null && GetSingleFile(files, exePath) == null)
-                    yield return OrphanSymbolFileIssue(symbolFile.Path, dllPath, exePath);
+                if (paths.All(path => GetSingleFile(files, path) == null))
+                    yield return OrphanSymbolFileIssue(symbolFile.Path, paths);
             }
         }
 
@@ -149,12 +150,12 @@ namespace SymbolSource.Integration.NuGet.PackageExplorer
                 "Verify that correct files have been added to the package. Note that every compilation produces a different hash value, so both files must be taken from the same build.");
         }
 
-        private static PackageIssue OrphanSymbolFileIssue(string symbolPath, string dllPath, string exePath)
+        private static PackageIssue OrphanSymbolFileIssue(string symbolPath, IEnumerable<string> paths)
         {
             return new PackageIssue(
                PackageIssueLevel.Warning,
                "Orphan symbol file found",
-               string.Format("The symbol file '{0}' does not have any corresponding assemblies ('{1}', '{2}').", symbolPath, dllPath, exePath),
+               string.Format("The symbol file '{0}' does not have any corresponding assemblies ({1}).", symbolPath, string.Join(", ", paths.Select(path => "'"+path+"'"))),
                "Remove the symbol file or add the corresponding assembly.");
         }
     }

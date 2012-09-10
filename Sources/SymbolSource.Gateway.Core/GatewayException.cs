@@ -40,7 +40,7 @@ namespace SymbolSource.Gateway.Core
                 message = new Regex(@"[\s]+").Replace(message, " ");
 
                 if (message.Length > remaining)
-                    message = message.Substring(1, remaining - shortener.Length) + shortener;
+                    message = message.Substring(0, remaining - shortener.Length) + shortener;
 
                 return message + suffix;
             }
