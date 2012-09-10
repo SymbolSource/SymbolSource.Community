@@ -47,5 +47,10 @@ namespace SymbolSource.Processing.Basic.Projects
         {
             get { return packageEntry.CreationTimeUtc; }
         }
+
+        public override string ToString()
+        {
+            return FullPath;
+        }
     }
 }

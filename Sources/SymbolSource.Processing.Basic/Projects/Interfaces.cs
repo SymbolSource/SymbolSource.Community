@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Globalization;
 using System.IO;
+using SymbolSource.Processing.Basic.Projects;
 
 namespace SymbolSource.Processing.Basic.Projects
 {
