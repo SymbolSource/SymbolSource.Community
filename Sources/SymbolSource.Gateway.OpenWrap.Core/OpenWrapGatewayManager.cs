@@ -77,7 +77,7 @@ namespace SymbolSource.Gateway.OpenWrap.Core
         {
             var parts = name.ToLower().Split('/');
 
-            if (parts.First().StartsWith("bin") && (parts.Last().EndsWith(".dll") || parts.Last().EndsWith(".exe")))
+            if (parts.First().StartsWith("bin") && (parts.Last().EndsWith(".dll") || parts.Last().EndsWith(".exe") || parts.Last().EndsWith(".winmd")))
                 return ContentType.Binary;
 
             if (parts.First().StartsWith("bin") && parts.Last().EndsWith(".xml"))

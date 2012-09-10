@@ -6,5 +6,10 @@ namespace SymbolSource.Gateway.Core
         {
             return new AppSettingsConfiguration(company);
         }
+
+        public IGatewayRepositoryConfiguration Create(string company, string repository)
+        {
+            return new AppSettingsRepositoryConfiguration(company, repository);
+        }
     }
 }
