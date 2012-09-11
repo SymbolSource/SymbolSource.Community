@@ -82,12 +82,12 @@ namespace SymbolSource.Server.Management.Client.Remoting
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
 
-        public void SendPasswordMail(string company, string login, string mail, string url)
+        public void SendPasswordMail(string url)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
 
-        public void ResetPassword(string value, string newPassword)
+        public void ResetPassword(UserKey userKey)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }

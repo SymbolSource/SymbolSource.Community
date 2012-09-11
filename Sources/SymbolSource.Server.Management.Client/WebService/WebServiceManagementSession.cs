@@ -75,14 +75,14 @@ namespace SymbolSource.Server.Management.Client
             service.DeleteUser(caller, user);
         }
 
-        public void SendPasswordMail(string company, string login, string mail, string url)
+        public void SendPasswordMail(string url)
         {
-            service.SendPasswordMail(caller, company, login, mail, url);
+            service.SendPasswordMail(caller, url);
         }
 
-        public virtual void ResetPassword(string value, string newPassword)
+        public virtual void ResetPassword(UserKey userKey)
         {
-            service.ResetPassword(caller, value, newPassword);
+            service.ResetPassword(caller, userKey);
         }
 
         public virtual Repository[] GetRepositories(ref Company company)

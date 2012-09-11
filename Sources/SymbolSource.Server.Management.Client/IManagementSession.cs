@@ -18,8 +18,8 @@ namespace SymbolSource.Server.Management.Client
         void CreateUser(User user, UserKey userKey, Plan plan);
         void UpdateUser(User user);
         void DeleteUser(User user);
-        void SendPasswordMail(string company, string login, string mail, string url);
-        void ResetPassword(string value, string newPassword);
+        void SendPasswordMail(string url);
+        void ResetPassword(UserKey userKey);
 
         Repository[] GetRepositories(ref Company company);
         void CreateOrUpdateRepository(Repository repository);

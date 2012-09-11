@@ -72,7 +72,9 @@
     <Compile Include="ServerException.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SymbolSource.Server.Management.Client\SymbolSource.Server.Management.Client.csproj">
