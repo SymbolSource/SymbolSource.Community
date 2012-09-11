@@ -12,7 +12,7 @@ namespace SymbolSource.Gateway.NuGet.Core
         public void Push(string url, string key, Stream stream)
         {
             var server = new PackageServer(url, "SymbolSource");
-            server.PushPackage(key, stream /*, 5000 */);
+            //server.PushPackage(key, stream /*, 5000 */); //TODO UNCOMMENT
         }
 
         public int Count(string url, NetworkCredential credential)
@@ -54,7 +54,14 @@ namespace SymbolSource.Gateway.NuGet.Core
             if (Credentials.ContainsKey(uri))
                 return Credentials[uri];
 
-            return provider.GetCredentials(uri, proxy, credentialType /*, retrying */);
+            //TODO UNCOMMENT
+            //return provider.GetCredentials(uri, proxy, credentialType /*, retrying */);
+            return null;
+        }
+
+        public ICredentials GetCredentials(Uri uri, IWebProxy proxy, CredentialType credentialType, bool retrying)
+        {
+            throw new NotImplementedException();
         }
     }
 }

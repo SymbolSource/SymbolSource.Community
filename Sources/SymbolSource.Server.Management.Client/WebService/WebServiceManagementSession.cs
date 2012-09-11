@@ -60,11 +60,6 @@ namespace SymbolSource.Server.Management.Client
             return service.GetUsers(caller, ref company);
         }
 
-        public virtual User GetUserByCompanyAndNameOrEmail(string company, string name, string email)
-        {
-            return service.GetUserByCompanyAndNameOrEmail(caller, company, name, email);
-        }
-
         public virtual void CreateUser(User user, UserKey userKey, Plan plan)
         {
             service.CreateUser(caller, user, userKey, plan);
@@ -80,14 +75,14 @@ namespace SymbolSource.Server.Management.Client
             service.DeleteUser(caller, user);
         }
 
-        public virtual void SetOneDayPasswordToken(User user, UserKey userKey)
+        public void SendPasswordMail(string company, string login, string mail, string url)
         {
-            service.SetOneDayPasswordToken(caller, user, userKey);
+            service.SendPasswordMail(caller, company, login, mail, url);
         }
 
-        public virtual bool ResetPassword(string company, string userName, string value, string newPassword)
+        public virtual void ResetPassword(string value, string newPassword)
         {
-            return service.ResetPassword(company, userName, value, newPassword);
+            service.ResetPassword(caller, value, newPassword);
         }
 
         public virtual Repository[] GetRepositories(ref Company company)

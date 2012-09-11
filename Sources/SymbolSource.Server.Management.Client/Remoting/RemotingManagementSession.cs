@@ -67,11 +67,6 @@ namespace SymbolSource.Server.Management.Client.Remoting
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
 
-        public User GetUserByCompanyAndNameOrEmail(string company, string name, string email)
-        {
-            throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
-        }
-
         public virtual void CreateUser(User user, UserKey userKey, Plan plan)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
@@ -87,12 +82,12 @@ namespace SymbolSource.Server.Management.Client.Remoting
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
 
-        public void SetOneDayPasswordToken(User user, UserKey userKey)
+        public void SendPasswordMail(string company, string login, string mail, string url)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
 
-        public bool ResetPassword(string company, string userName, string value, string newPassword)
+        public void ResetPassword(string value, string newPassword)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
