@@ -15,12 +15,11 @@ namespace SymbolSource.Server.Management.Client
         void DeleteCompany(Company company);
 
         User[] GetUsers(ref Company company);
-        User GetUserByCompanyAndNameOrEmail(string company, string name, string email);
         void CreateUser(User user, UserKey userKey, Plan plan);
         void UpdateUser(User user);
         void DeleteUser(User user);
-        void SetOneDayPasswordToken(User user, UserKey userKey);
-        bool ResetPassword(string company, string userName, string value, string newPassword);
+        void SendPasswordMail(string company, string login, string mail, string url);
+        void ResetPassword(string value, string newPassword);
 
         Repository[] GetRepositories(ref Company company);
         void CreateOrUpdateRepository(Repository repository);
