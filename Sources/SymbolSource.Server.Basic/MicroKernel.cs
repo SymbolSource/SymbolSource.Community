@@ -48,6 +48,7 @@ namespace SymbolSource.Server.Basic
                );
             
             ControllerBuilder.Current.SetControllerFactory(new MCControllerFactory(container.Kernel));
+            ServiceLocator.Locator = new SimpleServiceLocator(container.Resolve);
 
             return container.Kernel;
         }

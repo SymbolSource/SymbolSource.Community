@@ -58,6 +58,11 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Services" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
@@ -72,8 +77,10 @@
     <Compile Include="DownloadController.cs" />
     <Compile Include="NuGetGatewayManager.cs" />
     <Compile Include="NuGetService.cs" />
-    <Compile Include="PackageAdapter.cs" />
+    <Compile Include="OData.cs" />
+    <Compile Include="Package.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceLocator.cs" />
     <Compile Include="TestHelper.cs" />
     <Compile Include="Upload15Controller.cs" />
     <Compile Include="Upload16Controller.cs" />

@@ -12,8 +12,10 @@ namespace SymbolSource.Gateway.NuGet.Core
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.MapAttributeRoutes();
-            DownloadController.MapRoutes(routes, "{company}/{login}/{key}", "PreAuthenticated");
-            DownloadController.MapRoutes(routes, "{company}", "");
+            Packages.MapRoutes(routes, "{company}/{login}/{key}", "PreAuthenticated");
+            Packages.MapRoutes(routes, "{company}", "");
+            DownloadController.MapRoutes(routes, "{company}/{login}/{key}", "PreAuthenticated2");
+            DownloadController.MapRoutes(routes, "{company}", "2");
         }
 
         public static void Start()
