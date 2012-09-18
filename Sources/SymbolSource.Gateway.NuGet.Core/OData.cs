@@ -8,9 +8,6 @@ using System.ServiceModel.Dispatcher;
 using System.ServiceModel.Web;
 using System.Web;
 using System.Web.Routing;
-using SymbolSource.Gateway.NuGet.Core;
-
-[assembly: PreApplicationStartMethod(typeof(UserTrackerModule), "Register")]
 
 namespace SymbolSource.Gateway.NuGet.Core
 {

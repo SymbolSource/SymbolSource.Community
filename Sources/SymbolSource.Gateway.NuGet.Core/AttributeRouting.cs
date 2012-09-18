@@ -12,10 +12,8 @@ namespace SymbolSource.Gateway.NuGet.Core
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.MapAttributeRoutes();
-            Packages.MapRoutes(routes, "{company}/{login}/{key}", "PreAuthenticated");
-            Packages.MapRoutes(routes, "{company}", "");
-            DownloadController.MapRoutes(routes, "{company}/{login}/{key}", "PreAuthenticated2");
-            DownloadController.MapRoutes(routes, "{company}", "2");
+            ODataPackageService.MapRoutes(routes, "{company}/{login}/{key}", "PreAuthenticated");
+            ODataPackageService.MapRoutes(routes, "{company}", "");
         }
 
         public static void Start()
