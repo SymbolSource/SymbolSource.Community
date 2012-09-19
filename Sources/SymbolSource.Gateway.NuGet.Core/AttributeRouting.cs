@@ -1,7 +1,5 @@
-using System.Web.Mvc;
 using System.Web.Routing;
 using AttributeRouting;
-using SymbolSource.OData;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(SymbolSource.Gateway.NuGet.Core.AttributeRouting), "Start")]
 
@@ -19,7 +17,6 @@ namespace SymbolSource.Gateway.NuGet.Core
         public static void Start()
         {
             RegisterRoutes(RouteTable.Routes);
-            ModelBinders.Binders[typeof(ODataUrlQueryOptions)] = new ODataUrlQueryOptionsModelBinder();
         }
     }
 }

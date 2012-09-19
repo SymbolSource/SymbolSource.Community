@@ -203,8 +203,8 @@ namespace SymbolSource.Gateway.NuGet.Core
         {
             get
             {
-                var repository = this.repository;
-                var versions = backend.GetPackages(ref repository, "NuGet");
+                var repository2 = repository;
+                var versions = backend.GetPackages(ref repository2, "NuGet");
                 return versions.Select(v => new Package(v, versions)).AsQueryable();
             }
         }

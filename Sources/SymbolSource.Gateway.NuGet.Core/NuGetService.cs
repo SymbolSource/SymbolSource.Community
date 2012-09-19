@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Net;
-using System.Web;
-using Elmah;
 
 namespace SymbolSource.Gateway.NuGet.Core
 {
