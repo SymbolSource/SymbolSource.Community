@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using SymbolSource.Server.Management.Client;
 using Version = SymbolSource.Server.Management.Client.Version;
 
@@ -36,6 +37,30 @@ namespace SymbolSource.Server.Basic
                 .Where(candidate => File.Exists(Path.Combine(configuration.DataPath, candidate)))
                 .FirstOrDefault();
             // ReSharper restore ReplaceWithSingleCallToFirstOrDefault
+        }
+
+        private MetadataEntry[] GetPackageMetadata(string path, string packageFormat)
+        {
+            var gateway = gatewayVersionExtractors.SingleOrDefault(g => g.GetType().FullName.Contains(packageFormat));
+
+            if(gateway !=null)
+            {
+                using(var stream = File.OpenRead(Path.Combine(configuration.DataPath, path)))
+                {
+                    var version = gateway.Extract(stream);
+                    return version.Metadata;
+                }
+            }
+            return null;
+        }
+
+        private string GetPackageSHA512(string path)
+        {
+            using (var stream = File.OpenRead(Path.Combine(configuration.DataPath, path)))
+            {
+                using (var hasher = new SHA512Managed())
+                    return Convert.ToBase64String(hasher.ComputeHash(stream));
+            }
         }
 
         private IEnumerable<string> GetPackageNameCandidates(Version version, string packageFormat)
@@ -150,11 +175,11 @@ namespace SymbolSource.Server.Basic
             throw new NotImplementedException();
         }
 
-        public Version[] GetPackages(ref Repository repository, string packageFormat)
+        public Version[] GetPackages(ref Repository repository, ref PackageFilter filter, string packageFormat)
         {
             var repositoryCopy = repository;
 
-            return Directory.EnumerateDirectories(configuration.DataPath)
+            var versions = Directory.EnumerateDirectories(configuration.DataPath)
                 .SelectMany(
                     projectPath =>
                     Directory.EnumerateDirectories(projectPath)
@@ -166,10 +191,31 @@ namespace SymbolSource.Server.Basic
                                     Repository = repositoryCopy.Name,
                                     Project = Path.GetFileName(projectPath),
                                     Name = Path.GetFileName(versionPath),
-                                    PackageFormat = packageFormat
+                                    PackageFormat = packageFormat,
                                 })
-                        .Where(version => GetPackagePathFromVersion(version, packageFormat) != null))
+                        .Where(version => GetPackagePathFromVersion(version, packageFormat) != null)
+                        .Select(version => new Version
+                                               {
+                                                   Company = version.Company,
+                                                   Repository = version.Repository,
+                                                   Project = version.Project,
+                                                   Name = version.Name,
+                                                   PackageFormat = "SHA512",
+                                                   PackageHash = GetPackageSHA512(GetPackagePathFromVersion(version, packageFormat)),
+                                               })
+                )
+                .OrderByDescending(v => v.Name)
                 .ToArray();
+
+            foreach(var version in versions)
+            {
+                bool isLatest = versions.Where(v => v.Project == version.Project).Select(v => v.Name).FirstOrDefault() == version.Name;
+                var metadata = new List<MetadataEntry>(GetPackageMetadata(GetPackagePathFromVersion(version, packageFormat), packageFormat) ?? new MetadataEntry[0]);
+                var metadataWrapper = new MetadataWrapper(metadata);
+                metadataWrapper["IsLatestVersion"] = isLatest.ToString();
+                version.Metadata = metadata.ToArray();
+            }
+            return versions;
         }
 
         public Caller CreateUserByKey(string company, string type, string value)

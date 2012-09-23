@@ -4,7 +4,7 @@ using SymbolSource.Server.Management.Client;
 namespace SymbolSource.Gateway.Core
 {
     public interface IGatewayManager
-    {
+    {        
         bool AuthenticateDownload(string company, string repository);
         bool AuthenticateUpload(string company, string repository);
         Version[] Index(Caller caller, string company, string repository);

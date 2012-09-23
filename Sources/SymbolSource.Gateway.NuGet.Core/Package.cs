@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Data.Services.Common;
 using System.Linq;
-using SymbolSource.Gateway.Core;
-using SymbolSource.Server.Management.Client;
-using Version = SymbolSource.Server.Management.Client.Version;
 
 namespace SymbolSource.Gateway.NuGet.Core
 {
@@ -15,34 +12,6 @@ namespace SymbolSource.Gateway.NuGet.Core
     [HasStream]
     public class Package
     {
-        public Package(Version version, Version[] packages)
-        {
-            Id = version.Project;
-            Version = version.Name;
-            Title = version.Project;
-            PackageHash = version.PackageHash;
-            PackageHashAlgorithm = "SHA512";
-            PackageSize = -1;
-            LastUpdated = DateTime.UtcNow;
-            Published = DateTime.UtcNow;
-            IsLatestVersion = packages.Where(p => p.Project == version.Project).OrderByDescending(p => p.Name).FirstOrDefault() == version;
-            IsAbsoluteLatestVersion = IsLatestVersion;
-            //Path = derivedData.Path;
-            //FullPath = derivedData.FullPath;
-        }
-
-        internal string FullPath
-        {
-            get;
-            set;
-        }
-
-        internal string Path
-        {
-            get;
-            set;
-        }
-
         public string Id
         {
             get;
@@ -190,22 +159,18 @@ namespace SymbolSource.Gateway.NuGet.Core
 
     public class PackageContext
     {
-        private readonly IPackageBackend backend;
-        private readonly Repository repository;
-
-        public PackageContext(IPackageBackend backend, Repository repository)
+        private readonly ODataPackageService oDataPackageService;
+        
+        public PackageContext(ODataPackageService oDataPackageService)
         {
-            this.backend = backend;
-            this.repository = repository;
+            this.oDataPackageService = oDataPackageService;
         }
 
         public IQueryable<Package> Packages
         {
             get
             {
-                var repository2 = repository;
-                var versions = backend.GetPackages(ref repository2, "NuGet");
-                return versions.Select(v => new Package(v, versions)).AsQueryable();
+                return oDataPackageService.Search(null, null, true);
             }
         }
     }

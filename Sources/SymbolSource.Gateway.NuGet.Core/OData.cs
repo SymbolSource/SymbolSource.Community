@@ -94,7 +94,7 @@ namespace SymbolSource.Gateway.NuGet.Core
             return null;
         }
 
-        public DynamicServiceRoute(string pathPrefix, object defaults, ServiceHostFactoryBase serviceHostFactory, Type serviceType)
+        public DynamicServiceRoute(string pathPrefix, object defaults, string[] namespaces, ServiceHostFactoryBase serviceHostFactory, Type serviceType)
         {
             if (pathPrefix.IndexOf("{*", StringComparison.Ordinal) >= 0)
                 throw new ArgumentException("Path prefix can not include catch-all route parameters.", "pathPrefix");
@@ -106,7 +106,16 @@ namespace SymbolSource.Gateway.NuGet.Core
 
             virtualPath = serviceType.FullName + "-" + Guid.NewGuid().ToString() + "/";
             innerServiceRoute = new ServiceRoute(virtualPath, serviceHostFactory, serviceType);
-            innerRoute = new Route(pathPrefix, new RouteValueDictionary(defaults), this);
+            
+            innerRoute = new Route(pathPrefix, new RouteValueDictionary(defaults), this)
+                             {
+                                 DataTokens = new RouteValueDictionary()
+                             };
+
+            if ((namespaces != null) && (namespaces.Length > 0))
+            {
+                innerRoute.DataTokens["Namespaces"] = namespaces;
+            }
         }
 
         public override RouteData GetRouteData(HttpContextBase httpContext)
@@ -123,6 +132,11 @@ namespace SymbolSource.Gateway.NuGet.Core
         {
             requestContext.HttpContext.RewritePath("~/" + virtualPath + requestContext.RouteData.Values["servicePath"], true);
             return innerServiceRoute.RouteHandler.GetHttpHandler(requestContext);
+        }
+
+        public Route InnerRoute
+        {
+            get { return innerRoute; }
         }
     }
 

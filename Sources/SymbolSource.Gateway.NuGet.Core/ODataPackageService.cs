@@ -1,17 +1,17 @@
 using System;
-using System.Collections.Generic;
 using System.Data.Services;
 using System.Data.Services.Common;
 using System.Data.Services.Providers;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Web;
 using System.Web.Routing;
-using NuGet;
 using SymbolSource.Gateway.Core;
 using SymbolSource.Server.Management.Client;
+using Version = SymbolSource.Server.Management.Client.Version;
 
 namespace SymbolSource.Gateway.NuGet.Core
 {
@@ -22,7 +22,7 @@ namespace SymbolSource.Gateway.NuGet.Core
         {
             var factory = new DataServiceHostFactory();
             string servicePrefix = prefix + "/{repository}/FeedService.mvc";
-            RouteTable.Routes.Add(new DynamicServiceRoute(servicePrefix, null, factory, typeof(ODataPackageService)));
+            RouteTable.Routes.Add(new DynamicServiceRoute(servicePrefix, null, new[] { typeof(ODataPackageService).Namespace }, factory, typeof(ODataPackageService)));
         }
 
 
@@ -54,6 +54,21 @@ namespace SymbolSource.Gateway.NuGet.Core
             get { return (Repository) HttpContext.Current.Items["Repository"]; }
         }
 
+        private PackageFilter GetFilter()
+        {
+            string filter = HttpContext.Current.Request.QueryString["$filter"];
+            string skip = HttpContext.Current.Request.QueryString["$skip"] ?? "0";
+            string top = HttpContext.Current.Request.QueryString["$top"] ?? "1000000";
+            return new PackageFilter
+                       {
+                           Where = NuGetTranslator.TranslateFilter(filter),
+                           OrderBy = NuGetTranslator.TranslateFilter(HttpContext.Current.Request.QueryString["$orderby"]),
+                           Skip = int.Parse(skip),
+                           Take = int.Parse(top),
+                           Count = HttpContext.Current.Request.Path.EndsWith("$count")
+                       };
+        }
+
         // This method is called only once to initialize service-wide policies.
         public static void InitializeService(DataServiceConfiguration config)
         {
@@ -73,7 +88,7 @@ namespace SymbolSource.Gateway.NuGet.Core
 
         protected override PackageContext CreateDataSource()
         {
-            return new PackageContext(Backend, Repository);
+            return new PackageContext(this);
         }
 
         public void DeleteStream(object entity, DataServiceOperationContext operationContext)
@@ -135,30 +150,26 @@ namespace SymbolSource.Gateway.NuGet.Core
         [WebGet]
         public IQueryable<Package> Search(string searchTerm, string targetFramework, bool includePrerelease)
         {
-            //IEnumerable<string> targetFrameworks = String.IsNullOrEmpty(targetFramework) ? Enumerable.Empty<string>() : targetFramework.Split('|');
-
-            var repository = Repository;
-            var versions = Backend.GetPackages(ref repository, "NuGet");
-            var packages = versions.Select(v => new Package(v, versions)).AsQueryable();
-
+            var filter = GetFilter();
             if (!string.IsNullOrEmpty(searchTerm))
             {
                 searchTerm = searchTerm.Trim('\'');
-                packages = packages.Where(p => p.Title.Contains(searchTerm) || p.Version.Contains(searchTerm));
+                filter.Where = "(" + filter.Where + ") and (substringof(Project, '" + searchTerm + "') or substringof(Name, '" + searchTerm + "'))";
+                return GetPackages(filter, v => v.Project.Contains(searchTerm) || v.Name.Contains(searchTerm));
             }
 
-            return packages;
+            return GetPackages(filter, v => true);
         }
 
         [WebGet]
         public IQueryable<Package> FindPackagesById(string id)
         {
-            var repository = Repository;
-            var versions = Backend.GetPackages(ref repository, "NuGet");
-            var packages = versions.Select(v => new Package(v, versions)).AsQueryable();
-
-            packages = packages.Where(p => p.Id == id);
-            return packages;
+            var filter = GetFilter();
+            if (!string.IsNullOrEmpty(filter.Where))
+                filter.Where = "(" + filter.Where + ") and Project eq '" + id + "'";
+            else
+                filter.Where = "Project eq '" + id + "'";
+            return GetPackages(filter, v => v.Project == id);
         }
 
         [WebGet]
@@ -170,23 +181,36 @@ namespace SymbolSource.Gateway.NuGet.Core
             }
 
             var idValues = packageIds.Trim().Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
-            var versionValues = versions.Trim().Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
-            var targetFrameworkValues = String.IsNullOrEmpty(targetFrameworks) ? null : targetFrameworks.Split('|').Select(VersionUtility.ParseFrameworkName).ToList();
 
-            // Exit early if the request looks invalid
-            if ((idValues.Length == 0) || (idValues.Length != versionValues.Length))
-                return Enumerable.Empty<Package>().AsQueryable();
+            string filterNames = string.Join(" or ", idValues.Select(i => "Project eq '" + i + "'"));
+            var filter = GetFilter();
+            
+            if(!string.IsNullOrEmpty(filter.Where))
+                filter.Where = "(" + filter.Where + ") and (" + filterNames + ") and (Metadata['IsLatestVersion'] eq 'True')";
+            else
+                filter.Where = "(" + filterNames + ") and (Metadata['IsLatestVersion'] eq 'True')";
 
-            var packagesToUpdate = new List<IPackageMetadata>();
-            for (int i = 0; i < idValues.Length; i++)
-                packagesToUpdate.Add(new PackageBuilder { Id = idValues[i], Version = new SemanticVersion(versionValues[i]) });
+            return GetPackages(filter, v => idValues.Contains(v.Project));
+        }
 
+        private IQueryable<Package> GetPackages(PackageFilter filter, Func<SymbolSource.Server.Management.Client.Version, bool> filter2)
+        {
             var repository = Repository;
-            var versions2 = Backend.GetPackages(ref repository, "NuGet");
-            var packages = versions2.Select(v => new Package(v, versions2)).AsQueryable();
+            var versions = Backend.GetPackages(ref repository, ref filter, "NuGet")
+                .AsEnumerable();
+            
+            
+            if (filter.Performed)
+            {
+                //If filter is performed on server side then skip skipping ;)
+                (OperationContext.Current.IncomingMessageProperties["UriTemplateMatchResults"] as UriTemplateMatch).QueryParameters["$skip"] = "0";
 
-            packages = packages.Where(p => p.IsLatestVersion && packagesToUpdate.Any(u => u.Id == p.Id));
-            return packages;
+                versions = versions.Where(filter2);
+            }
+
+            return versions
+                .Select(NuGetTranslator.ConvertToPackage)
+                .AsQueryable();
         }
     }
 }

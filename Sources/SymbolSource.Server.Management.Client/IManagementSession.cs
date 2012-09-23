@@ -39,8 +39,10 @@ namespace SymbolSource.Server.Management.Client
         void UpdateVersion(Version version);
         void DeleteVersion(Version version);
 
-        Version[] GetPackages(ref Repository repository, string packageFormat);
+        Version[] GetPackages(ref Repository repository, ref PackageFilter filter, string packageFormat);
         UploadReport UploadPackage(PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData);
+        UploadReport[] GetUploadReports();
+        string GetPackageLink(ref Version version, string contentType);
 
         CompanyPermission[] GetCompanyPermissions(Company company);
         RepositoryPermission[] GetRepositoryPermissions(Repository repository);
@@ -76,9 +78,6 @@ namespace SymbolSource.Server.Management.Client
         Permissions GetUserPermissions(User targetUser);
        
         Version SetVersionHidden(ref Version version, bool hidden);
-
-        UploadReport[] GetUploadReports();
-        string GetPackageLink(ref Version version, string contentType);
 
         Statistic[] GetStatistic(string[] names, StatisticPeriod period, DateTime? from, DateTime? to);
         string[] GetAvailableStatisticNames();

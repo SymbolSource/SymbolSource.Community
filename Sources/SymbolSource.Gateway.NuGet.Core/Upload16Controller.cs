@@ -61,7 +61,7 @@ namespace SymbolSource.Gateway.NuGet.Core
                     return caller;
 
                 if (string.IsNullOrEmpty(configuration.GatewayLogin) || string.IsNullOrEmpty(configuration.GatewayPassword))
-                    throw new Exception("Missing gateway configuration");
+                    throw new Exception("Wrong key or missing gateway configuration");
 
                 using (var backend = backendFactory.Create(company, configuration.GatewayLogin, "API", configuration.GatewayPassword))
                     return backend.CreateUserByKey(company, "NuGet", key);

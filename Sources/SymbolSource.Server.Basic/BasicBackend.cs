@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using SymbolSource.Gateway.Core;
 using SymbolSource.Gateway.WinDbg.Core;
 using SymbolSource.Processing.Basic.Projects;
@@ -10,11 +11,14 @@ namespace SymbolSource.Server.Basic
     {
         private readonly IBasicBackendConfiguration configuration;
         private readonly IAddInfoBuilder addInfoBuilder;
+        private readonly IEnumerable<IGatewayVersionExtractor> gatewayVersionExtractors;
 
-        public BasicBackend(IBasicBackendConfiguration configuration, IAddInfoBuilder addInfoBuilder)
+        public BasicBackend(IBasicBackendConfiguration configuration, IAddInfoBuilder addInfoBuilder,
+            IEnumerable<IGatewayVersionExtractor> gatewayVersionExtractors)
         {
             this.configuration = configuration;
             this.addInfoBuilder = addInfoBuilder;
+            this.gatewayVersionExtractors = gatewayVersionExtractors;
         }
 
         public void Dispose()

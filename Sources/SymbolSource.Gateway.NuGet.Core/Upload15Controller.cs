@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Web.Mvc;
-using System.Web.Routing;
 using AttributeRouting;
 using SymbolSource.Gateway.Core;
 using SymbolSource.Server.Management.Client;
@@ -10,11 +9,13 @@ namespace SymbolSource.Gateway.NuGet.Core
     public class Upload15Controller : Controller
     {
         private readonly IGatewayBackendFactory<IPackageBackend> factory;
+        private readonly IGatewayConfigurationFactory configurationFactory;
         private readonly IGatewayManager manager;
 
-        public Upload15Controller(IGatewayBackendFactory<IPackageBackend> factory, INuGetGatewayManager manager)
+        public Upload15Controller(IGatewayBackendFactory<IPackageBackend> factory, IGatewayConfigurationFactory configurationFactory, INuGetGatewayManager manager)
         {
             this.factory = factory;
+            this.configurationFactory = configurationFactory;
             this.manager = manager;
         }
 
@@ -44,7 +45,7 @@ namespace SymbolSource.Gateway.NuGet.Core
 
         private Caller GetCaller(string company, string key)
         {
-            var configuration = new AppSettingsConfiguration(company);
+            var configuration = configurationFactory.Create(company);
 
             try
             {
@@ -54,7 +55,7 @@ namespace SymbolSource.Gateway.NuGet.Core
                     return caller;
 
                 if (string.IsNullOrEmpty(configuration.GatewayLogin) || string.IsNullOrEmpty(configuration.GatewayPassword))
-                    throw new Exception("Missing gateway configuration");
+                    throw new Exception("Wrong key or missing gateway configuration");
 
                 using (var backend = factory.Create(company, configuration.GatewayLogin, "API", configuration.GatewayPassword))
                     return backend.CreateUserByKey(company, "NuGet", key);

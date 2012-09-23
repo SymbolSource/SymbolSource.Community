@@ -167,7 +167,7 @@ namespace SymbolSource.Server.Management.Client.Remoting
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
 
-        public virtual Version[] GetPackages(ref Repository repository, string packageFormat)
+        public virtual Version[] GetPackages(ref Repository repository, ref PackageFilter filter, string packageFormat)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }

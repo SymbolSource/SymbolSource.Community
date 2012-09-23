@@ -1,8 +1,6 @@
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Web.Mvc;
 using System.Web.Routing;
-using AttributeRouting;
+using SymbolSource.Gateway.NuGet.Core;
 
 [assembly: WebActivator.PostApplicationStartMethod(typeof(SymbolSource.Server.Basic.AttributeRouting), "Start")]
 
@@ -14,8 +12,15 @@ namespace SymbolSource.Server.Basic
         {
             //routes.MapAttributeRoutes();
 
-            foreach (var route in routes.OfType<Route>())
+            foreach (var routeBase in routes)
             {
+                var route = routeBase as Route;
+                if (routeBase is DynamicServiceRoute)
+                    route = ((DynamicServiceRoute) routeBase).InnerRoute;
+
+                if(route == null)
+                    return;
+
                 if(route.DataTokens == null)
                     continue;
 

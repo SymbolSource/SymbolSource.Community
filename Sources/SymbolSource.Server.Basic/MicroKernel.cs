@@ -1,11 +1,8 @@
-﻿using System.Configuration;
-using System.Web.Mvc;
-using System.Web.Security;
-using Castle.Components.DictionaryAdapter;
+﻿using System.Web.Mvc;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
+using Castle.MicroKernel.Resolvers.SpecializedResolvers;
 using Castle.Windsor;
-using Castle.Windsor.Installer;
 using SymbolSource.Gateway.Core;
 using SymbolSource.Gateway.NuGet.Core;
 using SymbolSource.Gateway.OpenWrap.Core;
@@ -19,7 +16,8 @@ namespace SymbolSource.Server.Basic
         public static IKernel Install()
         {
             var container = new WindsorContainer();
-           container.Install(new ProcessingBasicInstaller());           
+            container.Kernel.Resolver.AddSubResolver(new CollectionResolver(container.Kernel));
+            container.Install(new ProcessingBasicInstaller());
 
             RegisterManagers(container);
 
@@ -46,7 +44,7 @@ namespace SymbolSource.Server.Basic
                    .BasedOn<IController>()
                    .LifestyleTransient()
                );
-            
+
             ControllerBuilder.Current.SetControllerFactory(new MCControllerFactory(container.Kernel));
             ServiceLocator.Locator = new SimpleServiceLocator(container.Resolve);
 
@@ -62,7 +60,12 @@ namespace SymbolSource.Server.Basic
 
             kernel.Register(
                 Component.For<INuGetGatewayManager>()
-                    .ImplementedBy<NuGetGatewayManager>()
+                    .ImplementedBy<NuGetGatewayManager>()                    
+                );
+
+            kernel.Register(
+                Component.For<INuGetGatewayVersionExtractor, IGatewayVersionExtractor>()
+                    .ImplementedBy<NuGetGatewayVersionExtractor>()
                 );
 
             kernel.Register(
@@ -79,7 +82,7 @@ namespace SymbolSource.Server.Basic
                 Component.For<IGatewayConfigurationFactory>()
                     .ImplementedBy<AppSettingsConfigurationFactory>()
                 );
-        }     
+        }
     }
 
 }

@@ -160,9 +160,9 @@ namespace SymbolSource.Server.Management.Client
             service.DeleteVersion(caller, version);
         }
 
-        public virtual Version[] GetPackages(ref Repository repository, string packageFormat)
+        public virtual Version[] GetPackages(ref Repository repository, ref PackageFilter filter, string packageFormat)
         {
-            return service.GetPackages(caller, ref repository, packageFormat);
+            return service.GetPackages(caller, ref repository, ref filter, packageFormat);
         }
 
         public virtual UploadReport UploadPackage(PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData)

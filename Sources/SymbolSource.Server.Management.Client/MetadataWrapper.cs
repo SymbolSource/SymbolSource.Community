@@ -11,7 +11,7 @@ namespace SymbolSource.Server.Management.Client
 
         public MetadataWrapper(IList<MetadataEntry> list)
         {
-            this.list = list;
+            this.list = list ?? new List<MetadataEntry>();
         }
 
         public string this[string key]

@@ -69,10 +69,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttributeRouting.cs" />
+    <Compile Include="GatewayVersionExtractor.cs" />
     <Compile Include="NuGetGatewayManager.cs" />
     <Compile Include="NuGetService.cs" />
     <Compile Include="OData.cs" />
     <Compile Include="ODataPackageService.cs" />
+    <Compile Include="NuGetTranslator.cs" />
     <Compile Include="Package.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceLocator.cs" />

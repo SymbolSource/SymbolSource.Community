@@ -19,6 +19,10 @@
     <modules runAllManagedModulesForAllRequests="true" />
   </system.webServer>
 
+  <system.serviceModel>
+    <serviceHostingEnvironment aspNetCompatibilityEnabled="true" multipleSiteBindingsEnabled="true" />
+  </system.serviceModel>
+
   <runtime>
     <assemblyBinding>
       <dependentAssembly>
