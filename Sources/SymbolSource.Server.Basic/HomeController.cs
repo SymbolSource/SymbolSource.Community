@@ -14,6 +14,7 @@ namespace SymbolSource.Server.Basic
     {
         public string VisualStudioUrl;
         public string NuGetPushUrl;
+        public string NuGetFeedUrl;
         public string OpenWrapUrl;
         public string SrcSrvPathTest;
         public KeyValuePair<string, string> NuGetSmokeTest;
@@ -57,6 +58,7 @@ namespace SymbolSource.Server.Basic
                 {
                     VisualStudioUrl = GetVisualStudioUrl(),
                     NuGetPushUrl = GetNuGetPushUrl(),
+                    NuGetFeedUrl = GetNuGetFeedUrl(),
                     OpenWrapUrl = GetOpenWrapUrl(),
                     SrcSrvPathTest = Directory.Exists(ConfigurationManager.AppSettings["SrcSrvPath"]) ? "OK" : "Directory not found",
                     NuGetSmokeTest = InlineTest(Url.Action("SmokeTest", new { url = Url.Content("~/NuGet/FeedService.mvc") })),

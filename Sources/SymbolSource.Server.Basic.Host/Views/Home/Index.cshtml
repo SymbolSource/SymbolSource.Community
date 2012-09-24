@@ -15,6 +15,10 @@
         <strong><code>@Model.VisualStudioUrl</code></strong>
         <a href="http://www.symbolsource.org/Public/Home/VisualStudio">More info about configuration</a>
     </p>
+    <h2>NuGet - Feed repository</h2>
+    <p>
+        <code>nuget list -Source </code><strong><code>@Model.NuGetFeedUrl</code></strong>
+    </p>
     <h2>NuGet - Pushing packages</h2>
     <p>
         <code>nuget push *.symbols.nupkg 123 -Source </code><strong><code>@Model.NuGetPushUrl</code></strong>
