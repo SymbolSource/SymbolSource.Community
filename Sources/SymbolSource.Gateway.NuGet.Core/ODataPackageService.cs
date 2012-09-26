@@ -193,7 +193,7 @@ namespace SymbolSource.Gateway.NuGet.Core
             return GetPackages(filter, v => idValues.Contains(v.Project));
         }
 
-        private IQueryable<Package> GetPackages(PackageFilter filter, Func<SymbolSource.Server.Management.Client.Version, bool> filter2)
+        private IQueryable<Package> GetPackages(PackageFilter filter, Func<Version, bool> filter2)
         {
             var repository = Repository;
             var versions = Backend.GetPackages(ref repository, ref filter, "NuGet")
@@ -203,7 +203,9 @@ namespace SymbolSource.Gateway.NuGet.Core
             if (filter.Performed)
             {
                 //If filter is performed on server side then skip skipping ;)
-                (OperationContext.Current.IncomingMessageProperties["UriTemplateMatchResults"] as UriTemplateMatch).QueryParameters["$skip"] = "0";
+                var uriTemplateMatch = OperationContext.Current.IncomingMessageProperties["UriTemplateMatchResults"] as UriTemplateMatch;
+                if (uriTemplateMatch!=null && !string.IsNullOrEmpty(uriTemplateMatch.QueryParameters["$skip"]))
+                    uriTemplateMatch.QueryParameters["$skip"] = "0";
 
                 versions = versions.Where(filter2);
             }
