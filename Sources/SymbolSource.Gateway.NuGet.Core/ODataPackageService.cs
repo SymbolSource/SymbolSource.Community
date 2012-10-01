@@ -148,7 +148,7 @@ namespace SymbolSource.Gateway.NuGet.Core
         }
 
         [WebGet]
-        public IQueryable<Package> Search(string searchTerm, string targetFramework, bool includePrerelease)
+        public IQueryable<Package> Search(string searchTerm, string targetFramework, bool? includePrerelease /* Nuget 1.5 Support SRCSRV-31 */)
         {
             var filter = GetFilter();
             if (!string.IsNullOrEmpty(searchTerm))
