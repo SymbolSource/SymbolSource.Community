@@ -172,7 +172,12 @@ namespace SymbolSource.Gateway.NuGet.Core
 
                         };
 
-            return trainsform.Aggregate(toTranslate, (current, item) => current.Replace(item.Key, item.Value));
+            var splited = toTranslate.Split('\'');
+            for(int i=0; i<splited.Length; i+=2)
+                if (!string.IsNullOrEmpty(splited[i]))
+                    splited[i] = trainsform.Aggregate(splited[i], (current, item) => current.Replace(item.Key, item.Value));
+
+            return string.Join("'", splited);
         }
     }
 }
