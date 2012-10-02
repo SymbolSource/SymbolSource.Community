@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using System.Xml.Linq;
-using AttributeRouting;
+using AttributeRouting.Web.Mvc;
 using SymbolSource.Gateway.Core;
 using SymbolSource.Server.Management.Client;
 

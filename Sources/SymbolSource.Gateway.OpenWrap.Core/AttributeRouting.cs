@@ -1,5 +1,5 @@
 using System.Web.Routing;
-using AttributeRouting;
+using AttributeRouting.Web.Mvc;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(SymbolSource.Gateway.OpenWrap.Core.AttributeRouting), "Start")]
 

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
-using AttributeRouting;
+using AttributeRouting.Web.Mvc;
 using SymbolSource.Gateway.Core;
 using SymbolSource.Server.Management.Client;
 

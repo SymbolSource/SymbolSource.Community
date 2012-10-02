@@ -1,6 +1,6 @@
 using System.Web.Mvc;
 using System.Web.Routing;
-using AttributeRouting;
+using AttributeRouting.Web.Mvc;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(SymbolSource.Gateway.WinDbg.Core.AttributeRouting), "Start")]
 
