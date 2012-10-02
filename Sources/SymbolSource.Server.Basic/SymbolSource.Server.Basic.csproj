@@ -77,7 +77,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\AttributeRouting.cs" />
     <Compile Include="AttributeRouting.cs" />
     <Compile Include="BasicBackend.cs" />
     <Compile Include="BasicBackend.Download.cs" />
