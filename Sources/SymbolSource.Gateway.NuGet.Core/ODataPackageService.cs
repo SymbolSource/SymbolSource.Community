@@ -154,7 +154,11 @@ namespace SymbolSource.Gateway.NuGet.Core
             if (!string.IsNullOrEmpty(searchTerm))
             {
                 searchTerm = searchTerm.Trim('\'');
-                filter.Where = "(" + filter.Where + ") and (substringof(Project, '" + searchTerm + "') or substringof(Name, '" + searchTerm + "'))";
+                if (!string.IsNullOrEmpty(filter.Where))
+                    filter.Where = "(" + filter.Where + ") and (substringof(Project, '" + searchTerm + "') or substringof(Name, '" + searchTerm + "'))";
+                else
+                    filter.Where = "(substringof(Project, '" + searchTerm + "') or substringof(Name, '" + searchTerm + "'))";
+                
                 return GetPackages(filter, v => v.Project.Contains(searchTerm) || v.Name.Contains(searchTerm));
             }
 

@@ -6,13 +6,12 @@ namespace SymbolSource.Server.Management.Client
     {
         private readonly WebService service;
         private readonly Caller caller;
-        private readonly User user;
+        private User user;
 
         public WebServiceManagementSession(IWebServiceManagementConfiguration configuration, Caller caller)
         {
             service = new ConfigurableWebService(configuration);
             this.caller = caller;
-            user = service.UserValidate(caller);
         }
 
         public virtual void Dispose()
@@ -27,7 +26,12 @@ namespace SymbolSource.Server.Management.Client
 
         public User User
         {
-            get { return user; }
+            get
+            {
+                if(user == null)
+                    user = service.UserValidate(caller);
+                return user;
+            }
         }
 
         public virtual Company[] GetCompanies()
