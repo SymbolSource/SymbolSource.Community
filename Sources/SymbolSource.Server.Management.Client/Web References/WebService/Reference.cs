@@ -2985,6 +2985,8 @@ namespace SymbolSource.Server.Management.Client {
         
         private bool canViewStatisticsField;
         
+        private string planMessageField;
+        
         /// <remarks/>
         public string Company {
             get {
@@ -3042,6 +3044,16 @@ namespace SymbolSource.Server.Management.Client {
             }
             set {
                 this.canViewStatisticsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PlanMessage {
+            get {
+                return this.planMessageField;
+            }
+            set {
+                this.planMessageField = value;
             }
         }
     }

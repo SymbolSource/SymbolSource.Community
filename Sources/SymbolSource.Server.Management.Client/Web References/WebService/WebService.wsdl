@@ -514,6 +514,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="CanManageCompanies" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="CanManageUsers" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="CanViewStatistics" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlanMessage" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="CreateUserByKey">
