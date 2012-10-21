@@ -4,7 +4,7 @@
 //     Runtime Version:4.0.30319.18010
 //
 //     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
+//     the code is regenerated. 
 // </auto-generated>
 //------------------------------------------------------------------------------
 
@@ -92,743 +92,6 @@ namespace SymbolSource.Server.Management.Client {
                 if ((object.ReferenceEquals(this.NameField, value) != true)) {
                     this.NameField = value;
                     this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Version", Namespace="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management")]
-    [System.SerializableAttribute()]
-    public partial class Version : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool CanCreateCompilationField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool CanDeleteField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool CanEditField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool CanGrantPermissionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool CanHideField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool CanRestoreField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CompanyField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool HiddenField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SymbolSource.Server.Management.Client.MetadataEntry[] MetadataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PackageFormatField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PackageHashField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ProjectField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RepositoryField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool CanCreateCompilation {
-            get {
-                return this.CanCreateCompilationField;
-            }
-            set {
-                if ((this.CanCreateCompilationField.Equals(value) != true)) {
-                    this.CanCreateCompilationField = value;
-                    this.RaisePropertyChanged("CanCreateCompilation");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool CanDelete {
-            get {
-                return this.CanDeleteField;
-            }
-            set {
-                if ((this.CanDeleteField.Equals(value) != true)) {
-                    this.CanDeleteField = value;
-                    this.RaisePropertyChanged("CanDelete");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool CanEdit {
-            get {
-                return this.CanEditField;
-            }
-            set {
-                if ((this.CanEditField.Equals(value) != true)) {
-                    this.CanEditField = value;
-                    this.RaisePropertyChanged("CanEdit");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool CanGrantPermission {
-            get {
-                return this.CanGrantPermissionField;
-            }
-            set {
-                if ((this.CanGrantPermissionField.Equals(value) != true)) {
-                    this.CanGrantPermissionField = value;
-                    this.RaisePropertyChanged("CanGrantPermission");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool CanHide {
-            get {
-                return this.CanHideField;
-            }
-            set {
-                if ((this.CanHideField.Equals(value) != true)) {
-                    this.CanHideField = value;
-                    this.RaisePropertyChanged("CanHide");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool CanRestore {
-            get {
-                return this.CanRestoreField;
-            }
-            set {
-                if ((this.CanRestoreField.Equals(value) != true)) {
-                    this.CanRestoreField = value;
-                    this.RaisePropertyChanged("CanRestore");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Company {
-            get {
-                return this.CompanyField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CompanyField, value) != true)) {
-                    this.CompanyField = value;
-                    this.RaisePropertyChanged("Company");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Hidden {
-            get {
-                return this.HiddenField;
-            }
-            set {
-                if ((this.HiddenField.Equals(value) != true)) {
-                    this.HiddenField = value;
-                    this.RaisePropertyChanged("Hidden");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SymbolSource.Server.Management.Client.MetadataEntry[] Metadata {
-            get {
-                return this.MetadataField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MetadataField, value) != true)) {
-                    this.MetadataField = value;
-                    this.RaisePropertyChanged("Metadata");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string PackageFormat {
-            get {
-                return this.PackageFormatField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PackageFormatField, value) != true)) {
-                    this.PackageFormatField = value;
-                    this.RaisePropertyChanged("PackageFormat");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string PackageHash {
-            get {
-                return this.PackageHashField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PackageHashField, value) != true)) {
-                    this.PackageHashField = value;
-                    this.RaisePropertyChanged("PackageHash");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Project {
-            get {
-                return this.ProjectField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ProjectField, value) != true)) {
-                    this.ProjectField = value;
-                    this.RaisePropertyChanged("Project");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Repository {
-            get {
-                return this.RepositoryField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RepositoryField, value) != true)) {
-                    this.RepositoryField = value;
-                    this.RaisePropertyChanged("Repository");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MetadataEntry", Namespace="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management")]
-    [System.SerializableAttribute()]
-    public partial class MetadataEntry : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string KeyField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ValueField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Key {
-            get {
-                return this.KeyField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.KeyField, value) != true)) {
-                    this.KeyField = value;
-                    this.RaisePropertyChanged("Key");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Value {
-            get {
-                return this.ValueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ValueField, value) != true)) {
-                    this.ValueField = value;
-                    this.RaisePropertyChanged("Value");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Repository", Namespace="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management")]
-    [System.SerializableAttribute()]
-    public partial class Repository : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool CanCreateProjectField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool CanDeleteField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool CanEditField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool CanGrantPermissionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CompanyField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SymbolSource.Server.Management.Client.MetadataEntry[] MetadataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool CanCreateProject {
-            get {
-                return this.CanCreateProjectField;
-            }
-            set {
-                if ((this.CanCreateProjectField.Equals(value) != true)) {
-                    this.CanCreateProjectField = value;
-                    this.RaisePropertyChanged("CanCreateProject");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool CanDelete {
-            get {
-                return this.CanDeleteField;
-            }
-            set {
-                if ((this.CanDeleteField.Equals(value) != true)) {
-                    this.CanDeleteField = value;
-                    this.RaisePropertyChanged("CanDelete");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool CanEdit {
-            get {
-                return this.CanEditField;
-            }
-            set {
-                if ((this.CanEditField.Equals(value) != true)) {
-                    this.CanEditField = value;
-                    this.RaisePropertyChanged("CanEdit");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool CanGrantPermission {
-            get {
-                return this.CanGrantPermissionField;
-            }
-            set {
-                if ((this.CanGrantPermissionField.Equals(value) != true)) {
-                    this.CanGrantPermissionField = value;
-                    this.RaisePropertyChanged("CanGrantPermission");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Company {
-            get {
-                return this.CompanyField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CompanyField, value) != true)) {
-                    this.CompanyField = value;
-                    this.RaisePropertyChanged("Company");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SymbolSource.Server.Management.Client.MetadataEntry[] Metadata {
-            get {
-                return this.MetadataField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MetadataField, value) != true)) {
-                    this.MetadataField = value;
-                    this.RaisePropertyChanged("Metadata");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PackageFilter", Namespace="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management")]
-    [System.SerializableAttribute()]
-    public partial class PackageFilter : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool CountField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string OrderByField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool PerformedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int SkipField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TakeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string WhereField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Count {
-            get {
-                return this.CountField;
-            }
-            set {
-                if ((this.CountField.Equals(value) != true)) {
-                    this.CountField = value;
-                    this.RaisePropertyChanged("Count");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string OrderBy {
-            get {
-                return this.OrderByField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OrderByField, value) != true)) {
-                    this.OrderByField = value;
-                    this.RaisePropertyChanged("OrderBy");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Performed {
-            get {
-                return this.PerformedField;
-            }
-            set {
-                if ((this.PerformedField.Equals(value) != true)) {
-                    this.PerformedField = value;
-                    this.RaisePropertyChanged("Performed");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Skip {
-            get {
-                return this.SkipField;
-            }
-            set {
-                if ((this.SkipField.Equals(value) != true)) {
-                    this.SkipField = value;
-                    this.RaisePropertyChanged("Skip");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Take {
-            get {
-                return this.TakeField;
-            }
-            set {
-                if ((this.TakeField.Equals(value) != true)) {
-                    this.TakeField = value;
-                    this.RaisePropertyChanged("Take");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Where {
-            get {
-                return this.WhereField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.WhereField, value) != true)) {
-                    this.WhereField = value;
-                    this.RaisePropertyChanged("Where");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Compilation", Namespace="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management")]
-    [System.SerializableAttribute()]
-    public partial class Compilation : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CompanyField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SymbolSource.Server.Management.Client.MetadataEntry[] MetadataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ModeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PlatformField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ProfileField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ProjectField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RepositoryField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string VersionField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Company {
-            get {
-                return this.CompanyField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CompanyField, value) != true)) {
-                    this.CompanyField = value;
-                    this.RaisePropertyChanged("Company");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SymbolSource.Server.Management.Client.MetadataEntry[] Metadata {
-            get {
-                return this.MetadataField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MetadataField, value) != true)) {
-                    this.MetadataField = value;
-                    this.RaisePropertyChanged("Metadata");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Mode {
-            get {
-                return this.ModeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ModeField, value) != true)) {
-                    this.ModeField = value;
-                    this.RaisePropertyChanged("Mode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Platform {
-            get {
-                return this.PlatformField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PlatformField, value) != true)) {
-                    this.PlatformField = value;
-                    this.RaisePropertyChanged("Platform");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Profile {
-            get {
-                return this.ProfileField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ProfileField, value) != true)) {
-                    this.ProfileField = value;
-                    this.RaisePropertyChanged("Profile");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Project {
-            get {
-                return this.ProjectField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ProjectField, value) != true)) {
-                    this.ProjectField = value;
-                    this.RaisePropertyChanged("Project");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Repository {
-            get {
-                return this.RepositoryField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RepositoryField, value) != true)) {
-                    this.RepositoryField = value;
-                    this.RaisePropertyChanged("Repository");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Version {
-            get {
-                return this.VersionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.VersionField, value) != true)) {
-                    this.VersionField = value;
-                    this.RaisePropertyChanged("Version");
                 }
             }
         }
@@ -1404,6 +667,900 @@ namespace SymbolSource.Server.Management.Client {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Version", Namespace="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management")]
+    [System.SerializableAttribute()]
+    public partial class Version : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool CanCreateCompilationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool CanDeleteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool CanEditField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool CanGrantPermissionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool CanHideField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool CanRestoreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CompanyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool HiddenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SymbolSource.Server.Management.Client.MetadataEntry[] MetadataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PackageFormatField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PackageHashField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProjectField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RepositoryField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool CanCreateCompilation {
+            get {
+                return this.CanCreateCompilationField;
+            }
+            set {
+                if ((this.CanCreateCompilationField.Equals(value) != true)) {
+                    this.CanCreateCompilationField = value;
+                    this.RaisePropertyChanged("CanCreateCompilation");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool CanDelete {
+            get {
+                return this.CanDeleteField;
+            }
+            set {
+                if ((this.CanDeleteField.Equals(value) != true)) {
+                    this.CanDeleteField = value;
+                    this.RaisePropertyChanged("CanDelete");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool CanEdit {
+            get {
+                return this.CanEditField;
+            }
+            set {
+                if ((this.CanEditField.Equals(value) != true)) {
+                    this.CanEditField = value;
+                    this.RaisePropertyChanged("CanEdit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool CanGrantPermission {
+            get {
+                return this.CanGrantPermissionField;
+            }
+            set {
+                if ((this.CanGrantPermissionField.Equals(value) != true)) {
+                    this.CanGrantPermissionField = value;
+                    this.RaisePropertyChanged("CanGrantPermission");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool CanHide {
+            get {
+                return this.CanHideField;
+            }
+            set {
+                if ((this.CanHideField.Equals(value) != true)) {
+                    this.CanHideField = value;
+                    this.RaisePropertyChanged("CanHide");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool CanRestore {
+            get {
+                return this.CanRestoreField;
+            }
+            set {
+                if ((this.CanRestoreField.Equals(value) != true)) {
+                    this.CanRestoreField = value;
+                    this.RaisePropertyChanged("CanRestore");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Company {
+            get {
+                return this.CompanyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CompanyField, value) != true)) {
+                    this.CompanyField = value;
+                    this.RaisePropertyChanged("Company");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Hidden {
+            get {
+                return this.HiddenField;
+            }
+            set {
+                if ((this.HiddenField.Equals(value) != true)) {
+                    this.HiddenField = value;
+                    this.RaisePropertyChanged("Hidden");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SymbolSource.Server.Management.Client.MetadataEntry[] Metadata {
+            get {
+                return this.MetadataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MetadataField, value) != true)) {
+                    this.MetadataField = value;
+                    this.RaisePropertyChanged("Metadata");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PackageFormat {
+            get {
+                return this.PackageFormatField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PackageFormatField, value) != true)) {
+                    this.PackageFormatField = value;
+                    this.RaisePropertyChanged("PackageFormat");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PackageHash {
+            get {
+                return this.PackageHashField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PackageHashField, value) != true)) {
+                    this.PackageHashField = value;
+                    this.RaisePropertyChanged("PackageHash");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Project {
+            get {
+                return this.ProjectField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProjectField, value) != true)) {
+                    this.ProjectField = value;
+                    this.RaisePropertyChanged("Project");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Repository {
+            get {
+                return this.RepositoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RepositoryField, value) != true)) {
+                    this.RepositoryField = value;
+                    this.RaisePropertyChanged("Repository");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MetadataEntry", Namespace="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management")]
+    [System.SerializableAttribute()]
+    public partial class MetadataEntry : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string KeyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ValueField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Key {
+            get {
+                return this.KeyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.KeyField, value) != true)) {
+                    this.KeyField = value;
+                    this.RaisePropertyChanged("Key");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Value {
+            get {
+                return this.ValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ValueField, value) != true)) {
+                    this.ValueField = value;
+                    this.RaisePropertyChanged("Value");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Repository", Namespace="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management")]
+    [System.SerializableAttribute()]
+    public partial class Repository : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool CanCreateProjectField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool CanDeleteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool CanEditField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool CanGrantPermissionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CompanyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SymbolSource.Server.Management.Client.MetadataEntry[] MetadataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool CanCreateProject {
+            get {
+                return this.CanCreateProjectField;
+            }
+            set {
+                if ((this.CanCreateProjectField.Equals(value) != true)) {
+                    this.CanCreateProjectField = value;
+                    this.RaisePropertyChanged("CanCreateProject");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool CanDelete {
+            get {
+                return this.CanDeleteField;
+            }
+            set {
+                if ((this.CanDeleteField.Equals(value) != true)) {
+                    this.CanDeleteField = value;
+                    this.RaisePropertyChanged("CanDelete");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool CanEdit {
+            get {
+                return this.CanEditField;
+            }
+            set {
+                if ((this.CanEditField.Equals(value) != true)) {
+                    this.CanEditField = value;
+                    this.RaisePropertyChanged("CanEdit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool CanGrantPermission {
+            get {
+                return this.CanGrantPermissionField;
+            }
+            set {
+                if ((this.CanGrantPermissionField.Equals(value) != true)) {
+                    this.CanGrantPermissionField = value;
+                    this.RaisePropertyChanged("CanGrantPermission");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Company {
+            get {
+                return this.CompanyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CompanyField, value) != true)) {
+                    this.CompanyField = value;
+                    this.RaisePropertyChanged("Company");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SymbolSource.Server.Management.Client.MetadataEntry[] Metadata {
+            get {
+                return this.MetadataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MetadataField, value) != true)) {
+                    this.MetadataField = value;
+                    this.RaisePropertyChanged("Metadata");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Project", Namespace="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management")]
+    [System.SerializableAttribute()]
+    public partial class Project : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool CanCreateVersionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool CanDeleteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool CanEditField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool CanGrantPermissionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CompanyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SymbolSource.Server.Management.Client.MetadataEntry[] MetadataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RepositoryField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool CanCreateVersion {
+            get {
+                return this.CanCreateVersionField;
+            }
+            set {
+                if ((this.CanCreateVersionField.Equals(value) != true)) {
+                    this.CanCreateVersionField = value;
+                    this.RaisePropertyChanged("CanCreateVersion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool CanDelete {
+            get {
+                return this.CanDeleteField;
+            }
+            set {
+                if ((this.CanDeleteField.Equals(value) != true)) {
+                    this.CanDeleteField = value;
+                    this.RaisePropertyChanged("CanDelete");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool CanEdit {
+            get {
+                return this.CanEditField;
+            }
+            set {
+                if ((this.CanEditField.Equals(value) != true)) {
+                    this.CanEditField = value;
+                    this.RaisePropertyChanged("CanEdit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool CanGrantPermission {
+            get {
+                return this.CanGrantPermissionField;
+            }
+            set {
+                if ((this.CanGrantPermissionField.Equals(value) != true)) {
+                    this.CanGrantPermissionField = value;
+                    this.RaisePropertyChanged("CanGrantPermission");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Company {
+            get {
+                return this.CompanyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CompanyField, value) != true)) {
+                    this.CompanyField = value;
+                    this.RaisePropertyChanged("Company");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SymbolSource.Server.Management.Client.MetadataEntry[] Metadata {
+            get {
+                return this.MetadataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MetadataField, value) != true)) {
+                    this.MetadataField = value;
+                    this.RaisePropertyChanged("Metadata");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Repository {
+            get {
+                return this.RepositoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RepositoryField, value) != true)) {
+                    this.RepositoryField = value;
+                    this.RaisePropertyChanged("Repository");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PackageFilter", Namespace="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management")]
+    [System.SerializableAttribute()]
+    public partial class PackageFilter : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool CountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrderByField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool PerformedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SkipField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TakeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WhereField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Count {
+            get {
+                return this.CountField;
+            }
+            set {
+                if ((this.CountField.Equals(value) != true)) {
+                    this.CountField = value;
+                    this.RaisePropertyChanged("Count");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OrderBy {
+            get {
+                return this.OrderByField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderByField, value) != true)) {
+                    this.OrderByField = value;
+                    this.RaisePropertyChanged("OrderBy");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Performed {
+            get {
+                return this.PerformedField;
+            }
+            set {
+                if ((this.PerformedField.Equals(value) != true)) {
+                    this.PerformedField = value;
+                    this.RaisePropertyChanged("Performed");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Skip {
+            get {
+                return this.SkipField;
+            }
+            set {
+                if ((this.SkipField.Equals(value) != true)) {
+                    this.SkipField = value;
+                    this.RaisePropertyChanged("Skip");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Take {
+            get {
+                return this.TakeField;
+            }
+            set {
+                if ((this.TakeField.Equals(value) != true)) {
+                    this.TakeField = value;
+                    this.RaisePropertyChanged("Take");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Where {
+            get {
+                return this.WhereField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WhereField, value) != true)) {
+                    this.WhereField = value;
+                    this.RaisePropertyChanged("Where");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Compilation", Namespace="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management")]
+    [System.SerializableAttribute()]
+    public partial class Compilation : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CompanyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SymbolSource.Server.Management.Client.MetadataEntry[] MetadataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ModeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PlatformField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProfileField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProjectField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RepositoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VersionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Company {
+            get {
+                return this.CompanyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CompanyField, value) != true)) {
+                    this.CompanyField = value;
+                    this.RaisePropertyChanged("Company");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SymbolSource.Server.Management.Client.MetadataEntry[] Metadata {
+            get {
+                return this.MetadataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MetadataField, value) != true)) {
+                    this.MetadataField = value;
+                    this.RaisePropertyChanged("Metadata");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Mode {
+            get {
+                return this.ModeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ModeField, value) != true)) {
+                    this.ModeField = value;
+                    this.RaisePropertyChanged("Mode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Platform {
+            get {
+                return this.PlatformField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PlatformField, value) != true)) {
+                    this.PlatformField = value;
+                    this.RaisePropertyChanged("Platform");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Profile {
+            get {
+                return this.ProfileField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProfileField, value) != true)) {
+                    this.ProfileField = value;
+                    this.RaisePropertyChanged("Profile");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Project {
+            get {
+                return this.ProjectField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProjectField, value) != true)) {
+                    this.ProjectField = value;
+                    this.RaisePropertyChanged("Project");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Repository {
+            get {
+                return this.RepositoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RepositoryField, value) != true)) {
+                    this.RepositoryField = value;
+                    this.RaisePropertyChanged("Repository");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Version {
+            get {
+                return this.VersionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VersionField, value) != true)) {
+                    this.VersionField = value;
+                    this.RaisePropertyChanged("Version");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="NodeImageFile", Namespace="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management")]
     [System.SerializableAttribute()]
     public partial class NodeImageFile : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -1747,6 +1904,99 @@ namespace SymbolSource.Server.Management.Client {
                 if ((this.LineField.Equals(value) != true)) {
                     this.LineField = value;
                     this.RaisePropertyChanged("Line");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Company", Namespace="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management")]
+    [System.SerializableAttribute()]
+    public partial class Company : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool CanCreateRepositoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool CanGrantPermissionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SymbolSource.Server.Management.Client.MetadataEntry[] MetadataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool CanCreateRepository {
+            get {
+                return this.CanCreateRepositoryField;
+            }
+            set {
+                if ((this.CanCreateRepositoryField.Equals(value) != true)) {
+                    this.CanCreateRepositoryField = value;
+                    this.RaisePropertyChanged("CanCreateRepository");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool CanGrantPermission {
+            get {
+                return this.CanGrantPermissionField;
+            }
+            set {
+                if ((this.CanGrantPermissionField.Equals(value) != true)) {
+                    this.CanGrantPermissionField = value;
+                    this.RaisePropertyChanged("CanGrantPermission");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SymbolSource.Server.Management.Client.MetadataEntry[] Metadata {
+            get {
+                return this.MetadataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MetadataField, value) != true)) {
+                    this.MetadataField = value;
+                    this.RaisePropertyChanged("Metadata");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
                 }
             }
         }
@@ -2883,256 +3133,6 @@ namespace SymbolSource.Server.Management.Client {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Company", Namespace="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management")]
-    [System.SerializableAttribute()]
-    public partial class Company : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool CanCreateRepositoryField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool CanGrantPermissionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SymbolSource.Server.Management.Client.MetadataEntry[] MetadataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool CanCreateRepository {
-            get {
-                return this.CanCreateRepositoryField;
-            }
-            set {
-                if ((this.CanCreateRepositoryField.Equals(value) != true)) {
-                    this.CanCreateRepositoryField = value;
-                    this.RaisePropertyChanged("CanCreateRepository");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool CanGrantPermission {
-            get {
-                return this.CanGrantPermissionField;
-            }
-            set {
-                if ((this.CanGrantPermissionField.Equals(value) != true)) {
-                    this.CanGrantPermissionField = value;
-                    this.RaisePropertyChanged("CanGrantPermission");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SymbolSource.Server.Management.Client.MetadataEntry[] Metadata {
-            get {
-                return this.MetadataField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MetadataField, value) != true)) {
-                    this.MetadataField = value;
-                    this.RaisePropertyChanged("Metadata");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Project", Namespace="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management")]
-    [System.SerializableAttribute()]
-    public partial class Project : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool CanCreateVersionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool CanDeleteField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool CanEditField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool CanGrantPermissionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CompanyField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SymbolSource.Server.Management.Client.MetadataEntry[] MetadataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RepositoryField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool CanCreateVersion {
-            get {
-                return this.CanCreateVersionField;
-            }
-            set {
-                if ((this.CanCreateVersionField.Equals(value) != true)) {
-                    this.CanCreateVersionField = value;
-                    this.RaisePropertyChanged("CanCreateVersion");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool CanDelete {
-            get {
-                return this.CanDeleteField;
-            }
-            set {
-                if ((this.CanDeleteField.Equals(value) != true)) {
-                    this.CanDeleteField = value;
-                    this.RaisePropertyChanged("CanDelete");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool CanEdit {
-            get {
-                return this.CanEditField;
-            }
-            set {
-                if ((this.CanEditField.Equals(value) != true)) {
-                    this.CanEditField = value;
-                    this.RaisePropertyChanged("CanEdit");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool CanGrantPermission {
-            get {
-                return this.CanGrantPermissionField;
-            }
-            set {
-                if ((this.CanGrantPermissionField.Equals(value) != true)) {
-                    this.CanGrantPermissionField = value;
-                    this.RaisePropertyChanged("CanGrantPermission");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Company {
-            get {
-                return this.CompanyField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CompanyField, value) != true)) {
-                    this.CompanyField = value;
-                    this.RaisePropertyChanged("Company");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SymbolSource.Server.Management.Client.MetadataEntry[] Metadata {
-            get {
-                return this.MetadataField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MetadataField, value) != true)) {
-                    this.MetadataField = value;
-                    this.RaisePropertyChanged("Metadata");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Repository {
-            get {
-                return this.RepositoryField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RepositoryField, value) != true)) {
-                    this.RepositoryField = value;
-                    this.RaisePropertyChanged("Repository");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="StatisticPeriod", Namespace="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Model.Statistics")]
     public enum StatisticPeriod : int {
@@ -3270,272 +3270,293 @@ namespace SymbolSource.Server.Management.Client {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://api.symbolsource.org/schemas/webServices", ConfigurationName="WebService.WebService")]
-    public interface WebService {
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://api.symbolsource.org/schemas/webServices", ConfigurationName="WebService.IWebService")]
+    public interface IWebService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateVersion", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/CreateVersionResponse")]
-        void CreateVersion(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Version version);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/UpdateVersion", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/UpdateVersionResponse")]
-        void UpdateVersion(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Version version);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/DeleteVersion", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/DeleteVersionResponse")]
-        void DeleteVersion(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Version version);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/SetVersionHidden", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/SetVersionHiddenRespon" +
-            "se")]
-        SymbolSource.Server.Management.Client.Version SetVersionHidden(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Version version, bool hidden);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetVersionLastList", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetVersionLastListResp" +
-            "onse")]
-        SymbolSource.Server.Management.Client.Version[] GetVersionLastList(SymbolSource.Server.Management.Client.Caller caller);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetPackages", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetPackagesResponse")]
-        SymbolSource.Server.Management.Client.Version[] GetPackages(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Repository repository, ref SymbolSource.Server.Management.Client.PackageFilter filter, string packageFormat);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetCompilationList", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetCompilationListResp" +
-            "onse")]
-        SymbolSource.Server.Management.Client.Compilation[] GetCompilationList(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Version version);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetImageFileList", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetImageFileListRespon" +
-            "se")]
-        SymbolSource.Server.Management.Client.ImageFile[] GetImageFileList(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Compilation compilation);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetSourceFileList", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetSourceFileListRespo" +
-            "nse")]
-        SymbolSource.Server.Management.Client.SourceFile[] GetSourceFileList(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.ImageFile imageFile);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetDepedencyList", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetDepedencyListRespon" +
-            "se")]
-        SymbolSource.Server.Management.Client.Depedency[] GetDepedencyList(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.ImageFile imageFile);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetImageFileListByRefe" +
-            "rence", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetImageFileListByRefe" +
-            "renceResponse")]
-        SymbolSource.Server.Management.Client.ImageFile[] GetImageFileListByReference(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Reference reference);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetNodeImageFiles", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetNodeImageFilesRespo" +
-            "nse")]
-        SymbolSource.Server.Management.Client.NodeImageFile[] GetNodeImageFiles(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.NodeImageFile nodeImageFile);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/UserValidate", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/UserValidateResponse")]
-        SymbolSource.Server.Management.Client.User UserValidate(SymbolSource.Server.Management.Client.Caller caller);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateUserByKey", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/CreateUserByKeyRespons" +
-            "e")]
-        SymbolSource.Server.Management.Client.Caller CreateUserByKey(string company, string type, string value);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetUserByKey", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetUserByKeyResponse")]
-        SymbolSource.Server.Management.Client.Caller GetUserByKey(string company, string type, string value);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/SendPasswordMail", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/SendPasswordMailRespon" +
-            "se")]
-        void SendPasswordMail(SymbolSource.Server.Management.Client.Caller caller, string url);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/ResetPassword", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/ResetPasswordResponse")]
-        void ResetPassword(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.UserKey userKey);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetUserKeys", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetUserKeysResponse")]
-        SymbolSource.Server.Management.Client.UserKey[] GetUserKeys(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/AddUserKey", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/AddUserKeyResponse")]
-        void AddUserKey(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.UserKey userKey);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/RemoveUserKey", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/RemoveUserKeyResponse")]
-        void RemoveUserKey(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.UserKey userKey);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetUserVisualStudioLin" +
-            "k", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetUserVisualStudioLin" +
-            "kResponse")]
-        string GetUserVisualStudioLink(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetPlansByType", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetPlansByTypeResponse" +
-            "")]
-        SymbolSource.Server.Management.Client.Plan[] GetPlansByType(string type);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/RemovePlan", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/RemovePlanResponse")]
-        void RemovePlan(string name, string type);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/CreatePlan", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/CreatePlanResponse")]
-        void CreatePlan(string name, string type, decimal monthPrice, decimal yearPrice, int userLimit, int privateRepoLimit);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetImageFileLink", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetImageFileLinkRespon" +
-            "se")]
-        string GetImageFileLink(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.ImageFile imageFile);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetSourceFileLink", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetSourceFileLinkRespo" +
-            "nse")]
-        string GetSourceFileLink(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.SourceFile sourceFile);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetSymbolFileLink", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetSymbolFileLinkRespo" +
-            "nse")]
-        string GetSymbolFileLink(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.ImageFile imageFile);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetDocumentationLink", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetDocumentationLinkRe" +
-            "sponse")]
-        string GetDocumentationLink(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.ImageFile imageFile);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetPackageLink", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetPackageLinkResponse" +
-            "")]
-        string GetPackageLink(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Version version, string contentType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetUploadReports", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetUploadReportsRespon" +
-            "se")]
-        SymbolSource.Server.Management.Client.UploadReport[] GetUploadReports(SymbolSource.Server.Management.Client.Caller caller);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/UploadPackage", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/UploadPackageResponse")]
-        SymbolSource.Server.Management.Client.UploadReport UploadPackage(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetUserPermissions", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetUserPermissionsResp" +
-            "onse")]
-        SymbolSource.Server.Management.Client.Permissions GetUserPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetCompanyPermissions", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetCompanyPermissionsR" +
-            "esponse")]
-        SymbolSource.Server.Management.Client.CompanyPermission[] GetCompanyPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Company company);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetRepositoryPermissio" +
-            "ns", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetRepositoryPermissio" +
-            "nsResponse")]
-        SymbolSource.Server.Management.Client.RepositoryPermission[] GetRepositoryPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Repository repository);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetProjectPermissions", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetProjectPermissionsR" +
-            "esponse")]
-        SymbolSource.Server.Management.Client.ProjectPermission[] GetProjectPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Project project);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetVersionPermissions", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetVersionPermissionsR" +
-            "esponse")]
-        SymbolSource.Server.Management.Client.VersionPermission[] GetVersionPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Version version);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/SetCompanyPermissions", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/SetCompanyPermissionsR" +
-            "esponse")]
-        void SetCompanyPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.Company company, SymbolSource.Server.Management.Client.Permission permission);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/SetRepositoryPermissio" +
-            "ns", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/SetRepositoryPermissio" +
-            "nsResponse")]
-        void SetRepositoryPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.Repository repository, SymbolSource.Server.Management.Client.Permission permission);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/SetProjectPermissions", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/SetProjectPermissionsR" +
-            "esponse")]
-        void SetProjectPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.Project project, SymbolSource.Server.Management.Client.Permission permission);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/SetVersionPermissions", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/SetVersionPermissionsR" +
-            "esponse")]
-        void SetVersionPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.Version version, SymbolSource.Server.Management.Client.Permission permission);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetCompanies", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetCompaniesResponse")]
-        SymbolSource.Server.Management.Client.Company[] GetCompanies(SymbolSource.Server.Management.Client.Caller caller);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateCompany", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/CreateCompanyResponse")]
-        void CreateCompany(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Company company);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateCompany2", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/CreateCompany2Response" +
-            "")]
-        void CreateCompany2(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.UserKey key, SymbolSource.Server.Management.Client.Plan plan);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/UpdateCompany", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/UpdateCompanyResponse")]
-        void UpdateCompany(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Company company);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/DeleteCompany", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/DeleteCompanyResponse")]
-        void DeleteCompany(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Company company);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetUsers", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetUsersResponse")]
-        SymbolSource.Server.Management.Client.User[] GetUsers(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Company company);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateUser", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/CreateUserResponse")]
-        void CreateUser(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.UserKey key, SymbolSource.Server.Management.Client.Plan plan);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/UpdateUser", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/UpdateUserResponse")]
-        void UpdateUser(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.User user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/DeleteUser", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/DeleteUserResponse")]
-        void DeleteUser(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetRepositories", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetRepositoriesRespons" +
-            "e")]
-        SymbolSource.Server.Management.Client.Repository[] GetRepositories(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Company company);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateOrUpdateReposito" +
-            "ry", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/CreateOrUpdateReposito" +
-            "ryResponse")]
-        void CreateOrUpdateRepository(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Repository repository);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateRepository", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/CreateRepositoryRespon" +
-            "se")]
-        void CreateRepository(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Repository repository);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/UpdateRepository", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/UpdateRepositoryRespon" +
-            "se")]
-        void UpdateRepository(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Repository repository);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/DeleteRepository", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/DeleteRepositoryRespon" +
-            "se")]
-        void DeleteRepository(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Repository repository);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetImageFile", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetImageFileResponse")]
-        SymbolSource.Server.Management.Client.ImageFile GetImageFile(SymbolSource.Server.Management.Client.Caller caller, string name, string symbolHash);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/LogImageFileFound", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/LogImageFileFoundRespo" +
-            "nse")]
-        void LogImageFileFound(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.ImageFile imageFile);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/LogImageFileNotFound", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/LogImageFileNotFoundRe" +
-            "sponse")]
-        void LogImageFileNotFound(SymbolSource.Server.Management.Client.Caller caller, string imageFileName, string symbolHash);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/LogSourceFileFound", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/LogSourceFileFoundResp" +
-            "onse")]
-        void LogSourceFileFound(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.SourceFile sourceFile);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetAvailableStatisticN" +
-            "ames", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetAvailableStatisticN" +
-            "amesResponse")]
-        string[] GetAvailableStatisticNames(SymbolSource.Server.Management.Client.Caller caller);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetStatistic", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetStatisticResponse")]
-        SymbolSource.Server.Management.Client.Statistic[] GetStatistic(SymbolSource.Server.Management.Client.Caller caller, string[] names, SymbolSource.Server.Management.Client.StatisticPeriod period, System.Nullable<System.DateTime> from, System.Nullable<System.DateTime> to);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/DigestGenerateRequest", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/DigestGenerateRequestR" +
-            "esponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/DigestGenerateRequest" +
+            "", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/DigestGenerateRequest" +
+            "Response")]
         string DigestGenerateRequest(string realm);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/DigestValidateResponse" +
-            "", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/DigestValidateResponse" +
-            "Response")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/DigestValidateRespons" +
+            "e", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/DigestValidateRespons" +
+            "eResponse")]
         SymbolSource.Server.Management.Client.Caller DigestValidateResponse(string company, string method, string response);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetProjects", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetProjectsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetImageFileLink", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetImageFileLinkRespo" +
+            "nse")]
+        string GetImageFileLink(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.ImageFile imageFile);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetSourceFileLink", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetSourceFileLinkResp" +
+            "onse")]
+        string GetSourceFileLink(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.SourceFile sourceFile);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetSymbolFileLink", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetSymbolFileLinkResp" +
+            "onse")]
+        string GetSymbolFileLink(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.ImageFile imageFile);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetDocumentationLink", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetDocumentationLinkR" +
+            "esponse")]
+        string GetDocumentationLink(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.ImageFile imageFile);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetPackageLink", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetPackageLinkRespons" +
+            "e")]
+        string GetPackageLink(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Version version, string contentType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetImageFile", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetImageFileResponse")]
+        SymbolSource.Server.Management.Client.ImageFile GetImageFile(SymbolSource.Server.Management.Client.Caller caller, string name, string symbolHash);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/LogImageFileFound", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/LogImageFileFoundResp" +
+            "onse")]
+        void LogImageFileFound(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.ImageFile imageFile);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/LogImageFileNotFound", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/LogImageFileNotFoundR" +
+            "esponse")]
+        void LogImageFileNotFound(SymbolSource.Server.Management.Client.Caller caller, string imageFileName, string symbolHash);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/LogSourceFileFound", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/LogSourceFileFoundRes" +
+            "ponse")]
+        void LogSourceFileFound(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.SourceFile sourceFile);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetProjects", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetProjectsResponse")]
         SymbolSource.Server.Management.Client.Project[] GetProjects(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Repository repository);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateOrUpdateProject", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/CreateOrUpdateProjectR" +
-            "esponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/CreateOrUpdateProject" +
+            "", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/CreateOrUpdateProject" +
+            "Response")]
         void CreateOrUpdateProject(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Project project);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateProject", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/CreateProjectResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/CreateProject", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/CreateProjectResponse" +
+            "")]
         void CreateProject(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Project project);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/UpdateProject", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/UpdateProjectResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/UpdateProject", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/UpdateProjectResponse" +
+            "")]
         void UpdateProject(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Project project);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/DeleteProject", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/DeleteProjectResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/DeleteProject", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/DeleteProjectResponse" +
+            "")]
         void DeleteProject(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Project project);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/GetVersions", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/GetVersionsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetVersions", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetVersionsResponse")]
         SymbolSource.Server.Management.Client.Version[] GetVersions(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Project project);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateOrUpdateVersion", ReplyAction="http://api.symbolsource.org/schemas/webServices/WebService/CreateOrUpdateVersionR" +
-            "esponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/CreateOrUpdateVersion" +
+            "", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/CreateOrUpdateVersion" +
+            "Response")]
         void CreateOrUpdateVersion(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Version version);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/CreateVersion", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/CreateVersionResponse" +
+            "")]
+        void CreateVersion(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Version version);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/UpdateVersion", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/UpdateVersionResponse" +
+            "")]
+        void UpdateVersion(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Version version);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/DeleteVersion", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/DeleteVersionResponse" +
+            "")]
+        void DeleteVersion(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Version version);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/SetVersionHidden", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/SetVersionHiddenRespo" +
+            "nse")]
+        SymbolSource.Server.Management.Client.Version SetVersionHidden(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Version version, bool hidden);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetVersionLastList", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetVersionLastListRes" +
+            "ponse")]
+        SymbolSource.Server.Management.Client.Version[] GetVersionLastList(SymbolSource.Server.Management.Client.Caller caller);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetPackages", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetPackagesResponse")]
+        SymbolSource.Server.Management.Client.Version[] GetPackages(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Repository repository, ref SymbolSource.Server.Management.Client.PackageFilter filter, string packageFormat);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetCompilationList", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetCompilationListRes" +
+            "ponse")]
+        SymbolSource.Server.Management.Client.Compilation[] GetCompilationList(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Version version);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetImageFileList", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetImageFileListRespo" +
+            "nse")]
+        SymbolSource.Server.Management.Client.ImageFile[] GetImageFileList(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Compilation compilation);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetSourceFileList", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetSourceFileListResp" +
+            "onse")]
+        SymbolSource.Server.Management.Client.SourceFile[] GetSourceFileList(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.ImageFile imageFile);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetDepedencyList", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetDepedencyListRespo" +
+            "nse")]
+        SymbolSource.Server.Management.Client.Depedency[] GetDepedencyList(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.ImageFile imageFile);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetImageFileListByRef" +
+            "erence", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetImageFileListByRef" +
+            "erenceResponse")]
+        SymbolSource.Server.Management.Client.ImageFile[] GetImageFileListByReference(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Reference reference);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetNodeImageFiles", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetNodeImageFilesResp" +
+            "onse")]
+        SymbolSource.Server.Management.Client.NodeImageFile[] GetNodeImageFiles(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.NodeImageFile nodeImageFile);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetCompanies", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetCompaniesResponse")]
+        SymbolSource.Server.Management.Client.Company[] GetCompanies(SymbolSource.Server.Management.Client.Caller caller);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/CreateCompany", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/CreateCompanyResponse" +
+            "")]
+        void CreateCompany(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Company company);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/CreateCompany2", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/CreateCompany2Respons" +
+            "e")]
+        void CreateCompany2(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.UserKey key, SymbolSource.Server.Management.Client.Plan plan);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/UpdateCompany", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/UpdateCompanyResponse" +
+            "")]
+        void UpdateCompany(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Company company);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/DeleteCompany", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/DeleteCompanyResponse" +
+            "")]
+        void DeleteCompany(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Company company);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetUsers", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetUsersResponse")]
+        SymbolSource.Server.Management.Client.User[] GetUsers(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Company company);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/CreateUser", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/CreateUserResponse")]
+        void CreateUser(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.UserKey key, SymbolSource.Server.Management.Client.Plan plan);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/UpdateUser", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/UpdateUserResponse")]
+        void UpdateUser(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/DeleteUser", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/DeleteUserResponse")]
+        void DeleteUser(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetRepositories", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetRepositoriesRespon" +
+            "se")]
+        SymbolSource.Server.Management.Client.Repository[] GetRepositories(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Company company);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/CreateOrUpdateReposit" +
+            "ory", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/CreateOrUpdateReposit" +
+            "oryResponse")]
+        void CreateOrUpdateRepository(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Repository repository);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/CreateRepository", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/CreateRepositoryRespo" +
+            "nse")]
+        void CreateRepository(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Repository repository);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/UpdateRepository", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/UpdateRepositoryRespo" +
+            "nse")]
+        void UpdateRepository(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Repository repository);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/DeleteRepository", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/DeleteRepositoryRespo" +
+            "nse")]
+        void DeleteRepository(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Repository repository);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetPlansByType", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetPlansByTypeRespons" +
+            "e")]
+        SymbolSource.Server.Management.Client.Plan[] GetPlansByType(string type);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/RemovePlan", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/RemovePlanResponse")]
+        void RemovePlan(string name, string type);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/CreatePlan", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/CreatePlanResponse")]
+        void CreatePlan(string name, string type, decimal monthPrice, decimal yearPrice, int userLimit, int privateRepoLimit);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetUploadReports", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetUploadReportsRespo" +
+            "nse")]
+        SymbolSource.Server.Management.Client.UploadReport[] GetUploadReports(SymbolSource.Server.Management.Client.Caller caller);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/UploadPackage", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/UploadPackageResponse" +
+            "")]
+        SymbolSource.Server.Management.Client.UploadReport UploadPackage(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetUserPermissions", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetUserPermissionsRes" +
+            "ponse")]
+        SymbolSource.Server.Management.Client.Permissions GetUserPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetCompanyPermissions" +
+            "", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetCompanyPermissions" +
+            "Response")]
+        SymbolSource.Server.Management.Client.CompanyPermission[] GetCompanyPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Company company);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetRepositoryPermissi" +
+            "ons", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetRepositoryPermissi" +
+            "onsResponse")]
+        SymbolSource.Server.Management.Client.RepositoryPermission[] GetRepositoryPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Repository repository);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetProjectPermissions" +
+            "", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetProjectPermissions" +
+            "Response")]
+        SymbolSource.Server.Management.Client.ProjectPermission[] GetProjectPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Project project);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetVersionPermissions" +
+            "", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetVersionPermissions" +
+            "Response")]
+        SymbolSource.Server.Management.Client.VersionPermission[] GetVersionPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Version version);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/SetCompanyPermissions" +
+            "", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/SetCompanyPermissions" +
+            "Response")]
+        void SetCompanyPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.Company company, SymbolSource.Server.Management.Client.Permission permission);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/SetRepositoryPermissi" +
+            "ons", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/SetRepositoryPermissi" +
+            "onsResponse")]
+        void SetRepositoryPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.Repository repository, SymbolSource.Server.Management.Client.Permission permission);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/SetProjectPermissions" +
+            "", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/SetProjectPermissions" +
+            "Response")]
+        void SetProjectPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.Project project, SymbolSource.Server.Management.Client.Permission permission);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/SetVersionPermissions" +
+            "", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/SetVersionPermissions" +
+            "Response")]
+        void SetVersionPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.Version version, SymbolSource.Server.Management.Client.Permission permission);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/UserValidate", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/UserValidateResponse")]
+        SymbolSource.Server.Management.Client.User UserValidate(SymbolSource.Server.Management.Client.Caller caller);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/CreateUserByKey", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/CreateUserByKeyRespon" +
+            "se")]
+        SymbolSource.Server.Management.Client.Caller CreateUserByKey(string company, string type, string value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetUserByKey", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetUserByKeyResponse")]
+        SymbolSource.Server.Management.Client.Caller GetUserByKey(string company, string type, string value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/SendPasswordMail", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/SendPasswordMailRespo" +
+            "nse")]
+        void SendPasswordMail(SymbolSource.Server.Management.Client.Caller caller, string url);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/ResetPassword", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/ResetPasswordResponse" +
+            "")]
+        void ResetPassword(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.UserKey userKey);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetUserKeys", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetUserKeysResponse")]
+        SymbolSource.Server.Management.Client.UserKey[] GetUserKeys(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/AddUserKey", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/AddUserKeyResponse")]
+        void AddUserKey(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.UserKey userKey);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/RemoveUserKey", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/RemoveUserKeyResponse" +
+            "")]
+        void RemoveUserKey(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.UserKey userKey);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetUserVisualStudioLi" +
+            "nk", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetUserVisualStudioLi" +
+            "nkResponse")]
+        string GetUserVisualStudioLink(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetAvailableStatistic" +
+            "Names", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetAvailableStatistic" +
+            "NamesResponse")]
+        string[] GetAvailableStatisticNames(SymbolSource.Server.Management.Client.Caller caller);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetStatistic", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetStatisticResponse")]
+        SymbolSource.Server.Management.Client.Statistic[] GetStatistic(SymbolSource.Server.Management.Client.Caller caller, string[] names, SymbolSource.Server.Management.Client.StatisticPeriod period, System.Nullable<System.DateTime> from, System.Nullable<System.DateTime> to);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface WebServiceChannel : SymbolSource.Server.Management.Client.WebService, System.ServiceModel.IClientChannel {
+    public interface IWebServiceChannel : SymbolSource.Server.Management.Client.IWebService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class WebServiceClient : System.ServiceModel.ClientBase<SymbolSource.Server.Management.Client.WebService>, SymbolSource.Server.Management.Client.WebService {
+    public partial class WebServiceClient : System.ServiceModel.ClientBase<SymbolSource.Server.Management.Client.IWebService>, SymbolSource.Server.Management.Client.IWebService {
         
         public WebServiceClient() {
         }
@@ -3554,6 +3575,78 @@ namespace SymbolSource.Server.Management.Client {
         
         public WebServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public string DigestGenerateRequest(string realm) {
+            return base.Channel.DigestGenerateRequest(realm);
+        }
+        
+        public SymbolSource.Server.Management.Client.Caller DigestValidateResponse(string company, string method, string response) {
+            return base.Channel.DigestValidateResponse(company, method, response);
+        }
+        
+        public string GetImageFileLink(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.ImageFile imageFile) {
+            return base.Channel.GetImageFileLink(caller, ref imageFile);
+        }
+        
+        public string GetSourceFileLink(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.SourceFile sourceFile) {
+            return base.Channel.GetSourceFileLink(caller, ref sourceFile);
+        }
+        
+        public string GetSymbolFileLink(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.ImageFile imageFile) {
+            return base.Channel.GetSymbolFileLink(caller, ref imageFile);
+        }
+        
+        public string GetDocumentationLink(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.ImageFile imageFile) {
+            return base.Channel.GetDocumentationLink(caller, ref imageFile);
+        }
+        
+        public string GetPackageLink(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Version version, string contentType) {
+            return base.Channel.GetPackageLink(caller, ref version, contentType);
+        }
+        
+        public SymbolSource.Server.Management.Client.ImageFile GetImageFile(SymbolSource.Server.Management.Client.Caller caller, string name, string symbolHash) {
+            return base.Channel.GetImageFile(caller, name, symbolHash);
+        }
+        
+        public void LogImageFileFound(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.ImageFile imageFile) {
+            base.Channel.LogImageFileFound(caller, imageFile);
+        }
+        
+        public void LogImageFileNotFound(SymbolSource.Server.Management.Client.Caller caller, string imageFileName, string symbolHash) {
+            base.Channel.LogImageFileNotFound(caller, imageFileName, symbolHash);
+        }
+        
+        public void LogSourceFileFound(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.SourceFile sourceFile) {
+            base.Channel.LogSourceFileFound(caller, sourceFile);
+        }
+        
+        public SymbolSource.Server.Management.Client.Project[] GetProjects(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Repository repository) {
+            return base.Channel.GetProjects(caller, ref repository);
+        }
+        
+        public void CreateOrUpdateProject(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Project project) {
+            base.Channel.CreateOrUpdateProject(caller, ref project);
+        }
+        
+        public void CreateProject(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Project project) {
+            base.Channel.CreateProject(caller, ref project);
+        }
+        
+        public void UpdateProject(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Project project) {
+            base.Channel.UpdateProject(caller, ref project);
+        }
+        
+        public void DeleteProject(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Project project) {
+            base.Channel.DeleteProject(caller, project);
+        }
+        
+        public SymbolSource.Server.Management.Client.Version[] GetVersions(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Project project) {
+            return base.Channel.GetVersions(caller, ref project);
+        }
+        
+        public void CreateOrUpdateVersion(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Version version) {
+            base.Channel.CreateOrUpdateVersion(caller, ref version);
         }
         
         public void CreateVersion(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Version version) {
@@ -3602,118 +3695,6 @@ namespace SymbolSource.Server.Management.Client {
         
         public SymbolSource.Server.Management.Client.NodeImageFile[] GetNodeImageFiles(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.NodeImageFile nodeImageFile) {
             return base.Channel.GetNodeImageFiles(caller, ref nodeImageFile);
-        }
-        
-        public SymbolSource.Server.Management.Client.User UserValidate(SymbolSource.Server.Management.Client.Caller caller) {
-            return base.Channel.UserValidate(caller);
-        }
-        
-        public SymbolSource.Server.Management.Client.Caller CreateUserByKey(string company, string type, string value) {
-            return base.Channel.CreateUserByKey(company, type, value);
-        }
-        
-        public SymbolSource.Server.Management.Client.Caller GetUserByKey(string company, string type, string value) {
-            return base.Channel.GetUserByKey(company, type, value);
-        }
-        
-        public void SendPasswordMail(SymbolSource.Server.Management.Client.Caller caller, string url) {
-            base.Channel.SendPasswordMail(caller, url);
-        }
-        
-        public void ResetPassword(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.UserKey userKey) {
-            base.Channel.ResetPassword(caller, userKey);
-        }
-        
-        public SymbolSource.Server.Management.Client.UserKey[] GetUserKeys(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user) {
-            return base.Channel.GetUserKeys(caller, user);
-        }
-        
-        public void AddUserKey(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.UserKey userKey) {
-            base.Channel.AddUserKey(caller, user, userKey);
-        }
-        
-        public void RemoveUserKey(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.UserKey userKey) {
-            base.Channel.RemoveUserKey(caller, user, userKey);
-        }
-        
-        public string GetUserVisualStudioLink(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user) {
-            return base.Channel.GetUserVisualStudioLink(caller, user);
-        }
-        
-        public SymbolSource.Server.Management.Client.Plan[] GetPlansByType(string type) {
-            return base.Channel.GetPlansByType(type);
-        }
-        
-        public void RemovePlan(string name, string type) {
-            base.Channel.RemovePlan(name, type);
-        }
-        
-        public void CreatePlan(string name, string type, decimal monthPrice, decimal yearPrice, int userLimit, int privateRepoLimit) {
-            base.Channel.CreatePlan(name, type, monthPrice, yearPrice, userLimit, privateRepoLimit);
-        }
-        
-        public string GetImageFileLink(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.ImageFile imageFile) {
-            return base.Channel.GetImageFileLink(caller, ref imageFile);
-        }
-        
-        public string GetSourceFileLink(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.SourceFile sourceFile) {
-            return base.Channel.GetSourceFileLink(caller, ref sourceFile);
-        }
-        
-        public string GetSymbolFileLink(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.ImageFile imageFile) {
-            return base.Channel.GetSymbolFileLink(caller, ref imageFile);
-        }
-        
-        public string GetDocumentationLink(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.ImageFile imageFile) {
-            return base.Channel.GetDocumentationLink(caller, ref imageFile);
-        }
-        
-        public string GetPackageLink(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Version version, string contentType) {
-            return base.Channel.GetPackageLink(caller, ref version, contentType);
-        }
-        
-        public SymbolSource.Server.Management.Client.UploadReport[] GetUploadReports(SymbolSource.Server.Management.Client.Caller caller) {
-            return base.Channel.GetUploadReports(caller);
-        }
-        
-        public SymbolSource.Server.Management.Client.UploadReport UploadPackage(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData) {
-            return base.Channel.UploadPackage(caller, package, packageFormat, packageData, symbolPackageData);
-        }
-        
-        public SymbolSource.Server.Management.Client.Permissions GetUserPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user) {
-            return base.Channel.GetUserPermissions(caller, user);
-        }
-        
-        public SymbolSource.Server.Management.Client.CompanyPermission[] GetCompanyPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Company company) {
-            return base.Channel.GetCompanyPermissions(caller, company);
-        }
-        
-        public SymbolSource.Server.Management.Client.RepositoryPermission[] GetRepositoryPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Repository repository) {
-            return base.Channel.GetRepositoryPermissions(caller, repository);
-        }
-        
-        public SymbolSource.Server.Management.Client.ProjectPermission[] GetProjectPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Project project) {
-            return base.Channel.GetProjectPermissions(caller, project);
-        }
-        
-        public SymbolSource.Server.Management.Client.VersionPermission[] GetVersionPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Version version) {
-            return base.Channel.GetVersionPermissions(caller, version);
-        }
-        
-        public void SetCompanyPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.Company company, SymbolSource.Server.Management.Client.Permission permission) {
-            base.Channel.SetCompanyPermissions(caller, user, company, permission);
-        }
-        
-        public void SetRepositoryPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.Repository repository, SymbolSource.Server.Management.Client.Permission permission) {
-            base.Channel.SetRepositoryPermissions(caller, user, repository, permission);
-        }
-        
-        public void SetProjectPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.Project project, SymbolSource.Server.Management.Client.Permission permission) {
-            base.Channel.SetProjectPermissions(caller, user, project, permission);
-        }
-        
-        public void SetVersionPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.Version version, SymbolSource.Server.Management.Client.Permission permission) {
-            base.Channel.SetVersionPermissions(caller, user, version, permission);
         }
         
         public SymbolSource.Server.Management.Client.Company[] GetCompanies(SymbolSource.Server.Management.Client.Caller caller) {
@@ -3772,20 +3753,96 @@ namespace SymbolSource.Server.Management.Client {
             base.Channel.DeleteRepository(caller, repository);
         }
         
-        public SymbolSource.Server.Management.Client.ImageFile GetImageFile(SymbolSource.Server.Management.Client.Caller caller, string name, string symbolHash) {
-            return base.Channel.GetImageFile(caller, name, symbolHash);
+        public SymbolSource.Server.Management.Client.Plan[] GetPlansByType(string type) {
+            return base.Channel.GetPlansByType(type);
         }
         
-        public void LogImageFileFound(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.ImageFile imageFile) {
-            base.Channel.LogImageFileFound(caller, imageFile);
+        public void RemovePlan(string name, string type) {
+            base.Channel.RemovePlan(name, type);
         }
         
-        public void LogImageFileNotFound(SymbolSource.Server.Management.Client.Caller caller, string imageFileName, string symbolHash) {
-            base.Channel.LogImageFileNotFound(caller, imageFileName, symbolHash);
+        public void CreatePlan(string name, string type, decimal monthPrice, decimal yearPrice, int userLimit, int privateRepoLimit) {
+            base.Channel.CreatePlan(name, type, monthPrice, yearPrice, userLimit, privateRepoLimit);
         }
         
-        public void LogSourceFileFound(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.SourceFile sourceFile) {
-            base.Channel.LogSourceFileFound(caller, sourceFile);
+        public SymbolSource.Server.Management.Client.UploadReport[] GetUploadReports(SymbolSource.Server.Management.Client.Caller caller) {
+            return base.Channel.GetUploadReports(caller);
+        }
+        
+        public SymbolSource.Server.Management.Client.UploadReport UploadPackage(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.PackageProject package, string packageFormat, byte[] packageData, byte[] symbolPackageData) {
+            return base.Channel.UploadPackage(caller, package, packageFormat, packageData, symbolPackageData);
+        }
+        
+        public SymbolSource.Server.Management.Client.Permissions GetUserPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user) {
+            return base.Channel.GetUserPermissions(caller, user);
+        }
+        
+        public SymbolSource.Server.Management.Client.CompanyPermission[] GetCompanyPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Company company) {
+            return base.Channel.GetCompanyPermissions(caller, company);
+        }
+        
+        public SymbolSource.Server.Management.Client.RepositoryPermission[] GetRepositoryPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Repository repository) {
+            return base.Channel.GetRepositoryPermissions(caller, repository);
+        }
+        
+        public SymbolSource.Server.Management.Client.ProjectPermission[] GetProjectPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Project project) {
+            return base.Channel.GetProjectPermissions(caller, project);
+        }
+        
+        public SymbolSource.Server.Management.Client.VersionPermission[] GetVersionPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Version version) {
+            return base.Channel.GetVersionPermissions(caller, version);
+        }
+        
+        public void SetCompanyPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.Company company, SymbolSource.Server.Management.Client.Permission permission) {
+            base.Channel.SetCompanyPermissions(caller, user, company, permission);
+        }
+        
+        public void SetRepositoryPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.Repository repository, SymbolSource.Server.Management.Client.Permission permission) {
+            base.Channel.SetRepositoryPermissions(caller, user, repository, permission);
+        }
+        
+        public void SetProjectPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.Project project, SymbolSource.Server.Management.Client.Permission permission) {
+            base.Channel.SetProjectPermissions(caller, user, project, permission);
+        }
+        
+        public void SetVersionPermissions(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.Version version, SymbolSource.Server.Management.Client.Permission permission) {
+            base.Channel.SetVersionPermissions(caller, user, version, permission);
+        }
+        
+        public SymbolSource.Server.Management.Client.User UserValidate(SymbolSource.Server.Management.Client.Caller caller) {
+            return base.Channel.UserValidate(caller);
+        }
+        
+        public SymbolSource.Server.Management.Client.Caller CreateUserByKey(string company, string type, string value) {
+            return base.Channel.CreateUserByKey(company, type, value);
+        }
+        
+        public SymbolSource.Server.Management.Client.Caller GetUserByKey(string company, string type, string value) {
+            return base.Channel.GetUserByKey(company, type, value);
+        }
+        
+        public void SendPasswordMail(SymbolSource.Server.Management.Client.Caller caller, string url) {
+            base.Channel.SendPasswordMail(caller, url);
+        }
+        
+        public void ResetPassword(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.UserKey userKey) {
+            base.Channel.ResetPassword(caller, userKey);
+        }
+        
+        public SymbolSource.Server.Management.Client.UserKey[] GetUserKeys(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user) {
+            return base.Channel.GetUserKeys(caller, user);
+        }
+        
+        public void AddUserKey(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.UserKey userKey) {
+            base.Channel.AddUserKey(caller, user, userKey);
+        }
+        
+        public void RemoveUserKey(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.UserKey userKey) {
+            base.Channel.RemoveUserKey(caller, user, userKey);
+        }
+        
+        public string GetUserVisualStudioLink(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user) {
+            return base.Channel.GetUserVisualStudioLink(caller, user);
         }
         
         public string[] GetAvailableStatisticNames(SymbolSource.Server.Management.Client.Caller caller) {
@@ -3794,42 +3851,6 @@ namespace SymbolSource.Server.Management.Client {
         
         public SymbolSource.Server.Management.Client.Statistic[] GetStatistic(SymbolSource.Server.Management.Client.Caller caller, string[] names, SymbolSource.Server.Management.Client.StatisticPeriod period, System.Nullable<System.DateTime> from, System.Nullable<System.DateTime> to) {
             return base.Channel.GetStatistic(caller, names, period, from, to);
-        }
-        
-        public string DigestGenerateRequest(string realm) {
-            return base.Channel.DigestGenerateRequest(realm);
-        }
-        
-        public SymbolSource.Server.Management.Client.Caller DigestValidateResponse(string company, string method, string response) {
-            return base.Channel.DigestValidateResponse(company, method, response);
-        }
-        
-        public SymbolSource.Server.Management.Client.Project[] GetProjects(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Repository repository) {
-            return base.Channel.GetProjects(caller, ref repository);
-        }
-        
-        public void CreateOrUpdateProject(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Project project) {
-            base.Channel.CreateOrUpdateProject(caller, ref project);
-        }
-        
-        public void CreateProject(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Project project) {
-            base.Channel.CreateProject(caller, ref project);
-        }
-        
-        public void UpdateProject(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Project project) {
-            base.Channel.UpdateProject(caller, ref project);
-        }
-        
-        public void DeleteProject(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Project project) {
-            base.Channel.DeleteProject(caller, project);
-        }
-        
-        public SymbolSource.Server.Management.Client.Version[] GetVersions(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Project project) {
-            return base.Channel.GetVersions(caller, ref project);
-        }
-        
-        public void CreateOrUpdateVersion(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Version version) {
-            base.Channel.CreateOrUpdateVersion(caller, ref version);
         }
     }
 }

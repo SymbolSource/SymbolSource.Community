@@ -9,6 +9,49 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Caller" nillable="true" type="tns:Caller" />
+  <xs:complexType name="ImageFile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BinaryHash" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BinaryType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocumentationType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileVersion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Platform" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Project" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Reference" nillable="true" type="tns:Reference" />
+      <xs:element minOccurs="0" name="Repository" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SymbolHash" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SymbolType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Version" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ImageFile" nillable="true" type="tns:ImageFile" />
+  <xs:complexType name="Reference">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Culture" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PublicKeyToken" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Version" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Reference" nillable="true" type="tns:Reference" />
+  <xs:complexType name="SourceFile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Hash" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ImageName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OriginalPath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Path" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Platform" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Project" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Repository" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Version" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SourceFile" nillable="true" type="tns:SourceFile" />
   <xs:complexType name="Version">
     <xs:sequence>
       <xs:element minOccurs="0" name="CanCreateCompilation" type="xs:boolean" />
@@ -41,12 +84,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="MetadataEntry" nillable="true" type="tns:MetadataEntry" />
-  <xs:complexType name="ArrayOfVersion">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Version" nillable="true" type="tns:Version" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfVersion" nillable="true" type="tns:ArrayOfVersion" />
   <xs:complexType name="Repository">
     <xs:sequence>
       <xs:element minOccurs="0" name="CanCreateProject" type="xs:boolean" />
@@ -59,6 +96,31 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Repository" nillable="true" type="tns:Repository" />
+  <xs:complexType name="ArrayOfProject">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Project" nillable="true" type="tns:Project" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProject" nillable="true" type="tns:ArrayOfProject" />
+  <xs:complexType name="Project">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CanCreateVersion" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CanDelete" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CanEdit" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CanGrantPermission" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Metadata" nillable="true" type="tns:ArrayOfMetadataEntry" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Repository" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Project" nillable="true" type="tns:Project" />
+  <xs:complexType name="ArrayOfVersion">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Version" nillable="true" type="tns:Version" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVersion" nillable="true" type="tns:ArrayOfVersion" />
   <xs:complexType name="PackageFilter">
     <xs:sequence>
       <xs:element minOccurs="0" name="Count" type="xs:boolean" />
@@ -95,55 +157,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfImageFile" nillable="true" type="tns:ArrayOfImageFile" />
-  <xs:complexType name="ImageFile">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="BinaryHash" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="BinaryType" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="DocumentationType" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FileVersion" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Mode" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Platform" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Project" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Reference" nillable="true" type="tns:Reference" />
-      <xs:element minOccurs="0" name="Repository" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SymbolHash" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SymbolType" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Version" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ImageFile" nillable="true" type="tns:ImageFile" />
-  <xs:complexType name="Reference">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Culture" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="PublicKeyToken" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Version" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Reference" nillable="true" type="tns:Reference" />
   <xs:complexType name="ArrayOfSourceFile">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="SourceFile" nillable="true" type="tns:SourceFile" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfSourceFile" nillable="true" type="tns:ArrayOfSourceFile" />
-  <xs:complexType name="SourceFile">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Hash" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ImageName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Mode" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="OriginalPath" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Path" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Platform" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Project" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Repository" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Version" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="SourceFile" nillable="true" type="tns:SourceFile" />
   <xs:complexType name="ArrayOfDepedency">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Depedency" nillable="true" type="tns:Depedency" />
@@ -204,6 +223,21 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfNodeImageFile" nillable="true" type="tns:ArrayOfNodeImageFile" />
+  <xs:complexType name="ArrayOfCompany">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Company" nillable="true" type="tns:Company" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCompany" nillable="true" type="tns:ArrayOfCompany" />
+  <xs:complexType name="Company">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CanCreateRepository" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CanGrantPermission" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Metadata" nillable="true" type="tns:ArrayOfMetadataEntry" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Company" nillable="true" type="tns:Company" />
   <xs:complexType name="User">
     <xs:sequence>
       <xs:element minOccurs="0" name="CanManageCompanies" type="xs:boolean" />
@@ -223,18 +257,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UserKey" nillable="true" type="tns:UserKey" />
-  <xs:complexType name="ArrayOfUserKey">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserKey" nillable="true" type="tns:UserKey" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfUserKey" nillable="true" type="tns:ArrayOfUserKey" />
-  <xs:complexType name="ArrayOfPlan">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Plan" nillable="true" type="tns:Plan" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfPlan" nillable="true" type="tns:ArrayOfPlan" />
   <xs:complexType name="Plan">
     <xs:sequence>
       <xs:element minOccurs="0" name="MonthPrice" type="xs:decimal" />
@@ -246,6 +268,24 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Plan" nillable="true" type="tns:Plan" />
+  <xs:complexType name="ArrayOfUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
+  <xs:complexType name="ArrayOfRepository">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Repository" nillable="true" type="tns:Repository" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRepository" nillable="true" type="tns:ArrayOfRepository" />
+  <xs:complexType name="ArrayOfPlan">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Plan" nillable="true" type="tns:Plan" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPlan" nillable="true" type="tns:ArrayOfPlan" />
   <xs:complexType name="ArrayOfUploadReport">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="UploadReport" nillable="true" type="tns:UploadReport" />
@@ -346,15 +386,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Permission" nillable="true" type="tns:Permission" />
-  <xs:complexType name="Company">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CanCreateRepository" type="xs:boolean" />
-      <xs:element minOccurs="0" name="CanGrantPermission" type="xs:boolean" />
-      <xs:element minOccurs="0" name="Metadata" nillable="true" type="tns:ArrayOfMetadataEntry" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Company" nillable="true" type="tns:Company" />
   <xs:complexType name="ArrayOfProjectPermission">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="ProjectPermission" nillable="true" type="tns:ProjectPermission" />
@@ -371,19 +402,6 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="ProjectPermission" nillable="true" type="tns:ProjectPermission" />
-  <xs:complexType name="Project">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CanCreateVersion" type="xs:boolean" />
-      <xs:element minOccurs="0" name="CanDelete" type="xs:boolean" />
-      <xs:element minOccurs="0" name="CanEdit" type="xs:boolean" />
-      <xs:element minOccurs="0" name="CanGrantPermission" type="xs:boolean" />
-      <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Metadata" nillable="true" type="tns:ArrayOfMetadataEntry" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Repository" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Project" nillable="true" type="tns:Project" />
   <xs:complexType name="ArrayOfRepositoryPermission">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="RepositoryPermission" nillable="true" type="tns:RepositoryPermission" />
@@ -416,28 +434,10 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="VersionPermission" nillable="true" type="tns:VersionPermission" />
-  <xs:complexType name="ArrayOfCompany">
+  <xs:complexType name="ArrayOfUserKey">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Company" nillable="true" type="tns:Company" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserKey" nillable="true" type="tns:UserKey" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfCompany" nillable="true" type="tns:ArrayOfCompany" />
-  <xs:complexType name="ArrayOfUser">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
-  <xs:complexType name="ArrayOfRepository">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Repository" nillable="true" type="tns:Repository" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfRepository" nillable="true" type="tns:ArrayOfRepository" />
-  <xs:complexType name="ArrayOfProject">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Project" nillable="true" type="tns:Project" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfProject" nillable="true" type="tns:ArrayOfProject" />
+  <xs:element name="ArrayOfUserKey" nillable="true" type="tns:ArrayOfUserKey" />
 </xs:schema>

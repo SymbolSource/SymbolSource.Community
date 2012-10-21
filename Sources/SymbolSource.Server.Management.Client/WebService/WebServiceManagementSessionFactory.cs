@@ -5,7 +5,7 @@ namespace SymbolSource.Server.Management.Client
     public class WebServiceManagementSessionFactory : IManagementSessionFactory
     {
         protected readonly IWebServiceManagementConfiguration configuration;
-        protected readonly WebService service;
+        protected readonly IWebService service;
 
         public WebServiceManagementSessionFactory(IWebServiceManagementConfiguration configuration)
         {

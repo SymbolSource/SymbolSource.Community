@@ -1,17 +1,35 @@
 ﻿using System;
+using System.IdentityModel.Tokens;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading;
 
 namespace SymbolSource.Server.Management.Client
 {
     public class WebServiceManagementSession : IManagementSession
     {
-        private readonly WebService service;
+        private readonly IWebService service;
         private readonly Caller caller;
         private User user;
 
         public WebServiceManagementSession(IWebServiceManagementConfiguration configuration, Caller caller)
         {
-            service = new ConfigurableWebService(configuration);
+            var configurableService = new ConfigurableWebService(configuration);
+            //service = configurableService;
+
+            var claims = Thread.CurrentPrincipal as ClaimsPrincipal;
+            if (claims!=null)
+            {
+                var context = claims.Identities.First().BootstrapContext;
+                if(context!=null)
+                {
+                    service = configurableService.ChannelFactory.CreateChannelWithActAsToken(((BootstrapContext)context).SecurityToken);
+                }
+            }
+
+
             this.caller = caller;
+
         }
 
         public virtual void Dispose()

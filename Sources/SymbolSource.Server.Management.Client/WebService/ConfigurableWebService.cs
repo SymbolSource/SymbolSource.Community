@@ -1,7 +1,4 @@
-﻿using System.Security.Policy;
-using System.ServiceModel;
-using System.Threading;
-using System.Web.Services;
+﻿using System.ServiceModel;
 
 namespace SymbolSource.Server.Management.Client
 {
@@ -11,9 +8,8 @@ namespace SymbolSource.Server.Management.Client
         
 
         public ConfigurableWebService(IWebServiceManagementConfiguration configuration)
-            :base (new BasicHttpBinding(), new EndpointAddress(configuration.ManagementProxyPath))
-        {
-            //Url = configuration.ManagementProxyPath;
+            : base("WS2007FederationHttpBinding_IWebService", new EndpointAddress(configuration.ManagementProxyPath))
+        {            
             //Timeout = 99999999;
         }
     }
