@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://api.symbolsource.org/schemas/webServices" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://api.symbolsource.org/schemas/webServices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://api.symbolsource.org/schemas/webServices/Imports">
+      <xsd:import schemaLocation="http://localhost:51789/WebService.svc?xsd=xsd0" namespace="http://api.symbolsource.org/schemas/webServices" />
+      <xsd:import schemaLocation="http://localhost:51789/WebService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:51789/WebService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" />
+      <xsd:import schemaLocation="http://localhost:51789/WebService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:51789/WebService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Model.Statistics" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="WebService_CreateVersion_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateVersion" />
+  </wsdl:message>
+  <wsdl:message name="WebService_CreateVersion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_UpdateVersion_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateVersion" />
+  </wsdl:message>
+  <wsdl:message name="WebService_UpdateVersion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_DeleteVersion_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteVersion" />
+  </wsdl:message>
+  <wsdl:message name="WebService_DeleteVersion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_SetVersionHidden_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetVersionHidden" />
+  </wsdl:message>
+  <wsdl:message name="WebService_SetVersionHidden_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetVersionHiddenResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetVersionLastList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVersionLastList" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetVersionLastList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVersionLastListResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetPackages_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackages" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetPackages_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetCompilationList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompilationList" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetCompilationList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompilationListResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetImageFileList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageFileList" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetImageFileList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageFileListResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetSourceFileList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSourceFileList" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetSourceFileList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSourceFileListResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetDepedencyList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDepedencyList" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetDepedencyList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDepedencyListResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetImageFileListByReference_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageFileListByReference" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetImageFileListByReference_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageFileListByReferenceResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetNodeImageFiles_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNodeImageFiles" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetNodeImageFiles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNodeImageFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_UserValidate_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserValidate" />
+  </wsdl:message>
+  <wsdl:message name="WebService_UserValidate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserValidateResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_CreateUserByKey_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUserByKey" />
+  </wsdl:message>
+  <wsdl:message name="WebService_CreateUserByKey_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUserByKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetUserByKey_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByKey" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetUserByKey_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_SendPasswordMail_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendPasswordMail" />
+  </wsdl:message>
+  <wsdl:message name="WebService_SendPasswordMail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendPasswordMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_ResetPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResetPassword" />
+  </wsdl:message>
+  <wsdl:message name="WebService_ResetPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResetPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetUserKeys_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserKeys" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetUserKeys_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserKeysResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_AddUserKey_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserKey" />
+  </wsdl:message>
+  <wsdl:message name="WebService_AddUserKey_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_RemoveUserKey_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveUserKey" />
+  </wsdl:message>
+  <wsdl:message name="WebService_RemoveUserKey_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveUserKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetUserVisualStudioLink_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserVisualStudioLink" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetUserVisualStudioLink_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserVisualStudioLinkResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetPlansByType_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlansByType" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetPlansByType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlansByTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_RemovePlan_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemovePlan" />
+  </wsdl:message>
+  <wsdl:message name="WebService_RemovePlan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemovePlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_CreatePlan_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePlan" />
+  </wsdl:message>
+  <wsdl:message name="WebService_CreatePlan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetImageFileLink_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageFileLink" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetImageFileLink_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageFileLinkResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetSourceFileLink_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSourceFileLink" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetSourceFileLink_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSourceFileLinkResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetSymbolFileLink_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSymbolFileLink" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetSymbolFileLink_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSymbolFileLinkResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetDocumentationLink_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentationLink" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetDocumentationLink_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentationLinkResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetPackageLink_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackageLink" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetPackageLink_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackageLinkResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetUploadReports_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUploadReports" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetUploadReports_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUploadReportsResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_UploadPackage_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadPackage" />
+  </wsdl:message>
+  <wsdl:message name="WebService_UploadPackage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadPackageResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetUserPermissions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserPermissions" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetUserPermissions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetCompanyPermissions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompanyPermissions" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetCompanyPermissions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompanyPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetRepositoryPermissions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRepositoryPermissions" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetRepositoryPermissions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRepositoryPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetProjectPermissions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectPermissions" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetProjectPermissions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetVersionPermissions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVersionPermissions" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetVersionPermissions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVersionPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_SetCompanyPermissions_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetCompanyPermissions" />
+  </wsdl:message>
+  <wsdl:message name="WebService_SetCompanyPermissions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetCompanyPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_SetRepositoryPermissions_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetRepositoryPermissions" />
+  </wsdl:message>
+  <wsdl:message name="WebService_SetRepositoryPermissions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetRepositoryPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_SetProjectPermissions_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetProjectPermissions" />
+  </wsdl:message>
+  <wsdl:message name="WebService_SetProjectPermissions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetProjectPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_SetVersionPermissions_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetVersionPermissions" />
+  </wsdl:message>
+  <wsdl:message name="WebService_SetVersionPermissions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetVersionPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetCompanies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompanies" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetCompanies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompaniesResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_CreateCompany_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCompany" />
+  </wsdl:message>
+  <wsdl:message name="WebService_CreateCompany_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_CreateCompany2_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCompany2" />
+  </wsdl:message>
+  <wsdl:message name="WebService_CreateCompany2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCompany2Response" />
+  </wsdl:message>
+  <wsdl:message name="WebService_UpdateCompany_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCompany" />
+  </wsdl:message>
+  <wsdl:message name="WebService_UpdateCompany_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_DeleteCompany_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCompany" />
+  </wsdl:message>
+  <wsdl:message name="WebService_DeleteCompany_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsers" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_CreateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUser" />
+  </wsdl:message>
+  <wsdl:message name="WebService_CreateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_UpdateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUser" />
+  </wsdl:message>
+  <wsdl:message name="WebService_UpdateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_DeleteUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUser" />
+  </wsdl:message>
+  <wsdl:message name="WebService_DeleteUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetRepositories_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRepositories" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetRepositories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRepositoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_CreateOrUpdateRepository_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOrUpdateRepository" />
+  </wsdl:message>
+  <wsdl:message name="WebService_CreateOrUpdateRepository_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOrUpdateRepositoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_CreateRepository_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateRepository" />
+  </wsdl:message>
+  <wsdl:message name="WebService_CreateRepository_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateRepositoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_UpdateRepository_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRepository" />
+  </wsdl:message>
+  <wsdl:message name="WebService_UpdateRepository_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRepositoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_DeleteRepository_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRepository" />
+  </wsdl:message>
+  <wsdl:message name="WebService_DeleteRepository_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRepositoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetImageFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageFile" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetImageFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_LogImageFileFound_InputMessage">
+    <wsdl:part name="parameters" element="tns:LogImageFileFound" />
+  </wsdl:message>
+  <wsdl:message name="WebService_LogImageFileFound_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogImageFileFoundResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_LogImageFileNotFound_InputMessage">
+    <wsdl:part name="parameters" element="tns:LogImageFileNotFound" />
+  </wsdl:message>
+  <wsdl:message name="WebService_LogImageFileNotFound_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogImageFileNotFoundResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_LogSourceFileFound_InputMessage">
+    <wsdl:part name="parameters" element="tns:LogSourceFileFound" />
+  </wsdl:message>
+  <wsdl:message name="WebService_LogSourceFileFound_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogSourceFileFoundResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetAvailableStatisticNames_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableStatisticNames" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetAvailableStatisticNames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableStatisticNamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetStatistic_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatistic" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetStatistic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatisticResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_DigestGenerateRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:DigestGenerateRequest" />
+  </wsdl:message>
+  <wsdl:message name="WebService_DigestGenerateRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DigestGenerateRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_DigestValidateResponse_InputMessage">
+    <wsdl:part name="parameters" element="tns:DigestValidateResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_DigestValidateResponse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DigestValidateResponseResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetProjects_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjects" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetProjects_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_CreateOrUpdateProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOrUpdateProject" />
+  </wsdl:message>
+  <wsdl:message name="WebService_CreateOrUpdateProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOrUpdateProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_CreateProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateProject" />
+  </wsdl:message>
+  <wsdl:message name="WebService_CreateProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_UpdateProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProject" />
+  </wsdl:message>
+  <wsdl:message name="WebService_UpdateProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_DeleteProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProject" />
+  </wsdl:message>
+  <wsdl:message name="WebService_DeleteProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetVersions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVersions" />
+  </wsdl:message>
+  <wsdl:message name="WebService_GetVersions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVersionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebService_CreateOrUpdateVersion_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOrUpdateVersion" />
+  </wsdl:message>
+  <wsdl:message name="WebService_CreateOrUpdateVersion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOrUpdateVersionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebService">
+    <wsdl:operation name="CreateVersion">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateVersion" message="tns:WebService_CreateVersion_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateVersionResponse" message="tns:WebService_CreateVersion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVersion">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/UpdateVersion" message="tns:WebService_UpdateVersion_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/UpdateVersionResponse" message="tns:WebService_UpdateVersion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteVersion">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/DeleteVersion" message="tns:WebService_DeleteVersion_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/DeleteVersionResponse" message="tns:WebService_DeleteVersion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetVersionHidden">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/SetVersionHidden" message="tns:WebService_SetVersionHidden_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/SetVersionHiddenResponse" message="tns:WebService_SetVersionHidden_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVersionLastList">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetVersionLastList" message="tns:WebService_GetVersionLastList_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetVersionLastListResponse" message="tns:WebService_GetVersionLastList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPackages">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetPackages" message="tns:WebService_GetPackages_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetPackagesResponse" message="tns:WebService_GetPackages_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompilationList">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetCompilationList" message="tns:WebService_GetCompilationList_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetCompilationListResponse" message="tns:WebService_GetCompilationList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImageFileList">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetImageFileList" message="tns:WebService_GetImageFileList_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetImageFileListResponse" message="tns:WebService_GetImageFileList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSourceFileList">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetSourceFileList" message="tns:WebService_GetSourceFileList_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetSourceFileListResponse" message="tns:WebService_GetSourceFileList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDepedencyList">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetDepedencyList" message="tns:WebService_GetDepedencyList_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetDepedencyListResponse" message="tns:WebService_GetDepedencyList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImageFileListByReference">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetImageFileListByReference" message="tns:WebService_GetImageFileListByReference_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetImageFileListByReferenceResponse" message="tns:WebService_GetImageFileListByReference_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNodeImageFiles">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetNodeImageFiles" message="tns:WebService_GetNodeImageFiles_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetNodeImageFilesResponse" message="tns:WebService_GetNodeImageFiles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserValidate">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/UserValidate" message="tns:WebService_UserValidate_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/UserValidateResponse" message="tns:WebService_UserValidate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateUserByKey">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateUserByKey" message="tns:WebService_CreateUserByKey_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateUserByKeyResponse" message="tns:WebService_CreateUserByKey_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByKey">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetUserByKey" message="tns:WebService_GetUserByKey_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetUserByKeyResponse" message="tns:WebService_GetUserByKey_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendPasswordMail">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/SendPasswordMail" message="tns:WebService_SendPasswordMail_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/SendPasswordMailResponse" message="tns:WebService_SendPasswordMail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/ResetPassword" message="tns:WebService_ResetPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/ResetPasswordResponse" message="tns:WebService_ResetPassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserKeys">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetUserKeys" message="tns:WebService_GetUserKeys_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetUserKeysResponse" message="tns:WebService_GetUserKeys_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUserKey">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/AddUserKey" message="tns:WebService_AddUserKey_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/AddUserKeyResponse" message="tns:WebService_AddUserKey_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserKey">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/RemoveUserKey" message="tns:WebService_RemoveUserKey_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/RemoveUserKeyResponse" message="tns:WebService_RemoveUserKey_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserVisualStudioLink">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetUserVisualStudioLink" message="tns:WebService_GetUserVisualStudioLink_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetUserVisualStudioLinkResponse" message="tns:WebService_GetUserVisualStudioLink_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlansByType">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetPlansByType" message="tns:WebService_GetPlansByType_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetPlansByTypeResponse" message="tns:WebService_GetPlansByType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemovePlan">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/RemovePlan" message="tns:WebService_RemovePlan_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/RemovePlanResponse" message="tns:WebService_RemovePlan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePlan">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/CreatePlan" message="tns:WebService_CreatePlan_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/CreatePlanResponse" message="tns:WebService_CreatePlan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImageFileLink">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetImageFileLink" message="tns:WebService_GetImageFileLink_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetImageFileLinkResponse" message="tns:WebService_GetImageFileLink_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSourceFileLink">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetSourceFileLink" message="tns:WebService_GetSourceFileLink_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetSourceFileLinkResponse" message="tns:WebService_GetSourceFileLink_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSymbolFileLink">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetSymbolFileLink" message="tns:WebService_GetSymbolFileLink_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetSymbolFileLinkResponse" message="tns:WebService_GetSymbolFileLink_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentationLink">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetDocumentationLink" message="tns:WebService_GetDocumentationLink_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetDocumentationLinkResponse" message="tns:WebService_GetDocumentationLink_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPackageLink">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetPackageLink" message="tns:WebService_GetPackageLink_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetPackageLinkResponse" message="tns:WebService_GetPackageLink_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUploadReports">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetUploadReports" message="tns:WebService_GetUploadReports_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetUploadReportsResponse" message="tns:WebService_GetUploadReports_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadPackage">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/UploadPackage" message="tns:WebService_UploadPackage_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/UploadPackageResponse" message="tns:WebService_UploadPackage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPermissions">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetUserPermissions" message="tns:WebService_GetUserPermissions_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetUserPermissionsResponse" message="tns:WebService_GetUserPermissions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyPermissions">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetCompanyPermissions" message="tns:WebService_GetCompanyPermissions_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetCompanyPermissionsResponse" message="tns:WebService_GetCompanyPermissions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRepositoryPermissions">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetRepositoryPermissions" message="tns:WebService_GetRepositoryPermissions_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetRepositoryPermissionsResponse" message="tns:WebService_GetRepositoryPermissions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectPermissions">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetProjectPermissions" message="tns:WebService_GetProjectPermissions_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetProjectPermissionsResponse" message="tns:WebService_GetProjectPermissions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVersionPermissions">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetVersionPermissions" message="tns:WebService_GetVersionPermissions_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetVersionPermissionsResponse" message="tns:WebService_GetVersionPermissions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCompanyPermissions">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/SetCompanyPermissions" message="tns:WebService_SetCompanyPermissions_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/SetCompanyPermissionsResponse" message="tns:WebService_SetCompanyPermissions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetRepositoryPermissions">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/SetRepositoryPermissions" message="tns:WebService_SetRepositoryPermissions_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/SetRepositoryPermissionsResponse" message="tns:WebService_SetRepositoryPermissions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetProjectPermissions">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/SetProjectPermissions" message="tns:WebService_SetProjectPermissions_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/SetProjectPermissionsResponse" message="tns:WebService_SetProjectPermissions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetVersionPermissions">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/SetVersionPermissions" message="tns:WebService_SetVersionPermissions_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/SetVersionPermissionsResponse" message="tns:WebService_SetVersionPermissions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanies">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetCompanies" message="tns:WebService_GetCompanies_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetCompaniesResponse" message="tns:WebService_GetCompanies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCompany">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateCompany" message="tns:WebService_CreateCompany_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateCompanyResponse" message="tns:WebService_CreateCompany_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCompany2">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateCompany2" message="tns:WebService_CreateCompany2_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateCompany2Response" message="tns:WebService_CreateCompany2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCompany">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/UpdateCompany" message="tns:WebService_UpdateCompany_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/UpdateCompanyResponse" message="tns:WebService_UpdateCompany_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCompany">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/DeleteCompany" message="tns:WebService_DeleteCompany_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/DeleteCompanyResponse" message="tns:WebService_DeleteCompany_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetUsers" message="tns:WebService_GetUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetUsersResponse" message="tns:WebService_GetUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateUser">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateUser" message="tns:WebService_CreateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateUserResponse" message="tns:WebService_CreateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/UpdateUser" message="tns:WebService_UpdateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/UpdateUserResponse" message="tns:WebService_UpdateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/DeleteUser" message="tns:WebService_DeleteUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/DeleteUserResponse" message="tns:WebService_DeleteUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRepositories">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetRepositories" message="tns:WebService_GetRepositories_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetRepositoriesResponse" message="tns:WebService_GetRepositories_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrUpdateRepository">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateOrUpdateRepository" message="tns:WebService_CreateOrUpdateRepository_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateOrUpdateRepositoryResponse" message="tns:WebService_CreateOrUpdateRepository_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateRepository">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateRepository" message="tns:WebService_CreateRepository_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateRepositoryResponse" message="tns:WebService_CreateRepository_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRepository">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/UpdateRepository" message="tns:WebService_UpdateRepository_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/UpdateRepositoryResponse" message="tns:WebService_UpdateRepository_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRepository">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/DeleteRepository" message="tns:WebService_DeleteRepository_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/DeleteRepositoryResponse" message="tns:WebService_DeleteRepository_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImageFile">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetImageFile" message="tns:WebService_GetImageFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetImageFileResponse" message="tns:WebService_GetImageFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LogImageFileFound">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/LogImageFileFound" message="tns:WebService_LogImageFileFound_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/LogImageFileFoundResponse" message="tns:WebService_LogImageFileFound_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LogImageFileNotFound">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/LogImageFileNotFound" message="tns:WebService_LogImageFileNotFound_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/LogImageFileNotFoundResponse" message="tns:WebService_LogImageFileNotFound_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LogSourceFileFound">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/LogSourceFileFound" message="tns:WebService_LogSourceFileFound_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/LogSourceFileFoundResponse" message="tns:WebService_LogSourceFileFound_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableStatisticNames">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetAvailableStatisticNames" message="tns:WebService_GetAvailableStatisticNames_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetAvailableStatisticNamesResponse" message="tns:WebService_GetAvailableStatisticNames_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatistic">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetStatistic" message="tns:WebService_GetStatistic_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetStatisticResponse" message="tns:WebService_GetStatistic_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DigestGenerateRequest">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/DigestGenerateRequest" message="tns:WebService_DigestGenerateRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/DigestGenerateRequestResponse" message="tns:WebService_DigestGenerateRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DigestValidateResponse">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/DigestValidateResponse" message="tns:WebService_DigestValidateResponse_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/DigestValidateResponseResponse" message="tns:WebService_DigestValidateResponse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjects">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetProjects" message="tns:WebService_GetProjects_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetProjectsResponse" message="tns:WebService_GetProjects_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrUpdateProject">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateOrUpdateProject" message="tns:WebService_CreateOrUpdateProject_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateOrUpdateProjectResponse" message="tns:WebService_CreateOrUpdateProject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateProject">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateProject" message="tns:WebService_CreateProject_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateProjectResponse" message="tns:WebService_CreateProject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProject">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/UpdateProject" message="tns:WebService_UpdateProject_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/UpdateProjectResponse" message="tns:WebService_UpdateProject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProject">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/DeleteProject" message="tns:WebService_DeleteProject_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/DeleteProjectResponse" message="tns:WebService_DeleteProject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVersions">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetVersions" message="tns:WebService_GetVersions_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/GetVersionsResponse" message="tns:WebService_GetVersions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrUpdateVersion">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateOrUpdateVersion" message="tns:WebService_CreateOrUpdateVersion_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/WebService/CreateOrUpdateVersionResponse" message="tns:WebService_CreateOrUpdateVersion_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

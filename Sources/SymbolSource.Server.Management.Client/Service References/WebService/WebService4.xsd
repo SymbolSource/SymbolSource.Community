@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Model.Statistics" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Model.Statistics" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="StatisticPeriod">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Day" />
+      <xs:enumeration value="Month" />
+      <xs:enumeration value="Year" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="StatisticPeriod" nillable="true" type="tns:StatisticPeriod" />
+  <xs:complexType name="ArrayOfStatistic">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Statistic" nillable="true" type="tns:Statistic" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStatistic" nillable="true" type="tns:ArrayOfStatistic" />
+  <xs:complexType name="Statistic">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfStatisticItem" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Statistic" nillable="true" type="tns:Statistic" />
+  <xs:complexType name="ArrayOfStatisticItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StatisticItem" nillable="true" type="tns:StatisticItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStatisticItem" nillable="true" type="tns:ArrayOfStatisticItem" />
+  <xs:complexType name="StatisticItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Count" type="xs:long" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StatisticItem" nillable="true" type="tns:StatisticItem" />
+</xs:schema>

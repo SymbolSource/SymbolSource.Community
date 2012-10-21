@@ -64,6 +64,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
@@ -73,6 +75,11 @@
     <Compile Include="IManagementPreauthentication.cs" />
     <Compile Include="MetadataWrapper.cs" />
     <Compile Include="Remoting\DigestHeader.cs" />
+    <Compile Include="Service References\WebService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="WebService\AppSettingWebServiceManagementConfiguration.cs" />
     <Compile Include="WebService\WebServiceManagementSessionFactory.cs" />
     <Compile Include="Data\Compilation.cs" />
@@ -94,11 +101,6 @@
     <Compile Include="Remoting\RemotingManagementSession.cs" />
     <Compile Include="Remoting\RemotingManagementSessionFactory.cs" />
     <Compile Include="Data\Version.cs" />
-    <Compile Include="Web References\WebService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
     <Compile Include="WebService\ConfigurableWebService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -111,92 +113,89 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:51789/WebService.asmx%3fwsdl">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\WebService\</RelPath>
-      <UpdateFromURL>http://localhost:51789/WebService.asmx%3fwsdl</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>ITDT_Hss_Server_Management_Client_WebService_WebService</CachedSettingsPropName>
-    </WebReferenceUrl>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\WebService\Caller1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\WebService\SymbolSource.Server.Management.Client.WebService.Caller.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\WebService\Company1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\WebService\SymbolSource.Server.Management.Client.WebService.Company.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\WebService\CompanyPermission1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\WebService\SymbolSource.Server.Management.Client.WebService.CompanyPermission.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\WebService\Compilation1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\WebService\SymbolSource.Server.Management.Client.WebService.Compilation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\WebService\Depedency1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\WebService\SymbolSource.Server.Management.Client.WebService.Depedency.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\WebService\ImageFile1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\WebService\SymbolSource.Server.Management.Client.WebService.ImageFile.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\WebService\NodeImageFile1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\WebService\SymbolSource.Server.Management.Client.WebService.NodeImageFile.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\WebService\PackageFilter.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\WebService\SymbolSource.Server.Management.Client.WebService.PackageFilter.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\WebService\Permissions1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\WebService\SymbolSource.Server.Management.Client.WebService.Permissions.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\WebService\Plan.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\WebService\SymbolSource.Server.Management.Client.WebService.Plan.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\WebService\Project1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\WebService\SymbolSource.Server.Management.Client.WebService.Project.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\WebService\ProjectPermission1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\WebService\SymbolSource.Server.Management.Client.WebService.ProjectPermission.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\WebService\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
+    <None Include="Service References\WebService\SymbolSource.Server.Management.Client.WebService.Reference.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\WebService\Reference1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\WebService\SymbolSource.Server.Management.Client.WebService.Repository.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\WebService\Repository1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\WebService\SymbolSource.Server.Management.Client.WebService.RepositoryPermission.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\WebService\RepositoryPermission1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\WebService\SymbolSource.Server.Management.Client.WebService.SourceFile.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\WebService\SourceFile1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\WebService\SymbolSource.Server.Management.Client.WebService.Statistic.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\WebService\Statistic1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\WebService\SymbolSource.Server.Management.Client.WebService.UploadReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\WebService\UploadReport.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\WebService\SymbolSource.Server.Management.Client.WebService.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\WebService\User1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\WebService\SymbolSource.Server.Management.Client.WebService.UserKey.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\WebService\UserKey1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\WebService\SymbolSource.Server.Management.Client.WebService.Version.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\WebService\Version1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\WebService\SymbolSource.Server.Management.Client.WebService.VersionPermission.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\WebService\VersionPermission1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\WebService\WebService.wsdl" />
+    <None Include="Service References\WebService\WebService.xsd">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Web References\WebService\WebService.wsdl" />
+    <None Include="Service References\WebService\WebService1.wsdl" />
+    <None Include="Service References\WebService\WebService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebService\WebService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebService\WebService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebService\WebService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -214,6 +213,27 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WebService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebService\WebService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

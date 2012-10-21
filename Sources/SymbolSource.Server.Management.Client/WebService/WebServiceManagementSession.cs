@@ -16,7 +16,7 @@ namespace SymbolSource.Server.Management.Client
 
         public virtual void Dispose()
         {
-            service.Dispose();
+            //service.Dispose();
         }
 
         public Caller Caller
