@@ -16,6 +16,10 @@ namespace SymbolSource.Server.Basic
         public string NuGetPushUrl;
         public string NuGetFeedUrl;
         public string OpenWrapUrl;
+    }
+
+    public class DiagnosticsViewModel
+    {
         public string SrcSrvPathTest;
         public KeyValuePair<string, string> NuGetSmokeTest;
         public KeyValuePair<string, string> OpenWrapSmokeTest;
@@ -59,15 +63,22 @@ namespace SymbolSource.Server.Basic
                     VisualStudioUrl = GetVisualStudioUrl(),
                     NuGetPushUrl = GetNuGetPushUrl(),
                     NuGetFeedUrl = GetNuGetFeedUrl(),
-                    OpenWrapUrl = GetOpenWrapUrl(),
-                    SrcSrvPathTest = Directory.Exists(ConfigurationManager.AppSettings["SrcSrvPath"]) ? "OK" : "Directory not found",
-                    NuGetSmokeTest = InlineTest(Url.Action("SmokeTest", new { url = Url.Content("~/NuGet/FeedService.mvc") })),
-                    OpenWrapSmokeTest = InlineTest(Url.Action("SmokeTest", new { url = Url.Content("~/OpenWrap/index.wraplist") })),
-                    NuGetPushTest = InlineTest(Url.Action("NuGetPushTest")),
-                    NuGetFeedTest = InlineTest(Url.Action("NuGetFeedTest")),
-                    OpenWrapPushTest = InlineTest(Url.Action("OpenWrapPushTest")),
-                    OpenWrapFeedTest = InlineTest(Url.Action("OpenWrapFeedTest")),
+                    OpenWrapUrl = GetOpenWrapUrl()
                 });
+        }
+
+        public ActionResult Diagnostics()
+        {
+            return View(new DiagnosticsViewModel
+            {
+                SrcSrvPathTest = Directory.Exists(ConfigurationManager.AppSettings["SrcSrvPath"]) ? "OK" : "Directory not found",
+                NuGetSmokeTest = InlineTest(Url.Action("SmokeTest", new { url = Url.Content("~/NuGet/FeedService.mvc") })),
+                OpenWrapSmokeTest = InlineTest(Url.Action("SmokeTest", new { url = Url.Content("~/OpenWrap/index.wraplist") })),
+                NuGetPushTest = InlineTest(Url.Action("NuGetPushTest")),
+                NuGetFeedTest = InlineTest(Url.Action("NuGetFeedTest")),
+                OpenWrapPushTest = InlineTest(Url.Action("OpenWrapPushTest")),
+                OpenWrapFeedTest = InlineTest(Url.Action("OpenWrapFeedTest"))
+            });
         }
 
         private KeyValuePair<string, string> InlineTest(string url)
