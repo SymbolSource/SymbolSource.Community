@@ -70,8 +70,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="WebActivator">
-      <HintPath>..\..\..\Sources\packages\WebActivator.1.5.1\lib\net40\WebActivator.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\packages\WebActivator.1.5.1\lib\net40\WebActivator.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>SymbolSource.Server.Basic</id>
-    <version>1.2.1</version>
+    <version>1.2.2</version>
     <authors>SymbolSource</authors>
     <owners>SymbolSource</owners>
     <projectUrl>http://www.symbolsource.org/Public/Blog/View/2012-03-13/Releasing_the_community_edition_of_SymbolSource</projectUrl>
@@ -48,6 +48,7 @@
     <file src="Sources\SymbolSource.Server.Basic.Host\Data\Web.config" target="content\Data\Web.config" />
     <file src="Sources\SymbolSource.Server.Basic.Host\Index\Web.config" target="content\Index\Web.config" />
     <file src="Sources\SymbolSource.Server.Basic.Host\Views\Home\Index.cshtml" target="content\Views\Home\Index.cshtml" />
+    <file src="Sources\SymbolSource.Server.Basic.Host\Views\Home\Diagnostics.cshtml" target="content\Views\Home\Diagnostics.cshtml" />
     <file src="Sources\SymbolSource.Server.Basic.Host\favicon.png" target="content\favicon.png" />
     <file src="Sources\SymbolSource.Server.Basic.Host\Web.config.transform" target="content\Web.config.transform" />
   </files>
