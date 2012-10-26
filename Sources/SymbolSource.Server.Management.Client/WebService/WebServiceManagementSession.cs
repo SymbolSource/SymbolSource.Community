@@ -2,6 +2,7 @@
 using System.IdentityModel.Tokens;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Principal;
 using System.Threading;
 
 namespace SymbolSource.Server.Management.Client
@@ -14,22 +15,33 @@ namespace SymbolSource.Server.Management.Client
 
         public WebServiceManagementSession(IWebServiceManagementConfiguration configuration, Caller caller)
         {
-            var configurableService = new ConfigurableWebService(configuration);
-            //service = configurableService;
-
-            var claims = Thread.CurrentPrincipal as ClaimsPrincipal;
-            if (claims!=null)
-            {
-                var context = claims.Identities.First().BootstrapContext;
-                if(context!=null)
-                {
-                    service = configurableService.ChannelFactory.CreateChannelWithActAsToken(((BootstrapContext)context).SecurityToken);
-                }
-            }
-
-
+            var configurableService = new ConfigurableWebService(configuration);     
+            configurableService.ClientCredentials.UserName.UserName = caller.Company + "\\" + caller.Name;
+            configurableService.ClientCredentials.UserName.Password = caller.KeyValue;
             this.caller = caller;
+            service = configurableService;
+        }
 
+        public WebServiceManagementSession(IWebServiceManagementConfiguration configuration, IPrincipal principal)
+        {
+            var configurableService = new ConfigurableWebService(configuration);
+
+            var claims = principal as ClaimsPrincipal;
+
+            if(claims == null)
+                throw new Exception();
+
+            var context = claims.Identities.First().BootstrapContext;
+            if (context == null)
+                throw new Exception();
+
+            service = configurableService.ChannelFactory.CreateChannelWithActAsToken(((BootstrapContext) context).SecurityToken);
+
+            caller = new Caller
+                         {
+                             Company = claims.FindFirst("http://schemas.symbolsource.org/claims/company").Value, 
+                             Name = claims.FindFirst(ClaimTypes.Name).Value
+                         };
         }
 
         public virtual void Dispose()

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Principal;
 
 namespace SymbolSource.Server.Management.Client.Remoting
 {
@@ -60,6 +61,11 @@ namespace SymbolSource.Server.Management.Client.Remoting
                 throw new Exception(string.Format("No session registered for caller {0}", caller));
 
             return sessionFactories[partialCaller](caller);
+        }
+
+        public IManagementSession Create(IPrincipal caller)
+        {
+            throw new NotImplementedException();
         }
 
         public Caller GetUserByKey(string company, string type, string value)

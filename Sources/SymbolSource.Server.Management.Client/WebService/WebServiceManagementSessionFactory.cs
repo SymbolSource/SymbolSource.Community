@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Principal;
 
 namespace SymbolSource.Server.Management.Client
 {
@@ -14,6 +15,11 @@ namespace SymbolSource.Server.Management.Client
         }
 
         public virtual IManagementSession Create(Caller caller)
+        {
+            return new WebServiceManagementSession(configuration, caller);
+        }
+
+        public virtual IManagementSession Create(IPrincipal caller)
         {
             return new WebServiceManagementSession(configuration, caller);
         }

@@ -63,7 +63,7 @@
                                   <Metadata xmlns="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
                                     <wsx:MetadataSection xmlns="">
                                       <wsx:MetadataReference>
-                                        <Address xmlns="http://www.w3.org/2005/08/addressing">http://localhost:60726/Active/mex</Address>
+                                        <Address xmlns="http://www.w3.org/2005/08/addressing">https://localhost:44333/Active/mex</Address>
                                       </wsx:MetadataReference>
                                     </wsx:MetadataSection>
                                   </Metadata>
