@@ -25,6 +25,7 @@ namespace SymbolSource.Server.Management.Client
         public WebServiceManagementSession(IWebServiceManagementConfiguration configuration, IPrincipal principal)
         {
             var configurableService = new ConfigurableWebService(configuration);
+            configurableService.ClientCredentials.UserName.UserName = "Anonymous";
 
             var claims = principal as ClaimsPrincipal;
 
