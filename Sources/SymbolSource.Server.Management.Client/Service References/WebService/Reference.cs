@@ -2038,6 +2038,9 @@ namespace SymbolSource.Server.Management.Client {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PlanMessageField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -2122,6 +2125,19 @@ namespace SymbolSource.Server.Management.Client {
                 if ((object.ReferenceEquals(this.NameField, value) != true)) {
                     this.NameField = value;
                     this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PlanMessage {
+            get {
+                return this.PlanMessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PlanMessageField, value) != true)) {
+                    this.PlanMessageField = value;
+                    this.RaisePropertyChanged("PlanMessage");
                 }
             }
         }
@@ -3403,7 +3419,7 @@ namespace SymbolSource.Server.Management.Client {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/CreateCompany2", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/CreateCompany2Respons" +
             "e")]
-        void CreateCompany2(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.UserKey key, SymbolSource.Server.Management.Client.Plan plan);
+        void CreateCompany2(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.UserKey key);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/UpdateCompany", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/UpdateCompanyResponse" +
             "")]
@@ -3417,7 +3433,7 @@ namespace SymbolSource.Server.Management.Client {
         SymbolSource.Server.Management.Client.User[] GetUsers(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.Company company);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/CreateUser", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/CreateUserResponse")]
-        void CreateUser(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.UserKey key, SymbolSource.Server.Management.Client.Plan plan);
+        void CreateUser(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.UserKey key);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/UpdateUser", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/UpdateUserResponse")]
         void UpdateUser(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.User user);
@@ -3548,6 +3564,14 @@ namespace SymbolSource.Server.Management.Client {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetStatistic", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/GetStatisticResponse")]
         SymbolSource.Server.Management.Client.Statistic[] GetStatistic(SymbolSource.Server.Management.Client.Caller caller, string[] names, SymbolSource.Server.Management.Client.StatisticPeriod period, System.Nullable<System.DateTime> from, System.Nullable<System.DateTime> to);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/PaymentPrepare", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/PaymentPrepareRespons" +
+            "e")]
+        string PaymentPrepare(SymbolSource.Server.Management.Client.Caller caller, string plan, string returnUrl, string cancelUrl);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://api.symbolsource.org/schemas/webServices/IWebService/PaymentDoAction", ReplyAction="http://api.symbolsource.org/schemas/webServices/IWebService/PaymentDoActionRespon" +
+            "se")]
+        void PaymentDoAction(SymbolSource.Server.Management.Client.Caller caller, string plan, string token);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3705,8 +3729,8 @@ namespace SymbolSource.Server.Management.Client {
             base.Channel.CreateCompany(caller, company);
         }
         
-        public void CreateCompany2(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.UserKey key, SymbolSource.Server.Management.Client.Plan plan) {
-            base.Channel.CreateCompany2(caller, user, key, plan);
+        public void CreateCompany2(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.UserKey key) {
+            base.Channel.CreateCompany2(caller, user, key);
         }
         
         public void UpdateCompany(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.Company company) {
@@ -3721,8 +3745,8 @@ namespace SymbolSource.Server.Management.Client {
             return base.Channel.GetUsers(caller, ref company);
         }
         
-        public void CreateUser(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.UserKey key, SymbolSource.Server.Management.Client.Plan plan) {
-            base.Channel.CreateUser(caller, user, key, plan);
+        public void CreateUser(SymbolSource.Server.Management.Client.Caller caller, SymbolSource.Server.Management.Client.User user, SymbolSource.Server.Management.Client.UserKey key) {
+            base.Channel.CreateUser(caller, user, key);
         }
         
         public void UpdateUser(SymbolSource.Server.Management.Client.Caller caller, ref SymbolSource.Server.Management.Client.User user) {
@@ -3851,6 +3875,14 @@ namespace SymbolSource.Server.Management.Client {
         
         public SymbolSource.Server.Management.Client.Statistic[] GetStatistic(SymbolSource.Server.Management.Client.Caller caller, string[] names, SymbolSource.Server.Management.Client.StatisticPeriod period, System.Nullable<System.DateTime> from, System.Nullable<System.DateTime> to) {
             return base.Channel.GetStatistic(caller, names, period, from, to);
+        }
+        
+        public string PaymentPrepare(SymbolSource.Server.Management.Client.Caller caller, string plan, string returnUrl, string cancelUrl) {
+            return base.Channel.PaymentPrepare(caller, plan, returnUrl, cancelUrl);
+        }
+        
+        public void PaymentDoAction(SymbolSource.Server.Management.Client.Caller caller, string plan, string token) {
+            base.Channel.PaymentDoAction(caller, plan, token);
         }
     }
 }

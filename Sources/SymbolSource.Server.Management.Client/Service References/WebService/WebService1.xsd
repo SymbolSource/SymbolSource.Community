@@ -246,6 +246,7 @@
       <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlanMessage" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="User" nillable="true" type="tns:User" />
@@ -257,17 +258,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UserKey" nillable="true" type="tns:UserKey" />
-  <xs:complexType name="Plan">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="MonthPrice" type="xs:decimal" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="PrivateRepoLimit" type="xs:int" />
-      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="UserLimit" type="xs:int" />
-      <xs:element minOccurs="0" name="YearPrice" type="xs:decimal" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Plan" nillable="true" type="tns:Plan" />
   <xs:complexType name="ArrayOfUser">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
@@ -286,6 +276,17 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfPlan" nillable="true" type="tns:ArrayOfPlan" />
+  <xs:complexType name="Plan">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MonthPrice" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrivateRepoLimit" type="xs:int" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserLimit" type="xs:int" />
+      <xs:element minOccurs="0" name="YearPrice" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Plan" nillable="true" type="tns:Plan" />
   <xs:complexType name="ArrayOfUploadReport">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="UploadReport" nillable="true" type="tns:UploadReport" />

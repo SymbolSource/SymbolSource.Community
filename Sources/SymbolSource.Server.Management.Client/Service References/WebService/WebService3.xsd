@@ -497,7 +497,6 @@
         <xs:element xmlns:q94="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q94:Caller" />
         <xs:element xmlns:q95="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q95:User" />
         <xs:element xmlns:q96="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="key" nillable="true" type="q96:UserKey" />
-        <xs:element xmlns:q97="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="plan" nillable="true" type="q97:Plan" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -509,8 +508,8 @@
   <xs:element name="UpdateCompany">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q98="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q98:Caller" />
-        <xs:element xmlns:q99="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="company" nillable="true" type="q99:Company" />
+        <xs:element xmlns:q97="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q97:Caller" />
+        <xs:element xmlns:q98="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="company" nillable="true" type="q98:Company" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -522,8 +521,8 @@
   <xs:element name="DeleteCompany">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q100="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q100:Caller" />
-        <xs:element xmlns:q101="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="company" nillable="true" type="q101:Company" />
+        <xs:element xmlns:q99="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q99:Caller" />
+        <xs:element xmlns:q100="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="company" nillable="true" type="q100:Company" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -535,26 +534,25 @@
   <xs:element name="GetUsers">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q102="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q102:Caller" />
-        <xs:element xmlns:q103="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="company" nillable="true" type="q103:Company" />
+        <xs:element xmlns:q101="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q101:Caller" />
+        <xs:element xmlns:q102="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="company" nillable="true" type="q102:Company" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetUsersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q104="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="GetUsersResult" nillable="true" type="q104:ArrayOfUser" />
-        <xs:element xmlns:q105="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="company" nillable="true" type="q105:Company" />
+        <xs:element xmlns:q103="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="GetUsersResult" nillable="true" type="q103:ArrayOfUser" />
+        <xs:element xmlns:q104="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="company" nillable="true" type="q104:Company" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q106="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q106:Caller" />
-        <xs:element xmlns:q107="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q107:User" />
-        <xs:element xmlns:q108="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="key" nillable="true" type="q108:UserKey" />
-        <xs:element xmlns:q109="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="plan" nillable="true" type="q109:Plan" />
+        <xs:element xmlns:q105="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q105:Caller" />
+        <xs:element xmlns:q106="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q106:User" />
+        <xs:element xmlns:q107="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="key" nillable="true" type="q107:UserKey" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -566,23 +564,23 @@
   <xs:element name="UpdateUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q110="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q110:Caller" />
-        <xs:element xmlns:q111="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q111:User" />
+        <xs:element xmlns:q108="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q108:Caller" />
+        <xs:element xmlns:q109="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q109:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q112="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q112:User" />
+        <xs:element xmlns:q110="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q110:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q113="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q113:Caller" />
-        <xs:element xmlns:q114="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q114:User" />
+        <xs:element xmlns:q111="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q111:Caller" />
+        <xs:element xmlns:q112="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q112:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -594,69 +592,69 @@
   <xs:element name="GetRepositories">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q115="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q115:Caller" />
-        <xs:element xmlns:q116="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="company" nillable="true" type="q116:Company" />
+        <xs:element xmlns:q113="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q113:Caller" />
+        <xs:element xmlns:q114="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="company" nillable="true" type="q114:Company" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetRepositoriesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q117="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="GetRepositoriesResult" nillable="true" type="q117:ArrayOfRepository" />
-        <xs:element xmlns:q118="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="company" nillable="true" type="q118:Company" />
+        <xs:element xmlns:q115="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="GetRepositoriesResult" nillable="true" type="q115:ArrayOfRepository" />
+        <xs:element xmlns:q116="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="company" nillable="true" type="q116:Company" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateOrUpdateRepository">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q119="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q119:Caller" />
-        <xs:element xmlns:q120="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="repository" nillable="true" type="q120:Repository" />
+        <xs:element xmlns:q117="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q117:Caller" />
+        <xs:element xmlns:q118="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="repository" nillable="true" type="q118:Repository" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateOrUpdateRepositoryResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q121="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="repository" nillable="true" type="q121:Repository" />
+        <xs:element xmlns:q119="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="repository" nillable="true" type="q119:Repository" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateRepository">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q122="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q122:Caller" />
-        <xs:element xmlns:q123="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="repository" nillable="true" type="q123:Repository" />
+        <xs:element xmlns:q120="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q120:Caller" />
+        <xs:element xmlns:q121="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="repository" nillable="true" type="q121:Repository" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateRepositoryResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q124="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="repository" nillable="true" type="q124:Repository" />
+        <xs:element xmlns:q122="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="repository" nillable="true" type="q122:Repository" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateRepository">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q125="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q125:Caller" />
-        <xs:element xmlns:q126="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="repository" nillable="true" type="q126:Repository" />
+        <xs:element xmlns:q123="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q123:Caller" />
+        <xs:element xmlns:q124="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="repository" nillable="true" type="q124:Repository" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateRepositoryResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q127="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="repository" nillable="true" type="q127:Repository" />
+        <xs:element xmlns:q125="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="repository" nillable="true" type="q125:Repository" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteRepository">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q128="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q128:Caller" />
-        <xs:element xmlns:q129="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="repository" nillable="true" type="q129:Repository" />
+        <xs:element xmlns:q126="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q126:Caller" />
+        <xs:element xmlns:q127="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="repository" nillable="true" type="q127:Repository" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -675,7 +673,7 @@
   <xs:element name="GetPlansByTypeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q130="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="GetPlansByTypeResult" nillable="true" type="q130:ArrayOfPlan" />
+        <xs:element xmlns:q128="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="GetPlansByTypeResult" nillable="true" type="q128:ArrayOfPlan" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -712,22 +710,22 @@
   <xs:element name="GetUploadReports">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q131="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q131:Caller" />
+        <xs:element xmlns:q129="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q129:Caller" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetUploadReportsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q132="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="GetUploadReportsResult" nillable="true" type="q132:ArrayOfUploadReport" />
+        <xs:element xmlns:q130="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="GetUploadReportsResult" nillable="true" type="q130:ArrayOfUploadReport" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UploadPackage">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q133="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q133:Caller" />
-        <xs:element xmlns:q134="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="package" nillable="true" type="q134:PackageProject" />
+        <xs:element xmlns:q131="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q131:Caller" />
+        <xs:element xmlns:q132="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="package" nillable="true" type="q132:PackageProject" />
         <xs:element minOccurs="0" name="packageFormat" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="packageData" nillable="true" type="xs:base64Binary" />
         <xs:element minOccurs="0" name="symbolPackageData" nillable="true" type="xs:base64Binary" />
@@ -737,92 +735,92 @@
   <xs:element name="UploadPackageResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q135="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="UploadPackageResult" nillable="true" type="q135:UploadReport" />
+        <xs:element xmlns:q133="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="UploadPackageResult" nillable="true" type="q133:UploadReport" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetUserPermissions">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q136="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q136:Caller" />
-        <xs:element xmlns:q137="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q137:User" />
+        <xs:element xmlns:q134="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q134:Caller" />
+        <xs:element xmlns:q135="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q135:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetUserPermissionsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q138="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="GetUserPermissionsResult" nillable="true" type="q138:Permissions" />
+        <xs:element xmlns:q136="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="GetUserPermissionsResult" nillable="true" type="q136:Permissions" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetCompanyPermissions">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q139="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q139:Caller" />
-        <xs:element xmlns:q140="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="company" nillable="true" type="q140:Company" />
+        <xs:element xmlns:q137="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q137:Caller" />
+        <xs:element xmlns:q138="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="company" nillable="true" type="q138:Company" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetCompanyPermissionsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q141="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="GetCompanyPermissionsResult" nillable="true" type="q141:ArrayOfCompanyPermission" />
+        <xs:element xmlns:q139="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="GetCompanyPermissionsResult" nillable="true" type="q139:ArrayOfCompanyPermission" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetRepositoryPermissions">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q142="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q142:Caller" />
-        <xs:element xmlns:q143="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="repository" nillable="true" type="q143:Repository" />
+        <xs:element xmlns:q140="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q140:Caller" />
+        <xs:element xmlns:q141="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="repository" nillable="true" type="q141:Repository" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetRepositoryPermissionsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q144="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="GetRepositoryPermissionsResult" nillable="true" type="q144:ArrayOfRepositoryPermission" />
+        <xs:element xmlns:q142="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="GetRepositoryPermissionsResult" nillable="true" type="q142:ArrayOfRepositoryPermission" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetProjectPermissions">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q145="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q145:Caller" />
-        <xs:element xmlns:q146="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="project" nillable="true" type="q146:Project" />
+        <xs:element xmlns:q143="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q143:Caller" />
+        <xs:element xmlns:q144="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="project" nillable="true" type="q144:Project" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetProjectPermissionsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q147="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="GetProjectPermissionsResult" nillable="true" type="q147:ArrayOfProjectPermission" />
+        <xs:element xmlns:q145="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="GetProjectPermissionsResult" nillable="true" type="q145:ArrayOfProjectPermission" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetVersionPermissions">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q148="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q148:Caller" />
-        <xs:element xmlns:q149="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="version" nillable="true" type="q149:Version" />
+        <xs:element xmlns:q146="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q146:Caller" />
+        <xs:element xmlns:q147="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="version" nillable="true" type="q147:Version" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetVersionPermissionsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q150="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="GetVersionPermissionsResult" nillable="true" type="q150:ArrayOfVersionPermission" />
+        <xs:element xmlns:q148="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="GetVersionPermissionsResult" nillable="true" type="q148:ArrayOfVersionPermission" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SetCompanyPermissions">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q151="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q151:Caller" />
-        <xs:element xmlns:q152="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q152:User" />
-        <xs:element xmlns:q153="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="company" nillable="true" type="q153:Company" />
-        <xs:element xmlns:q154="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="permission" nillable="true" type="q154:Permission" />
+        <xs:element xmlns:q149="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q149:Caller" />
+        <xs:element xmlns:q150="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q150:User" />
+        <xs:element xmlns:q151="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="company" nillable="true" type="q151:Company" />
+        <xs:element xmlns:q152="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="permission" nillable="true" type="q152:Permission" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -834,10 +832,10 @@
   <xs:element name="SetRepositoryPermissions">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q155="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q155:Caller" />
-        <xs:element xmlns:q156="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q156:User" />
-        <xs:element xmlns:q157="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="repository" nillable="true" type="q157:Repository" />
-        <xs:element xmlns:q158="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="permission" nillable="true" type="q158:Permission" />
+        <xs:element xmlns:q153="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q153:Caller" />
+        <xs:element xmlns:q154="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q154:User" />
+        <xs:element xmlns:q155="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="repository" nillable="true" type="q155:Repository" />
+        <xs:element xmlns:q156="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="permission" nillable="true" type="q156:Permission" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -849,10 +847,10 @@
   <xs:element name="SetProjectPermissions">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q159="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q159:Caller" />
-        <xs:element xmlns:q160="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q160:User" />
-        <xs:element xmlns:q161="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="project" nillable="true" type="q161:Project" />
-        <xs:element xmlns:q162="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="permission" nillable="true" type="q162:Permission" />
+        <xs:element xmlns:q157="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q157:Caller" />
+        <xs:element xmlns:q158="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q158:User" />
+        <xs:element xmlns:q159="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="project" nillable="true" type="q159:Project" />
+        <xs:element xmlns:q160="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="permission" nillable="true" type="q160:Permission" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -864,10 +862,10 @@
   <xs:element name="SetVersionPermissions">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q163="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q163:Caller" />
-        <xs:element xmlns:q164="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q164:User" />
-        <xs:element xmlns:q165="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="version" nillable="true" type="q165:Version" />
-        <xs:element xmlns:q166="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="permission" nillable="true" type="q166:Permission" />
+        <xs:element xmlns:q161="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q161:Caller" />
+        <xs:element xmlns:q162="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q162:User" />
+        <xs:element xmlns:q163="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="version" nillable="true" type="q163:Version" />
+        <xs:element xmlns:q164="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="permission" nillable="true" type="q164:Permission" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -879,14 +877,14 @@
   <xs:element name="UserValidate">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q167="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q167:Caller" />
+        <xs:element xmlns:q165="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q165:Caller" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UserValidateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q168="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="UserValidateResult" nillable="true" type="q168:User" />
+        <xs:element xmlns:q166="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="UserValidateResult" nillable="true" type="q166:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -902,7 +900,7 @@
   <xs:element name="CreateUserByKeyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q169="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="CreateUserByKeyResult" nillable="true" type="q169:Caller" />
+        <xs:element xmlns:q167="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="CreateUserByKeyResult" nillable="true" type="q167:Caller" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -918,14 +916,14 @@
   <xs:element name="GetUserByKeyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q170="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="GetUserByKeyResult" nillable="true" type="q170:Caller" />
+        <xs:element xmlns:q168="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="GetUserByKeyResult" nillable="true" type="q168:Caller" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SendPasswordMail">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q171="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q171:Caller" />
+        <xs:element xmlns:q169="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q169:Caller" />
         <xs:element minOccurs="0" name="url" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -938,8 +936,8 @@
   <xs:element name="ResetPassword">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q172="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q172:Caller" />
-        <xs:element xmlns:q173="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="userKey" nillable="true" type="q173:UserKey" />
+        <xs:element xmlns:q170="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q170:Caller" />
+        <xs:element xmlns:q171="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="userKey" nillable="true" type="q171:UserKey" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -951,24 +949,24 @@
   <xs:element name="GetUserKeys">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q174="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q174:Caller" />
-        <xs:element xmlns:q175="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q175:User" />
+        <xs:element xmlns:q172="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q172:Caller" />
+        <xs:element xmlns:q173="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q173:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetUserKeysResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q176="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="GetUserKeysResult" nillable="true" type="q176:ArrayOfUserKey" />
+        <xs:element xmlns:q174="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="GetUserKeysResult" nillable="true" type="q174:ArrayOfUserKey" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUserKey">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q177="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q177:Caller" />
-        <xs:element xmlns:q178="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q178:User" />
-        <xs:element xmlns:q179="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="userKey" nillable="true" type="q179:UserKey" />
+        <xs:element xmlns:q175="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q175:Caller" />
+        <xs:element xmlns:q176="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q176:User" />
+        <xs:element xmlns:q177="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="userKey" nillable="true" type="q177:UserKey" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -980,9 +978,9 @@
   <xs:element name="RemoveUserKey">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q180="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q180:Caller" />
-        <xs:element xmlns:q181="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q181:User" />
-        <xs:element xmlns:q182="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="userKey" nillable="true" type="q182:UserKey" />
+        <xs:element xmlns:q178="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q178:Caller" />
+        <xs:element xmlns:q179="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q179:User" />
+        <xs:element xmlns:q180="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="userKey" nillable="true" type="q180:UserKey" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -994,8 +992,8 @@
   <xs:element name="GetUserVisualStudioLink">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q183="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q183:Caller" />
-        <xs:element xmlns:q184="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q184:User" />
+        <xs:element xmlns:q181="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q181:Caller" />
+        <xs:element xmlns:q182="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="user" nillable="true" type="q182:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1009,23 +1007,23 @@
   <xs:element name="GetAvailableStatisticNames">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q185="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q185:Caller" />
+        <xs:element xmlns:q183="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q183:Caller" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetAvailableStatisticNamesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q186="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetAvailableStatisticNamesResult" nillable="true" type="q186:ArrayOfstring" />
+        <xs:element xmlns:q184="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetAvailableStatisticNamesResult" nillable="true" type="q184:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetStatistic">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q187="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q187:Caller" />
-        <xs:element xmlns:q188="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="names" nillable="true" type="q188:ArrayOfstring" />
-        <xs:element xmlns:q189="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Model.Statistics" minOccurs="0" name="period" type="q189:StatisticPeriod" />
+        <xs:element xmlns:q185="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q185:Caller" />
+        <xs:element xmlns:q186="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="names" nillable="true" type="q186:ArrayOfstring" />
+        <xs:element xmlns:q187="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Model.Statistics" minOccurs="0" name="period" type="q187:StatisticPeriod" />
         <xs:element minOccurs="0" name="from" nillable="true" type="xs:dateTime" />
         <xs:element minOccurs="0" name="to" nillable="true" type="xs:dateTime" />
       </xs:sequence>
@@ -1034,8 +1032,39 @@
   <xs:element name="GetStatisticResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q190="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Model.Statistics" minOccurs="0" name="GetStatisticResult" nillable="true" type="q190:ArrayOfStatistic" />
+        <xs:element xmlns:q188="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Model.Statistics" minOccurs="0" name="GetStatisticResult" nillable="true" type="q188:ArrayOfStatistic" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PaymentPrepare">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q189="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q189:Caller" />
+        <xs:element minOccurs="0" name="plan" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="returnUrl" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cancelUrl" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PaymentPrepareResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PaymentPrepareResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PaymentDoAction">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q190="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" minOccurs="0" name="caller" nillable="true" type="q190:Caller" />
+        <xs:element minOccurs="0" name="plan" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PaymentDoActionResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

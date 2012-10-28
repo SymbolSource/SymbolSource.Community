@@ -423,6 +423,18 @@
   <wsdl:message name="IWebService_GetStatistic_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetStatisticResponse" />
   </wsdl:message>
+  <wsdl:message name="IWebService_PaymentPrepare_InputMessage">
+    <wsdl:part name="parameters" element="tns:PaymentPrepare" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_PaymentPrepare_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PaymentPrepareResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_PaymentDoAction_InputMessage">
+    <wsdl:part name="parameters" element="tns:PaymentDoAction" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_PaymentDoAction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PaymentDoActionResponse" />
+  </wsdl:message>
   <wsdl:portType name="IWebService">
     <wsdl:operation name="DigestGenerateRequest">
       <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/DigestGenerateRequest" message="tns:IWebService_DigestGenerateRequest_InputMessage" />
@@ -699,6 +711,14 @@
     <wsdl:operation name="GetStatistic">
       <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetStatistic" message="tns:IWebService_GetStatistic_InputMessage" />
       <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetStatisticResponse" message="tns:IWebService_GetStatistic_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PaymentPrepare">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/PaymentPrepare" message="tns:IWebService_PaymentPrepare_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/PaymentPrepareResponse" message="tns:IWebService_PaymentPrepare_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PaymentDoAction">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/PaymentDoAction" message="tns:IWebService_PaymentDoAction_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/PaymentDoActionResponse" message="tns:IWebService_PaymentDoAction_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>
