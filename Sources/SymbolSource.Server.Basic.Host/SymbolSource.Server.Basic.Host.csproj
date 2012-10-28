@@ -89,6 +89,7 @@
     <Content Include="App_Readme\glimpse.log4net.readme.txt" />
     <Content Include="App_Readme\glimpse.mvc3.readme.txt" />
     <Content Include="App_Readme\glimpse.readme.txt" />
+    <Content Include="Views\Home\Diagnostics.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="favicon.png" />
     <Content Include="Global.asax" />

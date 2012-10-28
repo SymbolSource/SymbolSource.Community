@@ -47,7 +47,7 @@ namespace SymbolSource.Server.Management.Client.Remoting
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
 
-        public virtual void CreateCompany(User user, UserKey userKey, Plan plan)
+        public virtual void CreateCompany(User user, UserKey userKey)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
@@ -67,7 +67,7 @@ namespace SymbolSource.Server.Management.Client.Remoting
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
 
-        public virtual void CreateUser(User user, UserKey userKey, Plan plan)
+        public virtual void CreateUser(User user, UserKey userKey)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
@@ -364,6 +364,16 @@ namespace SymbolSource.Server.Management.Client.Remoting
         }
 
         public virtual void LogSourceFileFound(SourceFile sourceFile)
+        {
+            throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
+        }
+
+        public string PaymentPrepare(string plan, string returnUrl, string cancelUrl)
+        {
+            throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
+        }
+
+        public void PaymentDoAction(string plan, string token)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
