@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Management" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CanManageCompanies" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CanManageUsers" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CanViewStatistics" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlanMessage" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="UserKey">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserKey" nillable="true" type="tns:UserKey" />
   <xs:complexType name="Caller">
     <xs:sequence>
       <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
@@ -238,26 +258,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Company" nillable="true" type="tns:Company" />
-  <xs:complexType name="User">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CanManageCompanies" type="xs:boolean" />
-      <xs:element minOccurs="0" name="CanManageUsers" type="xs:boolean" />
-      <xs:element minOccurs="0" name="CanViewStatistics" type="xs:boolean" />
-      <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="PlanMessage" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="User" nillable="true" type="tns:User" />
-  <xs:complexType name="UserKey">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="UserKey" nillable="true" type="tns:UserKey" />
   <xs:complexType name="ArrayOfUser">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />

@@ -9,6 +9,48 @@
       <xsd:import schemaLocation="http://localhost:51789/WebService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/SymbolSource.Server.Model.Statistics" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IWebService_AddUserKey_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserKey" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_AddUserKey_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_RemoveUserKey_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveUserKey" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_RemoveUserKey_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveUserKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_GetUserVisualStudioLink_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserVisualStudioLink" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_GetUserVisualStudioLink_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserVisualStudioLinkResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_GetAvailableStatisticNames_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableStatisticNames" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_GetAvailableStatisticNames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableStatisticNamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_GetStatistic_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatistic" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_GetStatistic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatisticResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_PaymentPrepare_InputMessage">
+    <wsdl:part name="parameters" element="tns:PaymentPrepare" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_PaymentPrepare_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PaymentPrepareResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_PaymentDoAction_InputMessage">
+    <wsdl:part name="parameters" element="tns:PaymentDoAction" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_PaymentDoAction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PaymentDoActionResponse" />
+  </wsdl:message>
   <wsdl:message name="IWebService_DigestGenerateRequest_InputMessage">
     <wsdl:part name="parameters" element="tns:DigestGenerateRequest" />
   </wsdl:message>
@@ -393,49 +435,35 @@
   <wsdl:message name="IWebService_GetUserKeys_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUserKeysResponse" />
   </wsdl:message>
-  <wsdl:message name="IWebService_AddUserKey_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddUserKey" />
-  </wsdl:message>
-  <wsdl:message name="IWebService_AddUserKey_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddUserKeyResponse" />
-  </wsdl:message>
-  <wsdl:message name="IWebService_RemoveUserKey_InputMessage">
-    <wsdl:part name="parameters" element="tns:RemoveUserKey" />
-  </wsdl:message>
-  <wsdl:message name="IWebService_RemoveUserKey_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RemoveUserKeyResponse" />
-  </wsdl:message>
-  <wsdl:message name="IWebService_GetUserVisualStudioLink_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetUserVisualStudioLink" />
-  </wsdl:message>
-  <wsdl:message name="IWebService_GetUserVisualStudioLink_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetUserVisualStudioLinkResponse" />
-  </wsdl:message>
-  <wsdl:message name="IWebService_GetAvailableStatisticNames_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAvailableStatisticNames" />
-  </wsdl:message>
-  <wsdl:message name="IWebService_GetAvailableStatisticNames_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAvailableStatisticNamesResponse" />
-  </wsdl:message>
-  <wsdl:message name="IWebService_GetStatistic_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetStatistic" />
-  </wsdl:message>
-  <wsdl:message name="IWebService_GetStatistic_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetStatisticResponse" />
-  </wsdl:message>
-  <wsdl:message name="IWebService_PaymentPrepare_InputMessage">
-    <wsdl:part name="parameters" element="tns:PaymentPrepare" />
-  </wsdl:message>
-  <wsdl:message name="IWebService_PaymentPrepare_OutputMessage">
-    <wsdl:part name="parameters" element="tns:PaymentPrepareResponse" />
-  </wsdl:message>
-  <wsdl:message name="IWebService_PaymentDoAction_InputMessage">
-    <wsdl:part name="parameters" element="tns:PaymentDoAction" />
-  </wsdl:message>
-  <wsdl:message name="IWebService_PaymentDoAction_OutputMessage">
-    <wsdl:part name="parameters" element="tns:PaymentDoActionResponse" />
-  </wsdl:message>
   <wsdl:portType name="IWebService">
+    <wsdl:operation name="AddUserKey">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/AddUserKey" message="tns:IWebService_AddUserKey_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/AddUserKeyResponse" message="tns:IWebService_AddUserKey_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserKey">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/RemoveUserKey" message="tns:IWebService_RemoveUserKey_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/RemoveUserKeyResponse" message="tns:IWebService_RemoveUserKey_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserVisualStudioLink">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetUserVisualStudioLink" message="tns:IWebService_GetUserVisualStudioLink_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetUserVisualStudioLinkResponse" message="tns:IWebService_GetUserVisualStudioLink_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableStatisticNames">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetAvailableStatisticNames" message="tns:IWebService_GetAvailableStatisticNames_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetAvailableStatisticNamesResponse" message="tns:IWebService_GetAvailableStatisticNames_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatistic">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetStatistic" message="tns:IWebService_GetStatistic_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetStatisticResponse" message="tns:IWebService_GetStatistic_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PaymentPrepare">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/PaymentPrepare" message="tns:IWebService_PaymentPrepare_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/PaymentPrepareResponse" message="tns:IWebService_PaymentPrepare_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PaymentDoAction">
+      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/PaymentDoAction" message="tns:IWebService_PaymentDoAction_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/PaymentDoActionResponse" message="tns:IWebService_PaymentDoAction_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="DigestGenerateRequest">
       <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/DigestGenerateRequest" message="tns:IWebService_DigestGenerateRequest_InputMessage" />
       <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/DigestGenerateRequestResponse" message="tns:IWebService_DigestGenerateRequest_OutputMessage" />
@@ -691,34 +719,6 @@
     <wsdl:operation name="GetUserKeys">
       <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetUserKeys" message="tns:IWebService_GetUserKeys_InputMessage" />
       <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetUserKeysResponse" message="tns:IWebService_GetUserKeys_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="AddUserKey">
-      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/AddUserKey" message="tns:IWebService_AddUserKey_InputMessage" />
-      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/AddUserKeyResponse" message="tns:IWebService_AddUserKey_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="RemoveUserKey">
-      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/RemoveUserKey" message="tns:IWebService_RemoveUserKey_InputMessage" />
-      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/RemoveUserKeyResponse" message="tns:IWebService_RemoveUserKey_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetUserVisualStudioLink">
-      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetUserVisualStudioLink" message="tns:IWebService_GetUserVisualStudioLink_InputMessage" />
-      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetUserVisualStudioLinkResponse" message="tns:IWebService_GetUserVisualStudioLink_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetAvailableStatisticNames">
-      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetAvailableStatisticNames" message="tns:IWebService_GetAvailableStatisticNames_InputMessage" />
-      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetAvailableStatisticNamesResponse" message="tns:IWebService_GetAvailableStatisticNames_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetStatistic">
-      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetStatistic" message="tns:IWebService_GetStatistic_InputMessage" />
-      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/GetStatisticResponse" message="tns:IWebService_GetStatistic_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="PaymentPrepare">
-      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/PaymentPrepare" message="tns:IWebService_PaymentPrepare_InputMessage" />
-      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/PaymentPrepareResponse" message="tns:IWebService_PaymentPrepare_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="PaymentDoAction">
-      <wsdl:input wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/PaymentDoAction" message="tns:IWebService_PaymentDoAction_InputMessage" />
-      <wsdl:output wsaw:Action="http://api.symbolsource.org/schemas/webServices/IWebService/PaymentDoActionResponse" message="tns:IWebService_PaymentDoAction_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>
