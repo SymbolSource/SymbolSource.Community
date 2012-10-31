@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>SymbolSource.Integration.NuGet.PackageExplorer</id>
+    <id>SymbolSource.Integration.NuGet.CommandLine</id>
     <version>1.3.3</version>
     <authors>SymbolSource</authors>
     <owners>SymbolSource</owners>
@@ -13,10 +13,11 @@
     </description>
   </metadata>
   <files>
-    <file src="Sources\SymbolSource.Integration.NuGet.PackageExplorer\bin\Debug\*.dll" target="lib\net40" />
-    <file src="Sources\SymbolSource.Integration.NuGet.PackageExplorer\bin\Debug\*.pdb" target="lib\net40" />
+    <file src="Sources\SymbolSource.Integration.NuGet.CommandLine\*.ps1" target="tools" />
+    <file src="Sources\SymbolSource.Integration.NuGet.CommandLine\bin\Debug\*.dll" target="lib\net40" />
+    <file src="Sources\SymbolSource.Integration.NuGet.CommandLine\bin\Debug\*.pdb" target="lib\net40" />
     <file src="Sources\SymbolSource.Integration.NuGet\**.cs" target="src\SymbolSource.Integration.NuGet" />
-    <file src="Sources\SymbolSource.Integration.NuGet.PackageExplorer\**.cs" target="src\SymbolSource.Integration.NuGet.PackageExplorer" />
+    <file src="Sources\SymbolSource.Integration.NuGet.CommandLine\**.cs" target="src\SymbolSource.Integration.NuGet.CommandLine" />
     <file src="Sources\SymbolSource.Processing.Basic\**.cs" target="src\SymbolSource.Processing.Basic" />
   </files>
 </package>

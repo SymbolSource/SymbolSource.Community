@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NuGet;
 
-namespace SymbolSource.Integration.NuGet.PackageExplorer
+namespace SymbolSource.Integration.NuGet
 {
     public static class PackageHelper
     {
