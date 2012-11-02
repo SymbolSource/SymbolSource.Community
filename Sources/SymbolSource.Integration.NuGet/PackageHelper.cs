@@ -7,7 +7,8 @@ namespace SymbolSource.Integration.NuGet
         public static bool IsBinaryFile(IPackageFile file)
         {
             return file.Path.EndsWith(".dll", StringComparison.CurrentCultureIgnoreCase)
-                   || file.Path.EndsWith(".exe", StringComparison.CurrentCultureIgnoreCase);
+                   || file.Path.EndsWith(".exe", StringComparison.CurrentCultureIgnoreCase)
+                   || file.Path.EndsWith(".winmd", StringComparison.CurrentCultureIgnoreCase);
         }
 
         public static bool IsSymbolFile(IPackageFile file)
