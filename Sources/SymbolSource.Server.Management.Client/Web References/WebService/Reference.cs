@@ -29,6 +29,16 @@ namespace SymbolSource.Server.Management.Client {
     [System.Web.Services.WebServiceBindingAttribute(Name="WebServiceSoap", Namespace="http://api.symbolsource.org/schemas/webServices")]
     public partial class WebService : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
+        private System.Threading.SendOrPostCallback GetProjectsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CreateOrUpdateProjectOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CreateProjectOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdateProjectOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback DeleteProjectOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetVersionsOperationCompleted;
         
         private System.Threading.SendOrPostCallback CreateOrUpdateVersionOperationCompleted;
@@ -161,16 +171,6 @@ namespace SymbolSource.Server.Management.Client {
         
         private System.Threading.SendOrPostCallback DigestValidateResponseOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetProjectsOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback CreateOrUpdateProjectOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback CreateProjectOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback UpdateProjectOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback DeleteProjectOperationCompleted;
-        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -208,6 +208,21 @@ namespace SymbolSource.Server.Management.Client {
                 this.useDefaultCredentialsSetExplicitly = true;
             }
         }
+        
+        /// <remarks/>
+        public event GetProjectsCompletedEventHandler GetProjectsCompleted;
+        
+        /// <remarks/>
+        public event CreateOrUpdateProjectCompletedEventHandler CreateOrUpdateProjectCompleted;
+        
+        /// <remarks/>
+        public event CreateProjectCompletedEventHandler CreateProjectCompleted;
+        
+        /// <remarks/>
+        public event UpdateProjectCompletedEventHandler UpdateProjectCompleted;
+        
+        /// <remarks/>
+        public event DeleteProjectCompletedEventHandler DeleteProjectCompleted;
         
         /// <remarks/>
         public event GetVersionsCompletedEventHandler GetVersionsCompleted;
@@ -408,19 +423,159 @@ namespace SymbolSource.Server.Management.Client {
         public event DigestValidateResponseCompletedEventHandler DigestValidateResponseCompleted;
         
         /// <remarks/>
-        public event GetProjectsCompletedEventHandler GetProjectsCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetProjects", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Project[] GetProjects(Caller caller, ref Repository repository) {
+            object[] results = this.Invoke("GetProjects", new object[] {
+                        caller,
+                        repository});
+            repository = ((Repository)(results[1]));
+            return ((Project[])(results[0]));
+        }
         
         /// <remarks/>
-        public event CreateOrUpdateProjectCompletedEventHandler CreateOrUpdateProjectCompleted;
+        public void GetProjectsAsync(Caller caller, Repository repository) {
+            this.GetProjectsAsync(caller, repository, null);
+        }
         
         /// <remarks/>
-        public event CreateProjectCompletedEventHandler CreateProjectCompleted;
+        public void GetProjectsAsync(Caller caller, Repository repository, object userState) {
+            if ((this.GetProjectsOperationCompleted == null)) {
+                this.GetProjectsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetProjectsOperationCompleted);
+            }
+            this.InvokeAsync("GetProjects", new object[] {
+                        caller,
+                        repository}, this.GetProjectsOperationCompleted, userState);
+        }
+        
+        private void OnGetProjectsOperationCompleted(object arg) {
+            if ((this.GetProjectsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetProjectsCompleted(this, new GetProjectsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
-        public event UpdateProjectCompletedEventHandler UpdateProjectCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/CreateOrUpdateProject", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void CreateOrUpdateProject(Caller caller, ref Project project) {
+            object[] results = this.Invoke("CreateOrUpdateProject", new object[] {
+                        caller,
+                        project});
+            project = ((Project)(results[0]));
+        }
         
         /// <remarks/>
-        public event DeleteProjectCompletedEventHandler DeleteProjectCompleted;
+        public void CreateOrUpdateProjectAsync(Caller caller, Project project) {
+            this.CreateOrUpdateProjectAsync(caller, project, null);
+        }
+        
+        /// <remarks/>
+        public void CreateOrUpdateProjectAsync(Caller caller, Project project, object userState) {
+            if ((this.CreateOrUpdateProjectOperationCompleted == null)) {
+                this.CreateOrUpdateProjectOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateOrUpdateProjectOperationCompleted);
+            }
+            this.InvokeAsync("CreateOrUpdateProject", new object[] {
+                        caller,
+                        project}, this.CreateOrUpdateProjectOperationCompleted, userState);
+        }
+        
+        private void OnCreateOrUpdateProjectOperationCompleted(object arg) {
+            if ((this.CreateOrUpdateProjectCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CreateOrUpdateProjectCompleted(this, new CreateOrUpdateProjectCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/CreateProject", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void CreateProject(Caller caller, ref Project project) {
+            object[] results = this.Invoke("CreateProject", new object[] {
+                        caller,
+                        project});
+            project = ((Project)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CreateProjectAsync(Caller caller, Project project) {
+            this.CreateProjectAsync(caller, project, null);
+        }
+        
+        /// <remarks/>
+        public void CreateProjectAsync(Caller caller, Project project, object userState) {
+            if ((this.CreateProjectOperationCompleted == null)) {
+                this.CreateProjectOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateProjectOperationCompleted);
+            }
+            this.InvokeAsync("CreateProject", new object[] {
+                        caller,
+                        project}, this.CreateProjectOperationCompleted, userState);
+        }
+        
+        private void OnCreateProjectOperationCompleted(object arg) {
+            if ((this.CreateProjectCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CreateProjectCompleted(this, new CreateProjectCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/UpdateProject", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void UpdateProject(Caller caller, ref Project project) {
+            object[] results = this.Invoke("UpdateProject", new object[] {
+                        caller,
+                        project});
+            project = ((Project)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UpdateProjectAsync(Caller caller, Project project) {
+            this.UpdateProjectAsync(caller, project, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateProjectAsync(Caller caller, Project project, object userState) {
+            if ((this.UpdateProjectOperationCompleted == null)) {
+                this.UpdateProjectOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateProjectOperationCompleted);
+            }
+            this.InvokeAsync("UpdateProject", new object[] {
+                        caller,
+                        project}, this.UpdateProjectOperationCompleted, userState);
+        }
+        
+        private void OnUpdateProjectOperationCompleted(object arg) {
+            if ((this.UpdateProjectCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateProjectCompleted(this, new UpdateProjectCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/DeleteProject", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void DeleteProject(Caller caller, Project project) {
+            this.Invoke("DeleteProject", new object[] {
+                        caller,
+                        project});
+        }
+        
+        /// <remarks/>
+        public void DeleteProjectAsync(Caller caller, Project project) {
+            this.DeleteProjectAsync(caller, project, null);
+        }
+        
+        /// <remarks/>
+        public void DeleteProjectAsync(Caller caller, Project project, object userState) {
+            if ((this.DeleteProjectOperationCompleted == null)) {
+                this.DeleteProjectOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteProjectOperationCompleted);
+            }
+            this.InvokeAsync("DeleteProject", new object[] {
+                        caller,
+                        project}, this.DeleteProjectOperationCompleted, userState);
+        }
+        
+        private void OnDeleteProjectOperationCompleted(object arg) {
+            if ((this.DeleteProjectCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DeleteProjectCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetVersions", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -2359,25 +2514,29 @@ namespace SymbolSource.Server.Management.Client {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/LogSourceFileFound", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void LogSourceFileFound(Caller caller, SourceFile sourceFile) {
+        public void LogSourceFileFound(Caller caller, SourceFile sourceFile, string computerName, string computorUser) {
             this.Invoke("LogSourceFileFound", new object[] {
                         caller,
-                        sourceFile});
+                        sourceFile,
+                        computerName,
+                        computorUser});
         }
         
         /// <remarks/>
-        public void LogSourceFileFoundAsync(Caller caller, SourceFile sourceFile) {
-            this.LogSourceFileFoundAsync(caller, sourceFile, null);
+        public void LogSourceFileFoundAsync(Caller caller, SourceFile sourceFile, string computerName, string computorUser) {
+            this.LogSourceFileFoundAsync(caller, sourceFile, computerName, computorUser, null);
         }
         
         /// <remarks/>
-        public void LogSourceFileFoundAsync(Caller caller, SourceFile sourceFile, object userState) {
+        public void LogSourceFileFoundAsync(Caller caller, SourceFile sourceFile, string computerName, string computorUser, object userState) {
             if ((this.LogSourceFileFoundOperationCompleted == null)) {
                 this.LogSourceFileFoundOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLogSourceFileFoundOperationCompleted);
             }
             this.InvokeAsync("LogSourceFileFound", new object[] {
                         caller,
-                        sourceFile}, this.LogSourceFileFoundOperationCompleted, userState);
+                        sourceFile,
+                        computerName,
+                        computorUser}, this.LogSourceFileFoundOperationCompleted, userState);
         }
         
         private void OnLogSourceFileFoundOperationCompleted(object arg) {
@@ -2512,161 +2671,6 @@ namespace SymbolSource.Server.Management.Client {
             if ((this.DigestValidateResponseCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.DigestValidateResponseCompleted(this, new DigestValidateResponseCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetProjects", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Project[] GetProjects(Caller caller, ref Repository repository) {
-            object[] results = this.Invoke("GetProjects", new object[] {
-                        caller,
-                        repository});
-            repository = ((Repository)(results[1]));
-            return ((Project[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetProjectsAsync(Caller caller, Repository repository) {
-            this.GetProjectsAsync(caller, repository, null);
-        }
-        
-        /// <remarks/>
-        public void GetProjectsAsync(Caller caller, Repository repository, object userState) {
-            if ((this.GetProjectsOperationCompleted == null)) {
-                this.GetProjectsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetProjectsOperationCompleted);
-            }
-            this.InvokeAsync("GetProjects", new object[] {
-                        caller,
-                        repository}, this.GetProjectsOperationCompleted, userState);
-        }
-        
-        private void OnGetProjectsOperationCompleted(object arg) {
-            if ((this.GetProjectsCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetProjectsCompleted(this, new GetProjectsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/CreateOrUpdateProject", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void CreateOrUpdateProject(Caller caller, ref Project project) {
-            object[] results = this.Invoke("CreateOrUpdateProject", new object[] {
-                        caller,
-                        project});
-            project = ((Project)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void CreateOrUpdateProjectAsync(Caller caller, Project project) {
-            this.CreateOrUpdateProjectAsync(caller, project, null);
-        }
-        
-        /// <remarks/>
-        public void CreateOrUpdateProjectAsync(Caller caller, Project project, object userState) {
-            if ((this.CreateOrUpdateProjectOperationCompleted == null)) {
-                this.CreateOrUpdateProjectOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateOrUpdateProjectOperationCompleted);
-            }
-            this.InvokeAsync("CreateOrUpdateProject", new object[] {
-                        caller,
-                        project}, this.CreateOrUpdateProjectOperationCompleted, userState);
-        }
-        
-        private void OnCreateOrUpdateProjectOperationCompleted(object arg) {
-            if ((this.CreateOrUpdateProjectCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.CreateOrUpdateProjectCompleted(this, new CreateOrUpdateProjectCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/CreateProject", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void CreateProject(Caller caller, ref Project project) {
-            object[] results = this.Invoke("CreateProject", new object[] {
-                        caller,
-                        project});
-            project = ((Project)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void CreateProjectAsync(Caller caller, Project project) {
-            this.CreateProjectAsync(caller, project, null);
-        }
-        
-        /// <remarks/>
-        public void CreateProjectAsync(Caller caller, Project project, object userState) {
-            if ((this.CreateProjectOperationCompleted == null)) {
-                this.CreateProjectOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateProjectOperationCompleted);
-            }
-            this.InvokeAsync("CreateProject", new object[] {
-                        caller,
-                        project}, this.CreateProjectOperationCompleted, userState);
-        }
-        
-        private void OnCreateProjectOperationCompleted(object arg) {
-            if ((this.CreateProjectCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.CreateProjectCompleted(this, new CreateProjectCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/UpdateProject", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void UpdateProject(Caller caller, ref Project project) {
-            object[] results = this.Invoke("UpdateProject", new object[] {
-                        caller,
-                        project});
-            project = ((Project)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void UpdateProjectAsync(Caller caller, Project project) {
-            this.UpdateProjectAsync(caller, project, null);
-        }
-        
-        /// <remarks/>
-        public void UpdateProjectAsync(Caller caller, Project project, object userState) {
-            if ((this.UpdateProjectOperationCompleted == null)) {
-                this.UpdateProjectOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateProjectOperationCompleted);
-            }
-            this.InvokeAsync("UpdateProject", new object[] {
-                        caller,
-                        project}, this.UpdateProjectOperationCompleted, userState);
-        }
-        
-        private void OnUpdateProjectOperationCompleted(object arg) {
-            if ((this.UpdateProjectCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.UpdateProjectCompleted(this, new UpdateProjectCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/DeleteProject", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void DeleteProject(Caller caller, Project project) {
-            this.Invoke("DeleteProject", new object[] {
-                        caller,
-                        project});
-        }
-        
-        /// <remarks/>
-        public void DeleteProjectAsync(Caller caller, Project project) {
-            this.DeleteProjectAsync(caller, project, null);
-        }
-        
-        /// <remarks/>
-        public void DeleteProjectAsync(Caller caller, Project project, object userState) {
-            if ((this.DeleteProjectOperationCompleted == null)) {
-                this.DeleteProjectOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteProjectOperationCompleted);
-            }
-            this.InvokeAsync("DeleteProject", new object[] {
-                        caller,
-                        project}, this.DeleteProjectOperationCompleted, userState);
-        }
-        
-        private void OnDeleteProjectOperationCompleted(object arg) {
-            if ((this.DeleteProjectCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.DeleteProjectCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4864,6 +4868,122 @@ namespace SymbolSource.Server.Management.Client {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetProjectsCompletedEventHandler(object sender, GetProjectsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetProjectsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetProjectsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Project[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Project[])(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public Repository repository {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Repository)(this.results[1]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void CreateOrUpdateProjectCompletedEventHandler(object sender, CreateOrUpdateProjectCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CreateOrUpdateProjectCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CreateOrUpdateProjectCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Project project {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Project)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void CreateProjectCompletedEventHandler(object sender, CreateProjectCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CreateProjectCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CreateProjectCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Project project {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Project)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void UpdateProjectCompletedEventHandler(object sender, UpdateProjectCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UpdateProjectCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UpdateProjectCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Project project {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Project)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void DeleteProjectCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
     public delegate void GetVersionsCompletedEventHandler(object sender, GetVersionsCompletedEventArgs e);
     
     /// <remarks/>
@@ -6229,122 +6349,6 @@ namespace SymbolSource.Server.Management.Client {
             }
         }
     }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void GetProjectsCompletedEventHandler(object sender, GetProjectsCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetProjectsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetProjectsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public Project[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Project[])(this.results[0]));
-            }
-        }
-        
-        /// <remarks/>
-        public Repository repository {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Repository)(this.results[1]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void CreateOrUpdateProjectCompletedEventHandler(object sender, CreateOrUpdateProjectCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class CreateOrUpdateProjectCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal CreateOrUpdateProjectCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public Project project {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Project)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void CreateProjectCompletedEventHandler(object sender, CreateProjectCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class CreateProjectCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal CreateProjectCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public Project project {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Project)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void UpdateProjectCompletedEventHandler(object sender, UpdateProjectCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class UpdateProjectCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal UpdateProjectCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public Project project {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Project)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void DeleteProjectCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

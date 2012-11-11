@@ -363,7 +363,7 @@ namespace SymbolSource.Server.Management.Client.Remoting
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
 
-        public virtual void LogSourceFileFound(SourceFile sourceFile)
+        public virtual void LogSourceFileFound(SourceFile sourceFile, string computerName, string computerUser)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
