@@ -199,6 +199,10 @@ namespace SymbolSource.Gateway.NuGet.Core
 
         private IQueryable<Package> GetPackages(PackageFilter filter, Func<Version, bool> filter2)
         {
+            if (Repository.Company == "Public" && Repository.Name == "NuGet")
+                throw new Exception("Gettting packages from the NuGet feed is temporarily disabled. But you don't need it for debugging!");
+
+
             var repository = Repository;
             var versions = Backend.GetPackages(ref repository, ref filter, "NuGet")
                 .AsEnumerable();
