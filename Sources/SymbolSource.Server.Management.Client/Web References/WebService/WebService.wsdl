@@ -2,11 +2,11 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://api.symbolsource.org/schemas/webServices" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://api.symbolsource.org/schemas/webServices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://api.symbolsource.org/schemas/webServices">
-      <s:element name="GetProjects">
+      <s:element name="GetVersions">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="repository" type="tns:Repository" />
+            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -18,12 +18,13 @@
           <s:element minOccurs="0" maxOccurs="1" name="KeyType" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="Repository">
+      <s:complexType name="Project">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Metadata" type="tns:ArrayOfMetadataEntry" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanCreateProject" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanCreateVersion" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="CanEdit" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="CanDelete" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="CanGrantPermission" type="s:boolean" />
@@ -40,95 +41,6 @@
           <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:element name="GetProjectsResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetProjectsResult" type="tns:ArrayOfProject" />
-            <s:element minOccurs="0" maxOccurs="1" name="repository" type="tns:Repository" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfProject">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Project" nillable="true" type="tns:Project" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Project">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Repository" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Metadata" type="tns:ArrayOfMetadataEntry" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanCreateVersion" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanEdit" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanDelete" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CanGrantPermission" type="s:boolean" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="CreateOrUpdateProject">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="CreateOrUpdateProjectResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="CreateProject">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="CreateProjectResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="UpdateProject">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="UpdateProjectResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="DeleteProject">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="DeleteProjectResponse">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetVersions">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
-            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="GetVersionsResponse">
         <s:complexType>
           <s:sequence>
@@ -257,6 +169,17 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="Repository">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Metadata" type="tns:ArrayOfMetadataEntry" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanCreateProject" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanEdit" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanDelete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanGrantPermission" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
       <s:complexType name="PackageFilter">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="1" name="Where" type="s:string" />
@@ -666,17 +589,13 @@
       <s:element name="PaymentDoActionResponse">
         <s:complexType />
       </s:element>
-      <s:element name="GetPlansByType">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
-          </s:sequence>
-        </s:complexType>
+      <s:element name="GetPlans">
+        <s:complexType />
       </s:element>
-      <s:element name="GetPlansByTypeResponse">
+      <s:element name="GetPlansResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetPlansByTypeResult" type="tns:ArrayOfPlan" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetPlansResult" type="tns:ArrayOfPlan" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -950,6 +869,8 @@
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Metadata" type="tns:ArrayOfMetadataEntry" />
+          <s:element minOccurs="0" maxOccurs="1" name="Plan" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValidDate" type="s:dateTime" />
           <s:element minOccurs="1" maxOccurs="1" name="CanCreateRepository" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="CanGrantPermission" type="s:boolean" />
         </s:sequence>
@@ -1445,38 +1366,85 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetProjects">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="repository" type="tns:Repository" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProjectsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProjectsResult" type="tns:ArrayOfProject" />
+            <s:element minOccurs="0" maxOccurs="1" name="repository" type="tns:Repository" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Project" nillable="true" type="tns:Project" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateOrUpdateProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateOrUpdateProjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateProjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateProjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caller" type="tns:Caller" />
+            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteProjectResponse">
+        <s:complexType />
+      </s:element>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="GetProjectsSoapIn">
-    <wsdl:part name="parameters" element="tns:GetProjects" />
-  </wsdl:message>
-  <wsdl:message name="GetProjectsSoapOut">
-    <wsdl:part name="parameters" element="tns:GetProjectsResponse" />
-  </wsdl:message>
-  <wsdl:message name="CreateOrUpdateProjectSoapIn">
-    <wsdl:part name="parameters" element="tns:CreateOrUpdateProject" />
-  </wsdl:message>
-  <wsdl:message name="CreateOrUpdateProjectSoapOut">
-    <wsdl:part name="parameters" element="tns:CreateOrUpdateProjectResponse" />
-  </wsdl:message>
-  <wsdl:message name="CreateProjectSoapIn">
-    <wsdl:part name="parameters" element="tns:CreateProject" />
-  </wsdl:message>
-  <wsdl:message name="CreateProjectSoapOut">
-    <wsdl:part name="parameters" element="tns:CreateProjectResponse" />
-  </wsdl:message>
-  <wsdl:message name="UpdateProjectSoapIn">
-    <wsdl:part name="parameters" element="tns:UpdateProject" />
-  </wsdl:message>
-  <wsdl:message name="UpdateProjectSoapOut">
-    <wsdl:part name="parameters" element="tns:UpdateProjectResponse" />
-  </wsdl:message>
-  <wsdl:message name="DeleteProjectSoapIn">
-    <wsdl:part name="parameters" element="tns:DeleteProject" />
-  </wsdl:message>
-  <wsdl:message name="DeleteProjectSoapOut">
-    <wsdl:part name="parameters" element="tns:DeleteProjectResponse" />
-  </wsdl:message>
   <wsdl:message name="GetVersionsSoapIn">
     <wsdl:part name="parameters" element="tns:GetVersions" />
   </wsdl:message>
@@ -1627,11 +1595,11 @@
   <wsdl:message name="PaymentDoActionSoapOut">
     <wsdl:part name="parameters" element="tns:PaymentDoActionResponse" />
   </wsdl:message>
-  <wsdl:message name="GetPlansByTypeSoapIn">
-    <wsdl:part name="parameters" element="tns:GetPlansByType" />
+  <wsdl:message name="GetPlansSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPlans" />
   </wsdl:message>
-  <wsdl:message name="GetPlansByTypeSoapOut">
-    <wsdl:part name="parameters" element="tns:GetPlansByTypeResponse" />
+  <wsdl:message name="GetPlansSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPlansResponse" />
   </wsdl:message>
   <wsdl:message name="RemovePlanSoapIn">
     <wsdl:part name="parameters" element="tns:RemovePlan" />
@@ -1873,27 +1841,37 @@
   <wsdl:message name="DigestValidateResponseSoapOut">
     <wsdl:part name="parameters" element="tns:DigestValidateResponseResponse" />
   </wsdl:message>
+  <wsdl:message name="GetProjectsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProjects" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateOrUpdateProjectSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateOrUpdateProject" />
+  </wsdl:message>
+  <wsdl:message name="CreateOrUpdateProjectSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateOrUpdateProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateProjectSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateProject" />
+  </wsdl:message>
+  <wsdl:message name="CreateProjectSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProjectSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateProject" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProjectSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProjectSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteProject" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProjectSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteProjectResponse" />
+  </wsdl:message>
   <wsdl:portType name="WebServiceSoap">
-    <wsdl:operation name="GetProjects">
-      <wsdl:input message="tns:GetProjectsSoapIn" />
-      <wsdl:output message="tns:GetProjectsSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="CreateOrUpdateProject">
-      <wsdl:input message="tns:CreateOrUpdateProjectSoapIn" />
-      <wsdl:output message="tns:CreateOrUpdateProjectSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="CreateProject">
-      <wsdl:input message="tns:CreateProjectSoapIn" />
-      <wsdl:output message="tns:CreateProjectSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="UpdateProject">
-      <wsdl:input message="tns:UpdateProjectSoapIn" />
-      <wsdl:output message="tns:UpdateProjectSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="DeleteProject">
-      <wsdl:input message="tns:DeleteProjectSoapIn" />
-      <wsdl:output message="tns:DeleteProjectSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="GetVersions">
       <wsdl:input message="tns:GetVersionsSoapIn" />
       <wsdl:output message="tns:GetVersionsSoapOut" />
@@ -1994,9 +1972,9 @@
       <wsdl:input message="tns:PaymentDoActionSoapIn" />
       <wsdl:output message="tns:PaymentDoActionSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetPlansByType">
-      <wsdl:input message="tns:GetPlansByTypeSoapIn" />
-      <wsdl:output message="tns:GetPlansByTypeSoapOut" />
+    <wsdl:operation name="GetPlans">
+      <wsdl:input message="tns:GetPlansSoapIn" />
+      <wsdl:output message="tns:GetPlansSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="RemovePlan">
       <wsdl:input message="tns:RemovePlanSoapIn" />
@@ -2158,54 +2136,29 @@
       <wsdl:input message="tns:DigestValidateResponseSoapIn" />
       <wsdl:output message="tns:DigestValidateResponseSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetProjects">
+      <wsdl:input message="tns:GetProjectsSoapIn" />
+      <wsdl:output message="tns:GetProjectsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrUpdateProject">
+      <wsdl:input message="tns:CreateOrUpdateProjectSoapIn" />
+      <wsdl:output message="tns:CreateOrUpdateProjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateProject">
+      <wsdl:input message="tns:CreateProjectSoapIn" />
+      <wsdl:output message="tns:CreateProjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProject">
+      <wsdl:input message="tns:UpdateProjectSoapIn" />
+      <wsdl:output message="tns:UpdateProjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProject">
+      <wsdl:input message="tns:DeleteProjectSoapIn" />
+      <wsdl:output message="tns:DeleteProjectSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetProjects">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetProjects" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CreateOrUpdateProject">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateOrUpdateProject" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CreateProject">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateProject" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateProject">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/UpdateProject" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DeleteProject">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/DeleteProject" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetVersions">
       <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetVersions" style="document" />
       <wsdl:input>
@@ -2431,8 +2384,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPlansByType">
-      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetPlansByType" style="document" />
+    <wsdl:operation name="GetPlans">
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetPlans" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2800,54 +2753,54 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
-    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetProjects">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetProjects" style="document" />
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetProjects" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="CreateOrUpdateProject">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateOrUpdateProject" style="document" />
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateOrUpdateProject" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="CreateProject">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateProject" style="document" />
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateProject" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="UpdateProject">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/UpdateProject" style="document" />
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/UpdateProject" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="DeleteProject">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/DeleteProject" style="document" />
+      <soap:operation soapAction="http://api.symbolsource.org/schemas/webServices/DeleteProject" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetVersions">
       <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetVersions" style="document" />
       <wsdl:input>
@@ -3073,8 +3026,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPlansByType">
-      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetPlansByType" style="document" />
+    <wsdl:operation name="GetPlans">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetPlans" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -3435,6 +3388,51 @@
     </wsdl:operation>
     <wsdl:operation name="DigestValidateResponse">
       <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/DigestValidateResponse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjects">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/GetProjects" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrUpdateProject">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateOrUpdateProject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateProject">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/CreateProject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProject">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/UpdateProject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProject">
+      <soap12:operation soapAction="http://api.symbolsource.org/schemas/webServices/DeleteProject" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

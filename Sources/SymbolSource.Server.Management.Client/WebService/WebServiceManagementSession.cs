@@ -350,9 +350,9 @@ namespace SymbolSource.Server.Management.Client
             service.PaymentDoAction(caller, plan, token);
         }
 
-        public virtual Plan[] GetPlansByType(string type)
+        public virtual Plan[] GetPlans()
         {
-            return service.GetPlansByType(type);
+            return service.GetPlans();
         }
 
         public virtual void RemovePlan(string name, string type)

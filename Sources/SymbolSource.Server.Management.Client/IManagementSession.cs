@@ -89,7 +89,7 @@ namespace SymbolSource.Server.Management.Client
         string PaymentPrepare(string plan, string returnUrl, string cancelUrl);
         void PaymentDoAction(string plan, string token);
 
-        Plan[] GetPlansByType(string type);
+        Plan[] GetPlans();
         void RemovePlan(string name, string type);
         void CreatePlan(string name, string type, decimal monthPrice, decimal yearPrice, int userLimit, int privateRepoLimit);
     }
