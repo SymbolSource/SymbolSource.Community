@@ -14,8 +14,8 @@
   </metadata>
   <files>
     <file src="Sources\SymbolSource.Integration.NuGet.CommandLine\*.ps1" target="tools" />
-    <file src="Sources\SymbolSource.Integration.NuGet.CommandLine\bin\Debug\*.dll" target="lib\net40" />
-    <file src="Sources\SymbolSource.Integration.NuGet.CommandLine\bin\Debug\*.pdb" target="lib\net40" />
+    <file src="Sources\SymbolSource.Integration.NuGet.CommandLine\bin\Release\*.dll" target="lib\net40" />
+    <file src="Sources\SymbolSource.Integration.NuGet.CommandLine\bin\Release\*.pdb" target="lib\net40" />
     <file src="Sources\SymbolSource.Integration.NuGet\**.cs" target="src\SymbolSource.Integration.NuGet" />
     <file src="Sources\SymbolSource.Integration.NuGet.CommandLine\**.cs" target="src\SymbolSource.Integration.NuGet.CommandLine" />
     <file src="Sources\SymbolSource.Processing.Basic\**.cs" target="src\SymbolSource.Processing.Basic" />

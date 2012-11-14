@@ -13,8 +13,8 @@
     </description>
   </metadata>
   <files>
-    <file src="Sources\SymbolSource.Integration.NuGet.PackageExplorer\bin\Debug\*.dll" target="lib\net40" />
-    <file src="Sources\SymbolSource.Integration.NuGet.PackageExplorer\bin\Debug\*.pdb" target="lib\net40" />
+    <file src="Sources\SymbolSource.Integration.NuGet.PackageExplorer\bin\Release\*.dll" target="lib\net40" />
+    <file src="Sources\SymbolSource.Integration.NuGet.PackageExplorer\bin\Release\*.pdb" target="lib\net40" />
     <file src="Sources\SymbolSource.Integration.NuGet\**.cs" target="src\SymbolSource.Integration.NuGet" />
     <file src="Sources\SymbolSource.Integration.NuGet.PackageExplorer\**.cs" target="src\SymbolSource.Integration.NuGet.PackageExplorer" />
     <file src="Sources\SymbolSource.Processing.Basic\**.cs" target="src\SymbolSource.Processing.Basic" />
