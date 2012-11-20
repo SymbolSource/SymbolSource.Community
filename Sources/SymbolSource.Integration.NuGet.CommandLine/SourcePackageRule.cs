@@ -1,7 +1,7 @@
 using System.ComponentModel.Composition;
-using NuGetPackageExplorer.Types;
+using NuGet;
 
-namespace SymbolSource.Integration.NuGet.PackageExplorer
+namespace SymbolSource.Integration.NuGet.CommandLine
 {
     [Export(typeof(IPackageRule))]
     public class SourcePackageRule : PackageRuleWrapper

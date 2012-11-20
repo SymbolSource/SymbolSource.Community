@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>SymbolSource.Server.Basic</id>
-    <version>1.2.2</version>
+    <version>1.3.0</version>
     <authors>SymbolSource</authors>
     <owners>SymbolSource</owners>
     <projectUrl>http://www.symbolsource.org/Public/Blog/View/2012-03-13/Releasing_the_community_edition_of_SymbolSource</projectUrl>
@@ -23,7 +23,7 @@
       <dependency id="log4net" version="[1.2.10]"/>
       <dependency id="Microsoft.Web.Infrastructure" version="1.0.0.0" />
       <dependency id="Mono.Cecil" version="0.9.5.1" />
-      <dependency id="NuGet.Core" version="2.0.1" />
+      <dependency id="NuGet.Core" version="2.1.0" />
       <dependency id="SymbolSource.Microsoft.Cci.Metadata" version="1.0.65055.0" />
       <dependency id="WebActivator" version="1.5.1" />
     </dependencies>
@@ -32,16 +32,16 @@
     </frameworkAssemblies>
   </metadata>
   <files>
-    <file src="Sources\SymbolSource.Server.Basic\bin\Debug\SymbolSource.Server.Basic.*" target="lib\net40" />
-    <file src="Sources\SymbolSource.Gateway.Core\bin\Debug\SymbolSource.Gateway.Core.*" target="lib\net40" />
-    <file src="Sources\SymbolSource.Gateway.NuGet.Core\bin\Debug\SymbolSource.Gateway.NuGet.Core.*" target="lib\net40" />
-    <file src="Sources\SymbolSource.Gateway.OpenWrap.Core\bin\Debug\SymbolSource.Gateway.OpenWrap.Core.*" target="lib\net40" />
-    <file src="Sources\SymbolSource.Gateway.OpenWrap.Core\bin\Debug\OpenWrap.dll" target="lib\net40" />
-    <file src="Sources\SymbolSource.Gateway.OpenWrap.Core\bin\Debug\OpenRasta.Client.dll" target="lib\net40" />
-    <file src="Sources\SymbolSource.Gateway.OpenWrap.Core\bin\Debug\OpenFileSystem.dll" target="lib\net40" />
-    <file src="Sources\SymbolSource.Gateway.WinDbg.Core\bin\Debug\SymbolSource.Gateway.WinDbg.Core.*" target="lib\net40" />
-    <file src="Sources\SymbolSource.Processing.Basic\bin\Debug\SymbolSource.Processing.Basic.*" target="lib\net40" />
-    <file src="Sources\SymbolSource.Server.Management.Client\bin\Debug\SymbolSource.Server.Management.Client.*" target="lib\net40" exclude="**\*.config" />
+    <file src="Sources\SymbolSource.Server.Basic\bin\Release\SymbolSource.Server.Basic.*" target="lib\net40" />
+    <file src="Sources\SymbolSource.Gateway.Core\bin\Release\SymbolSource.Gateway.Core.*" target="lib\net40" />
+    <file src="Sources\SymbolSource.Gateway.NuGet.Core\bin\Release\SymbolSource.Gateway.NuGet.Core.*" target="lib\net40" />
+    <file src="Sources\SymbolSource.Gateway.OpenWrap.Core\bin\Release\SymbolSource.Gateway.OpenWrap.Core.*" target="lib\net40" />
+    <file src="Sources\SymbolSource.Gateway.OpenWrap.Core\bin\Release\OpenWrap.dll" target="lib\net40" />
+    <file src="Sources\SymbolSource.Gateway.OpenWrap.Core\bin\Release\OpenRasta.Client.dll" target="lib\net40" />
+    <file src="Sources\SymbolSource.Gateway.OpenWrap.Core\bin\Release\OpenFileSystem.dll" target="lib\net40" />
+    <file src="Sources\SymbolSource.Gateway.WinDbg.Core\bin\Release\SymbolSource.Gateway.WinDbg.Core.*" target="lib\net40" />
+    <file src="Sources\SymbolSource.Processing.Basic\bin\Release\SymbolSource.Processing.Basic.*" target="lib\net40" />
+    <file src="Sources\SymbolSource.Server.Management.Client\bin\Release\SymbolSource.Server.Management.Client.*" target="lib\net40" exclude="**\*.config" />
 
     <file src="Sources\**\*.cs" target="src" />
     

@@ -89,7 +89,7 @@ namespace SymbolSource.Server.Management.Client {
         
         private System.Threading.SendOrPostCallback PaymentDoActionOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetPlansByTypeOperationCompleted;
+        private System.Threading.SendOrPostCallback GetPlansOperationCompleted;
         
         private System.Threading.SendOrPostCallback RemovePlanOperationCompleted;
         
@@ -300,7 +300,7 @@ namespace SymbolSource.Server.Management.Client {
         public event PaymentDoActionCompletedEventHandler PaymentDoActionCompleted;
         
         /// <remarks/>
-        public event GetPlansByTypeCompletedEventHandler GetPlansByTypeCompleted;
+        public event GetPlansCompletedEventHandler GetPlansCompleted;
         
         /// <remarks/>
         public event RemovePlanCompletedEventHandler RemovePlanCompleted;
@@ -1373,31 +1373,29 @@ namespace SymbolSource.Server.Management.Client {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetPlansByType", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Plan[] GetPlansByType(string type) {
-            object[] results = this.Invoke("GetPlansByType", new object[] {
-                        type});
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/GetPlans", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Plan[] GetPlans() {
+            object[] results = this.Invoke("GetPlans", new object[0]);
             return ((Plan[])(results[0]));
         }
         
         /// <remarks/>
-        public void GetPlansByTypeAsync(string type) {
-            this.GetPlansByTypeAsync(type, null);
+        public void GetPlansAsync() {
+            this.GetPlansAsync(null);
         }
         
         /// <remarks/>
-        public void GetPlansByTypeAsync(string type, object userState) {
-            if ((this.GetPlansByTypeOperationCompleted == null)) {
-                this.GetPlansByTypeOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPlansByTypeOperationCompleted);
+        public void GetPlansAsync(object userState) {
+            if ((this.GetPlansOperationCompleted == null)) {
+                this.GetPlansOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPlansOperationCompleted);
             }
-            this.InvokeAsync("GetPlansByType", new object[] {
-                        type}, this.GetPlansByTypeOperationCompleted, userState);
+            this.InvokeAsync("GetPlans", new object[0], this.GetPlansOperationCompleted, userState);
         }
         
-        private void OnGetPlansByTypeOperationCompleted(object arg) {
-            if ((this.GetPlansByTypeCompleted != null)) {
+        private void OnGetPlansOperationCompleted(object arg) {
+            if ((this.GetPlansCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetPlansByTypeCompleted(this, new GetPlansByTypeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GetPlansCompleted(this, new GetPlansCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2516,25 +2514,29 @@ namespace SymbolSource.Server.Management.Client {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.symbolsource.org/schemas/webServices/LogSourceFileFound", RequestNamespace="http://api.symbolsource.org/schemas/webServices", ResponseNamespace="http://api.symbolsource.org/schemas/webServices", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void LogSourceFileFound(Caller caller, SourceFile sourceFile) {
+        public void LogSourceFileFound(Caller caller, SourceFile sourceFile, string computerName, string computorUser) {
             this.Invoke("LogSourceFileFound", new object[] {
                         caller,
-                        sourceFile});
+                        sourceFile,
+                        computerName,
+                        computorUser});
         }
         
         /// <remarks/>
-        public void LogSourceFileFoundAsync(Caller caller, SourceFile sourceFile) {
-            this.LogSourceFileFoundAsync(caller, sourceFile, null);
+        public void LogSourceFileFoundAsync(Caller caller, SourceFile sourceFile, string computerName, string computorUser) {
+            this.LogSourceFileFoundAsync(caller, sourceFile, computerName, computorUser, null);
         }
         
         /// <remarks/>
-        public void LogSourceFileFoundAsync(Caller caller, SourceFile sourceFile, object userState) {
+        public void LogSourceFileFoundAsync(Caller caller, SourceFile sourceFile, string computerName, string computorUser, object userState) {
             if ((this.LogSourceFileFoundOperationCompleted == null)) {
                 this.LogSourceFileFoundOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLogSourceFileFoundOperationCompleted);
             }
             this.InvokeAsync("LogSourceFileFound", new object[] {
                         caller,
-                        sourceFile}, this.LogSourceFileFoundOperationCompleted, userState);
+                        sourceFile,
+                        computerName,
+                        computorUser}, this.LogSourceFileFoundOperationCompleted, userState);
         }
         
         private void OnLogSourceFileFoundOperationCompleted(object arg) {
@@ -2826,6 +2828,10 @@ namespace SymbolSource.Server.Management.Client {
         
         private MetadataEntry[] metadataField;
         
+        private string planField;
+        
+        private System.DateTime validDateField;
+        
         private bool canCreateRepositoryField;
         
         private bool canGrantPermissionField;
@@ -2847,6 +2853,26 @@ namespace SymbolSource.Server.Management.Client {
             }
             set {
                 this.metadataField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Plan {
+            get {
+                return this.planField;
+            }
+            set {
+                this.planField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ValidDate {
+            get {
+                return this.validDateField;
+            }
+            set {
+                this.validDateField = value;
             }
         }
         
@@ -5556,17 +5582,17 @@ namespace SymbolSource.Server.Management.Client {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void GetPlansByTypeCompletedEventHandler(object sender, GetPlansByTypeCompletedEventArgs e);
+    public delegate void GetPlansCompletedEventHandler(object sender, GetPlansCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetPlansByTypeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetPlansCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GetPlansByTypeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal GetPlansCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

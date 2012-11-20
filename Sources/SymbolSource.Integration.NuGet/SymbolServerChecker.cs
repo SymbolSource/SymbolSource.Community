@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
-using NuGet;
 using SymbolSource.Processing.Basic;
 
-namespace SymbolSource.Integration.NuGet.PackageExplorer
+namespace SymbolSource.Integration.NuGet
 {
     public interface ISymbolServerChecker
     {

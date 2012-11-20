@@ -10,7 +10,7 @@ namespace SymbolSource.Server.Basic
             //throw new NotImplementedException();
         }
 
-        public void LogSourceFileFound(SourceFile sourceFile)
+        public void LogSourceFileFound(SourceFile sourceFile, string computerName, string computerUser)
         {
             //throw new NotImplementedException();
         }

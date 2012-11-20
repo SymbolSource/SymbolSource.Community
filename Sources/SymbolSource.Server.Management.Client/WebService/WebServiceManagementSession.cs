@@ -335,9 +335,9 @@ namespace SymbolSource.Server.Management.Client
             service.LogImageFileNotFound(caller, imageFileName, symbolHash);
         }
 
-        public virtual void LogSourceFileFound(SourceFile sourceFile)
+        public virtual void LogSourceFileFound(SourceFile sourceFile, string computerName, string computerUser)
         {
-            service.LogSourceFileFound(caller, sourceFile);
+            service.LogSourceFileFound(caller, sourceFile, computerName, computerUser);
         }
 
         public string PaymentPrepare(string plan, string returnUrl, string cancelUrl)
@@ -350,9 +350,9 @@ namespace SymbolSource.Server.Management.Client
             service.PaymentDoAction(caller, plan, token);
         }
 
-        public virtual Plan[] GetPlansByType(string type)
+        public virtual Plan[] GetPlans()
         {
-            return service.GetPlansByType(type);
+            return service.GetPlans();
         }
 
         public virtual void RemovePlan(string name, string type)
