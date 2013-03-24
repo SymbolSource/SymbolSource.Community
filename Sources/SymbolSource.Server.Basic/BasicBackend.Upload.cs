@@ -53,6 +53,9 @@ namespace SymbolSource.Server.Basic
                     if (binaryInfo.SymbolInfo == null)
                         continue;
 
+                    if (binaryInfo.SymbolHash != binaryInfo.SymbolInfo.Hash)
+                        throw new InvalidOperationException(string.Format("Incorrect hash code for '{0}' binaryHash '{1}' symbolHash '{2}'.", binaryInfo.Name, binaryInfo.SymbolHash, binaryInfo.SymbolInfo.Hash));
+
                     string binaryDirectory = Path.Combine(binariesDirectory, binaryInfo.Name, binaryInfo.SymbolHash);
                     Directory.CreateDirectory(Path.Combine(configuration.DataPath, binaryDirectory));
 
