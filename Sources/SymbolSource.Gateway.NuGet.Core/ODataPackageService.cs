@@ -206,15 +206,17 @@ namespace SymbolSource.Gateway.NuGet.Core
             var repository = Repository;
             var versions = Backend.GetPackages(ref repository, ref filter, "NuGet")
                 .AsEnumerable();
-            
-            
+
+
             if (filter.Performed)
             {
                 //If filter is performed on server side then skip skipping ;)
                 var uriTemplateMatch = OperationContext.Current.IncomingMessageProperties["UriTemplateMatchResults"] as UriTemplateMatch;
-                if (uriTemplateMatch!=null && !string.IsNullOrEmpty(uriTemplateMatch.QueryParameters["$skip"]))
+                if (uriTemplateMatch != null && !string.IsNullOrEmpty(uriTemplateMatch.QueryParameters["$skip"]))
                     uriTemplateMatch.QueryParameters["$skip"] = "0";
-
+            }
+            else
+            {
                 versions = versions.Where(filter2);
             }
 
