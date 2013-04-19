@@ -194,7 +194,8 @@ namespace SymbolSource.Gateway.NuGet.Core
             else
                 filter.Where = "(" + filterNames + ") and (Metadata['IsLatestVersion'] eq 'True')";
 
-            return GetPackages(filter, v => idValues.Contains(v.Project));
+            var queryable = GetPackages(filter, v => idValues.Contains(v.Project)).Where(v => includeAllVersions || v.IsLatestVersion);
+            return queryable;
         }
 
         private IQueryable<Package> GetPackages(PackageFilter filter, Func<Version, bool> filter2)
