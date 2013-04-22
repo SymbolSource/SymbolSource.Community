@@ -49,7 +49,7 @@ namespace SymbolSource.Gateway.Core
             using (var session = backendFactory.Create(caller))
             {
                 var filter = new PackageFilter();
-                return session.GetPackages(ref parent, ref filter, GetPackageFormat());
+                return session.GetPackages(ref parent, ref filter, GetPackageFormat(), null);
             }
         }
 
