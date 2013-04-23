@@ -6,6 +6,8 @@ using Ionic.Zip;
 using SymbolSource.Processing.Basic;
 using SymbolSource.Processing.Basic.Projects;
 using SymbolSource.Server.Management.Client;
+using File = Delimon.Win32.IO.File;
+using Directory = Delimon.Win32.IO.Directory;
 
 namespace SymbolSource.Server.Basic
 {
@@ -35,6 +37,10 @@ namespace SymbolSource.Server.Basic
             Directory.CreateDirectory(Path.Combine(configuration.DataPath, directory));
 
             string file = Path.Combine(configuration.DataPath, directory, metadata.Name + ".symbols.zip");
+            if (File.Exists(file))
+            {
+                File.Delete(file);
+            }
             File.WriteAllBytes(file, data);
 
             using (var zipMemoryStream = new MemoryStream (data))
@@ -59,13 +65,17 @@ namespace SymbolSource.Server.Basic
                     string binaryDirectory = Path.Combine(binariesDirectory, binaryInfo.Name, binaryInfo.SymbolHash);
                     Directory.CreateDirectory(Path.Combine(configuration.DataPath, binaryDirectory));
 
-                    using(var binaryInfoStream = binaryInfo.File.Stream)
-                    using (var binaryStream = File.OpenWrite(Path.Combine(configuration.DataPath, binaryDirectory, binaryInfo.Name + "." + binaryInfo.Type)))
-                        binaryInfoStream.CopyTo(binaryStream);
+                    using (var binaryInfoStream = binaryInfo.File.Stream)
+                    {
+                        using (var binaryStream = File.OpenWrite(Path.Combine(configuration.DataPath, binaryDirectory, binaryInfo.Name + "." + binaryInfo.Type)))
+                            binaryInfoStream.CopyTo(binaryStream);
+                    }
 
                     using (var symbolInfoStream = binaryInfo.SymbolInfo.File.Stream)
-                    using (var symbolStream = File.OpenWrite(Path.Combine(configuration.DataPath, binaryDirectory, binaryInfo.Name + "." + binaryInfo.SymbolInfo.Type)))
-                        symbolInfoStream.CopyTo(symbolStream);
+                    {
+                        using (var symbolStream = File.OpenWrite(Path.Combine(configuration.DataPath, binaryDirectory, binaryInfo.Name + "." + binaryInfo.SymbolInfo.Type)))
+                            symbolInfoStream.CopyTo(symbolStream);
+                    }
 
                     string indexDirectory = Path.Combine(configuration.IndexPath, binaryInfo.Name);
                     Directory.CreateDirectory(indexDirectory);
@@ -76,18 +86,27 @@ namespace SymbolSource.Server.Basic
 
                     foreach (var sourceInfo in binaryInfo.SymbolInfo.SourceInfos.Where(info => info.ActualPath != null))
                     {
-                        string sourcePath = Path.Combine(sourcesDirectory, sourceInfo.KeyPath);
+                        string sourcePath = Path.Combine(sourcesDirectory, sourceInfo.KeyPath.Replace(":/", ""));
                         Directory.CreateDirectory(Path.Combine(configuration.DataPath, Path.GetDirectoryName(sourcePath)));
 
-                        sourceIndex.Add(sourceInfo.OriginalPath + "|" + sourceInfo.KeyPath);
+                        sourceIndex.Add(sourceInfo.OriginalPath + "|" + sourceInfo.KeyPath.Replace(":/", ""));
 
                         using (var sourceInfoStream = sourceInfo.ActualPath.Stream)
-                        using (var convertedStream = SourceConverter.Convert(sourceInfoStream)) 
-                        using (var sourceStream = File.OpenWrite(Path.Combine(configuration.DataPath, sourcePath)))
-                            convertedStream.CopyTo(sourceStream);
-
-                        File.WriteAllLines(Path.Combine(configuration.DataPath, binaryDirectory, binaryInfo.Name + ".txt"), sourceIndex);
+                        {
+                            using (var convertedStream = SourceConverter.Convert(sourceInfoStream))
+                            {
+                                using (var sourceStream = File.OpenWrite(Path.Combine(configuration.DataPath, sourcePath)))
+                                    convertedStream.CopyTo(sourceStream);
+                            }
+                        }
                     }
+
+                    var txtFile = Path.Combine(configuration.DataPath, binaryDirectory, binaryInfo.Name + ".txt");
+                    if (File.Exists(txtFile))
+                    {
+                        File.Delete(txtFile);
+                    }
+                    File.WriteAllLines(txtFile, sourceIndex.ToArray());
                 }
             }
 
@@ -100,7 +119,11 @@ namespace SymbolSource.Server.Basic
             var directory = Path.Combine(configuration.DataPath, metadata.Name, metadata.Version.Name);
             Directory.CreateDirectory(directory);
 
-            var file = Path.Combine(directory, GetPackageName(packageFormat, metadata.Name, metadata.Version.Name));            
+            var file = Path.Combine(directory, GetPackageName(packageFormat, metadata.Name, metadata.Version.Name));
+            if (File.Exists(file))
+            {
+                File.Delete(file);
+            }
             File.WriteAllBytes(file, data);
         }
 

@@ -175,11 +175,11 @@ namespace SymbolSource.Server.Basic
             throw new NotImplementedException();
         }
 
-        public Version[] GetPackages(ref Repository repository, ref PackageFilter filter, string packageFormat)
+        public Version[] GetPackages(ref Repository repository, ref PackageFilter filter, string packageFormat, string projectId)
         {
             var repositoryCopy = repository;
 
-            var versions = Directory.EnumerateDirectories(configuration.DataPath)
+            var versions = (projectId == null ? Directory.EnumerateDirectories(configuration.DataPath) : Directory.EnumerateDirectories(configuration.DataPath, projectId))
                 .SelectMany(
                     projectPath =>
                     Directory.EnumerateDirectories(projectPath)
