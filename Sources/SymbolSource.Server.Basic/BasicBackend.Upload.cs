@@ -37,6 +37,10 @@ namespace SymbolSource.Server.Basic
             Directory.CreateDirectory(Path.Combine(configuration.DataPath, directory));
 
             string file = Path.Combine(configuration.DataPath, directory, metadata.Name + ".symbols.zip");
+            if (File.Exists(file))
+            {
+                File.Delete(file);
+            }
             File.WriteAllBytes(file, data);
 
             using (var zipMemoryStream = new MemoryStream (data))
@@ -97,7 +101,12 @@ namespace SymbolSource.Server.Basic
                         }
                     }
 
-                    File.WriteAllLines(Path.Combine(configuration.DataPath, binaryDirectory, binaryInfo.Name + ".txt"), sourceIndex.ToArray());
+                    var txtFile = Path.Combine(configuration.DataPath, binaryDirectory, binaryInfo.Name + ".txt");
+                    if (File.Exists(txtFile))
+                    {
+                        File.Delete(txtFile);
+                    }
+                    File.WriteAllLines(txtFile, sourceIndex.ToArray());
                 }
             }
 
@@ -110,7 +119,11 @@ namespace SymbolSource.Server.Basic
             var directory = Path.Combine(configuration.DataPath, metadata.Name, metadata.Version.Name);
             Directory.CreateDirectory(directory);
 
-            var file = Path.Combine(directory, GetPackageName(packageFormat, metadata.Name, metadata.Version.Name));            
+            var file = Path.Combine(directory, GetPackageName(packageFormat, metadata.Name, metadata.Version.Name));
+            if (File.Exists(file))
+            {
+                File.Delete(file);
+            }
             File.WriteAllBytes(file, data);
         }
 
