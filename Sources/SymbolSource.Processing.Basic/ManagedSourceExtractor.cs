@@ -25,9 +25,26 @@ namespace SymbolSource.Processing.Basic
             foreach (var obj1 in PdbFile.LoadFunctions(pdbStream, false))
                 if (obj1.lines != null)
                     foreach (var obj2 in obj1.lines)
-                        result.Add(obj2.file.name); 
-           
-            return result.Where(c => !string.IsNullOrEmpty(c)).Distinct().ToArray();
+                        result.Add(obj2.file.name);
+
+            return result.Where(IsValidSourceFileName).Distinct().ToArray();
+        }
+
+        private bool IsValidSourceFileName(string sourceFileName)
+        {
+            return !string.IsNullOrEmpty(sourceFileName) && !IsTemporaryCompilerFile(sourceFileName);
+        }
+
+        private bool IsTemporaryCompilerFile(string sourceFileName)
+        {
+            //the VB compiler will include temporary files in its pdb files.
+            //the source file name will be similar to 17d14f5c-a337-4978-8281-53493378c1071.vb.
+            //these files seem to be different from non-temporary source files in that
+            //the file name will not be rooted.
+
+            //we want to exclude these files because other processing during import assumes
+            //all source file names are absolute paths.  This seemed like the easiest place to fix the issue.
+            return !Path.IsPathRooted(sourceFileName);
         }
     }
 }
