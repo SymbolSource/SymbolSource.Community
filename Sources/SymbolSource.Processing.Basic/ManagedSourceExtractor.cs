@@ -30,12 +30,12 @@ namespace SymbolSource.Processing.Basic
             return result.Where(IsValidSourceFileName).Distinct().ToArray();
         }
 
-        private bool IsValidSourceFileName(string sourceFileName)
+        private static bool IsValidSourceFileName(string sourceFileName)
         {
             return !string.IsNullOrEmpty(sourceFileName) && !IsTemporaryCompilerFile(sourceFileName);
         }
 
-        private bool IsTemporaryCompilerFile(string sourceFileName)
+        private static bool IsTemporaryCompilerFile(string sourceFileName)
         {
             //the VB compiler will include temporary files in its pdb files.
             //the source file name will be similar to 17d14f5c-a337-4978-8281-53493378c1071.vb.
