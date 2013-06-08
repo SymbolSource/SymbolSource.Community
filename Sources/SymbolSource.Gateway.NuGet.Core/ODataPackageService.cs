@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data.Services;
 using System.Data.Services.Common;
 using System.Data.Services.Providers;
@@ -9,6 +10,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Web;
 using System.Web.Routing;
+using NuGet;
 using SymbolSource.Gateway.Core;
 using SymbolSource.Server.Management.Client;
 using Version = SymbolSource.Server.Management.Client.Version;
@@ -159,10 +161,10 @@ namespace SymbolSource.Gateway.NuGet.Core
                 else
                     filter.Where = "(substringof(Project, '" + searchTerm + "') or substringof(Name, '" + searchTerm + "'))";
                 
-                return GetPackages(filter, v => v.Project.Contains(searchTerm) || v.Name.Contains(searchTerm));
+                return GetPackages(filter, v => v.Project.Contains(searchTerm) || v.Name.Contains(searchTerm), null);
             }
 
-            return GetPackages(filter, v => true);
+            return GetPackages(filter, v => true, null);
         }
 
         [WebGet]
@@ -173,11 +175,11 @@ namespace SymbolSource.Gateway.NuGet.Core
                 filter.Where = "(" + filter.Where + ") and Project eq '" + id + "'";
             else
                 filter.Where = "Project eq '" + id + "'";
-            return GetPackages(filter, v => v.Project == id);
+            return GetPackages(filter, v => v.Project == id, id);
         }
 
         [WebGet]
-        public IQueryable<Package> GetUpdates(string packageIds, string versions, bool includePrerelease, bool includeAllVersions, string targetFrameworks)
+        public IQueryable<Package> GetUpdates(string packageIds, string versions, bool includePrerelease, bool includeAllVersions, string targetFrameworks, string versionConstraints)
         {
             if (String.IsNullOrEmpty(packageIds) || String.IsNullOrEmpty(versions))
             {
@@ -185,6 +187,35 @@ namespace SymbolSource.Gateway.NuGet.Core
             }
 
             var idValues = packageIds.Trim().Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+            var versionValues = versions.Trim().Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+            var targetFrameworkValues = String.IsNullOrEmpty(targetFrameworks) ? null :
+                                                                     targetFrameworks.Split('|').Select(VersionUtility.ParseFrameworkName).ToList();
+            var versionConstraintValues = String.IsNullOrEmpty(versionConstraints)
+                                            ? new string[idValues.Length]
+                                            : versionConstraints.Split('|');
+
+            if (idValues.Length == 0 || idValues.Length != versionValues.Length || idValues.Length != versionConstraintValues.Length)
+            {
+                // Exit early if the request looks invalid
+                return Enumerable.Empty<Package>().AsQueryable();
+            }
+
+            var semanticVersions = new Dictionary<string, SemanticVersion>();
+            var semanticVersionConstraints = new Dictionary<string, IVersionSpec>();
+            for (int i = 0; i < idValues.Length; ++i)
+            {
+                semanticVersions.Add(idValues[i], new SemanticVersion(versionValues[i]));
+                if (!String.IsNullOrEmpty(versionConstraintValues[i]))
+                {
+                    IVersionSpec versionSpec;
+                    VersionUtility.TryParseVersionSpec(versionConstraintValues[i], out versionSpec);
+                    semanticVersionConstraints.Add(idValues[i], versionSpec);
+                }
+                else
+                {
+                    semanticVersionConstraints.Add(idValues[i], null);
+                }
+            }
 
             string filterNames = string.Join(" or ", idValues.Select(i => "Project eq '" + i + "'"));
             var filter = GetFilter();
@@ -194,27 +225,44 @@ namespace SymbolSource.Gateway.NuGet.Core
             else
                 filter.Where = "(" + filterNames + ") and (Metadata['IsLatestVersion'] eq 'True')";
 
-            return GetPackages(filter, v => idValues.Contains(v.Project));
+            var queryable =
+                GetPackages(filter, v => idValues.Contains(v.Project), null)
+                    .Where(package => IsUpdate(package, semanticVersions, semanticVersionConstraints, includeAllVersions, includePrerelease));
+            return queryable;
         }
 
-        private IQueryable<Package> GetPackages(PackageFilter filter, Func<Version, bool> filter2)
+        private static bool IsUpdate(Package package, Dictionary<string, SemanticVersion> semanticVersions, Dictionary<string, IVersionSpec> semanticVersionConstraints, bool includeAllVersions, bool includePrerelease)
+        {
+            var semanticVersion = new SemanticVersion(package.Version);
+            var semanticVersionConstraint = semanticVersionConstraints[package.Id];
+
+            var isUpdate = semanticVersion > semanticVersions[package.Id] &&
+                           (semanticVersionConstraint == null || semanticVersionConstraint.Satisfies(semanticVersion)) &&
+                           (includeAllVersions || package.IsLatestVersion) &&
+                           (includePrerelease || String.IsNullOrEmpty(semanticVersion.SpecialVersion));
+            return isUpdate;
+        }
+
+        private IQueryable<Package> GetPackages(PackageFilter filter, Func<Version, bool> filter2, string projectId)
         {
             if (Repository.Company == "Public" && Repository.Name == "NuGet")
                 throw new Exception("Gettting packages from the NuGet feed is temporarily disabled. But you don't need it for debugging!");
 
 
             var repository = Repository;
-            var versions = Backend.GetPackages(ref repository, ref filter, "NuGet")
+            var versions = Backend.GetPackages(ref repository, ref filter, "NuGet", projectId)
                 .AsEnumerable();
-            
-            
+
+
             if (filter.Performed)
             {
                 //If filter is performed on server side then skip skipping ;)
                 var uriTemplateMatch = OperationContext.Current.IncomingMessageProperties["UriTemplateMatchResults"] as UriTemplateMatch;
-                if (uriTemplateMatch!=null && !string.IsNullOrEmpty(uriTemplateMatch.QueryParameters["$skip"]))
+                if (uriTemplateMatch != null && !string.IsNullOrEmpty(uriTemplateMatch.QueryParameters["$skip"]))
                     uriTemplateMatch.QueryParameters["$skip"] = "0";
-
+            }
+            else
+            {
                 versions = versions.Where(filter2);
             }
 

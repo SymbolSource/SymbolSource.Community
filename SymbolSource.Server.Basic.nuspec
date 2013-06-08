@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>SymbolSource.Server.Basic</id>
-    <version>1.3.1</version>
+    <version>1.3.2</version>
     <authors>SymbolSource</authors>
     <owners>SymbolSource</owners>
     <projectUrl>http://www.symbolsource.org/Public/Blog/View/2012-03-13/Releasing_the_community_edition_of_SymbolSource</projectUrl>
@@ -32,6 +32,7 @@
     </frameworkAssemblies>
   </metadata>
   <files>
+    <file src="Dependencies\Delimon.Win32.IO.dll" target="lib\net40" />
     <file src="Sources\SymbolSource.Server.Basic\bin\Release\SymbolSource.Server.Basic.*" target="lib\net40" />
     <file src="Sources\SymbolSource.Gateway.Core\bin\Release\SymbolSource.Gateway.Core.*" target="lib\net40" />
     <file src="Sources\SymbolSource.Gateway.NuGet.Core\bin\Release\SymbolSource.Gateway.NuGet.Core.*" target="lib\net40" />
