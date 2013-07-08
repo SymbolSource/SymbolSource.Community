@@ -13,9 +13,16 @@ namespace SymbolSource.Server.Basic
 {
     public class MicroKernel
     {
+        private static IWindsorContainer _container;
+
+        public static IWindsorContainer Container
+        {
+            get { return _container ?? (_container = new WindsorContainer()); }
+        }
+
         public static IKernel Install()
         {
-            var container = new WindsorContainer();
+            var container = Container;
             container.Kernel.Resolver.AddSubResolver(new CollectionResolver(container.Kernel));
             container.Install(new ProcessingBasicInstaller());
 
