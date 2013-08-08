@@ -11,11 +11,18 @@ using SymbolSource.Processing.Basic;
 
 namespace SymbolSource.Server.Basic
 {
-    public class MicroKernel
+    public static class MicroKernel
     {
+        private static IWindsorContainer _container;
+
+        public static IWindsorContainer Container
+        {
+            get { return _container ?? (_container = new WindsorContainer()); }
+        }
+
         public static IKernel Install()
         {
-            var container = new WindsorContainer();
+            var container = Container;
             container.Kernel.Resolver.AddSubResolver(new CollectionResolver(container.Kernel));
             container.Install(new ProcessingBasicInstaller());
 
@@ -51,38 +58,45 @@ namespace SymbolSource.Server.Basic
             return container.Kernel;
         }
 
-        private static void RegisterManagers(IWindsorContainer kernel)
+        private static void RegisterManagers(IWindsorContainer container)
         {
-            kernel.Register(
-               Component.For<IGatewayBackendFactory<IWinDbgBackend>, IGatewayBackendFactory<IPackageBackend>>()
-                   .ImplementedBy<BasicBackendFactory>()
-               );
-
-            kernel.Register(
-                Component.For<INuGetGatewayManager>()
-                    .ImplementedBy<NuGetGatewayManager>()                    
-                );
-
-            kernel.Register(
-                Component.For<INuGetGatewayVersionExtractor, IGatewayVersionExtractor>()
-                    .ImplementedBy<NuGetGatewayVersionExtractor>()
-                );
-
-            kernel.Register(
-                Component.For<IOpenWrapGatewayManager>()
-                    .ImplementedBy<OpenWrapGatewayManager>()
-                );
-
-            kernel.Register(
-                Component.For<IBasicBackendConfiguration>()
-                    .ImplementedBy<BasicBackendConfiguration>()
-                );
-
-            kernel.Register(
-                Component.For<IGatewayConfigurationFactory>()
-                    .ImplementedBy<AppSettingsConfigurationFactory>()
-                );
+            container
+               
+                .Register(
+                    Component.For<IGatewayBackendFactory<IWinDbgBackend>, IGatewayBackendFactory<IPackageBackend>>()
+                       .ImplementedBy<BasicBackendFactory>()
+                       .OnlyNewServices()
+                   )
+    
+                .Register(
+                    Component.For<INuGetGatewayManager>()
+                        .ImplementedBy<NuGetGatewayManager>()
+                        .OnlyNewServices()
+                    )
+    
+                .Register(
+                    Component.For<INuGetGatewayVersionExtractor, IGatewayVersionExtractor>()
+                        .ImplementedBy<NuGetGatewayVersionExtractor>()
+                        .OnlyNewServices()
+                    )
+    
+                .Register(
+                    Component.For<IOpenWrapGatewayManager>()
+                        .ImplementedBy<OpenWrapGatewayManager>()
+                        .OnlyNewServices()
+                    )
+    
+                .Register(
+                    Component.For<IBasicBackendConfiguration>()
+                        .ImplementedBy<BasicBackendConfiguration>()
+                        .OnlyNewServices()
+                    )
+    
+                .Register(
+                    Component.For<IGatewayConfigurationFactory>()
+                        .ImplementedBy<AppSettingsConfigurationFactory>()
+                        .OnlyNewServices()
+                    );
         }
     }
-
 }
