@@ -39,7 +39,7 @@ namespace SymbolSource.Processing.Basic
         {
             //the VB compiler will include temporary files in its pdb files.
             //the source file name will be similar to 17d14f5c-a337-4978-8281-53493378c1071.vb.
-            return !sourceFileName.EndsWith("17d14f5c-a337-4978-8281-53493378c1071.vb", StringComparison.InvariantCultureIgnoreCase);
+            return sourceFileName.EndsWith("17d14f5c-a337-4978-8281-53493378c1071.vb", StringComparison.InvariantCultureIgnoreCase);
         }
     }
 }
