@@ -47,9 +47,9 @@ namespace SymbolSource.Gateway.NuGet.Core
             return package;
         }
 
-        public static Version ConvertToVersion(Stream stream)
+        public static Version ConvertToVersion(string path)
         {
-            var package = new ZipPackage(stream);           
+            var package = new ZipPackage(path);           
 
             var version = new Version
                               {
@@ -101,12 +101,15 @@ namespace SymbolSource.Gateway.NuGet.Core
             if (!string.IsNullOrEmpty(package.Title))
                 metadataWrapper["Title"] = package.Title;
 
-            metadataWrapper["PackageSize"] = stream.Length.ToString();
-            metadataWrapper["PackageHashAlgorithm"] = "SHA512";
+            using (var stream = File.OpenRead(path))
+            {
+                metadataWrapper["PackageSize"] = stream.Length.ToString();
+                metadataWrapper["PackageHashAlgorithm"] = "SHA512";
 
-            stream.Seek(0, SeekOrigin.Begin);
-            using (var hasher = new SHA512Managed())
+                stream.Seek(0, SeekOrigin.Begin);
+                using (var hasher = new SHA512Managed())
                     metadataWrapper["PackageHash"] = Convert.ToBase64String(hasher.ComputeHash(stream));
+            }
 
             metadataWrapper["DownloadCount"] = "000000";
             metadataWrapper["CreatedDate"] = DateTime.UtcNow.ToString("s");

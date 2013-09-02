@@ -40,10 +40,7 @@ namespace SymbolSource.Gateway.NuGet.Core
         {
             var packagePath = GetFilePath(path);
 
-            Version version;
-
-            using (var stream = File.OpenRead(packagePath))
-                version = versionExtractor.Extract(stream);
+            var version = versionExtractor.Extract(packagePath);
             
             var package = new ZipPackage(packagePath);
 

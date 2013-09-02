@@ -12,10 +12,9 @@ namespace SymbolSource.Gateway.NuGet.Core
 
     public class NuGetGatewayVersionExtractor : INuGetGatewayVersionExtractor
     {
-        public Version Extract(Stream stream)
+        public Version Extract(string path)
         {
-            var version = NuGetTranslator.ConvertToVersion(stream);            
-            return version;
+            return NuGetTranslator.ConvertToVersion(path);            
         }
     }
 }

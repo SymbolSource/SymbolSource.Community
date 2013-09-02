@@ -43,14 +43,12 @@ namespace SymbolSource.Server.Basic
         {
             var gateway = gatewayVersionExtractors.SingleOrDefault(g => g.GetType().FullName.Contains(packageFormat));
 
-            if(gateway !=null)
+            if (gateway !=null)
             {
-                using(var stream = File.OpenRead(Path.Combine(configuration.DataPath, path)))
-                {
-                    var version = gateway.Extract(stream);
-                    return version.Metadata;
-                }
+                var version = gateway.Extract(Path.Combine(configuration.DataPath, path));
+                return version.Metadata;
             }
+
             return null;
         }
 
