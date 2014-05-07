@@ -1,4 +1,0 @@
-﻿name: SymbolSource.Gateway.OpenWrap
-use-symlinks: false
-depends: openfilesystem
-depends: openwrap = 2.0

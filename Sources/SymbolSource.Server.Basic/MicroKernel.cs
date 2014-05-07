@@ -5,7 +5,6 @@ using Castle.MicroKernel.Resolvers.SpecializedResolvers;
 using Castle.Windsor;
 using SymbolSource.Gateway.Core;
 using SymbolSource.Gateway.NuGet.Core;
-using SymbolSource.Gateway.OpenWrap.Core;
 using SymbolSource.Gateway.WinDbg.Core;
 using SymbolSource.Processing.Basic;
 
@@ -30,12 +29,6 @@ namespace SymbolSource.Server.Basic
 
             container.Register(
                 AllTypes.FromAssembly(typeof(Gateway.NuGet.Core.AttributeRouting).Assembly)
-                    .BasedOn<IController>()
-                    .LifestyleTransient()
-                );
-
-            container.Register(
-                AllTypes.FromAssembly(typeof(Gateway.OpenWrap.Core.AttributeRouting).Assembly)
                     .BasedOn<IController>()
                     .LifestyleTransient()
                 );
@@ -80,13 +73,8 @@ namespace SymbolSource.Server.Basic
                         .OnlyNewServices()
                     )
     
-                .Register(
-                    Component.For<IOpenWrapGatewayManager>()
-                        .ImplementedBy<OpenWrapGatewayManager>()
-                        .OnlyNewServices()
-                    )
-    
-                .Register(
+
+            	.Register(
                     Component.For<IBasicBackendConfiguration>()
                         .ImplementedBy<BasicBackendConfiguration>()
                         .OnlyNewServices()
