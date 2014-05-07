@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2010
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30324.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{744C48E9-BDEF-47EB-8AF8-19D07C14838C}"
 	ProjectSection(SolutionItems) = preProject
 		SymbolSource.Integration.NuGet.PackageExplorer.nuspec = SymbolSource.Integration.NuGet.PackageExplorer.nuspec
@@ -26,8 +28,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymbolSource.Server.Management.Client", "Sources\SymbolSource.Server.Management.Client\SymbolSource.Server.Management.Client.csproj", "{2F619C26-9619-409F-A79C-04857C7FD634}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymbolSource.Gateway.NuGet.Core", "Sources\SymbolSource.Gateway.NuGet.Core\SymbolSource.Gateway.NuGet.Core.csproj", "{45FD6A65-8C04-4F19-95C2-2598ED79C02E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymbolSource.Gateway.OpenWrap.Core", "Sources\SymbolSource.Gateway.OpenWrap.Core\SymbolSource.Gateway.OpenWrap.Core.csproj", "{D8515DF7-5E93-4446-9ABB-CADD435BE00E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymbolSource.Gateway.WinDbg.Core", "Sources\SymbolSource.Gateway.WinDbg.Core\SymbolSource.Gateway.WinDbg.Core.csproj", "{50F24F3A-F9CA-4945-A48E-941ADD255D27}"
 EndProject
@@ -137,16 +137,6 @@ Global
 		{45FD6A65-8C04-4F19-95C2-2598ED79C02E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{45FD6A65-8C04-4F19-95C2-2598ED79C02E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{45FD6A65-8C04-4F19-95C2-2598ED79C02E}.Release|x86.ActiveCfg = Release|Any CPU
-		{D8515DF7-5E93-4446-9ABB-CADD435BE00E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D8515DF7-5E93-4446-9ABB-CADD435BE00E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D8515DF7-5E93-4446-9ABB-CADD435BE00E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{D8515DF7-5E93-4446-9ABB-CADD435BE00E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{D8515DF7-5E93-4446-9ABB-CADD435BE00E}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{D8515DF7-5E93-4446-9ABB-CADD435BE00E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D8515DF7-5E93-4446-9ABB-CADD435BE00E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D8515DF7-5E93-4446-9ABB-CADD435BE00E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{D8515DF7-5E93-4446-9ABB-CADD435BE00E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{D8515DF7-5E93-4446-9ABB-CADD435BE00E}.Release|x86.ActiveCfg = Release|Any CPU
 		{50F24F3A-F9CA-4945-A48E-941ADD255D27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{50F24F3A-F9CA-4945-A48E-941ADD255D27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50F24F3A-F9CA-4945-A48E-941ADD255D27}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -190,8 +180,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityAddIns) = postSolution
-		OpenWrap.VisualStudioIntegration2010 = 1;Ensures OpenWrap initialization when a solution is opened.;OpenWrap Visual Studio Solution Add-in
 	EndGlobalSection
 EndGlobal

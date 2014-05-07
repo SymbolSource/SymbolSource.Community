@@ -19,16 +19,7 @@ If you wish to build and debug Server.Basic, the general procedure is to:
  2. Build SymbolSource.Community.sln.
  3. Run SymbolSOurce.Server.Basic.Host or nuget pack SymbolSource.Server.Basic.nuspec and install as exaplained above.
 
-The tricky part is getting OpenWrap to come along, which doesn't yet have a user-friendly restore feature (or we haven't been able to figure out how to set it up). The workaround is to:
-
- 1. [Install OpenWrap](http://www.openwrap.org): download, run, select (i).
- 1. Open a new console where you'll have OpenWrap's o.exe in PATH.
- 1. Add the OpenWrap beta repository: `o add-remote -name beta -href http://wraps.openwrap.org/beta/`.
- 1. Update OpenWrap to 2.x: `o update-wrap openwrap -system`.
- 1. Goto to you SymbolSource.Community clone.
- 1. Restore OpenWrap packages: `o update-wrap openwrap -usesystem`.
-
-
+ 
 ## SymbolSource.Integration.NuGet.PackageExplorer
 This is the NuGet Package Explorer plugin for validating symbol packages
 

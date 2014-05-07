@@ -92,10 +92,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SymbolSource.Gateway.OpenWrap.Core\SymbolSource.Gateway.OpenWrap.Core.csproj">
-      <Project>{D8515DF7-5E93-4446-9ABB-CADD435BE00E}</Project>
-      <Name>SymbolSource.Gateway.OpenWrap.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SymbolSource.Processing.Basic\SymbolSource.Processing.Basic.csproj">
       <Project>{2E6CD475-5BDF-43FF-8A69-EFC731179DAB}</Project>
       <Name>SymbolSource.Processing.Basic</Name>
@@ -122,7 +118,6 @@
       <SubType>Designer</SubType>
     </None>
     <EmbeddedResource Include="Packages\DemoLibrary.nupkg" />
-    <EmbeddedResource Include="Packages\demolibrary.wrap" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
