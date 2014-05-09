@@ -21,19 +21,19 @@ namespace SymbolSource.Server.Basic
             RegisterManagers(container);
 
             container.Register(
-                AllTypes.FromAssembly(typeof(Gateway.NuGet.Core.AttributeRouting).Assembly)
+                Types.FromAssembly(typeof(Gateway.NuGet.Core.AttributeRouting).Assembly)
                     .BasedOn<IController>()
                     .LifestyleTransient()
                 );
 
             container.Register(
-                AllTypes.FromAssembly(typeof(Gateway.WinDbg.Core.AttributeRouting).Assembly)
+                Types.FromAssembly(typeof(Gateway.WinDbg.Core.AttributeRouting).Assembly)
                     .BasedOn<IController>()
                     .LifestyleTransient()
                 );
 
             container.Register(
-               AllTypes.FromThisAssembly()
+               Types.FromThisAssembly()
                    .BasedOn<IController>()
                    .LifestyleTransient()
                );
