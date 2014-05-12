@@ -4,7 +4,7 @@
     <!-- 
             Path to Debugging Tools for Windows "srcsrv" folder
         -->
-    <add key="SrcSrvPath" value="C:\Program Files (x86)\Windows Kits\8.0\Debuggers\x64\srcsrv" />
+    <add key="SrcSrvPath" value="C:\Program Files (x86)\Windows Kits\8.1\Debuggers\x64\srcsrv" />
   </appSettings>
 
   <elmah>

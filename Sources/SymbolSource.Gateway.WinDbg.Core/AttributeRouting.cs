@@ -2,7 +2,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using AttributeRouting.Web.Mvc;
 
-[assembly: WebActivator.PreApplicationStartMethod(typeof(SymbolSource.Gateway.WinDbg.Core.AttributeRouting), "Start")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(SymbolSource.Gateway.WinDbg.Core.AttributeRouting), "Start")]
 
 namespace SymbolSource.Gateway.WinDbg.Core
 {

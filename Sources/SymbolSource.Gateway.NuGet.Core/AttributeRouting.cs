@@ -1,7 +1,7 @@
 using System.Web.Routing;
 using AttributeRouting.Web.Mvc;
 
-[assembly: WebActivator.PreApplicationStartMethod(typeof(SymbolSource.Gateway.NuGet.Core.AttributeRouting), "Start")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(SymbolSource.Gateway.NuGet.Core.AttributeRouting), "Start")]
 
 namespace SymbolSource.Gateway.NuGet.Core
 {
