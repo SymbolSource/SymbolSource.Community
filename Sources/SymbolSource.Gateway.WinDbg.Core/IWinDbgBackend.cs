@@ -15,6 +15,6 @@ namespace SymbolSource.Gateway.WinDbg.Core
 
         void LogImageFileFound(ImageFile imageFile);
         void LogImageFileNotFound(string imageFileName, string symbolHash);
-        void LogSourceFileFound(SourceFile sourceFile);
+        void LogSourceFileFound(SourceFile sourceFile, string computerName, string computerUser);
     }
 }
