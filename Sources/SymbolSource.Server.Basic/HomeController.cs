@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
 using System.Web.Mvc;
@@ -54,10 +53,6 @@ namespace SymbolSource.Server.Basic
                     VisualStudioUrl = GetVisualStudioUrl(),
                     NuGetPushUrl = GetNuGetPushUrl(),
                     NuGetFeedUrl = GetNuGetFeedUrl(),
-                    SrcSrvPathTest = Directory.Exists(ConfigurationManager.AppSettings["SrcSrvPath"]) ? "OK" : "Directory not found",
-                    NuGetSmokeTest = InlineTest(Url.Action("SmokeTest", new { url = Url.Content("~/NuGet/FeedService.mvc") })),
-                    NuGetPushTest = InlineTest(Url.Action("NuGetPushTest")),
-                    NuGetFeedTest = InlineTest(Url.Action("NuGetFeedTest"))
                 });
         }
 
@@ -67,11 +62,8 @@ namespace SymbolSource.Server.Basic
             {
                 SrcSrvPathTest = Directory.Exists(ConfigurationManager.AppSettings["SrcSrvPath"]) ? "OK" : "Directory not found",
                 NuGetSmokeTest = InlineTest(Url.Action("SmokeTest", new { url = Url.Content("~/NuGet/FeedService.mvc") })),
-                OpenWrapSmokeTest = InlineTest(Url.Action("SmokeTest", new { url = Url.Content("~/OpenWrap/index.wraplist") })),
                 NuGetPushTest = InlineTest(Url.Action("NuGetPushTest")),
                 NuGetFeedTest = InlineTest(Url.Action("NuGetFeedTest")),
-                OpenWrapPushTest = InlineTest(Url.Action("OpenWrapPushTest")),
-                OpenWrapFeedTest = InlineTest(Url.Action("OpenWrapFeedTest"))
             });
         }
 
