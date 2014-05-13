@@ -93,6 +93,7 @@
     <Content Include="App_Readme\glimpse.log4net.readme.txt" />
     <Content Include="App_Readme\glimpse.mvc3.readme.txt" />
     <Content Include="App_Readme\glimpse.readme.txt" />
+   	<Content Include="Views\Home\Diagnostics.cshtml" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\SymbolSource.pubxml" />
     <Content Include="Views\Home\Index.cshtml" />

@@ -10,12 +10,12 @@ namespace SymbolSource.Server.Management.Client
 
         Company[] GetCompanies();
         void CreateCompany(Company company);
-        void CreateCompany(User user, UserKey userKey, Plan plan);
+        void CreateCompany(User user, UserKey userKey);
         void UpdateCompany(Company company);
         void DeleteCompany(Company company);
 
         User[] GetUsers(ref Company company);
-        void CreateUser(User user, UserKey userKey, Plan plan);
+        void CreateUser(User user, UserKey userKey);
         void UpdateUser(User user);
         void DeleteUser(User user);
         void SendPasswordMail(string url);
@@ -84,9 +84,12 @@ namespace SymbolSource.Server.Management.Client
 
         void LogImageFileFound(ImageFile imageFile);
         void LogImageFileNotFound(string imageFileName, string symbolHash);
-        void LogSourceFileFound(SourceFile sourceFile);
+        void LogSourceFileFound(SourceFile sourceFile, string computerName, string computerUser);
 
-        Plan[] GetPlansByType(string type);
+        string PaymentPrepare(string plan, string returnUrl, string cancelUrl);
+        void PaymentDoAction(string plan, string token);
+
+        Plan[] GetPlans();
         void RemovePlan(string name, string type);
         void CreatePlan(string name, string type, decimal monthPrice, decimal yearPrice, int userLimit, int privateRepoLimit);
     }

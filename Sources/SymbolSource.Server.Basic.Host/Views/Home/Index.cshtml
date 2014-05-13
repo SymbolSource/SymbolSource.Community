@@ -10,10 +10,14 @@
 <body>
     <h1>SymbolSource Server Basic</h1>
     
+    <p>@Html.ActionLink("Run self-diagnostics", "Diagnostics")</p>
+
     <h2>Visual Studio Debugging URL</h2>
     <p>
         <strong><code>@Model.VisualStudioUrl</code></strong>
-        <a href="http://www.symbolsource.org/Public/Home/VisualStudio">More info about configuration</a>
+    </p>
+    <p>
+        <a href="http://www.symbolsource.org/Public/Home/VisualStudio">See the recommended configuration</a>
     </p>
     <h2>NuGet - Feed repository</h2>
     <p>

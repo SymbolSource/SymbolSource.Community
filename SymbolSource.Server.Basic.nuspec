@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>SymbolSource.Server.Basic</id>
-    <version>1.2.1</version>
+    <version>1.3.1</version>
     <authors>SymbolSource</authors>
     <owners>SymbolSource</owners>
     <projectUrl>http://www.symbolsource.org/Public/Blog/View/2012-03-13/Releasing_the_community_edition_of_SymbolSource</projectUrl>
@@ -23,7 +23,7 @@
       <dependency id="log4net" version="[1.2.10]"/>
       <dependency id="Microsoft.Web.Infrastructure" version="1.0.0.0" />
       <dependency id="Mono.Cecil" version="0.9.5.1" />
-      <dependency id="NuGet.Core" version="2.0.1" />
+      <dependency id="NuGet.Core" version="2.1.0" />
       <dependency id="SymbolSource.Microsoft.Cci.Metadata" version="1.0.65055.0" />
       <dependency id="WebActivator" version="1.5.1" />
     </dependencies>
@@ -48,6 +48,7 @@
     <file src="Sources\SymbolSource.Server.Basic.Host\Data\Web.config" target="content\Data\Web.config" />
     <file src="Sources\SymbolSource.Server.Basic.Host\Index\Web.config" target="content\Index\Web.config" />
     <file src="Sources\SymbolSource.Server.Basic.Host\Views\Home\Index.cshtml" target="content\Views\Home\Index.cshtml" />
+    <file src="Sources\SymbolSource.Server.Basic.Host\Views\Home\Diagnostics.cshtml" target="content\Views\Home\Diagnostics.cshtml" />
     <file src="Sources\SymbolSource.Server.Basic.Host\favicon.png" target="content\favicon.png" />
     <file src="Sources\SymbolSource.Server.Basic.Host\Web.config.transform" target="content\Web.config.transform" />
   </files>

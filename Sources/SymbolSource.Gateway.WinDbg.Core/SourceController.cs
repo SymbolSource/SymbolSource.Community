@@ -40,7 +40,7 @@ namespace SymbolSource.Gateway.WinDbg.Core
                 {
                     backend.LogImageFileNotFound(imageName, pdbHash);
                     Response.StatusCode = 404;
-                    return Content("Not found");
+                    return Content(string.Format("{0} ({1}) not found", imageName, pdbHash));
                 }
 
                 var sourceFile = new SourceFile
@@ -58,12 +58,11 @@ namespace SymbolSource.Gateway.WinDbg.Core
 
                 if (link == null)
                 {
-                    backend.LogSourceFileFound(sourceFile);
                     Response.StatusCode = 404;
                     return Content("Source file not found");
                 }
 
-                backend.LogSourceFileFound(sourceFile);
+                backend.LogSourceFileFound(sourceFile, computerName, computerUser);
                 return Redirect(link);
             }
         }
