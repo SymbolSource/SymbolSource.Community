@@ -113,10 +113,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:51789/WebService.asmx%3fwsdl">
+    <WebReferenceUrl Include="http://api.symbolsource.org/WebService.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\WebService\</RelPath>
-      <UpdateFromURL>http://localhost:51789/WebService.asmx%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://api.symbolsource.org/WebService.asmx%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

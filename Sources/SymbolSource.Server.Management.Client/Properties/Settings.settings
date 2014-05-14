@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="ITDT_Hss_Server_Management_Client_WebService_WebService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:51789/WebService.asmx</Value>
+      <Value Profile="(Default)">http://api.symbolsource.org/WebService.asmx</Value>
     </Setting>
   </Settings>
 </SettingsFile>

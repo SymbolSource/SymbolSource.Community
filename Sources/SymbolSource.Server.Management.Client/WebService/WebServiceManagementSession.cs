@@ -44,9 +44,9 @@ namespace SymbolSource.Server.Management.Client
             service.CreateCompany(caller, company);
         }
 
-        public virtual void CreateCompany(User user, UserKey userKey)
+        public virtual void CreateCompany(User user, UserKey userKey, Plan plan)
         {
-            service.CreateCompany2(caller, user, userKey);
+            service.CreateCompany2(caller, user, userKey, plan);
         }
 
         public virtual void UpdateCompany(Company company)
@@ -64,9 +64,9 @@ namespace SymbolSource.Server.Management.Client
             return service.GetUsers(caller, ref company);
         }
 
-        public virtual void CreateUser(User user, UserKey userKey)
+        public virtual void CreateUser(User user, UserKey userKey, Plan plan)
         {
-            service.CreateUser(caller, user, userKey);
+            service.CreateUser(caller, user, userKey, plan);
         }
 
         public virtual void UpdateUser(User user)
@@ -335,24 +335,14 @@ namespace SymbolSource.Server.Management.Client
             service.LogImageFileNotFound(caller, imageFileName, symbolHash);
         }
 
-        public virtual void LogSourceFileFound(SourceFile sourceFile, string computerName, string computerUser)
+        public virtual void LogSourceFileFound(SourceFile sourceFile)
         {
-            service.LogSourceFileFound(caller, sourceFile, computerName, computerUser);
+            service.LogSourceFileFound(caller, sourceFile);
         }
 
-        public string PaymentPrepare(string plan, string returnUrl, string cancelUrl)
+        public virtual Plan[] GetPlans(string type)
         {
-            return service.PaymentPrepare(caller, plan, returnUrl, cancelUrl);
-        }
-
-        public void PaymentDoAction(string plan, string token)
-        {
-            service.PaymentDoAction(caller, plan, token);
-        }
-
-        public virtual Plan[] GetPlans()
-        {
-            return service.GetPlans();
+            return service.GetPlansByType(type);
         }
 
         public virtual void RemovePlan(string name, string type)

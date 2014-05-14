@@ -47,7 +47,7 @@ namespace SymbolSource.Server.Management.Client.Remoting
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
 
-        public virtual void CreateCompany(User user, UserKey userKey)
+        public void CreateCompany(User user, UserKey userKey, Plan plan)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
@@ -67,7 +67,7 @@ namespace SymbolSource.Server.Management.Client.Remoting
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
 
-        public virtual void CreateUser(User user, UserKey userKey)
+        public void CreateUser(User user, UserKey userKey, Plan plan)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
@@ -363,22 +363,12 @@ namespace SymbolSource.Server.Management.Client.Remoting
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
 
-        public virtual void LogSourceFileFound(SourceFile sourceFile, string computerName, string computerUser)
+        public void LogSourceFileFound(SourceFile sourceFile)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
 
-        public string PaymentPrepare(string plan, string returnUrl, string cancelUrl)
-        {
-            throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
-        }
-
-        public void PaymentDoAction(string plan, string token)
-        {
-            throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
-        }
-
-        public Plan[] GetPlans()
+        public Plan[] GetPlans(string type)
         {
             throw new NotImplementedException("Not implemented: " + MethodBase.GetCurrentMethod().Name);
         }
