@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
-using SymbolSource.Server.Management.Client;
-using Version = SymbolSource.Server.Management.Client.Version;
+using SymbolSource.Server.Management.Client.WebService;
+using Version = SymbolSource.Server.Management.Client.WebService.Version;
 
 namespace SymbolSource.Server.Basic
 {
@@ -43,12 +43,12 @@ namespace SymbolSource.Server.Basic
         {
             var gateway = gatewayVersionExtractors.SingleOrDefault(g => g.GetType().FullName.Contains(packageFormat));
 
-            if (gateway !=null)
+            if(gateway !=null)
             {
-                var version = gateway.Extract(Path.Combine(configuration.DataPath, path));
+                var zipPackage = new NuGet.ZipPackage(Path.Combine(configuration.DataPath, path));
+                var version = gateway.Extract(zipPackage);
                 return version.Metadata;
             }
-
             return null;
         }
 

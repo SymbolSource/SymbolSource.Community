@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SymbolSource.Server.Management.Client
+namespace SymbolSource.Server.Management.Client.WebService
 {
     public interface IManagementPreauthentication
     {

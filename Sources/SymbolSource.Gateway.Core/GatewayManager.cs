@@ -6,9 +6,9 @@ using System.Text;
 using System.Web;
 using Ionic.Zip;
 using log4net;
-using SymbolSource.Server.Management.Client;
+using SymbolSource.Server.Management.Client.WebService;
 using PackageModel = SymbolSource;
-using Version = SymbolSource.Server.Management.Client.Version;
+using Version = SymbolSource.Server.Management.Client.WebService.Version;
 
 namespace SymbolSource.Gateway.Core
 {

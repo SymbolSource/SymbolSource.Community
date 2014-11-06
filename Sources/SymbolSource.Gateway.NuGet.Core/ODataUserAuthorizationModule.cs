@@ -4,7 +4,7 @@ using System.Web;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using SymbolSource.Gateway.Core;
 using SymbolSource.Gateway.NuGet.Core;
-using SymbolSource.Server.Management.Client;
+using SymbolSource.Server.Management.Client.WebService;
 
 [assembly: PreApplicationStartMethod(typeof(ODataUserAuthorizationModule), "Register")]
 

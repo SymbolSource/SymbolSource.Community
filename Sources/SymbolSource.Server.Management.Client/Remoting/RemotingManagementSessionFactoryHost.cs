@@ -6,7 +6,7 @@ using System.Runtime.Remoting.Channels;
 using System.Runtime.Remoting.Channels.Tcp;
 using System.Text;
 
-namespace SymbolSource.Server.Management.Client.Remoting
+namespace SymbolSource.Server.Management.Client.WebService.Remoting
 {
     public class RemotingManagementSessionFactoryHost : IDisposable
     {

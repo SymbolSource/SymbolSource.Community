@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 using System.Web.Routing;
 using SymbolSource.Gateway.NuGet.Core;
 
-[assembly: WebActivatorEx.PostApplicationStartMethod(typeof(SymbolSource.Server.Basic.AttributeRouting), "Start")]
+[assembly: WebActivator.PreApplicationStartMethod(typeof(SymbolSource.Server.Basic.AttributeRouting), "Start")]
 
 namespace SymbolSource.Server.Basic
 {

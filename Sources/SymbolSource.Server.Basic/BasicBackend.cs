@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using SymbolSource.Gateway.Core;
 using SymbolSource.Gateway.WinDbg.Core;
 using SymbolSource.Processing.Basic.Projects;
-using SymbolSource.Server.Management.Client;
+using SymbolSource.Server.Management.Client.WebService;
 
 namespace SymbolSource.Server.Basic
 {

@@ -15,5 +15,9 @@ Then, add the GlimpseAppender to your log4net configuration. For example:
 
 Release Notes
 -------------
+5/21/2013 - 1.0.0
+- Updating for Glimpse 1.3.0
+11/10/2012 - 0.86.3
+- Updating for log4net 1.2.11 [2.0.0]
 11/14/2011 - 0.86
 - First release on Nuget.org!

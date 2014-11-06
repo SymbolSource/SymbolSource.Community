@@ -5,26 +5,26 @@ using Ionic.Zip;
 using log4net;
 using NuGet;
 using SymbolSource.Gateway.Core;
-using SymbolSource.Server.Management.Client;
+using SymbolSource.Server.Management.Client.WebService;
 using ContentType = SymbolSource.Gateway.Core.ContentType;
-using MetadataEntry = SymbolSource.Server.Management.Client.MetadataEntry;
-using PackageCompilation = SymbolSource.Server.Management.Client.PackageCompilation;
-using PackageImageFile = SymbolSource.Server.Management.Client.PackageImageFile;
-using PackageProject = SymbolSource.Server.Management.Client.PackageProject;
-using PackageVersion = SymbolSource.Server.Management.Client.PackageVersion;
+using MetadataEntry = SymbolSource.Server.Management.Client.WebService.MetadataEntry;
+using PackageCompilation = SymbolSource.Server.Management.Client.WebService.PackageCompilation;
+using PackageImageFile = SymbolSource.Server.Management.Client.WebService.PackageImageFile;
+using PackageProject = SymbolSource.Server.Management.Client.WebService.PackageProject;
+using PackageVersion = SymbolSource.Server.Management.Client.WebService.PackageVersion;
 
 namespace SymbolSource.Gateway.NuGet.Core
 {
     public interface INuGetGatewayManager : IGatewayManager
     {
-        
+
     }
 
     public class NuGetGatewayManager : GatewayManager, INuGetGatewayManager
     {
         private readonly INuGetGatewayVersionExtractor versionExtractor;
         private static readonly ILog log = LogManager.GetLogger(typeof(NuGetGatewayManager));
-        
+
         public NuGetGatewayManager(IGatewayBackendFactory<IPackageBackend> backendFactory, IGatewayConfigurationFactory configurationFactory, INuGetGatewayVersionExtractor versionExtractor)
             : base(backendFactory, configurationFactory)
         {
@@ -40,10 +40,8 @@ namespace SymbolSource.Gateway.NuGet.Core
         {
             var packagePath = GetFilePath(path);
 
-            var version = versionExtractor.Extract(packagePath);
-            
             var package = new ZipPackage(packagePath);
-
+            Version version = versionExtractor.Extract(package);
             metadata = version.Metadata;
 
             project = new PackageProject

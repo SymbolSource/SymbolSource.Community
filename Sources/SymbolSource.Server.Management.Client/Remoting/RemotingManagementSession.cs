@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace SymbolSource.Server.Management.Client.Remoting
+namespace SymbolSource.Server.Management.Client.WebService.Remoting
 {
     public class RemotingManagementSession : MarshalByRefObject, IManagementSession
     {

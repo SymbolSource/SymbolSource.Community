@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using NuGet;
 using SymbolSource.Gateway.Core;
-using SymbolSource.Server.Management.Client;
+using SymbolSource.Server.Management.Client.WebService;
 
 namespace SymbolSource.Gateway.NuGet.Core
 {
@@ -12,9 +12,9 @@ namespace SymbolSource.Gateway.NuGet.Core
 
     public class NuGetGatewayVersionExtractor : INuGetGatewayVersionExtractor
     {
-        public Version Extract(string path)
+        public Version Extract(IPackage package)
         {
-            return NuGetTranslator.ConvertToVersion(path);            
+            return NuGetTranslator.ConvertToVersion(package);
         }
     }
 }

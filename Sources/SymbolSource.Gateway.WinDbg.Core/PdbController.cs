@@ -4,7 +4,7 @@ using System.Net;
 using System.Web.Mvc;
 using SymbolSource.Gateway.Core;
 using SymbolSource.Processing.Basic;
-using SymbolSource.Server.Management.Client;
+using SymbolSource.Server.Management.Client.WebService;
 
 namespace SymbolSource.Gateway.WinDbg.Core
 {

@@ -1,7 +1,7 @@
 using System;
-using SymbolSource.Server.Management.Client;
+using SymbolSource.Server.Management.Client.WebService;
 
-namespace SymbolSource.Server.Management.Client
+namespace SymbolSource.Server.Management.Client.WebService
 {
     public static class ManagementSessionFactoryExtensions
     {

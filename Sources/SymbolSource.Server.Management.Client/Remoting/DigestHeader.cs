@@ -14,7 +14,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace SymbolSource.Server.Management.Client.Remoting
+namespace SymbolSource.Server.Management.Client.WebService.Remoting
 {
     public class DigestHeader
     {
