@@ -177,6 +177,10 @@ namespace SymbolSource.Server.Basic
 
         public Version[] GetPackages(ref Repository repository, ref PackageFilter filter, string packageFormat, string projectId)
         {
+#if DEBUG
+            var startTime = DateTime.Now;
+            System.Diagnostics.Trace.WriteLine(string.Format("Start: {0}", startTime.ToString("s")));
+#endif
             var repositoryCopy = repository;
 
             var versions = (projectId == null ? Directory.EnumerateDirectories(configuration.DataPath) : Directory.EnumerateDirectories(configuration.DataPath, projectId))
@@ -201,7 +205,7 @@ namespace SymbolSource.Server.Basic
                             Project = version.Project,
                             Name = version.Name,
                             PackageFormat = "SHA512",
-                            PackageHash = GetPackageSHA512(GetPackagePathFromVersion(version, packageFormat)),
+                            PackageHash = null, // GetPackageSHA512(GetPackagePathFromVersion(version, packageFormat)),
                         })
                 )
                 //.OrderByDescending(v => v.Name)
@@ -211,6 +215,11 @@ namespace SymbolSource.Server.Basic
             List<Version> sortedVersions = versions.ToList();
             sortedVersions.Sort();
             sortedVersions.Reverse();
+
+#if DEBUG
+            TimeSpan elapsed1 = DateTime.Now - startTime;
+            System.Diagnostics.Trace.WriteLine(string.Format("End: {0} - Elapsed1: {1}", DateTime.Now.ToString("s"), elapsed1.ToString("g")));
+#endif
 
             foreach (var version in sortedVersions)
             {
@@ -222,6 +231,10 @@ namespace SymbolSource.Server.Basic
                 metadataWrapper["IsAbsoluteLatestName"] = isAbsoluteLatest.ToString();
                 version.Metadata = metadata.ToArray();
             }
+#if DEBUG
+            TimeSpan elapsed2 = DateTime.Now - startTime;
+            System.Diagnostics.Trace.WriteLine(string.Format("End: {0} - Elapsed2: {1}", DateTime.Now.ToString("s"), elapsed2.ToString("g")));
+#endif
             return sortedVersions.ToArray();
         }
 

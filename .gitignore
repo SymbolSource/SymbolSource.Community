@@ -9,3 +9,4 @@ wraps/*.wrap
 packages/*
 !packages/repositories.config
 App_Data
+*.nupkg
