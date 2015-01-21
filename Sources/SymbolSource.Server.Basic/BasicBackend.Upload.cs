@@ -24,6 +24,8 @@ namespace SymbolSource.Server.Basic
             if (symbolPackageData != null)
                 CreateJob(package, symbolPackageData);
 
+            InvalidateCache();
+
             return new UploadReport
                        {
                            Summary = "OK",
