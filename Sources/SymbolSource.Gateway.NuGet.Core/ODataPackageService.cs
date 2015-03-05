@@ -161,7 +161,7 @@ namespace SymbolSource.Gateway.NuGet.Core
                 else
                     filter.Where = "(substringof(Project, '" + searchTerm + "') or substringof(Name, '" + searchTerm + "'))";
                 
-                return GetPackages(filter, v => v.Project.Contains(searchTerm) || v.Name.Contains(searchTerm), null);
+                return GetPackages(filter, v => v.Project.ToLower().Contains(searchTerm.ToLower()) || v.Name.ToLower().Contains(searchTerm.ToLower()), null);
             }
 
             return GetPackages(filter, v => true, null);
