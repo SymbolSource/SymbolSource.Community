@@ -193,9 +193,7 @@ namespace SymbolSource.Server.Basic
                         var repositoryCopy = repository;
 
                         var versions =
-                            (projectId == null
-                                ? Directory.EnumerateDirectories(configuration.DataPath)
-                                : Directory.EnumerateDirectories(configuration.DataPath, projectId))
+                            Directory.EnumerateDirectories(configuration.DataPath)
                                 .SelectMany(
                                     projectPath =>
                                         Directory.EnumerateDirectories(projectPath)
@@ -221,7 +219,6 @@ namespace SymbolSource.Server.Basic
                                                     GetPackageSHA512(GetPackagePathFromVersion(version, packageFormat)),
                                             })
                                 )
-                                //.OrderByDescending(v => v.Name)
                                 .ToArray();
 
                         // Reorder according semver
