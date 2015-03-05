@@ -10,7 +10,8 @@ namespace SymbolSource.Server.Basic
 {
     public partial class BasicBackend
     {
-        static IList<Version> _cachedVersionRepository = new List<Version>();
+        private static IList<Version> _cachedVersionRepository = new List<Version>();
+        private static object _syncLock = new object();
 
         private string GetPathToImageFile(string name, string symbolHash)
         {
@@ -185,64 +186,73 @@ namespace SymbolSource.Server.Basic
 #endif
             if (_cachedVersionRepository.Count == 0)
             {
-                var repositoryCopy = repository;
-
-                var versions =
-                    (projectId == null
-                        ? Directory.EnumerateDirectories(configuration.DataPath)
-                        : Directory.EnumerateDirectories(configuration.DataPath, projectId))
-                        .SelectMany(
-                            projectPath =>
-                                Directory.EnumerateDirectories(projectPath)
-                                    .Select(
-                                        versionPath =>
-                                            new Version
-                                            {
-                                                Company = repositoryCopy.Company,
-                                                Repository = repositoryCopy.Name,
-                                                Project = Path.GetFileName(projectPath),
-                                                Name = Path.GetFileName(versionPath),
-                                                PackageFormat = packageFormat,
-                                            })
-                                    .Where(version => GetPackagePathFromVersion(version, packageFormat) != null)
-                                    .Select(version => new Version
-                                    {
-                                        Company = version.Company,
-                                        Repository = version.Repository,
-                                        Project = version.Project,
-                                        Name = version.Name,
-                                        PackageFormat = "SHA512",
-                                        PackageHash = GetPackageSHA512(GetPackagePathFromVersion(version, packageFormat)),
-                                    })
-                        )
-                        //.OrderByDescending(v => v.Name)
-                        .ToArray();
-
-                // Reorder according semver
-                List<Version> sortedVersions = versions.ToList();
-                sortedVersions.Sort();
-                sortedVersions.Reverse();
-
-                foreach (var version in sortedVersions)
+                lock (_syncLock)
                 {
-                    bool isLatest =
-                        sortedVersions.Where(v => v.Project == version.Project && !v.Name.Contains("-"))
-                            .Select(v => v.Name)
-                            .FirstOrDefault() == version.Name;
-                    bool isAbsoluteLatest =
-                        sortedVersions.Where(v => v.Project == version.Project).Select(v => v.Name).FirstOrDefault() ==
-                        version.Name;
-                    var metadata =
-                        new List<MetadataEntry>(
-                            GetPackageMetadata(GetPackagePathFromVersion(version, packageFormat), packageFormat) ??
-                            new MetadataEntry[0]);
-                    var metadataWrapper = new MetadataWrapper(metadata);
-                    metadataWrapper["IsLatestVersion"] = isLatest.ToString();
-                    metadataWrapper["IsAbsoluteLatestName"] = isAbsoluteLatest.ToString();
-                    version.Metadata = metadata.ToArray();
-                }
+                    if (_cachedVersionRepository.Count == 0)
+                    {
+                        var repositoryCopy = repository;
 
-                _cachedVersionRepository = sortedVersions;
+                        var versions =
+                            (projectId == null
+                                ? Directory.EnumerateDirectories(configuration.DataPath)
+                                : Directory.EnumerateDirectories(configuration.DataPath, projectId))
+                                .SelectMany(
+                                    projectPath =>
+                                        Directory.EnumerateDirectories(projectPath)
+                                            .Select(
+                                                versionPath =>
+                                                    new Version
+                                                    {
+                                                        Company = repositoryCopy.Company,
+                                                        Repository = repositoryCopy.Name,
+                                                        Project = Path.GetFileName(projectPath),
+                                                        Name = Path.GetFileName(versionPath),
+                                                        PackageFormat = packageFormat,
+                                                    })
+                                            .Where(version => GetPackagePathFromVersion(version, packageFormat) != null)
+                                            .Select(version => new Version
+                                            {
+                                                Company = version.Company,
+                                                Repository = version.Repository,
+                                                Project = version.Project,
+                                                Name = version.Name,
+                                                PackageFormat = "SHA512",
+                                                PackageHash =
+                                                    GetPackageSHA512(GetPackagePathFromVersion(version, packageFormat)),
+                                            })
+                                )
+                                //.OrderByDescending(v => v.Name)
+                                .ToArray();
+
+                        // Reorder according semver
+                        List<Version> sortedVersions = versions.ToList();
+                        sortedVersions.Sort();
+                        sortedVersions.Reverse();
+
+                        foreach (var version in sortedVersions)
+                        {
+                            bool isLatest =
+                                sortedVersions.Where(v => v.Project == version.Project && !v.Name.Contains("-"))
+                                    .Select(v => v.Name)
+                                    .FirstOrDefault() == version.Name;
+                            bool isAbsoluteLatest =
+                                sortedVersions.Where(v => v.Project == version.Project)
+                                    .Select(v => v.Name)
+                                    .FirstOrDefault() ==
+                                version.Name;
+                            var metadata =
+                                new List<MetadataEntry>(
+                                    GetPackageMetadata(GetPackagePathFromVersion(version, packageFormat), packageFormat) ??
+                                    new MetadataEntry[0]);
+                            var metadataWrapper = new MetadataWrapper(metadata);
+                            metadataWrapper["IsLatestVersion"] = isLatest.ToString();
+                            metadataWrapper["IsAbsoluteLatestName"] = isAbsoluteLatest.ToString();
+                            version.Metadata = metadata.ToArray();
+                        }
+
+                        _cachedVersionRepository = sortedVersions;
+                    }
+                }
             }
 #if DEBUG
             TimeSpan elapsed2 = DateTime.Now - startTime;
@@ -253,7 +263,10 @@ namespace SymbolSource.Server.Basic
 
         private void InvalidateCache()
         {
-            _cachedVersionRepository.Clear();
+            lock (_syncLock)
+            {
+                _cachedVersionRepository.Clear();
+            }
         }
 
         public Caller CreateUserByKey(string company, string type, string value)
