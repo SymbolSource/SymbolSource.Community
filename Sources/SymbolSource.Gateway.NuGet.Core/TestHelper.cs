@@ -24,7 +24,8 @@ namespace SymbolSource.Gateway.NuGet.Core
             try
             {
                 var repository = new PackageRepositoryFactory().CreateRepository(url);
-                return repository.GetPackages().Count();
+                var packages = repository.GetPackages();
+                return packages.Count();
             }
             finally
             {

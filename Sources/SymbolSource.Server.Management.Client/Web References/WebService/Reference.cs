@@ -3207,6 +3207,11 @@ namespace SymbolSource.Server.Management.Client.WebService {
                 this.valueField = value;
             }
         }
+
+        public override string ToString()
+        {
+            return String.Format("{0} = {1}", Key, Value);
+        }
     }
     
     /// <remarks/>
