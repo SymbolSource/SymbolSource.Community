@@ -47,8 +47,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Elmah">
-      <HintPath>..\..\packages\elmah.corelibrary.1.2.1\lib\Elmah.dll</HintPath>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Glimpse.Core">
       <HintPath>..\..\packages\Glimpse.0.86\lib\net40\Glimpse.Core.dll</HintPath>
@@ -111,6 +112,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Readme\Elmah.txt" />
     <Content Include="App_Readme\glimpse.elmah.readme.txt" />
     <Content Include="App_Readme\glimpse.log4net.readme.txt" />
     <Content Include="App_Readme\glimpse.mvc3.readme.txt" />
