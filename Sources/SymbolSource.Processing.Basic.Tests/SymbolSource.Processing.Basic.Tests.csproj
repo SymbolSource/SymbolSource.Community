@@ -59,7 +59,6 @@
     <Compile Include="UrlTransformationTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <EmbeddedResource Include="test.zip" />
   </ItemGroup>
   <ItemGroup>
@@ -77,6 +76,9 @@
     <EmbeddedResource Include="SourceConverterTests\Utf8NotNeeded.txt" />
     <EmbeddedResource Include="SourceConverterTests\Utf8WithoutBom.txt" />
     <EmbeddedResource Include="SourceConverterTests\Windows1252.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" />
