@@ -43,13 +43,10 @@ namespace SymbolSource.Server.Basic
         {
             var gateway = gatewayVersionExtractors.SingleOrDefault(g => g.GetType().FullName.Contains(packageFormat));
 
-            if(gateway !=null)
+            if (gateway != null)
             {
-                using(var stream = File.OpenRead(Path.Combine(configuration.DataPath, path)))
-                {
-                    var version = gateway.Extract(stream);
-                    return version.Metadata;
-                }
+                var version = gateway.Extract(Path.Combine(configuration.DataPath, path));
+                return version.Metadata;
             }
             return null;
         }
@@ -89,15 +86,15 @@ namespace SymbolSource.Server.Basic
             string[] parts = path.Split(Path.DirectorySeparatorChar);
 
             return new ImageFile
-                       {
-                           Repository = "Basic",
-                           Project = parts[0],
-                           Version = parts[1],
-                           Platform = "Basic",
-                           Mode = "Basic",
-                           Name = parts[3],
-                           SymbolHash = parts[4]
-                       };
+            {
+                Repository = "Basic",
+                Project = parts[0],
+                Version = parts[1],
+                Platform = "Basic",
+                Mode = "Basic",
+                Name = parts[3],
+                SymbolHash = parts[4]
+            };
         }
 
         public ImageFile GetImageFile(string name, string symbolHash)
@@ -118,17 +115,17 @@ namespace SymbolSource.Server.Basic
             var sources = File.ReadAllLines(path)
                 .Select(s => s.Split('|'))
                 .Select(s => new SourceFile
-                                 {
-                                     Repository = imageFileCopy.Repository,
-                                     Project = imageFileCopy.Project,
-                                     Version = imageFileCopy.Version,
-                                     Mode = imageFileCopy.Mode,
-                                     Platform = imageFileCopy.Platform,
-                                     ImageName = imageFileCopy.Name,
-                                     Hash = "Basic",
-                                     OriginalPath = s[0],
-                                     Path = s[1],
-                                 }
+                {
+                    Repository = imageFileCopy.Repository,
+                    Project = imageFileCopy.Project,
+                    Version = imageFileCopy.Version,
+                    Mode = imageFileCopy.Mode,
+                    Platform = imageFileCopy.Platform,
+                    ImageName = imageFileCopy.Name,
+                    Hash = "Basic",
+                    OriginalPath = s[0],
+                    Path = s[1],
+                }
                 )
                 .ToArray();
 
@@ -185,28 +182,28 @@ namespace SymbolSource.Server.Basic
                         .Select(
                             versionPath =>
                             new Version
-                                {
-                                    Company = repositoryCopy.Company,
-                                    Repository = repositoryCopy.Name,
-                                    Project = Path.GetFileName(projectPath),
-                                    Name = Path.GetFileName(versionPath),
-                                    PackageFormat = packageFormat,
-                                })
+                            {
+                                Company = repositoryCopy.Company,
+                                Repository = repositoryCopy.Name,
+                                Project = Path.GetFileName(projectPath),
+                                Name = Path.GetFileName(versionPath),
+                                PackageFormat = packageFormat,
+                            })
                         .Where(version => GetPackagePathFromVersion(version, packageFormat) != null)
                         .Select(version => new Version
-                                               {
-                                                   Company = version.Company,
-                                                   Repository = version.Repository,
-                                                   Project = version.Project,
-                                                   Name = version.Name,
-                                                   PackageFormat = "SHA512",
-                                                   PackageHash = GetPackageSHA512(GetPackagePathFromVersion(version, packageFormat)),
-                                               })
+                        {
+                            Company = version.Company,
+                            Repository = version.Repository,
+                            Project = version.Project,
+                            Name = version.Name,
+                            PackageFormat = "SHA512",
+                            PackageHash = GetPackageSHA512(GetPackagePathFromVersion(version, packageFormat)),
+                        })
                 )
                 .OrderByDescending(v => v.Name)
                 .ToArray();
 
-            foreach(var version in versions)
+            foreach (var version in versions)
             {
                 bool isLatest = versions.Where(v => v.Project == version.Project).Select(v => v.Name).FirstOrDefault() == version.Name;
                 var metadata = new List<MetadataEntry>(GetPackageMetadata(GetPackagePathFromVersion(version, packageFormat), packageFormat) ?? new MetadataEntry[0]);
