@@ -22,7 +22,8 @@ namespace SymbolSource.Processing.Basic
         {
             var result = new List<string>();
 
-            foreach (var obj1 in PdbFile.LoadFunctions(pdbStream, false))
+            var tokenToSourceMapping = new Dictionary<uint, PdbTokenLine>();
+            foreach (var obj1 in PdbFile.LoadFunctions(pdbStream, out tokenToSourceMapping))
                 if (obj1.lines != null)
                     foreach (var obj2 in obj1.lines)
                         result.Add(obj2.file.name);
