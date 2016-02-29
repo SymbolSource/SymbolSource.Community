@@ -133,8 +133,6 @@ namespace SymbolSource.Server.Basic
             {
                 case "NuGet":
                     return projectName + "." + versionName + ".nupkg";
-                case "OpenWrap":
-                    return projectName + "-" + versionName + ".wrap";
                 default:
                     throw new NotSupportedException(packageFormat);
             }

@@ -36,10 +36,7 @@
     <file src="Sources\SymbolSource.Server.Basic\bin\Release\SymbolSource.Server.Basic.*" target="lib\net40" />
     <file src="Sources\SymbolSource.Gateway.Core\bin\Release\SymbolSource.Gateway.Core.*" target="lib\net40" />
     <file src="Sources\SymbolSource.Gateway.NuGet.Core\bin\Release\SymbolSource.Gateway.NuGet.Core.*" target="lib\net40" />
-    <file src="Sources\SymbolSource.Gateway.OpenWrap.Core\bin\Release\SymbolSource.Gateway.OpenWrap.Core.*" target="lib\net40" />
-    <file src="Sources\SymbolSource.Gateway.OpenWrap.Core\bin\Release\OpenWrap.dll" target="lib\net40" />
-    <file src="Sources\SymbolSource.Gateway.OpenWrap.Core\bin\Release\OpenRasta.Client.dll" target="lib\net40" />
-    <file src="Sources\SymbolSource.Gateway.OpenWrap.Core\bin\Release\OpenFileSystem.dll" target="lib\net40" />
+    
     <file src="Sources\SymbolSource.Gateway.WinDbg.Core\bin\Release\SymbolSource.Gateway.WinDbg.Core.*" target="lib\net40" />
     <file src="Sources\SymbolSource.Processing.Basic\bin\Release\SymbolSource.Processing.Basic.*" target="lib\net40" />
     <file src="Sources\SymbolSource.Server.Management.Client\bin\Release\SymbolSource.Server.Management.Client.*" target="lib\net40" exclude="**\*.config" />
