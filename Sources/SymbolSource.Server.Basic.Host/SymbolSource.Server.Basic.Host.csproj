@@ -54,20 +54,24 @@
       <HintPath>..\..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Glimpse.Core, Version=0.86.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Glimpse.0.86\lib\net40\Glimpse.Core.dll</HintPath>
+    <Reference Include="Glimpse.AspNet, Version=1.9.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Glimpse.AspNet.1.9.2\lib\net45\Glimpse.AspNet.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Glimpse.Elmah, Version=0.9.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Glimpse.Elmah.0.9.7\lib\net40\Glimpse.Elmah.dll</HintPath>
+    <Reference Include="Glimpse.Core, Version=1.8.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Glimpse.1.8.6\lib\net45\Glimpse.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Glimpse.Elmah, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Glimpse.Elmah.1.1.1\lib\net40\Glimpse.Elmah.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Glimpse.Log4Net, Version=0.86.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Glimpse.Log4Net.0.86.2\lib\net40\Glimpse.Log4Net.dll</HintPath>
+      <HintPath>..\..\packages\Glimpse.Log4Net.1.1.0\lib\net40\Glimpse.Log4Net.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Glimpse.Mvc3, Version=0.86.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Glimpse.Mvc3.0.86\lib\net40\Glimpse.Mvc3.dll</HintPath>
+    <Reference Include="Glimpse.Mvc5, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Glimpse.Mvc5.1.5.3\lib\net45\Glimpse.Mvc5.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
@@ -120,10 +124,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Readme\Elmah.txt" />
-    <Content Include="App_Readme\glimpse.elmah.readme.txt" />
-    <Content Include="App_Readme\glimpse.log4net.readme.txt" />
-    <Content Include="App_Readme\glimpse.mvc3.readme.txt" />
-    <Content Include="App_Readme\glimpse.readme.txt" />
     <Content Include="Views\Home\Diagnostics.cshtml" />
     <Content Include="packages.config" />
     <None Include="Views\Home\Index.cshtml" />
@@ -140,6 +140,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

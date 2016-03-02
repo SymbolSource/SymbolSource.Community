@@ -1,5 +1,7 @@
 using System.Text.RegularExpressions;
 using System.Web.Routing;
+using Castle.DynamicProxy;
+using Microsoft.CSharp.RuntimeBinder;
 using SymbolSource.Gateway.NuGet.Core;
 
 [assembly: WebActivator.PostApplicationStartMethod(typeof(SymbolSource.Server.Basic.AttributeRouting), "Start")]
@@ -14,14 +16,15 @@ namespace SymbolSource.Server.Basic
 
             foreach (var routeBase in routes)
             {
-                var route = routeBase as Route;
-                if (routeBase is DynamicServiceRoute)
-                    route = ((DynamicServiceRoute) routeBase).InnerRoute;
+               var  unproxiedRoute = UnwrapProxy(routeBase);
+                var route = unproxiedRoute as Route;
+                if (unproxiedRoute is DynamicServiceRoute)
+                    route = ((DynamicServiceRoute)unproxiedRoute).InnerRoute;
 
-                if(route == null)
+                if (route == null)
                     return;
 
-                if(route.DataTokens == null)
+                if (route.DataTokens == null)
                     continue;
 
                 var namespaces = route.DataTokens["namespaces"] as string[];
@@ -48,5 +51,22 @@ namespace SymbolSource.Server.Basic
             RegisterRoutes(RouteTable.Routes);
             MicroKernel.Install();
         }
+
+        //TODO: hacky solution to solve problems with glimpse.aspnet
+        internal static TType UnwrapProxy<TType>(TType proxy)
+        {
+            try
+            {
+                dynamic dynamicProxy = proxy;
+                return dynamicProxy.__target;
+            }
+            catch (RuntimeBinderException)
+            {
+                return proxy;
+            }
+        }
     }
+
+
+
 }
