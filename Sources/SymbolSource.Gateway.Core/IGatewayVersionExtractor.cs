@@ -5,6 +5,6 @@ namespace SymbolSource.Gateway.Core
 {
     public interface IGatewayVersionExtractor
     {
-        Version Extract(Stream stream);
+        Version Extract(string path);
     }
 }
