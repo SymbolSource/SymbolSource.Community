@@ -9,7 +9,7 @@ The Gateway and Server.Basic projects hold the implementation of a symbol and so
 
 You can read more about Server.Basic in these blog posts, which also include instructions on how to set it up:
  
- * [Setting up your own SymbolSource Server: step-by-ste](http://xavierdecoster.azurewebsites.net/setting-up-your-own-symbolsource-server-step-by-step) by [Xavier Decoster](http://twitter.com/xavierdecoster),
+ * [Setting up your own SymbolSource Server: step-by-step](http://www.xavierdecoster.com/setting-up-your-own-symbolsource-server-step-by-step) by [Xavier Decoster](http://twitter.com/xavierdecoster),
  * [Releasing the community edition of SymbolSource](http://www.symbolsource.org/Public/Blog/View/2012-03-13/Releasing_the_community_edition_of_SymbolSource) by [Marcin Mikołajczak](http://twitter.com/tripleemcoder).
  
 ### Building
