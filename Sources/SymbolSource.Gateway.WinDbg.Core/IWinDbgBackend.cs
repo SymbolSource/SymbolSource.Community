@@ -1,4 +1,3 @@
-using System;
 using SymbolSource.Gateway.Core;
 using SymbolSource.Server.Management.Client;
 

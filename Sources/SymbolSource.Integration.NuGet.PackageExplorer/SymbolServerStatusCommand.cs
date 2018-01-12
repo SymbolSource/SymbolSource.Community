@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text;
-using NuGet;
-using NuGetPackageExplorer.Types;
+﻿using NuGetPackageExplorer.Types;
 
 namespace SymbolSource.Integration.NuGet.PackageExplorer
 {

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
 using System.Web.Mvc;
@@ -28,7 +27,7 @@ namespace SymbolSource.Server.Basic
     public class HomeController : Controller
     {
         private string GetAbsoluteUrl(string relativeUrl)
-        {     
+        {
             return Request.Url.GetLeftPart(UriPartial.Authority) + relativeUrl;
         }
 
@@ -50,11 +49,11 @@ namespace SymbolSource.Server.Basic
         public ActionResult Index()
         {
             return View(new InfoViewModel
-                {
-                    VisualStudioUrl = GetVisualStudioUrl(),
-                    NuGetPushUrl = GetNuGetPushUrl(),
-                    NuGetFeedUrl = GetNuGetFeedUrl()
-                });
+            {
+                VisualStudioUrl = GetVisualStudioUrl(),
+                NuGetPushUrl = GetNuGetPushUrl(),
+                NuGetFeedUrl = GetNuGetFeedUrl()
+            });
         }
 
         public ActionResult Diagnostics()
@@ -72,16 +71,13 @@ namespace SymbolSource.Server.Basic
         {
             url = GetAbsoluteUrl(url);
 
-            using (var client = new WebClient())
-            {
-                var stopwatch = new Stopwatch();
-                stopwatch.Start();
-                var result = DownloadString(url);
-                stopwatch.Stop();
-                result = result.Substring(0, Math.Min(20, result.Length));
-                result = string.Format("{0} ({1} ms)", result, stopwatch.ElapsedMilliseconds);
-                return new KeyValuePair<string, string>(url, result);
-            }
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+            var result = DownloadString(url);
+            stopwatch.Stop();
+            result = result.Substring(0, Math.Min(20, result.Length));
+            result = string.Format("{0} ({1} ms)", result, stopwatch.ElapsedMilliseconds);
+            return new KeyValuePair<string, string>(url, result);
         }
 
         private string DownloadString(string url)
@@ -93,7 +89,7 @@ namespace SymbolSource.Server.Basic
             }
             catch (WebException e)
             {
-                var result = (HttpWebResponse) e.Response;
+                var result = (HttpWebResponse)e.Response;
                 using (var stream = result.GetResponseStream())
                 using (
                     var reader = new StreamReader(stream, string.IsNullOrEmpty(result.ContentEncoding) ? Encoding.UTF8 : Encoding.GetEncoding(result.ContentEncoding)))
