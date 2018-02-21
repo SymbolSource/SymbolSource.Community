@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using SymbolSource.Gateway.Core;
-using SymbolSource.Gateway.NuGet.Core;
-using SymbolSource.Gateway.OpenWrap.Core;
 using SymbolSource.Processing.Basic.Projects;
 using SymbolSource.Server.Management.Client;
 
@@ -10,22 +8,22 @@ namespace SymbolSource.Server.Basic
 {
     public class BasicBackendFactory : IGatewayBackendFactory<BasicBackend>
     {
-        private readonly IBasicBackendConfiguration configuration;
-        private readonly IAddInfoBuilder addInfoBuilder;
-        private readonly IEnumerable<IGatewayVersionExtractor> gatewayVersionExtractors;
+        private readonly IBasicBackendConfiguration _configuration;
+        private readonly IAddInfoBuilder _addInfoBuilder;
+        private readonly IEnumerable<IGatewayVersionExtractor> _gatewayVersionExtractors;
 
         public BasicBackendFactory(IBasicBackendConfiguration configuration, IAddInfoBuilder addInfoBuilder,
             IEnumerable<IGatewayVersionExtractor> gatewayVersionExtractors
             )
         {
-            this.configuration = configuration;
-            this.addInfoBuilder = addInfoBuilder;
-            this.gatewayVersionExtractors = gatewayVersionExtractors;
+            _configuration = configuration;
+            _addInfoBuilder = addInfoBuilder;
+            _gatewayVersionExtractors = gatewayVersionExtractors;
         }
 
         public BasicBackend Create(Caller caller)
         {
-            return new BasicBackend(configuration, addInfoBuilder, gatewayVersionExtractors);
+            return new BasicBackend(_configuration, _addInfoBuilder, _gatewayVersionExtractors);
         }
 
         public User Validate(Caller caller)

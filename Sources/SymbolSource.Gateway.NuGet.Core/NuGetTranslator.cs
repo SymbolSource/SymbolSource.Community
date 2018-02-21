@@ -17,45 +17,45 @@ namespace SymbolSource.Gateway.NuGet.Core
             var metadataWrapper = new MetadataWrapper(version.Metadata);
 
             var package = new Package
-                              {
-                                  Id = version.Project,
-                                  Version = version.Name,
+            {
+                Id = version.Project,
+                Version = version.Name,
 
 
-                                  Title = metadataWrapper["Title"],
-                                  Authors = metadataWrapper["Authors"],
-                                  Copyright = metadataWrapper["Copyrights"],
-                                  Description = metadataWrapper["Description"],
-                                  IconUrl = metadataWrapper["IconUrl"],
-                                  LicenseUrl = metadataWrapper["LicenseUrl"],
-                                  ProjectUrl = metadataWrapper["ProjectUrl"],
-                                  ReleaseNotes = metadataWrapper["RequireLicenseAcceptance"],
-                                  RequireLicenseAcceptance = (metadataWrapper["LicenseUrl"] ?? "").Equals("true", StringComparison.OrdinalIgnoreCase),
-                                  Summary = metadataWrapper["Summary"],
-                                  Tags = metadataWrapper["Tags"],
-                                  Dependencies = metadataWrapper["Dependencies"],
-                                  PackageHash =  metadataWrapper["PackageHash"] ?? version.PackageHash,
-                                  PackageHashAlgorithm = metadataWrapper["PackageHashAlgorithm"] ?? "SHA512",
-                                  PackageSize = int.Parse(metadataWrapper["PackageSize"] ?? "-1"),
-                                  DownloadCount = int.Parse(metadataWrapper["DownloadCount"] ?? "0"),
-                                  LastUpdated = DateTime.UtcNow,
-                                  Published = DateTime.UtcNow,
-                                  IsLatestVersion = (metadataWrapper["IsLatestVersion"] ?? "").Equals("true", StringComparison.OrdinalIgnoreCase),
-                                  IsAbsoluteLatestVersion = (metadataWrapper["IsLatestVersion"] ?? "").Equals("true", StringComparison.OrdinalIgnoreCase),
-                              };
+                Title = metadataWrapper["Title"],
+                Authors = metadataWrapper["Authors"],
+                Copyright = metadataWrapper["Copyrights"],
+                Description = metadataWrapper["Description"],
+                IconUrl = metadataWrapper["IconUrl"],
+                LicenseUrl = metadataWrapper["LicenseUrl"],
+                ProjectUrl = metadataWrapper["ProjectUrl"],
+                ReleaseNotes = metadataWrapper["RequireLicenseAcceptance"],
+                RequireLicenseAcceptance = (metadataWrapper["LicenseUrl"] ?? "").Equals("true", StringComparison.OrdinalIgnoreCase),
+                Summary = metadataWrapper["Summary"],
+                Tags = metadataWrapper["Tags"],
+                Dependencies = metadataWrapper["Dependencies"],
+                PackageHash = metadataWrapper["PackageHash"] ?? version.PackageHash,
+                PackageHashAlgorithm = metadataWrapper["PackageHashAlgorithm"] ?? "SHA512",
+                PackageSize = int.Parse(metadataWrapper["PackageSize"] ?? "-1"),
+                DownloadCount = int.Parse(metadataWrapper["DownloadCount"] ?? "0"),
+                LastUpdated = DateTime.UtcNow,
+                Published = DateTime.UtcNow,
+                IsLatestVersion = (metadataWrapper["IsLatestVersion"] ?? "").Equals("true", StringComparison.OrdinalIgnoreCase),
+                IsAbsoluteLatestVersion = (metadataWrapper["IsLatestVersion"] ?? "").Equals("true", StringComparison.OrdinalIgnoreCase),
+            };
 
             return package;
         }
 
-        public static Version ConvertToVersion(Stream stream)
+        public static Version ConvertToVersion(String packagePath)
         {
-            var package = new ZipPackage(stream);           
+            var package = new ZipPackage(packagePath);
 
             var version = new Version
-                              {
-                                  Project = package.Id,
-                                  Name = package.Version.ToString(),
-                              };
+            {
+                Project = package.Id,
+                Name = package.Version.ToString(),
+            };
 
             var metadata = new List<MetadataEntry>();
             var metadataWrapper = new MetadataWrapper(metadata);
@@ -101,12 +101,15 @@ namespace SymbolSource.Gateway.NuGet.Core
             if (!string.IsNullOrEmpty(package.Title))
                 metadataWrapper["Title"] = package.Title;
 
-            metadataWrapper["PackageSize"] = stream.Length.ToString();
-            metadataWrapper["PackageHashAlgorithm"] = "SHA512";
+            using (var stream = package.GetStream())
+            {
+                metadataWrapper["PackageSize"] = stream.Length.ToString();
+                metadataWrapper["PackageHashAlgorithm"] = "SHA512";
 
-            stream.Seek(0, SeekOrigin.Begin);
-            using (var hasher = new SHA512Managed())
+                stream.Seek(0, SeekOrigin.Begin);
+                using (var hasher = new SHA512Managed())
                     metadataWrapper["PackageHash"] = Convert.ToBase64String(hasher.ComputeHash(stream));
+            }
 
             metadataWrapper["DownloadCount"] = "000000";
             metadataWrapper["CreatedDate"] = DateTime.UtcNow.ToString("s");
@@ -143,7 +146,7 @@ namespace SymbolSource.Gateway.NuGet.Core
 
         public static string TranslateFilter(string toTranslate)
         {
-            if(string.IsNullOrEmpty(toTranslate))
+            if (string.IsNullOrEmpty(toTranslate))
                 return null;
 
             var trainsform = new Dictionary<string, string>
@@ -162,7 +165,7 @@ namespace SymbolSource.Gateway.NuGet.Core
                             {"Summary", "Metadata['Summary']"},
                             {"Tags", "Metadata['Tags']"},
                             {"Dependencies", "Metadata['Dependencies']"},
-                            
+
                             {"Version", "Name"},
 
                             //Version -> Name = IsLatestName
@@ -173,7 +176,7 @@ namespace SymbolSource.Gateway.NuGet.Core
                         };
 
             var splited = toTranslate.Split('\'');
-            for(int i=0; i<splited.Length; i+=2)
+            for (int i = 0; i < splited.Length; i += 2)
                 if (!string.IsNullOrEmpty(splited[i]))
                     splited[i] = trainsform.Aggregate(splited[i], (current, item) => current.Replace(item.Key, item.Value));
 

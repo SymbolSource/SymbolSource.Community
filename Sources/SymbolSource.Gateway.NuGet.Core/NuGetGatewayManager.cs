@@ -17,14 +17,14 @@ namespace SymbolSource.Gateway.NuGet.Core
 {
     public interface INuGetGatewayManager : IGatewayManager
     {
-        
+
     }
 
     public class NuGetGatewayManager : GatewayManager, INuGetGatewayManager
     {
         private readonly INuGetGatewayVersionExtractor versionExtractor;
         private static readonly ILog log = LogManager.GetLogger(typeof(NuGetGatewayManager));
-        
+
         public NuGetGatewayManager(IGatewayBackendFactory<IPackageBackend> backendFactory, IGatewayConfigurationFactory configurationFactory, INuGetGatewayVersionExtractor versionExtractor)
             : base(backendFactory, configurationFactory)
         {
@@ -40,44 +40,41 @@ namespace SymbolSource.Gateway.NuGet.Core
         {
             var packagePath = GetFilePath(path);
 
-            Version version;
+            Version version = versionExtractor.Extract(packagePath);
 
-            using (var stream = File.OpenRead(packagePath))
-                version = versionExtractor.Extract(stream);
-            
             var package = new ZipPackage(packagePath);
 
             metadata = version.Metadata;
 
             project = new PackageProject
-                          {
-                              Name = version.Project,
-                              Repository = repository,
-                              Version =
+            {
+                Name = version.Project,
+                Repository = repository,
+                Version =
                                   new PackageVersion
-                                      {
-                                          Project = version.Project,
-                                          Name = version.Name,
-                                          Metadata = version.Metadata,
-                                          Compilations =
+                                  {
+                                      Project = version.Project,
+                                      Name = version.Name,
+                                      Metadata = version.Metadata,
+                                      Compilations =
                                               package.AssemblyReferences
                                               .GroupBy(reference => reference.TargetFramework)
                                               .Select(group => new PackageCompilation
-                                                                   {
-                                                                       Mode = "Release",
-                                                                       Platform = group.Key != null ? group.Key.ToString() : "Default",
-                                                                       ImageFiles =
+                                              {
+                                                  Mode = "Release",
+                                                  Platform = group.Key != null ? group.Key.ToString() : "Default",
+                                                  ImageFiles =
                                                                            group.Select(reference => new PackageImageFile
-                                                                                                         {
-                                                                                                             Name = reference.Path.Replace(@"\", @"/")
-                                                                                                         }
+                                                                           {
+                                                                               Name = reference.Path.Replace(@"\", @"/")
+                                                                           }
                                                                            ).ToArray(),
-                                                                   })
+                                              })
 
                                               .ToArray(),
-                                      }
+                                  }
 
-                          };
+            };
 
 
             using (var zip = new ZipFile(packagePath))

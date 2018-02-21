@@ -1,5 +1,4 @@
 using System;
-using SymbolSource.Server.Management.Client;
 
 namespace SymbolSource.Server.Management.Client
 {

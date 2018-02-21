@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SymbolSource.Server.Management.Client
+﻿namespace SymbolSource.Server.Management.Client
 {
     public class WebServiceManagementSessionFactory : IManagementSessionFactory
     {

@@ -1,10 +1,10 @@
-﻿using System.IO;
-using SymbolSource.Server.Management.Client;
+﻿using System;
+using Version = SymbolSource.Server.Management.Client.Version;
 
 namespace SymbolSource.Gateway.Core
 {
     public interface IGatewayVersionExtractor
     {
-        Version Extract(Stream stream);
+        Version Extract(String packagePath);
     }
 }

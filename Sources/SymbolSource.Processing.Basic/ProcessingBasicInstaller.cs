@@ -1,4 +1,3 @@
-using System;
 using System.Configuration;
 using Castle.Components.DictionaryAdapter;
 using Castle.MicroKernel.Registration;
