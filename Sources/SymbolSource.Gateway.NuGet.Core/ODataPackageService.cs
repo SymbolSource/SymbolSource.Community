@@ -10,8 +10,8 @@ using System.ServiceModel.Web;
 using System.Web;
 using System.Web.Routing;
 using SymbolSource.Gateway.Core;
-using SymbolSource.Server.Management.Client;
-using Version = SymbolSource.Server.Management.Client.Version;
+using SymbolSource.Server.Management.Client.WebService;
+using Version = SymbolSource.Server.Management.Client.WebService.Version;
 
 namespace SymbolSource.Gateway.NuGet.Core
 {
@@ -222,5 +222,6 @@ namespace SymbolSource.Gateway.NuGet.Core
                 .Select(NuGetTranslator.ConvertToPackage)
                 .AsQueryable();
         }
+
     }
 }

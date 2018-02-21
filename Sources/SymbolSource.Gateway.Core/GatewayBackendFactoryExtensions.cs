@@ -1,6 +1,6 @@
 ﻿
 using System;
-using SymbolSource.Server.Management.Client;
+using SymbolSource.Server.Management.Client.WebService;
 
 namespace SymbolSource.Gateway.Core
 {

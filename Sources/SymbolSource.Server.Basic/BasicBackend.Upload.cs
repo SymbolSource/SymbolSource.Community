@@ -5,7 +5,7 @@ using System.Linq;
 using Ionic.Zip;
 using SymbolSource.Processing.Basic;
 using SymbolSource.Processing.Basic.Projects;
-using SymbolSource.Server.Management.Client;
+using SymbolSource.Server.Management.Client.WebService;
 
 namespace SymbolSource.Server.Basic
 {
@@ -23,9 +23,9 @@ namespace SymbolSource.Server.Basic
                 CreateJob(package, symbolPackageData);
 
             return new UploadReport
-                       {
-                           Summary = "OK",
-                       };
+            {
+                Summary = "OK",
+            };
         }
 
         [Obsolete]
@@ -37,7 +37,7 @@ namespace SymbolSource.Server.Basic
             string file = Path.Combine(configuration.DataPath, directory, metadata.Name + ".symbols.zip");
             File.WriteAllBytes(file, data);
 
-            using (var zipMemoryStream = new MemoryStream (data))
+            using (var zipMemoryStream = new MemoryStream(data))
             using (var zipfile = ZipFile.Read(zipMemoryStream))
             {
                 var zipInfo = new TransformingWrapperPackageFile(new ZipPackageFile(zipfile), new UrlTransformation());
@@ -59,7 +59,7 @@ namespace SymbolSource.Server.Basic
                     string binaryDirectory = Path.Combine(binariesDirectory, binaryInfo.Name, binaryInfo.SymbolHash);
                     Directory.CreateDirectory(Path.Combine(configuration.DataPath, binaryDirectory));
 
-                    using(var binaryInfoStream = binaryInfo.File.Stream)
+                    using (var binaryInfoStream = binaryInfo.File.Stream)
                     using (var binaryStream = File.OpenWrite(Path.Combine(configuration.DataPath, binaryDirectory, binaryInfo.Name + "." + binaryInfo.Type)))
                         binaryInfoStream.CopyTo(binaryStream);
 
@@ -82,7 +82,7 @@ namespace SymbolSource.Server.Basic
                         sourceIndex.Add(sourceInfo.OriginalPath + "|" + sourceInfo.KeyPath);
 
                         using (var sourceInfoStream = sourceInfo.ActualPath.Stream)
-                        using (var convertedStream = SourceConverter.Convert(sourceInfoStream)) 
+                        using (var convertedStream = SourceConverter.Convert(sourceInfoStream))
                         using (var sourceStream = File.OpenWrite(Path.Combine(configuration.DataPath, sourcePath)))
                             convertedStream.CopyTo(sourceStream);
 
@@ -100,7 +100,7 @@ namespace SymbolSource.Server.Basic
             var directory = Path.Combine(configuration.DataPath, metadata.Name, metadata.Version.Name);
             Directory.CreateDirectory(directory);
 
-            var file = Path.Combine(directory, GetPackageName(packageFormat, metadata.Name, metadata.Version.Name));            
+            var file = Path.Combine(directory, GetPackageName(packageFormat, metadata.Name, metadata.Version.Name));
             File.WriteAllBytes(file, data);
         }
 

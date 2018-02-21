@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SymbolSource.Server.Management.Client.Remoting
+namespace SymbolSource.Server.Management.Client.WebService.Remoting
 {
     public class RemotingManagementSessionFactory : MarshalByRefObject, IManagementSessionFactory
     {

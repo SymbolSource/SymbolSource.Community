@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SymbolSource.Server.Management.Client
+namespace SymbolSource.Server.Management.Client.WebService
 {
     public class WebServiceManagementSession : IManagementSession
     {

@@ -1,4 +1,4 @@
-namespace SymbolSource.Server.Management.Client
+namespace SymbolSource.Server.Management.Client.WebService
 {
     public partial class Reference
     {

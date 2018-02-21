@@ -14,7 +14,7 @@ namespace SymbolSource.Gateway.NuGet.Core
             var server = new PackageServer(url, "SymbolSource");
             var length = stream.Length;
             var package = new ZipPackage(stream);
-            server.PushPackage(key, package, length, 5000);
+            server.PushPackage(key, package, length, 5000, true);
         }
 
         public int Count(string url, NetworkCredential credential)
@@ -24,7 +24,8 @@ namespace SymbolSource.Gateway.NuGet.Core
             try
             {
                 var repository = new PackageRepositoryFactory().CreateRepository(url);
-                return repository.GetPackages().Count();
+                var packages = repository.GetPackages();
+                return packages.Count();
             }
             finally
             {
