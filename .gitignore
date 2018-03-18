@@ -3,9 +3,6 @@ _ReSharper.*
 *.suo
 bin
 obj
-*.cache
-_cache
-wraps/*.wrap
 packages/*
 !packages/repositories.config
 App_Data
